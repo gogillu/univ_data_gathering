@@ -2,7 +2,7 @@
         session_start();
         include("../credential.php");
 		if(!isset($_SESSION['username'])){
-		  header("Location: ../login.php");
+		  header("Location: ../../login.php");
         }
 ?>
 
@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/w3.css">
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -60,7 +62,7 @@
         }
 
         input[type=submit],input[type=button],.Save {
-            width: 300px;
+            min-width: 200px;
 
             background-color: #424242;
             color: #EEEEEE;
@@ -140,6 +142,48 @@
 
     </style>
 
+<style>
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+
+
 </head>
 <body class="BACK" onload="load_time_func();" style="font-family:ubuntu;">
 
@@ -196,9 +240,59 @@
             }
         }
 
-        function upload_and_generate_link(){
-          
-        }
+
+          function upload_and_generate_link(){
+            //var doc = $("#doc").val();
+            //alert(doc);
+
+            if($("#doc").val()==""){
+              alert("You need to browse file/document to generate link");
+              return false;
+            }
+
+            $("#uploader").toggle("slow");
+            $("#u_g_l").toggle("slow");
+
+            $.ajax({
+              url: "ajax_file_upload.php",      // Url to which the request is send
+              type: "POST",                       // Type of request to be send, called as method
+              data: new FormData($("#f1")[0]),       // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+              contentType: false,                 // The content type used when sending data to the server.
+              cache: false,
+              enctype: 'multipart/form-data',     // To unable request pages to be cached
+              processData:false,                  // To send DOMDocument or non processed data file it is set to false
+
+              success: function(data){             // A function to be called if request succeeds
+                var link = data;
+                //$("#uploader").hide();
+                $("#u_g_l").toggle("slow");
+                $("#after").toggle("slow");
+
+                $("#p_heading").toggle("slow");
+                $("#p_heading").toggle("slow");
+
+                $("#p_heading").html("LINK GENERATED");
+                $("#generated_link").val(data);
+
+                $("#view_link").attr({"href":data});
+
+                //alert(link);
+              }
+            });
+
+
+          }
+
+          function cont(){
+
+          }
+
+          function copy_link(){
+            var copyText = $("#generated_link");
+            copyText.select();
+            document.execCommand("copy");
+            //alert("copied");
+          }
 
     </script>
 
@@ -208,30 +302,77 @@
 
         <div class="col-sm-12"  style="margin-top:0px;">
             <br>
-            <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">GENERATE LINK</a></center>
+            <center><a id="p_heading" style="color:black; ;;;; font-weight:normal; font-size:22px;">GENERATE LINK</a></center>
         </div>
 
         <div class="col-sm-12">
           <hr/>
         </div>
 
-        <div class="col-sm-12" style="font-size:20px; padding-top:40px;">
+        <div class="col-sm-12" id="u_g_l" style="display:none;">
+          <img src="../imgs/processing.gif" width="100" height="100">
+          <br>
+          Uploading and Generating Link, Please wait...!!!
+        </div>
+
+        <div class="col-sm-12" id="after" style="padding:20px;display:none; font-size:20px; padding-top:40px;">
+          <div class="col-sm-12" id="" >
+            <input type="text" readonly id="generated_link">
+          </div>
+
+          <br><br>
+
+          <div class="col-sm-12">
+            <a id="view_link" href="" target="_blank"> <input type="button" value="VIEW LINK" > </a>
+            <input id="copy_btn" type="button" value="COPY TO CLIP BOARD" onclick="copy_link()">
+            <input id="" type="button" value="CLOSE WINDOW" onclick="window.close()">
+          </div>
+
+        </div>
+
+
+        <div class="col-sm-12" id="uploader" style="font-size:20px; padding-top:40px;">
+
 
           <div class="col-sm-3"></div>
 
           <div class="col-sm-3"> Upload Document </div>
-          <div class="col-sm-3"> <input type="file" id="doc" name="doc"> </div>
+
+            <div class="col-sm-3">
+              <form id="f1">
+                <input type="file" id="doc" name="doc">
+              </form>
+            </div>
 
           <div class="col-sm-3"></div>
 
           <div class="col-sm-12">
             <br><br>
-            <input type="submit" value="GENERATE LINK">
+            <input type="button" value="GENERATE LINK" onclick="upload_and_generate_link()">
           </div>
 
         </div>
 
 </center>
+
+<script>
+
+$(document).ready(function(){
+  $("#copy_btn").hover(function(){
+    var tooltip = document.getElementById("myTooltip");
+    tooltip.innerHTML = "Link copied to clipboard";
+  });
+});
+
+function display_copied(){
+
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
 
     <script>
         function load_time_func(){

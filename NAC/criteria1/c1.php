@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/w3_l.css">
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -434,7 +436,29 @@
     <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;">
+
+<style>
+
+  .nn:hover,.nnn,.nnn:hover{
+    color: white;
+  }
+
+</style>
+
+          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+
+<!--
+           <a style="color:white;" href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;">URL GENERATOR</a> <a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a>
+-->
+         </div></center>
     </div>
 
     <script>
@@ -1795,13 +1819,16 @@
         			for(var i = 1; i < rows.length-1; i++)
         			{
         				var programmeCode = $($(rows[i]).find('select')[0]).val();
+                link = $($(rows[i]).find('input')[3]).val();
+
         				if(programmeCode == "")
         				{
         					alert('Please select atleast one Programme Code to save');
         					return false;
-        				}
-        				else
-        				{
+        				}else if(link==""){
+                  alert('Please provide link of the relevant document');
+                  return false;
+                }else{
 
 
         				var programmeName = $($(rows[i]).find('input[type="text"]')[0]).val();
@@ -1825,7 +1852,7 @@
         					return false;
         				}
         					console.log(""+ programmeCode + ""+ programmeName + "" +  yearOfIntro + "" + studentsProgramme + "" + studentsInternship);
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  yearOfIntro + "','" + studentsProgramme + "','" + studentsInternship + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  yearOfIntro + "','" + studentsProgramme + "','" + studentsInternship + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					console.log(rowss);
@@ -1905,8 +1932,9 @@
             var ipn= "n"+ip;
             var icn= "n"+ic;
             var ay = "y"+i;
+            var li = "l"+i;
 
-    		var html = '<tr id="'+i+'"  ><td ><center><select id="'+ip+'" required onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td><td><center><select id="'+ay+'" placeholder="Year" style="width:165px;" required></select></center></td><td><center><input type="number" step="1" min="0" onkeypress="return event.charCode >= 48"  placeholder="Students in programmes" style="width:250px;" required></center></td><td><center><input type="number" step="1" min="0"  onkeypress="return event.charCode >= 48" placeholder="Students doing Internships" style="width:250px;" required></center></td class="remove"><td class="remove"><center><button onclick="remove_row(this);" type="button">Remove</button></center></td></tr>';
+    		var html = '<tr id="'+i+'"  ><td ><center><select id="'+ip+'" required onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td><td><center><select id="'+ay+'" placeholder="Year" style="width:165px;" required></select></center></td> <td><center><input type="number" step="1" min="0" onkeypress="return event.charCode >= 48"  placeholder="Students in programmes" style="width:250px;" required></center></td> <td><center><input type="number" step="1" min="0"  onkeypress="return event.charCode >= 48" placeholder="Students doing Internships" style="width:250px;" required></center></td>  <td><center><input id="'+li+'" type="text" placeholder="Link of the relevant document" style="width:250px;"></center></td>  <td class="remove"><center><button onclick="remove_row(this);" type="button">Remove</button></center></td></tr>';
     		var x = $('#tab134').find('tr');
    			$(x[x.length-1]).before(html);
 
@@ -1923,6 +1951,8 @@
                 <th style="width:100px; padding:10px; padding-left:0px;">Year</th>
                 <th style="width:100px; padding:10px; padding-left:0px;">No. of students in the programme</th>
                 <th style="width:100px; padding:10px; padding-left:0px;">No. of students undertaking field projects / internships</th>
+                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
+
             </tr>
           <!--  <tr>
           		  	<td><center><select text="Programme Code" style="width:150px;" required></select></center></td>

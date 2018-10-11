@@ -2338,7 +2338,7 @@ E. Feedback not collected
             //echo $row['Description'];
 ?>
         // 1.1.1
-            document.getElementById("TA1_1_1").value = '<?php echo $row["Description"]; ?>';
+            document.getElementById("TA1_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
             document.getElementById("link1_1_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA1_1_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -2358,7 +2358,7 @@ E. Feedback not collected
 ?>
 
         // 1.3.1
-            document.getElementById("TA1_3_1").value = '<?php echo $row["Description"]; ?>';
+            document.getElementById("TA1_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
             document.getElementById("link1_3_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA1_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 

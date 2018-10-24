@@ -709,7 +709,6 @@
 	            					//for deriving simple id for academic year
 		            				fetch_academic_year(idd, $(ay).attr('value'));
 
-
     							}
         			}
                     num_rows("tab112","ch112");
@@ -2079,17 +2078,24 @@ for design and review of syllabus
 
           			           console.log("Hello I M here");
 	          			          var pc = x[0];
-			/*var options = '<option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option>';
+			/*var
+       options = '<option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option>';
 						$(pc).html(options);*/
 						$(pc).attr('value', $(pc).attr('value'));
+            load_sel_t1_4_1($(pc).attr('id'),$(pc).attr('value'));
 
+//            alert($(pc).attr('id') + $(pc).find('option')[1]);
 
     							}
+
+
         			}
                     num_rows("tab141","ch141");
         		};
           			   			 xhttp.open("GET", "fetch141.php", true);
          			   			 xhttp.send();
+
+
         	}
 		</script>
 
@@ -2111,7 +2117,7 @@ for design and review of syllabus
             var icn= "n"+ic;
             var ay = "y"+i;
 
-    		var html = '<tr id = "'+i+'"><td><center><select style="width:200px" value = "4"><option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option></select></center></td><td><center><input type="text" placeholder="URL" style="width:250px"></center></td></tr>';
+    		var html = '<tr id = "'+i+'"><td><center><select style="width:200px" value = "4"><option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option></select></center></td><td><center><input type="text" placeholder="URL" style="width:250px"></center></td>  <td class="remove"><center><button onclick="remove_row(this);" type="button">Remove</button></center></td> </tr>';
 
     		var x = $('#tab141').find('tr');
    			$(x[x.length-1]).before(html);
@@ -2256,6 +2262,7 @@ E. Feedback not collected
 			/*var options = '<option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option>';
 						$(pc).html(options);*/
 						$(pc).attr('value', $(pc).attr('value'));
+            load_sel_t1_4_2($(pc).attr('id'),$(pc).attr('value'));
 
 
     							}
@@ -2285,7 +2292,7 @@ E. Feedback not collected
             var icn= "n"+ic;
             var ay = "y"+i;
 
-    		var html = '<tr id = "'+i+'"><td><center><select style="width:200px" value = "4"><option value = "A">A</option><option value = "B"> B</option><option value = "C"> C</option><option value = "D"> D</option><option value = "E"> E</option></select></center></td><td><center><input type="text" placeholder="URL" style="width:250px"></center></td></tr>';
+    		var html = '<tr id = "'+i+'"><td><center><select style="width:200px" value = "4"><option value = "A">A</option><option value = "B"> B</option><option value = "C"> C</option><option value = "D"> D</option><option value = "E"> E</option></select></center></td><td><center><input type="text" placeholder="URL" style="width:250px"></center></td>  <td class="remove"><center><button onclick="remove_row(this);" type="button">Remove</button></center></td> </tr>';
     		var x = $('#tab142').find('tr');
    			$(x[x.length-1]).before(html);
             event.preventDefault();
@@ -2338,7 +2345,7 @@ E. Feedback not collected
             //echo $row['Description'];
 ?>
         // 1.1.1
-            document.getElementById("TA1_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA1_1_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
             document.getElementById("link1_1_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA1_1_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -2378,7 +2385,25 @@ E. Feedback not collected
             fetch_rows_141();
             fetch_rows_142();
         }
+
+
+        function load_sel_t1_4_1(x,y){
+          //$(".sel_t1_4_1").html('<option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option>');
+          $("#"+x).val(y);
+//          alert(y);
+        }
+
+        function load_sel_t1_4_2(x,y){
+          //$(".sel_t1_4_1").html('<option value = "4">A. Any 4 of the above</option><option value = "3"> B. Any 3 of the above</option><option value = "2"> C. Any 2 of the above</option><option value = "1"> D. Any 1 of the above</option><option value = "0"> E. None of the above</option>');
+          $("#"+x).val(y);
+//          alert(y);
+        }
+
+
+
     </script>
+
+
 
 </body>
 </html>

@@ -16,6 +16,7 @@
       if(move_uploaded_file($sourcePath,"../".$targetPath)){    // Moving Uploaded file
           //echo "WORKING";
           echo "http://localhost/univ_data_gathering/NAC/profile/".$targetPath;
+	    //echo "http://192.168.43.173/univ_data_gathering/NAC/profile/".$targetPath;
           //echo "http://uid.dauniv.ac.in/NAC/profile/".$targetPath;
       }else{
           //echo "NOT WORKING";

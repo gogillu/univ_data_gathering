@@ -1,8 +1,8 @@
-<?php 	
+<?php
         session_start();
         include("../credential.php");
-		if(!isset($_SESSION['username'])){                             
-		  header("Location: ../login.php");   
+		if(!isset($_SESSION['username'])){
+		  header("Location: ../login.php");
         }
 ?>
 
@@ -12,18 +12,20 @@
 <link rel="icon" href="logo.png">
 <title>Data Capturing System NAAC A & A 2019</title>
 
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/w3_l.css">
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
-    
-    
+
+
     <script>
-        
+
         function remove_row(x){
             var a =  confirm("Are you sure you want to remove this row?");
             if(a){console.log($(x).parents()[2].remove());}
@@ -36,10 +38,10 @@
         function percent_limit_input(x,y,event){
             console.log(x.toString());
             console.log(event.which);
-            
+
             var c=0;
             var t;
-            
+
             for(var i=0; i<x.length; i+=1){
                 t = x.toString().charAt(i);
                 console.log(" . count = "+t);
@@ -47,22 +49,22 @@
                    c+=1;
                 }
             }
-            
+
             if(c>=2){
                 alert('Please Enter a valid Percentage ');
-               document.getElementById(y).value = "";                           
+               document.getElementById(y).value = "";
             }
-            
+
             if(event.which==69 || event.which==189){
                 alert('Please Enter a valid Percentage ');
-               document.getElementById(y).value = "";            
+               document.getElementById(y).value = "";
             }else if(parseFloat(x)<=10000 || parseFloat(x)>=0){
-                
+
             }else{
                 alert('Please Enter a valid Percentage ');
                document.getElementById(y).value = "";
             }
-            
+
             /*
             if(x.indexOf("-")!=-1){
                    document.getElementById(y).value = x.toString().slice(0,-1);
@@ -74,7 +76,7 @@
                document.getElementById(y).value = "";
             }
         }
-        
+
         function fetch_academic_year(x, val = "none"){
             var xhttp,res;
             var elem = $("#"+x).find(".year");
@@ -92,7 +94,7 @@
             xhttp.open("GET", "fetch_academic_year.php", true);
             xhttp.send();
         }
-        
+
         function fetch_academic_year_dis_cont(x, val = "none"){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -115,11 +117,11 @@
             return n.toString();
             //return new Date(ms).toISOString.slice(11.-1);
         }
-        
-        
+
+
         function num_rows(tid,fid){
             l = $('#'+tid).find('tr').length;
-            
+
             if(l>2){
                 document.getElementById(fid).innerHTML = '<img src="../images/filled.png" width="52" height="52"><br><a style="font-size:15px; color:#000;">Filled ('+(l-2)+')</a>';
             }else{
@@ -127,40 +129,40 @@
                 document.getElementById(fid).innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"">Not Filled</a>';
             }
         }
-        
+
     </script>
-    
-    
-        
-    <style> 
-        
+
+
+
+    <style>
+
         th{
             text-align: center;
             font-weight: 500;
             font-size: 15px;
         }
-        
+
         .sticky {
             position: fixed;
             top: 0;
             width: 100%;
         }
-        
-        .image {            
+
+        .image {
             -moz-transition: transform 1s;
             -webkit-transition: transform 1s;
             transition: transform 1s;
-            
+
             -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);            
+            transform: scaleX(-1);
 
         }
 
         .flip {
             transform: rotate(180deg);
         }
-        
-        
+
+
         #d311, #h311, #d331, #h331, #d361, #h361, #d372, #h372, #d371, #h371, #d364, #h364, #d363, #h363, #d362, #h362, #d353, #h353, #d352, #h352, #d348. #h348, #d373, #h373, #d347, #h347, #d346, #h346, #d345, #h345, #d344, #h344, #d343, #h343, #d342, #h342, #d341,#h341, #d334, #h334, #d333, #h333, #d332, #h332, #d312, #h312,#d316, #h316, #d351, #d323, #h323, #h351, #d313, #h313, #d315, #h315, #d314, #h314, #h322, #d322, {
             /*background-color: #CACACA;*/
             border: solid 0px #CACACA;
@@ -173,13 +175,13 @@
         }
     </style>
 
-    
+
     <style>
-            
+
         textarea{
             resize:none;
         }
-        
+
         select{
             width:10%;
             background-color:#ffffff;
@@ -190,7 +192,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;box-sizing: border-box;
         }
-        
+
         input[type=text],input[type=number],textarea ,input[type=date]{
             background-color:#ffffff;
             opacity:.92;
@@ -201,10 +203,10 @@
             border: 1px solid #ccc;
             border-radius: 4px;box-sizing: border-box;
         }
-        
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none; 
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
             margin: 0;
         }
 
@@ -220,7 +222,7 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
          button {
             width: 90px;
             background-color: #ffffff;
@@ -231,7 +233,7 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
         input[type=submit]:hover {
             background-color: #333333;
         }
@@ -240,15 +242,15 @@
             background-color: #333333;
         }
 
-        
+
         button:hover {
             background-color: #cd2026;
         }
-    
+
         .add,.remove{
             border: 0px;
         }
-    
+
         .body{
 /*
             background-color:#CACACA;
@@ -256,17 +258,17 @@
             /*background-color:#CACACA;
             */
         }
-        
+
         *{
             margin: 0;
             padding: 0;
         }
-        
+
         .container{
             height: 100%;
             width: 100%;
         }
-        
+
         #left, #middle, #right, .x {
             display: inline-block;
             *display: inline; zoom: 1;
@@ -274,15 +276,15 @@
             font-size: 12px;
             padding: 0px;
         }
-        
+
         #left{
             width: 20%;
         }
-        
+
         #middle{
             width: 50%;
         }
-        
+
         #right{
             width: 10%;
         }
@@ -295,40 +297,60 @@
             border: 0px;
         }
     </style>
-    
+
 </head>
 <body class="BACK" onload="load_time_func();">
-    
+
     <div class="container col-sm-12 DAVV" style="width:100%; padding-bottom:20px; padding-top:20px;">
-        <div class="col-sm-3"></div>   
-        
+        <div class="col-sm-3"></div>
+
         <div class="col-sm-8" style="margin-left:-50px;">
             <div class="container" style="width:100%;">
                 <div class="col-sm-2" style="margin-left:5px;">
                     <img src="logo.png" alt="logo" style="width:120px; height:120px;">
                 </div>
-            
+
                 <div class="col-sm-10" style="margin-left:-20px;">
                     <div style="font-size:30px; margin-top:20px; margin-left:30px; color:#FFF"><b>Devi Ahilya Vishwavidyalaya, Indore</b></div>
                     <div style="font-size:20px; margin-top:10px; margin-left:30px; color:#FFF;"><b>Data Capturing System NAAC A & A 2019</b></div>
                 </div>
             </div>
-                        
+
         </div>
-        
+
         <div class="col-sm-1"></div>
     </div>
-    
+
     <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"> <?php echo strtoupper($_SESSION['name']);?>   </h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;">
+
+<style>
+
+  .nn:hover,.nnn,.nnn:hover{
+    color: white;
+  }
+
+</style>
+
+          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
-        
+  </div>
+    </div>
+
+  </div>
+    </div>
+
 	<a id="dept_name" style="visibility:hidden;"> <?php echo strtoupper($_SESSION['name']);?> </a>
 
     <script>
-        // When the user scrolls the page, execute myFunction 
+        // When the user scrolls the page, execute myFunction
         window.onscroll = function() {myFunction()};
 
         // Get the header
@@ -355,11 +377,11 @@
         }
 
     </script>
-    
-    
+
+
     <center>
 
-        
+
         <div class="col-sm-12"  style="margin-top:0px;">
             <br><br>
     <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">CRITERIA 3 - RESEARCH, EXTENSION AND INNOVATIONS</a></center>
@@ -367,51 +389,51 @@
 <div class="col-sm-12">
     <hr/>
 </div>
-        
+
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.1 Promotion of Research and Facilities</a></center>
 
     </center>
-          
+
  <!--
     3.1.1
 -->
 
         <script>
-        
+
             function save311(ta)
         	{
                 link =  document.getElementById("link1_1_1").value;
                 var ata = ta.value;
-                
+
                 console.log(ta+"\n"+link);
                var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                alert('Changes Saved Successfully');
                                $("#d311").slideToggle("slow");
                                rotate("tg311");
-                               
+
                                if(document.getElementById("TA1_1_1").value==""){
                                     document.getElementById("ch311").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/> <br>Not Filled';
                                 }else{
                                     document.getElementById("ch311").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
                                 }
-                               
+
         		  			}
         		  		};
           			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_1_1", true);
          			   			 xhttp.send();
         		}
-        		
+
         		function fetch_rows_311()
         		{
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
          			       		document.getElementById("TA1_1_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
@@ -422,23 +444,23 @@
                                 }
          			       }
          			       };
-         			       
+
           			   			 xhttp.open("GET", "fetch311.php?table=t3_1_1", true);
          			   			 xhttp.send();
         		}
 
         </script>
-        
+
 <div class="col-sm-12" style="height:50px;">
     <hr/>
 </div>
 
     <div class="col-sm-12" onclick='rotate("tg311"); $("#d311").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch311">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h311" class="col-sm-10">
             <div class="col-sm-1"  style="font-size:18px;">3.1.1<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -448,58 +470,58 @@
 related to research promotion policy adoption
 <br>* URL of Policy document on promotion of research uploaded on website
             </div>
-            
+
         </div>
-        
+
         <div id="to311" class="col-sm-1">
-            <br><img class="image flip"  id="tg311" src="../images/toggle2.png" width="28" height="28" >            
+            <br><img class="image flip"  id="tg311" src="../images/toggle2.png" width="28" height="28" >
         </div>
-        
+
     </div>
-        
+
 
     <div class="col-sm-12" id="d311">
-        
+
 <center>
-    
+
         <div style="margin-left:-215px;">
             <!--Write description within a minimum of 500 characters and maximum of 500 words.-->
         </div>
-            
+
     <form>
-        
+
         <textarea id="TA1_1_1" placeholder="URL of Policy Document on Promotion of Research" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
-            
+
         </textarea>
-        
+
         <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
-        
+
         <div style="margin-left:-615px; font-weight:bold;">
-            File Description : 
+            File Description :
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="file" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="text" id="link1_1_1" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         </div>
-            
+
         <input type="button" class="SAVE" onclick="save311( $(this).parent().children()[0] )" value="SAVE CHANGES" style="margin-left:80px; width:920px;">
-        
+
     </form>
 </center>
     </div>
-    
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
-</div>                
-     
+</div>
+
 <!--
     3.1.2
 -->
@@ -512,7 +534,7 @@ related to research promotion policy adoption
         			var rowss = "";
         			for(var i = 1; i < rows.length-1; i++)
         			{
-        				
+
         				var Year = $($(rows[i]).find('select')[0]).val();
                         var name = $($(rows[i]).find('input')[0]).val();
                         var amount = $($(rows[i]).find('input')[1]).val();
@@ -523,18 +545,18 @@ related to research promotion policy adoption
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(amount==""||amount<0){
                             alert('Please enter valid amount');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }
-                        
+
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ amount + "','" + Year + "','" + duration + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -545,7 +567,7 @@ related to research promotion policy adoption
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -558,17 +580,17 @@ related to research promotion policy adoption
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_312()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab312').find('tr');		
+          			   var x = $('#tab312').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -578,7 +600,7 @@ related to research promotion policy adoption
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab312","ch312");
         		};
@@ -586,13 +608,13 @@ related to research promotion policy adoption
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg312"); $("#d312").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch312">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h312" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -603,16 +625,16 @@ indicating seed money provided and utilized
 <br>* List of teachers receiving grant and details of grant received
             </div>
         </div>
-        
+
         <div id="to312" class="col-sm-1">
-            <br><img class="image flip"  id="tg312" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg312" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d312">
-            <br>            
+            <br>
     <script>
     	function addRow312()
     	{
@@ -622,12 +644,12 @@ indicating seed money provided and utilized
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
               '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab312').find('tr');		
+
+    		var x = $('#tab312').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
-            
+
             fetched_duration();
     	}
     </script>
@@ -653,16 +675,16 @@ indicating seed money provided and utilized
             </tr>
             -->
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save312($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
@@ -690,20 +712,20 @@ indicating seed money provided and utilized
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(award==""){
                             alert('Please enter an Award name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter an agency name');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ award + "','" +period+"','" + Year + "','" + agency + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -714,7 +736,7 @@ indicating seed money provided and utilized
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
                                alert('Changes Saved Successfully');
@@ -727,17 +749,17 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_313()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab313').find('tr');		
+          			   var x = $('#tab313').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -745,10 +767,10 @@ indicating seed money provided and utilized
           			           if(responseRows.length == 0){ responseRows = $(y); }
           			           for(var i = 0; i < responseRows.length; i++)
           			           {
-          			           		
+
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab313","ch313");
         		};
@@ -756,13 +778,13 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg313"); $("#d313").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch313">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h313" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -772,16 +794,16 @@ indicating seed money provided and utilized
 <br>* List of teachers and their international fellowship details
             </div>
         </div>
-        
+
         <div id="to313" class="col-sm-1">
-            <br><img class="image flip"  id="tg313" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg313" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d313">
-            <br>            
+            <br>
     <script>
     	function addRow313()
     	{
@@ -792,10 +814,10 @@ indicating seed money provided and utilized
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Agency" style="width:250px;" required></center></td>'+
               '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab313').find('tr');		
+
+    		var x = $('#tab313').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -822,21 +844,21 @@ indicating seed money provided and utilized
             </tr>
             -->
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save313($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
-      
+
+
 <!--
     3.1.4
 -->
@@ -861,20 +883,20 @@ indicating seed money provided and utilized
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(duration==""){
                             alert('Please enter an Award name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter an agency name');
-        					return false;   
+        					return false;
                         }else if(type==""){
                             alert('Please enter a fellowship type');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ Year + "','" + duration + "','" + type + "','" + agency + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -885,7 +907,7 @@ indicating seed money provided and utilized
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
                                alert('Changes Saved Successfully');
@@ -898,17 +920,17 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_314()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab314').find('tr');		
+          			   var x = $('#tab314').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -918,7 +940,7 @@ indicating seed money provided and utilized
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab314","ch314");
         		};
@@ -926,31 +948,31 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg314"); $("#d314").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch314">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h314" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.4<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
-            <br>Number of JRFs, SRFs, Post Doctoral Fellows, Research Associates and other research fellows in the University enrolled during the last five years 
+            <br>Number of JRFs, SRFs, Post Doctoral Fellows, Research Associates and other research fellows in the University enrolled during the last five years
              <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
 <br>* List of research fellows and their fellowship details
             </div>
         </div>
-        
+
         <div id="to314" class="col-sm-1">
-            <br><img class="image flip"  id="tg314" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg314" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d314">
-            <br>            
+            <br>
     <script>
     	function addRow314()
     	{
@@ -962,10 +984,10 @@ indicating seed money provided and utilized
               '<td><center><input type="text" placeholder="Agency" style="width:250px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Exam" style="width:250px;" required></center></td>'+
               '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab314').find('tr');		
+
+    		var x = $('#tab314').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -995,22 +1017,22 @@ indicating seed money provided and utilized
             </tr>
             -->
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save314($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
 
-    
+
 <!--
     3.1.5
 -->
@@ -1033,17 +1055,17 @@ indicating seed money provided and utilized
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(link==""){
                             alert('Please enter a valid link');
-        					return false;   
+        					return false;
                         }else if(choice==""){
                             alert('Please enter a valid choice');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+choice+"','"+ name + "','"+ Year + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1054,7 +1076,7 @@ indicating seed money provided and utilized
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -1067,17 +1089,17 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_315()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab315').find('tr');		
+          			   var x = $('#tab315').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -1087,8 +1109,8 @@ indicating seed money provided and utilized
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        	
-    						$($('.opt')).val($('input[type=hidden]').val());			
+    							}
+    						$($('.opt')).val($('input[type=hidden]').val());
         			}
                     num_rows("tab315","ch315");
         		};
@@ -1096,13 +1118,13 @@ indicating seed money provided and utilized
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg315"); $("#d315").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch315">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h315" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.5<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -1132,16 +1154,16 @@ establishment
 <br>* Upload any additional information
             </div>
         </div>
-        
+
         <div id="to315" class="col-sm-1">
-            <br><img class="image flip"  id="tg315" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg315" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d315">
-            <br>            
+            <br>
     <script>
     	function addRow315()
     	{
@@ -1150,10 +1172,10 @@ establishment
 			  '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
 			  '<td><center><input type="text" placeholder="Link" style="width:300px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab315').find('tr');		
+
+    		var x = $('#tab315').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -1164,29 +1186,29 @@ establishment
                 <th style="width:250px; padding:20px;">Name of the facility</th>
                 <th style="width:80px; padding:20px;">Year of establishment</th>
                 <th style="width:200px; padding:20px;">Provid link of Videos/Pictures</th>
-                
+
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow315()" alt="Submit" width="48" height="48">
 <!--				<td  colspan="4"><button value="" onclick="addRow315()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save315($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
 
-    
+
+
 <!--
     3.1.6
 -->
@@ -1210,20 +1232,20 @@ establishment
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter a valid Agency Name');
-        					return false;   
+        					return false;
                         }else if(funds==""||funds<0){
                             alert('Please enter a valid FUNDS');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ agency + "','" + Year + "','" + funds + "','" + duration + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1234,7 +1256,7 @@ establishment
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -1247,17 +1269,17 @@ establishment
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_316()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab316').find('tr');		
+          			   var x = $('#tab316').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -1267,7 +1289,7 @@ establishment
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab316","ch316");
         		};
@@ -1275,13 +1297,13 @@ establishment
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg316"); $("#d316").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch316">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h316" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.6<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Percentage of departments with UGC-SAP, CAS, DST-FIST ,DBT,ICSSR and other similar recognitions by government agency (Current Year Data)
@@ -1290,16 +1312,16 @@ establishment
 <br>* Upload any additional information
             </div>
         </div>
-        
+
         <div id="to316" class="col-sm-1">
-            <br><img class="image flip"  id="tg316" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg316" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d316">
-            <br>            
+            <br>
     <script>
     	function addRow316()
     	{
@@ -1310,10 +1332,10 @@ establishment
 			  '<td><center><input type="number" placeholder="Funds" style="width:160px;" required></center></td>'+
 			  '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab316').find('tr');		
+
+    		var x = $('#tab316').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -1333,29 +1355,29 @@ establishment
 <!--				<td  colspan="4"><button value="" onclick="addRow316()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save316($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
+
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.2 Resource Mobilization for Research</a></center>
 
     </center>
 
-          
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
+
 <!--
     3.2.1 and 3.2.2
 -->
@@ -1380,23 +1402,23 @@ establishment
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }else if(principal==""){
                             alert('Please enter a valid Principal Name');
-        					return false;   
+        					return false;
                         }else if(funds==""||funds<0){
                             alert('Please enter a valid FUNDS');
-        					return false;   
+        					return false;
                         }else if(department==""){
                             alert('Please enter a valid Department Name');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ principal + "','" + department + "','" + Year + "','" + funds + "','" + duration + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1407,7 +1429,7 @@ establishment
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -1420,17 +1442,17 @@ establishment
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_322()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab322').find('tr');		
+          			   var x = $('#tab322').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -1440,7 +1462,7 @@ establishment
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab322","ch322");
         		};
@@ -1448,13 +1470,13 @@ establishment
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg322"); $("#d322").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch322">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h322" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.2.1 and 3.2.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;"> Grants for research projects sponsored by the non-government sources such as industry, corporate houses, international bodies, endowments, Chairs in the institution during the last five years and Grants for research projects sponsored by the government sources during the last five years (Amount in Rupees)
@@ -1464,16 +1486,16 @@ non-government
 <br>* Upload any additional information
             </div>
         </div>
-        
+
         <div id="to322" class="col-sm-1">
-            <br><img class="image flip"  id="tg322" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg322" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d322">
-            <br>            
+            <br>
     <script>
     	function addRow322()
     	{
@@ -1485,10 +1507,10 @@ non-government
 			  '<td><center><input type="number" placeholder="Funds" style="width:160px;" required></center></td>'+
 			  '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab322').find('tr');		
+
+    		var x = $('#tab322').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -1509,21 +1531,21 @@ non-government
 <!--				<td  colspan="4"><button value="" onclick="addRow322()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save322($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
-    
+
 <!--
     3.2.3
 -->
@@ -1550,29 +1572,29 @@ non-government
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }else if(principal==""){
                             alert('Please enter a valid Principal Name');
-        					return false;   
+        					return false;
                         }else if(funds==""||funds<0){
                             alert('Please enter a valid FUNDS');
-        					return false;   
+        					return false;
                         }else if(department==""){
                             alert('Please enter a valid department Name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter a valid Agency Name');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ principal + "','"+ department + "','" + duration + "','" + name + "','" + funds + "','" + agency + "','" + period +"','"+ Year + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1583,7 +1605,7 @@ non-government
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -1596,17 +1618,17 @@ non-government
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_323()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab323').find('tr');		
+          			   var x = $('#tab323').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -1616,7 +1638,7 @@ non-government
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab323","ch323");
         		};
@@ -1624,32 +1646,32 @@ non-government
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg323"); $("#d323").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch323">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h323" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.2.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Average number of research projects per teacher funded by government and non-government agencies during the last five years
-            <br><br>Please keep following and other relevant documents ready in hard copy:<br>* List of research projects and funding details 
+            <br><br>Please keep following and other relevant documents ready in hard copy:<br>* List of research projects and funding details
 <br>* Any additional information
 <br>* Supporting document from Funding Agency
 <br>* Paste Link for the funding agency website
             </div>
         </div>
-        
+
         <div id="to323" class="col-sm-1">
-            <br><img class="image flip"  id="tg323" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg323" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d323">
-            <br>            
+            <br>
     <script>
     	function addRow323()
     	{
@@ -1663,10 +1685,10 @@ non-government
 			  '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab323').find('tr');		
+
+    		var x = $('#tab323').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -1689,21 +1711,21 @@ non-government
 <!--				<td  colspan="4"><button value="" onclick="addRow323()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save323($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-              
-        
+
+
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.3 Innovation Ecosystem</a></center>
 
     </center>
@@ -1713,41 +1735,41 @@ non-government
 -->
 
         <script>
-        
+
             function save331(ta)
         	{
              //   link =  document.getElementById("linka1_1_1").value;
                 var ata = ta.value;
-                
+
                 //console.log(ta+"\n"+link);
                var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                alert('Changes Saved Successfully');
                                $("#d331").slideToggle("slow");
                                rotate("tg331");
-                               
+
                                if(document.getElementById("TAa1_1_1").value==""){
                                     document.getElementById("ch331").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/><br> Not Filled';
                                 }else{
                                     document.getElementById("ch331").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
                                 }
-                               
+
         		  			}
         		  		};
           			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_3_1", true);
          			   			 xhttp.send();
         		}
-        		
+
         		function fetch_rows_331()
         		{
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
          			       		document.getElementById("TAa1_1_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
@@ -1758,23 +1780,23 @@ non-government
                                 }
          			       }
          			       };
-         			       
+
           			   			 xhttp.open("GET", "fetch311.php?table=t3_3_1", true);
          			   			 xhttp.send();
         		}
 
         </script>
-        
+
 <div class="col-sm-12" style="height:50px;">
     <hr/>
 </div>
 
     <div class="col-sm-12" onclick='rotate("tg331"); $("#d331").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch331">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h331" class="col-sm-10">
             <div class="col-sm-1"  style="font-size:18px;">3.3.1<br><br>Q<sub>L</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -1785,56 +1807,56 @@ knowledge
 <br>* Any additional information
             </div>
         </div>
-        
+
         <div id="to331" class="col-sm-1">
-            <br><img class="image flip"  id="tg331" src="../images/toggle2.png" width="28" height="28" >            
+            <br><img class="image flip"  id="tg331" src="../images/toggle2.png" width="28" height="28" >
         </div>
-        
+
     </div>
-        
+
 
     <div class="col-sm-12" id="d331">
-        
+
 <center>
-    
+
         <div style="margin-left:-215px;">
             <!--Write description within a minimum of 500 characters and maximum of 500 words.-->
         </div>
-            
+
     <form>
-        
+
         <textarea id="TAa1_1_1" placeholder="Describe available incubation centre and evidence of its usage (activity) within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
-            
+
         </textarea>
-        
+
         <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
-        
+
         <div style="margin-left:-615px; font-weight:bold;">
-            File Description : 
+            File Description :
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="file" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="text" id="link1_1_1" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         </div>
-            
+
         <input type="button" class="SAVE" onclick="save331( $(this).parent().children()[0] )" value="SAVE CHANGES" style="margin-left:80px; width:920px;">
-        
+
     </form>
 </center>
     </div>
-    
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
-</div>                
-    
+</div>
+
 
 <!--
     3.3.2
@@ -1860,23 +1882,23 @@ knowledge
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(dateFrom==""){
                             alert('Please enter a valid Date');
-        					return false;   
+        					return false;
                         }else if(dateto==""){
                             alert('Please enter a valid Date');
-        					return false;   
+        					return false;
                         }else if(link==""){
                             alert('Please enter a valid link');
-        					return false;   
+        					return false;
                         }else if(dateEst==""){
                             alert('Please enter a valid Date');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ Year + "','"+ name + "','" + dateFrom +"','"+dateto+"','" + link + "','" + dateEst  + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1887,7 +1909,7 @@ knowledge
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -1900,17 +1922,17 @@ knowledge
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_332()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab332').find('tr');		
+          			   var x = $('#tab332').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -1920,7 +1942,7 @@ knowledge
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab332","ch332");
         		};
@@ -1928,31 +1950,31 @@ knowledge
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg332"); $("#d332").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch332">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h332" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.3.2<br><br>Q<sub>N</sub>M</div>
-            <div class="col-sm-11" style="font-size:18px;">Number of workshops/seminars conducted on Intellectual Property Rights (IPR) and Industry-Academia Innovative practices during the last five years 
+            <div class="col-sm-11" style="font-size:18px;">Number of workshops/seminars conducted on Intellectual Property Rights (IPR) and Industry-Academia Innovative practices during the last five years
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Report of the event
 <br>* Any additional information
 <br>* List of workshops/seminars during last 5 years
             </div>
         </div>
-        
+
         <div id="to332" class="col-sm-1">
-            <br><img class="image flip"  id="tg332" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg332" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d332">
-            <br>            
+            <br>
     <script>
     	function addRow332()
     	{
@@ -1964,10 +1986,10 @@ knowledge
               '<td><center><input type="text" placeholder="Link" style="width:200px;" required></center></td>'+
               '<td><center><input type="date" placeholder="DD/MM/YY" style="width:180px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab332').find('tr');		
+
+    		var x = $('#tab332').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -1986,22 +2008,22 @@ knowledge
 <!--				<td  colspan="4"><button value="" onclick="addRow332()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save332($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
-     
-    
+
+
+
 <!--
     3.3.3
 -->
@@ -2026,23 +2048,23 @@ knowledge
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter a valid Agency Name');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter a valid Title of Innovation');
-        					return false;   
+        					return false;
                         }else if(category==""){
                             alert('Please enter a valid category');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','"+ name + "','" + agency + "','"+period+"','" + Year + "','" + category  + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2053,7 +2075,7 @@ knowledge
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2066,17 +2088,17 @@ knowledge
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_333()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab333').find('tr');		
+          			   var x = $('#tab333').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -2086,7 +2108,7 @@ knowledge
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab333","ch333");
         		};
@@ -2094,13 +2116,13 @@ knowledge
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg333"); $("#d333").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch333">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h333" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.3.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of awards for innovation won by institution/teachers/research scholars/students during the last five years
@@ -2109,16 +2131,16 @@ knowledge
 <br>* List of innovation and award details
             </div>
         </div>
-        
+
         <div id="to333" class="col-sm-1">
-            <br><img class="image flip"  id="tg333" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg333" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d333">
-            <br>            
+            <br>
     <script>
     	function addRow333()
     	{
@@ -2130,10 +2152,10 @@ knowledge
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Category" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab333').find('tr');		
+
+    		var x = $('#tab333').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -2153,20 +2175,20 @@ knowledge
 <!--				<td  colspan="4"><button value="" onclick="addRow333()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save333($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
+
 <!--
     3.3.4
 -->
@@ -2185,20 +2207,20 @@ knowledge
                         var contact = $($(rows[i]).find('input')[3]).val();
                         if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(nature==""){
                             alert('Please enter a valid Nature');
-        					return false;   
+        					return false;
                         }else if(contact==""){
                             alert('Please enter valid contact information');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + nature + "','"+period+"','" + Year + "','" + contact + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2209,7 +2231,7 @@ knowledge
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2222,17 +2244,17 @@ knowledge
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_334()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab334').find('tr');		
+          			   var x = $('#tab334').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
           			           var y  = this.responseText;
@@ -2242,7 +2264,7 @@ knowledge
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}        				
+    							}
         			}
                     num_rows("tab334","ch334");
         		};
@@ -2250,13 +2272,13 @@ knowledge
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg334"); $("#d334").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch334">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h334" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.3.4<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of start-ups incubated on campus during the last five years
@@ -2267,16 +2289,16 @@ knowledge
 commencement etc
             </div>
         </div>
-        
+
         <div id="to334" class="col-sm-1">
-            <br><img class="image flip"  id="tg334" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg334" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d334">
-            <br>            
+            <br>
     <script>
     	function addRow334()
     	{
@@ -2287,10 +2309,10 @@ commencement etc
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Contact" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab334').find('tr');		
+
+    		var x = $('#tab334').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -2309,30 +2331,30 @@ commencement etc
 <!--				<td  colspan="4"><button value="" onclick="addRow334()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save334($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-                        
-        
+
+
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.4 Research Publications and Awards</a></center>
 
     </center>
 
-          
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
+
 <!--
     3.4.1
 -->
@@ -2350,17 +2372,17 @@ commencement etc
                         var mech = $($(rows[i]).find('input')[2]).val();
                         if(url==""){
                             alert('Please enter a URL');
-        					return false;   
+        					return false;
                         }else if(yesno==""){
                             alert('Please enter a valid Response (Yes/No)');
-        					return false;   
+        					return false;
                         }else if(mech==""){
                             alert('Please enter valid Mechanism');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ url + "','" + yesno + "','" + mech + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2371,7 +2393,7 @@ commencement etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2384,17 +2406,17 @@ commencement etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_341()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab341').find('tr');		
+          			   var x = $('#tab341').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  /* console.log('hi');
           			           var y  = this.responseText;
@@ -2404,7 +2426,7 @@ commencement etc
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}*/        				
+    							}*/
         			}
                     num_rows("tab341","ch341");
         		};
@@ -2412,13 +2434,13 @@ commencement etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg341"); $("#d341").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch341">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h341" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.1<br><br>Q<sub>L</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">The institution has a stated Code of Ethics to check malpractices and plagiarism in Research (Yes/No)
@@ -2426,16 +2448,16 @@ commencement etc
 <br>* Any additional information
             </div>
         </div>
-        
+
         <div id="to341" class="col-sm-1">
-            <br><img class="image flip"  id="tg341" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg341" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d341">
-            <br>            
+            <br>
     <script>
     	function addRow341()
     	{
@@ -2444,10 +2466,10 @@ commencement etc
               '<td><center><input type="text" placeholder="Yes/No" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Mechanism" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab341').find('tr');		
+
+    		var x = $('#tab341').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -2464,16 +2486,16 @@ commencement etc
 <!--				<td  colspan="4"><button value="" onclick="addRow341()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save341($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
@@ -2501,23 +2523,23 @@ commencement etc
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter a valid Agency Name');
-        					return false;   
+        					return false;
                         }else if(award==""){
                             alert('Please enter a valid Award Name');
-        					return false;   
+        					return false;
                         }else if(details==""){
                             alert('Please enter valid details');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + award + "','" + agency + "','"+period+"','" + Year +"','" + details + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2528,7 +2550,7 @@ commencement etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2541,17 +2563,17 @@ commencement etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_342()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab342').find('tr');		
+          			   var x = $('#tab342').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log('hi');
           			           var y  = this.responseText;
@@ -2561,7 +2583,7 @@ commencement etc
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab342","ch342");
         		};
@@ -2569,13 +2591,13 @@ commencement etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg342"); $("#d342").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch342">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h342" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">The institution provides incentives to teachers who receive state, national and international recognition/awards (Yes/No)
@@ -2584,16 +2606,16 @@ commencement etc
 <br>* List of Awardees and Award details
             </div>
         </div>
-        
+
         <div id="to342" class="col-sm-1">
-            <br><img class="image flip"  id="tg342" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg342" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d342">
-            <br>            
+            <br>
     <script>
     	function addRow342()
     	{
@@ -2605,10 +2627,10 @@ commencement etc
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Details" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab342').find('tr');		
+
+    		var x = $('#tab342').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -2628,16 +2650,16 @@ commencement etc
 <!--				<td  colspan="4"><button value="" onclick="addRow342()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save342($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
@@ -2662,14 +2684,14 @@ commencement etc
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(award==""){
                             alert('Please enter a valid Patent Number');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + award  + "','" + Year  + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2680,7 +2702,7 @@ commencement etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2693,17 +2715,17 @@ commencement etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_343()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab343').find('tr');		
+          			   var x = $('#tab343').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log('hi');
           			           var y  = this.responseText;
@@ -2713,7 +2735,7 @@ commencement etc
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab343","ch343");
         		};
@@ -2721,30 +2743,30 @@ commencement etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg343"); $("#d343").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch343">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h343" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.3<br><br>Q<sub>N</sub>M</div>
-            <div class="col-sm-11" style="font-size:18px;">Number of Patents published/awarded during the last five years 
+            <div class="col-sm-11" style="font-size:18px;">Number of Patents published/awarded during the last five years
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
 <br>* List of patents and year it was awarded
             </div>
         </div>
-        
+
         <div id="to343" class="col-sm-1">
-            <br><img class="image flip"  id="tg343" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg343" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d343">
-            <br>            
+            <br>
     <script>
     	function addRow343()
     	{
@@ -2753,10 +2775,10 @@ commencement etc
               '<td><center><input type="text" placeholder="Patent Number" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab343').find('tr');		
+
+    		var x = $('#tab343').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -2773,20 +2795,20 @@ commencement etc
 <!--				<td  colspan="4"><button value="" onclick="addRow343()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save343($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
- 
+
 <!--
     3.4.4
 -->
@@ -2812,26 +2834,26 @@ commencement etc
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(department==""){
                             alert('Please enter a Department Number');
-        					return false;   
+        					return false;
                         }else if(guide==""){
                             alert('Please enter a Guide Name');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter a valid Title');
-        					return false;   
+        					return false;
                         }else if(yearof==""){
                             alert('Please enter Year of Registeration');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + department  + "','" + guide +"','"+title+"','"+yearof+"','"+period+"','" + Year + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2842,7 +2864,7 @@ commencement etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -2855,17 +2877,17 @@ commencement etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_344()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab344').find('tr');		
+          			   var x = $('#tab344').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log('hi');
           			           var y  = this.responseText;
@@ -2875,7 +2897,7 @@ commencement etc
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab344","ch344");
         		};
@@ -2883,33 +2905,33 @@ commencement etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg344"); $("#d344").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch344">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h344" class="col-sm-10" >
-            
+
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.4<br><br>Q<sub>N</sub>M</div>
-            <div class="col-sm-11" style="font-size:18px;">Number of Ph.D.s awarded per teacher during the last five years 
+            <div class="col-sm-11" style="font-size:18px;">Number of Ph.D.s awarded per teacher during the last five years
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* URL to the research page on HEI web site
 <br>* List of PhD scholars and their details like name of the guide , title of
 thesis, year of award etc
 <br>* Any additional information
             </div>
         </div>
-        
+
         <div id="to344" class="col-sm-1">
-            <br><img class="image flip"  id="tg344" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg344" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d344">
-            <br>            
+            <br>
     <script>
     	function addRow344()
     	{
@@ -2922,10 +2944,10 @@ thesis, year of award etc
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab344').find('tr');		
+
+    		var x = $('#tab344').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
 		document.getElementById("dept"+i).value = document.getElementById("dept_name").innerHTML;
 
             fetch_academic_year(i);
@@ -2935,7 +2957,7 @@ thesis, year of award etc
 
         <table border="0" id="tab344">
             <tr>
-                
+
                 <th style="width:80px; padding:20px;">Name of the PhD scholar</th>
                 <th style="width:200px; padding:20px;">Name of the Department</th>
                 <th style="width:250px; padding:20px;">Name of the guide/s</th>
@@ -2949,16 +2971,16 @@ thesis, year of award etc
 <!--				<td  colspan="4"><button value="" onclick="addRow344()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save344($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
@@ -2989,26 +3011,26 @@ thesis, year of award etc
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(department==""){
                             alert('Please enter a Department Number');
-        					return false;   
+        					return false;
                         }else if(isbn==""){
                             alert('Please enter an ISBN/ISSN number');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter a valid Title');
-        					return false;   
+        					return false;
                         }else if(journal==""){
                             alert('Please enter Journal Name');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + name  + "','" + department +"','"+journal+"','"+period+"','"+Year+"','" + isbn + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3019,7 +3041,7 @@ thesis, year of award etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3032,17 +3054,17 @@ thesis, year of award etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_345()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab345').find('tr');		
+          			   var x = $('#tab345').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log('hi');
           			           var y  = this.responseText;
@@ -3052,7 +3074,7 @@ thesis, year of award etc
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab345","ch345");
         		};
@@ -3060,36 +3082,36 @@ thesis, year of award etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg345"); $("#d345").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch345">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h345" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.5<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of research papers per teacher in the Journals notified on UGC website during the last five years
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
 <br>* List of research papers by title, author, department, name and year of
-publication 
+publication
             </div>
         </div>
-        
+
         <div id="to345" class="col-sm-1">
-            <br><img class="image flip"  id="tg345" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg345" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d345">
-            <br>            
+            <br>
     <script>
     	function addRow345()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Department" style="width:200px;" required></center></td>'+
@@ -3098,10 +3120,10 @@ publication
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="ISBN/ISSN" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab345').find('tr');		
+
+    		var x = $('#tab345').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3122,20 +3144,20 @@ publication
 <!--				<td  colspan="4"><button value="" onclick="addRow345()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save345($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-         
+
 <!--
     3.4.6
 -->
@@ -3165,38 +3187,38 @@ publication
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(btitle==""){
                             alert('Please enter a Book Title');
-        					return false;   
+        					return false;
                         }else if(isbn==""){
                             alert('Please enter an ISBN/ISSN number');
-        					return false;   
+        					return false;
                         }else if(ptitle==""){
                             alert('Please enter a Paper Title');
-        					return false;   
+        					return false;
                         }else if(protitle==""){
                             alert('Please enter a Title for Proceeding in Conference');
-        					return false;   
+        					return false;
                         }else if(cname==""){
                             alert('Please enter a Conference Name');
-        					return false;   
+        					return false;
                         }else if(inst==""){
                             alert('Please enter an Institution Name');
-        					return false;   
+        					return false;
                         }else if(publ==""){
                             alert('Please enter a valid Publication Name');
-        					return false;   
+        					return false;
                         }else if(nori==""){
                             alert('Please enter Type of Conference (National/International)');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid period');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + btitle  + "','" + ptitle  +"','"+ protitle +"','"+	cname +"','" + nori + "','"+period+"','" + Year + "','" + isbn + "','" + inst + "','" + publ + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3207,7 +3229,7 @@ publication
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3220,17 +3242,17 @@ publication
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_346()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab346').find('tr');		
+          			   var x = $('#tab346').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -3241,7 +3263,7 @@ publication
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab346","ch346");
         		};
@@ -3249,13 +3271,13 @@ publication
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg346"); $("#d346").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch346">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h346" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.6<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of books and chapters in edited volumes / books published, and papers in national/international conference-proceedings per teacher during the last five years
@@ -3263,21 +3285,21 @@ publication
 <br>* List books and chapters in edited volumes / books published
             </div>
         </div>
-        
+
         <div id="to346" class="col-sm-1">
-            <br><img class="image flip"  id="tg346" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg346" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d346">
-            <br>            
+            <br>
     <script>
     	function addRow346()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Book Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Paper Title" style="width:200px;" required></center></td>'+
@@ -3290,10 +3312,10 @@ publication
               '<td><center><input type="text" placeholder="Institute Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Publisher Name" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab346').find('tr');		
+
+    		var x = $('#tab346').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3318,21 +3340,21 @@ publication
 <!--				<td  colspan="4"><button value="" onclick="addRow346()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save346($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
-    
+
 <!--
     3.4.7
 -->
@@ -3358,26 +3380,26 @@ publication
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(jtitle==""){
                             alert('Please enter a Journal Title');
-        					return false;   
+        					return false;
                         }else if(indx==""){
                             alert('Please enter a citation index');
-        					return false;   
+        					return false;
                         }else if(ptitle==""){
                             alert('Please enter a Paper Title');
-        					return false;   
+        					return false;
                         }else if(mention==""){
                             alert('Please enter Institutional Affiliations');
-        					return false;   
+        					return false;
                         }else if(citations==""||citations<0){
                             alert('Please enter valid number of citations');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ ptitle + "','" + name  + "','" + jtitle  +"','"+ Year +"','"+	indx +"','" + mention + "','" + citations  + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3388,7 +3410,7 @@ publication
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3401,17 +3423,17 @@ publication
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_347()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab347').find('tr');		
+          			   var x = $('#tab347').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -3422,7 +3444,7 @@ publication
           			           {
           			           		pc = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab347","ch347");
         		};
@@ -3430,13 +3452,13 @@ publication
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg347"); $("#d347").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch347">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h347" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.7<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">BiblioMetrics of the publications during the last five years based on average citation index in Scopus/ Web of Science or PubMed/ Indian Citation Index
@@ -3444,21 +3466,21 @@ publication
 <br>* Bibliometrics of the publications during the last five years
             </div>
         </div>
-        
+
         <div id="to347" class="col-sm-1">
-            <br><img class="image flip"  id="tg347" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg347" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d347">
-            <br>            
+            <br>
     <script>
     	function addRow347()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Paper Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Journal Title" style="width:200px;" required></center></td>'+
@@ -3467,10 +3489,10 @@ publication
               '<td><center><input type="text" placeholder="Institute name" style="width:200px;" required></center></td>'+
               '<td><center><input type="number" placeholder="citations" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab347').find('tr');		
+
+    		var x = $('#tab347').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3491,21 +3513,21 @@ publication
 <!--				<td  colspan="4"><button value="" onclick="addRow347()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save347($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
-    
+
+
 <!--
     3.4.8
 -->
@@ -3531,26 +3553,26 @@ publication
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(jtitle==""){
                             alert('Please enter a Journal Title');
-        					return false;   
+        					return false;
                         }else if(indx==""){
                             alert('Please enter a citation index');
-        					return false;   
+        					return false;
                         }else if(ptitle==""){
                             alert('Please enter a Paper Title');
-        					return false;   
+        					return false;
                         }else if(mention==""){
                             alert('Please enter Institutional Affiliations');
-        					return false;   
+        					return false;
                         }else if(citations==""||citations<0){
                             alert('Please enter valid number of citations');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ ptitle + "','" + name  + "','" + jtitle  +"','"+ Year +"','"+	indx +"','" + citations  + "','" + mention + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3561,7 +3583,7 @@ publication
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3574,17 +3596,17 @@ publication
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_348()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab348').find('tr');		
+          			   var x = $('#tab348').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -3596,7 +3618,7 @@ publication
           			           		var pc1 = $(responseRows[i]).find('select')[0];
           			           		var k =$(responseRows[i]).attr('id');
 		            				fetch_academic_year(k, $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab348","ch348");
         		};
@@ -3604,37 +3626,37 @@ publication
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg348"); $("#d348").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch348">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h348" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.4.8<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">BiblioMetricss of the publications during the last five years based on Scopus/ Web of Science – h-index of the University
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Bibiliometrics of publications based on Scopus/ Web of Science - h-
-index of the University 
+index of the University
 <br>*
 Any additional information
             </div>
         </div>
-        
+
         <div id="to348" class="col-sm-1">
-            <br><img class="image flip"  id="tg348" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg348" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d348">
-            <br>            
+            <br>
     <script>
     	function addRow348()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Paper Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Journal Title" style="width:200px;" required></center></td>'+
@@ -3643,10 +3665,10 @@ Any additional information
               '<td><center><input type="number" placeholder="citations" style="width:160px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Institute name" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab348').find('tr');		
+
+    		var x = $('#tab348').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3667,26 +3689,26 @@ Any additional information
 <!--				<td  colspan="4"><button value="" onclick="addRow348()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save348($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
+
 
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.5 Consultancy</a></center>
 
     </center>
 
-          
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
@@ -3705,11 +3727,11 @@ Any additional information
                         var url = $($(rows[i]).find('input')[0]).val();
                         if(url==""){
                             alert('Please enter valid URL');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','" + url + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3720,7 +3742,7 @@ Any additional information
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3733,17 +3755,17 @@ Any additional information
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_351()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab351').find('tr');		
+          			   var x = $('#tab351').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -3754,7 +3776,7 @@ Any additional information
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab351","ch351");
         		};
@@ -3762,16 +3784,16 @@ Any additional information
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg351"); $("#d351").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch351">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h351" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.5.1<br><br>Q<sub>N</sub>M</div>
-            <div class="col-sm-11" style="font-size:18px;">Institution has a policy on consultancy including revenue sharing between the institution and the individual (yes/No) 
+            <div class="col-sm-11" style="font-size:18px;">Institution has a policy on consultancy including revenue sharing between the institution and the individual (yes/No)
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Upload minutes of the Governing Council/ Syndicate/Board of
 Management related to consultancy policy
 <br>* Upload soft copy of the Consultancy Policy
@@ -3779,27 +3801,27 @@ Management related to consultancy policy
 <br>* Paste URL of the consultancy policy document
             </div>
         </div>
-        
+
         <div id="to351" class="col-sm-1">
-            <br><img class="image flip"  id="tg351" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg351" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d351">
-            <br>            
+            <br>
     <script>
     	function addRow351()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="URL" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab351').find('tr');		
+
+    		var x = $('#tab351').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3814,21 +3836,21 @@ Management related to consultancy policy
 <!--				<td  colspan="4"><button value="" onclick="addRow351()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save351($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
-     
+
+
 <!--
     3.5.2
 -->
@@ -3852,20 +3874,20 @@ Management related to consultancy policy
         					return false;
         				}else if(name==""){
                             alert('Please enter a Name');
-        					return false;   
+        					return false;
                         }else if(project==""){
                             alert('Please enter a Project Name');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter the agency contact details');
-        					return false;   
+        					return false;
                         }else if(revenue==""||revenue<0){
                             alert('Please enter valid revenue');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + project  + "','" + agency  +"','"+ Year +"','"+	revenue + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -3876,7 +3898,7 @@ Management related to consultancy policy
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -3889,17 +3911,17 @@ Management related to consultancy policy
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_352()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab352').find('tr');		
+          			   var x = $('#tab352').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -3910,7 +3932,7 @@ Management related to consultancy policy
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab352","ch352");
         		};
@@ -3918,13 +3940,13 @@ Management related to consultancy policy
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg352"); $("#d352").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch352">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h352" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.5.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Revenue generated from consultancy during the last five years
@@ -3934,31 +3956,31 @@ through consultancy
 <br>* List of consultants and revenue generated by them
             </div>
         </div>
-        
+
         <div id="to352" class="col-sm-1">
-            <br><img class="image flip"  id="tg352" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg352" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d352">
-            <br>            
+            <br>
     <script>
     	function addRow352()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="project" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Contact Details" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="number" placeholder="Revenue" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab352').find('tr');		
+
+    		var x = $('#tab352').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -3977,21 +3999,21 @@ through consultancy
 <!--				<td  colspan="4"><button value="" onclick="addRow352()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save352($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-            
-     
+
+
 <!--
     3.5.3
 -->
@@ -4016,23 +4038,23 @@ through consultancy
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter the title of corporate training programme');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter the agency contact details');
-        					return false;   
+        					return false;
                         }else if(revenue==""||revenue<0){
                             alert('Please enter valid revenue');
-        					return false;   
+        					return false;
                         }else if(num==""||num<0){
                             alert('Please enter valid number of trainees');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + title  + "','" + agency  +"','"+ Year +"','"+	revenue + "','" + num + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4043,7 +4065,7 @@ through consultancy
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -4056,17 +4078,17 @@ through consultancy
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_353()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab353').find('tr');		
+          			   var x = $('#tab353').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -4077,7 +4099,7 @@ through consultancy
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab353","ch353");
         		};
@@ -4085,13 +4107,13 @@ through consultancy
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg353"); $("#d353").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch353">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h353" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.5.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Revenue generated from corporate training by the institution during the last five years
@@ -4101,21 +4123,21 @@ training
 <BR>* List of teacher consultants and revenue generated by them
             </div>
         </div>
-        
+
         <div id="to353" class="col-sm-1">
-            <br><img class="image flip"  id="tg353" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg353" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d353">
-            <br>            
+            <br>
     <script>
     	function addRow353()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Contact Details" style="width:200px;" required></center></td>'+
@@ -4123,10 +4145,10 @@ training
               '<td><center><input type="number" placeholder="Revenue" style="width:160px;" required></center></td>'+
               '<td><center><input type="number" placeholder="Trainees" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab353').find('tr');		
+
+    		var x = $('#tab353').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -4146,66 +4168,66 @@ training
 <!--				<td  colspan="4"><button value="" onclick="addRow353()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save353($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
+
 
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.6 Extension Activities</a></center>
 
     </center>
 
-          
+
  <!--
     3.6.1
 -->
 
         <script>
-        
+
             function save361(ta)
         	{
              //   link =  document.getElementById("linka1_1_1").value;
                 var ata = ta.value;
-                
+
                 //console.log(ta+"\n"+link);
                var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                alert('Changes Saved Successfully');
                                $("#d361").slideToggle("slow");
                                rotate("tg361");
-                               
+
                                if(document.getElementById("TAaa1_1_1").value==""){
                                     document.getElementById("ch361").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/><br> Not Filled';
                                 }else{
                                     document.getElementById("ch361").innerHTML = '<img src="../images/filled.png" width="52" height="52"><br> Filled';
                                 }
-                               
+
         		  			}
         		  		};
           			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_6_1", true);
          			   			 xhttp.send();
         		}
-        		
+
         		function fetch_rows_361()
         		{
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
          			       		document.getElementById("TAaa1_1_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
@@ -4216,23 +4238,23 @@ training
                                 }
          			       }
          			       };
-         			       
+
           			   			 xhttp.open("GET", "fetch311.php?table=t3_6_1", true);
          			   			 xhttp.send();
         		}
 
         </script>
-        
+
 <div class="col-sm-12" style="height:50px;">
     <hr/>
 </div>
 
     <div class="col-sm-12" onclick='rotate("tg361"); $("#d361").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch361">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h361" class="col-sm-10">
             <div class="col-sm-1"  style="font-size:18px;">3.6.1<br><br>Q<sub>L</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -4242,56 +4264,56 @@ last five years
 <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
             </div>
         </div>
-        
+
         <div id="to361" class="col-sm-1">
-            <br><img class="image flip"  id="tg361" src="../images/toggle2.png" width="28" height="28" >            
+            <br><img class="image flip"  id="tg361" src="../images/toggle2.png" width="28" height="28" >
         </div>
-        
+
     </div>
-        
+
 
     <div class="col-sm-12" id="d361">
-        
+
 <center>
-    
+
         <div style="margin-left:-215px;">
             <!--Write description within a minimum of 500 characters and maximum of 500 words.-->
         </div>
-            
+
     <form>
-        
+
         <textarea id="TAaa1_1_1" placeholder="Describe the impact of extension activities in sensitising students to social issues and holistic development within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
-            
+
         </textarea>
-        
+
         <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
-        
+
         <div style="margin-left:-615px; font-weight:bold;">
-            File Description : 
+            File Description :
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="file" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         <div style="margin-left:-70px;">
             Link for Additional Information : <input type="text" id="link1_1_1" placeholder="Link for Additional Information" style="width:420px; background-color:#ffffff; opacity:.82;">
         </div>
-        
+
         </div>
-            
+
         <input type="button" class="SAVE" onclick="save361( $(this).parent().children()[0] )" value="SAVE CHANGES" style="margin-left:80px; width:920px;">
-        
+
     </form>
 </center>
     </div>
-    
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
-</div>                
-    
+</div>
+
 
 
 <!--
@@ -4317,19 +4339,19 @@ last five years
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(award==""){
                             alert('Please enter the name of the award');
-        					return false;   
+        					return false;
                         }else if(awardG==""){
                             alert('Please enter the name of the Awarding Body');
-        					return false;   
+        					return false;
                         }else if(awardG==""){
                             alert('Please enter valid year');
         				}
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + award  + "','" + awardG  +"','"+period+"','"+ Year + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4340,7 +4362,7 @@ last five years
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -4353,17 +4375,17 @@ last five years
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_362()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab362').find('tr');		
+          			   var x = $('#tab362').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -4374,7 +4396,7 @@ last five years
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab362","ch362");
         		};
@@ -4382,13 +4404,13 @@ last five years
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg362"); $("#d362").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch362">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h362" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.6.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of awards and recognition received for extension activities from Government /recognised bodies during the last five years
@@ -4400,31 +4422,31 @@ e-copy of the award letters
 
             </div>
         </div>
-        
+
         <div id="to362" class="col-sm-1">
-            <br><img class="image flip"  id="tg362" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg362" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d362">
-            <br>            
+            <br>
     <script>
     	function addRow362()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Award" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Awarding Body" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab362').find('tr');		
+
+    		var x = $('#tab362').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -4443,21 +4465,21 @@ e-copy of the award letters
 <!--				<td  colspan="4"><button value="" onclick="addRow362()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save362($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
-    
+
 <!--
     3.6.3
 -->
@@ -4482,23 +4504,23 @@ e-copy of the award letters
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter the name of the agency');
-        					return false;   
+        					return false;
                         }else if(teachers==""||teachers<0){
                             alert('Please enter valid number of teachers');
-        					return false;   
+        					return false;
                         }else if(students==""||students<0){
                             alert('Please enter valid number of students');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter valid year');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + agency + "','"+period+"','" + Year  +"','"+ teachers + "','"+ students + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4509,7 +4531,7 @@ e-copy of the award letters
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -4522,17 +4544,17 @@ e-copy of the award letters
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_363()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab363').find('tr');		
+          			   var x = $('#tab363').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -4543,7 +4565,7 @@ e-copy of the award letters
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab363","ch363");
         		};
@@ -4551,13 +4573,13 @@ e-copy of the award letters
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg363"); $("#d363").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch363">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h363" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.6.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of extension and outreach programs conducted in collaboration with industry, community and Non- Government Organisations through NSS/NCC/Red cross/YRC etc., during the last five years
@@ -4567,21 +4589,21 @@ e-copy of the award letters
 industry, community etc for the last five years
             </div>
         </div>
-        
+
         <div id="to363" class="col-sm-1">
-            <br><img class="image flip"  id="tg363" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg363" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d363">
-            <br>            
+            <br>
     <script>
     	function addRow363()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Agency" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
@@ -4589,10 +4611,10 @@ industry, community etc for the last five years
               '<td><center><input type="number" placeholder="Teachers" style="width:160px;" required></center></td>'+
               '<td><center><input type="number" placeholder="Students" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab363').find('tr');		
+
+    		var x = $('#tab363').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -4612,21 +4634,21 @@ industry, community etc for the last five years
 <!--				<td  colspan="4"><button value="" onclick="addRow363()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save363($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-              
-    
+
+
 <!--
     3.6.4
 -->
@@ -4652,26 +4674,26 @@ industry, community etc for the last five years
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter the name of the agency');
-        					return false;   
+        					return false;
                         }else if(scheme==""){
                             alert('Please enter the name of the Scheme');
-        					return false;   
+        					return false;
                         }else if(teachers==""||teachers<0){
                             alert('Please enter valid number of teachers');
-        					return false;   
+        					return false;
                         }else if(students==""||students<0){
                             alert('Please enter valid number of students');
-        					return false;   
+        					return false;
                         }else if(period==""){
                             alert('Please enter a valid year');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + agency + "','" +scheme+"','"+period+"','" + Year  +"','"+ teachers + "','"+ students + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4682,7 +4704,7 @@ industry, community etc for the last five years
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -4695,17 +4717,17 @@ industry, community etc for the last five years
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_364()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab364').find('tr');		
+          			   var x = $('#tab364').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -4716,7 +4738,7 @@ industry, community etc for the last five years
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab364","ch364");
         		};
@@ -4724,13 +4746,13 @@ industry, community etc for the last five years
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg364"); $("#d364").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch364">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h364" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.6.4<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Average percentage of students participating in extension activities with Government Organisations, Non-Government Organisations and programs such as Swachh Bharat, Aids Awareness, Gender Issue, etc. during the last five years
@@ -4740,21 +4762,21 @@ industry, community etc for the last five years
 Govt. or NGO etc
             </div>
         </div>
-        
+
         <div id="to364" class="col-sm-1">
-            <br><img class="image flip"  id="tg364" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg364" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d364">
-            <br>            
+            <br>
     <script>
     	function addRow364()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Agency" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Scheme" style="width:200px;" required></center></td>'+
@@ -4763,10 +4785,10 @@ Govt. or NGO etc
               '<td><center><input type="number" placeholder="Teachers" style="width:160px;" required></center></td>'+
               '<td><center><input type="number" placeholder="Students" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab364').find('tr');		
+
+    		var x = $('#tab364').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
     	}
     </script>
@@ -4787,31 +4809,31 @@ Govt. or NGO etc
 <!--				<td  colspan="4"><button value="" onclick="addRow364()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save364($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
-     
+
+
 
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">3.7 Collaboration</a></center>
 
     </center>
 
-          
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-   
+
 <!--
     3.7.1
 -->
@@ -4838,29 +4860,29 @@ Govt. or NGO etc
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(agency==""){
                             alert('Please enter the name of the agency');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter the name of the Title');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }else if(nature == ""){
                             alert('Please enter nature of activity');
-        					return false;   
+        					return false;
                         }else if(source == ""){
                             alert('Please enter Source of financial support');
-        					return false;   
+        					return false;
                         }else if(period == ""){
                             alert('Please enter valid Year');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + agency + "','" +name+"','" + source  +"','"+ period+"','"+Year + "','"+ duration + "','" + nature + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4871,7 +4893,7 @@ Govt. or NGO etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -4884,17 +4906,17 @@ Govt. or NGO etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_371()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab371').find('tr');		
+          			   var x = $('#tab371').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -4905,7 +4927,7 @@ Govt. or NGO etc
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab371","ch371");
         		};
@@ -4913,13 +4935,13 @@ Govt. or NGO etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg371"); $("#d371").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch371">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h371" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.7.1<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of Collaborative activities for research, faculty exchange, student exchange per year
@@ -4928,21 +4950,21 @@ Govt. or NGO etc
 <br>* Number of Collaborative activities for research, faculty etc
             </div>
         </div>
-        
+
         <div id="to371" class="col-sm-1">
-            <br><img class="image flip"  id="tg371" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg371" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d371">
-            <br>            
+            <br>
     <script>
     	function addRow371()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Agency Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
@@ -4952,10 +4974,10 @@ Govt. or NGO etc
               '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Nature" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab371').find('tr');		
+
+    		var x = $('#tab371').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -4978,23 +5000,23 @@ Govt. or NGO etc
 <!--				<td  colspan="4"><button value="" onclick="addRow371()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save371($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
-    
-    
-   
+
+
+
+
 <!--
     3.7.2
 -->
@@ -5020,26 +5042,26 @@ Govt. or NGO etc
         					return false;
         				}else if(name==""){
                             alert('Please enter Names of teachers separated by , ');
-        					return false;   
+        					return false;
                         }else if(inst==""){
                             alert('Please enter the name of the Institute');
-        					return false;   
+        					return false;
                         }else if(title==""){
                             alert('Please enter the name of the Title');
-        					return false;   
+        					return false;
                         }else if(durationf==""){
                             alert('Please enter valid from');
-        					return false;   
+        					return false;
                         }else if(durationt==""){
                             alert('Please enter valid to');
-        					return false;   
+        					return false;
                         }else if(nature == ""){
                             alert('Please enter nature of activity');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + inst + "','" +Year+"','" + durationf + "','"+durationt +"','"+ nature + "','"+ name + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -5050,7 +5072,7 @@ Govt. or NGO etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -5063,17 +5085,17 @@ Govt. or NGO etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_372()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab372').find('tr');		
+          			   var x = $('#tab372').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -5084,7 +5106,7 @@ Govt. or NGO etc
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}     				
+    							}
         			}
                     num_rows("tab372","ch372");
         		};
@@ -5092,13 +5114,13 @@ Govt. or NGO etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg372"); $("#d372").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch372">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h372" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.7.2<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of linkages with institutions/industries for internship, on-the-job training, project work, sharing of research facilities etc. during the last five years
@@ -5107,21 +5129,21 @@ Govt. or NGO etc
 <br>* Details of linkages with institutions/industries for internship
             </div>
         </div>
-        
+
         <div id="to372" class="col-sm-1">
-            <br><img class="image flip"  id="tg372" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg372" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d372">
-            <br>            
+            <br>
     <script>
     	function addRow372()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Title" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Institution Name" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
@@ -5130,10 +5152,10 @@ Govt. or NGO etc
               '<td><center><input type="text" placeholder="Nature" style="width:160px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab372').find('tr');		
+
+    		var x = $('#tab372').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -5154,23 +5176,23 @@ Govt. or NGO etc
 <!--				<td  colspan="4"><button value="" onclick="addRow372()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save372($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
-     
 
-   
+
+
+
 <!--
     3.7.3
 -->
@@ -5213,26 +5235,26 @@ Govt. or NGO etc
         					return false;
         				}else if(num==""||num<0){
                             alert('Please enter valid number of teachers/students ');
-        					return false;   
+        					return false;
                         }else if(inst==""){
                             alert('Please enter the name of the Institute');
-        					return false;   
+        					return false;
                         }else if(org==""){
                             alert('Please enter the name of Organization');
-        					return false;   
+        					return false;
                         }else if(duration==""||duration<=0){
                             alert('Please enter valid duration');
-        					return false;   
+        					return false;
                         }else if(activities== ""){
                             alert('Please enter activity');
-        					return false;   
+        					return false;
                         }else if(period== ""){
                             alert('Please enter valid Year');
-        					return false;   
+        					return false;
                         }
         				else
         				{
-                            
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ org + "','" + inst + "','"+period+"','" +Year+"','" + duration +"','"+ activities + "','"+ num + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -5243,7 +5265,7 @@ Govt. or NGO etc
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
                                alert('Changes Saved Successfully');
@@ -5256,17 +5278,17 @@ Govt. or NGO etc
          			   			 xhttp.send();
         		}
         	}
-        	
-        	
+
+
         	function fetch_rows_373()
         	{
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
-         	
-        	
+
+
          		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab373').find('tr');		
+          			   var x = $('#tab373').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					  console.log("Hello the world");
 
@@ -5277,9 +5299,9 @@ Govt. or NGO etc
           			           {
           			           		var pc1 = $(responseRows[i]).find('select')[0];
 		            				fetch_academic_year($(responseRows[i]).attr('id'), $(pc1).attr('value'));
-    							}  
-    							
-        			fetched_duration();   				
+    							}
+
+        			fetched_duration();
         			}
                     num_rows("tab373","ch373");
         		};
@@ -5287,13 +5309,13 @@ Govt. or NGO etc
          			   			 xhttp.send();
         	}
 		</script>
-        
+
     <div class="col-sm-12" onclick='rotate("tg373"); $("#d373").slideToggle("slow");'>
-        
+
         <div class="col-sm-1" id="ch373">
             <img src="../images/filled.png" width="52" height="52"> Filled
         </div>
-        
+
         <div id="h373" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.7.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">Number of functional MoUs with institutions of national, international importance, other universities, industries, corporate houses etc. during the last five years (only functional MoUs with ongoing activities to be considered)
@@ -5303,21 +5325,21 @@ Govt. or NGO etc
 importance, other universities etc. during the last five years
             </div>
         </div>
-        
+
         <div id="to373" class="col-sm-1">
-            <br><img class="image flip"  id="tg373" src="../images/toggle2.png" width="28" height="28">            
+            <br><img class="image flip"  id="tg373" src="../images/toggle2.png" width="28" height="28">
         </div>
-        
+
     </div>
 
 <center>
         <div class="col-sm-12" id="d373">
-            <br>            
+            <br>
     <script>
     	function addRow373()
     	{
             var i = get_time();
-             
+
 			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Organization Name" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Institution Name" style="width:200px;" required></center></td>'+
               '<td><center><select placeholder="Period" class="year" style="width:175px;" required></select></center></td>'+
@@ -5326,10 +5348,10 @@ importance, other universities etc. during the last five years
               '<td><center><input type="text" placeholder="Activities" style="width:200px;" required></center></td>'+
               '<td><center><input type="number" placeholder="Numbers" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
-              
-    		var x = $('#tab373').find('tr');		
+
+    		var x = $('#tab373').find('tr');
    			$(x[x.length-1]).before(t);
-   			
+
             fetch_academic_year(i);
             fetched_duration();
     	}
@@ -5351,21 +5373,21 @@ importance, other universities etc. during the last five years
 <!--				<td  colspan="4"><button value="" onclick="addRow373()">Add a new Row</button></td> -->
 			</tr>
         </table>
-        
-        
+
+
         <input type="button" class="SAVE" onclick="save373($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-        
+
     </form>
-            
+
         </div>
-    </center>    
-    
-    
+    </center>
+
+
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-        
-     
+
+
 
     <script>
     function fetched_duration()
@@ -5381,9 +5403,9 @@ importance, other universities etc. during the last five years
     	}
     }
         function load_time_func(){
-        
+
         //1.1.3 Loading all rows that are already saved
-       
+
         fetch_rows_311();
         fetch_rows_331();
         fetch_rows_361();
@@ -5394,7 +5416,7 @@ importance, other universities etc. during the last five years
         fetch_rows_316();
         fetch_rows_322();
         fetch_rows_323();
-        
+
         fetch_rows_332();
         fetch_rows_333();
         fetch_rows_334();
@@ -5417,7 +5439,6 @@ importance, other universities etc. during the last five years
         fetch_rows_373();
         }
     </script>
-    
+
 </body>
 </html>
-

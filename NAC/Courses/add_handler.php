@@ -9,7 +9,7 @@
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-  $query = "Insert INTO course VALUES('".$_SESSION['username']."','".$_POST['Prog_code']."','".$_POST['Course_code']."','".$_POST['Course_name']."')";
+  $query = "Insert INTO course VALUES('".$_SESSION['username']."','".$_POST['Prog_code']."','".urlencode($_POST['Course_code'])."','".urlencode($_POST['Course_name'])."')";
 
   //echo $query."<br>";
 

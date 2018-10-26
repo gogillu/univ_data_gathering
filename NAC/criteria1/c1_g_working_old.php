@@ -20,12 +20,6 @@
   <script src="../js/bootstrap.min.js"></script>
 
 
-  <style>
-    textarea{
-      white-space: pre-wrap;
-    }
-  </style>
-
     <script>
 
         function rotate(tg) {
@@ -593,7 +587,7 @@
 
     <form>
 
-        <textarea id="TA1_1_1" style="margin-left:80px; width:930px;height:200px;  opacity:.82; white-space: pre-wrap;">
+        <textarea id="TA1_1_1" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
 
         </textarea>
 
@@ -1085,19 +1079,14 @@
         					alert('Please select the Year of Introduction');
         					return false;
         				}
-
-
                 programmeCode = escapeHtml(programmeCode);
                 programmeName = escapeHtml(programmeName);
                 yearOfIntro = escapeHtml(yearOfIntro);
                 link = escapeHtml(link);
                 idd = escapeHtml(idd);
-                courseCode=escapeHtml(courseCode);
-                courseName =escapeHtml(courseName );
 
-
-                console.log(""+ programmeCode + ""+ programmeName + "" +  courseCode + "" + courseName +  "" +  yearOfIntro)
-                rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  courseCode + "','" + courseName + "','" +  yearOfIntro + "','" + link + "','" + idd +"')";
+        					console.log(""+ programmeCode + ""+ programmeName + "" +  courseCode + "" + courseName +  "" +  yearOfIntro);
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  courseCode + "','" + courseName + "','" +  yearOfIntro + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					console.log(rowss);
@@ -1311,13 +1300,12 @@
         				}
 
 
-                                                programmeCode=escapeHtml( programmeCode);
-                                                programmeName=escapeHtml( programmeName);
-                                                type=escapeHtml(type);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-
+                                                                programmeCode=escapeHtml( programmeCode);
+                                                                programmeName=escapeHtml( programmeName);
+                                                                type=escapeHtml(type);
+                                                                yearOfIntro=escapeHtml(yearOfIntro);
+                                                                link=escapeHtml(link);
+                                                                idd=escapeHtml(idd);
 
 
         					console.log(""+ programmeCode + ""+ programmeName + "" + type +  "" +  yearOfIntro);
@@ -1718,18 +1706,7 @@
         				{
         					alert('Please Enter total number of students completing the course this year');
         					return false;
-                                        }
-                                                programmeCode=escapeHtml( programmeCode);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-                                                courseCode=escapeHtml(courseCode);
-                                                courseName=escapeHtml(courseName);
-                                                timesOffered=escapeHtml(timesOffered);
-                                                yearDiscontinue=escapeHtml(yearDiscontinue);
-                                                totalStudents=escapeHtml(totalStudents);
-                                                enrolledStudents=escapeHtml(enrolledStudents);
-
+        				}
         					console.log(""+ programmeCode +  "" +  courseCode + "" + courseName + "" +  yearOfIntro + "" + timesOffered + "" + yearDiscontinue + "" + enrolledStudents + "" + totalStudents);
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ "','" +  courseCode + "','" + courseName + "','" +  yearOfIntro + "','" + timesOffered + "','" + yearDiscontinue + "','" + enrolledStudents + "','" + totalStudents + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1910,23 +1887,6 @@
         					alert('Please Enter number of students taking internships or field projects');
         					return false;
         				}
-
-
-
-
-
-
-
-
-                                                programmeCode=escapeHtml( programmeCode);
-                                                programmeName=escapeHtml( programmeName);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-                                                studentsProgramme=escapeHtml(studentsProgramme);
-                                                studentsInternship=escapeHtml(studentsInternship);
-
-
         					console.log(""+ programmeCode + ""+ programmeName + "" +  yearOfIntro + "" + studentsProgramme + "" + studentsInternship);
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  yearOfIntro + "','" + studentsProgramme + "','" + studentsInternship + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2112,13 +2072,6 @@ for design and review of syllabus
         					return false;
         				}
                             var idd = $(rows[i]).attr('id');
-
-                                                option=escapeHtml(option);
-                                                URL=escapeHtml(URL);
-                                                idd=escapeHtml(idd);
-
-
-
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ option + "','"+ URL + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2300,12 +2253,6 @@ E. Feedback not collected
         					return false;
         				}
                             var idd = $(rows[i]).attr('id');
-
-
-                                                option=escapeHtml(option);
-                                                URL=escapeHtml( URL);
-                                                idd=escapeHtml(idd);
-
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ option + "','"+ URL + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2496,8 +2443,7 @@ E. Feedback not collected
               .replace(/</g, "%3C")
               .replace(/>/g, "%3E")
               .replace(/"/g, "\\%22")
-              .replace(/'/g, "\\%27")
-              .replace(/#/g, "%23");
+              .replace(/'/g, "\\%27");
         }
 
 

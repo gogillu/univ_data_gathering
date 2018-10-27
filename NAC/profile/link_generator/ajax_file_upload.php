@@ -8,6 +8,8 @@
     $sourcePath = $_FILES['doc']['tmp_name'];       // Storing source path of the file in a variable
     $targetPath = "docs/".$tt.basename($_FILES['doc']['name']); // Target path where file is to be stored
 
+//    $targetPath = urlencode($targetPath);
+
     //echo $sourcePath;
 
     //print_r($_FILES);

@@ -20,12 +20,6 @@
   <script src="../js/bootstrap.min.js"></script>
 
 
-  <style>
-    textarea{
-      white-space: pre-wrap;
-    }
-  </style>
-
     <script>
 
         function rotate(tg) {
@@ -522,8 +516,6 @@
                 //link =  document.getElementById("link1_1_1").value;
                // ta = ta.value;
                var valu= document.getElementById("TA1_1_1").value;
-
-
                 //console.log(ta+"\n"+link);
 
                 if($("#link1_1_1").val()==""){
@@ -533,9 +525,6 @@
 
                 link = $("#link1_1_1").val();
 
-                valu = escapeHtml(valu);
-                link = escapeHtml(link);
-
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -544,8 +533,6 @@
                                alert('Changes Saved Successfully');
                                $("#d111").slideToggle("slow");
                                rotate("tg111");
-
-
 
                                if(document.getElementById("TA1_1_1").value=="" || link==""){
                                     document.getElementById("ch111").innerHTML = '<img src="../images/unfilled.png" width="58" height="58"> Not Filled';
@@ -600,7 +587,7 @@
 
     <form>
 
-        <textarea id="TA1_1_1" style="margin-left:80px; width:930px;height:200px;  opacity:.82; white-space: pre-wrap;">
+        <textarea id="TA1_1_1" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
 
         </textarea>
 
@@ -679,7 +666,7 @@
 
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" + yearOfIntro + "','" + percent + "','" + link + "','" + idd +"')";
 
-                  //alert(link + rowss);
+                  alert(link + rowss);
 
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -1316,17 +1303,6 @@
         					alert('Please select the Year of Introduction');
         					return false;
         				}
-
-
-                                                programmeCode=escapeHtml( programmeCode);
-                                                programmeName=escapeHtml( programmeName);
-                                                type=escapeHtml(type);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-
-
-
         					console.log(""+ programmeCode + ""+ programmeName + "" + type +  "" +  yearOfIntro);
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  type + "','" +  yearOfIntro + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1502,9 +1478,6 @@
                }
 
                link = $("#link1_3_1").val();
-
-               vu = escapeHtml(vu);
-               link = escapeHtml(link);
 
 
                 var xhttp,res;
@@ -1728,18 +1701,7 @@
         				{
         					alert('Please Enter total number of students completing the course this year');
         					return false;
-                                        }
-                                                programmeCode=escapeHtml( programmeCode);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-                                                courseCode=escapeHtml(courseCode);
-                                                courseName=escapeHtml(courseName);
-                                                timesOffered=escapeHtml(timesOffered);
-                                                yearDiscontinue=escapeHtml(yearDiscontinue);
-                                                totalStudents=escapeHtml(totalStudents);
-                                                enrolledStudents=escapeHtml(enrolledStudents);
-
+        				}
         					console.log(""+ programmeCode +  "" +  courseCode + "" + courseName + "" +  yearOfIntro + "" + timesOffered + "" + yearDiscontinue + "" + enrolledStudents + "" + totalStudents);
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ "','" +  courseCode + "','" + courseName + "','" +  yearOfIntro + "','" + timesOffered + "','" + yearDiscontinue + "','" + enrolledStudents + "','" + totalStudents + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -1920,23 +1882,6 @@
         					alert('Please Enter number of students taking internships or field projects');
         					return false;
         				}
-
-
-
-
-
-
-
-
-                                                programmeCode=escapeHtml( programmeCode);
-                                                programmeName=escapeHtml( programmeName);
-                                                yearOfIntro=escapeHtml(yearOfIntro);
-                                                link=escapeHtml(link);
-                                                idd=escapeHtml(idd);
-                                                studentsProgramme=escapeHtml(studentsProgramme);
-                                                studentsInternship=escapeHtml(studentsInternship);
-
-
         					console.log(""+ programmeCode + ""+ programmeName + "" +  yearOfIntro + "" + studentsProgramme + "" + studentsInternship);
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ programmeName + "','" +  yearOfIntro + "','" + studentsProgramme + "','" + studentsInternship + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2122,13 +2067,6 @@ for design and review of syllabus
         					return false;
         				}
                             var idd = $(rows[i]).attr('id');
-
-                                                option=escapeHtml(option);
-                                                URL=escapeHtml(URL);
-                                                idd=escapeHtml(idd);
-
-
-
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ option + "','"+ URL + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2310,12 +2248,6 @@ E. Feedback not collected
         					return false;
         				}
                             var idd = $(rows[i]).attr('id');
-
-
-                                                option=escapeHtml(option);
-                                                URL=escapeHtml( URL);
-                                                idd=escapeHtml(idd);
-
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ option + "','"+ URL + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2445,8 +2377,8 @@ E. Feedback not collected
             //echo $row['Description'];
 ?>
         // 1.1.1
-            document.getElementById("TA1_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
-            document.getElementById("link1_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
+            document.getElementById("TA1_1_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("link1_1_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA1_1_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA1_1_1").value==""){
@@ -2466,7 +2398,7 @@ E. Feedback not collected
 
         // 1.3.1
             document.getElementById("TA1_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
-            document.getElementById("link1_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
+            document.getElementById("link1_3_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA1_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA1_3_1").value==""){
@@ -2500,16 +2432,13 @@ E. Feedback not collected
         }
 
 
-
-
         function escapeHtml(text) {
           return text
               .replace(/&/g, "%26")
               .replace(/</g, "%3C")
               .replace(/>/g, "%3E")
               .replace(/"/g, "\\%22")
-              .replace(/'/g, "\\%27")
-              .replace(/#/g, "%23");
+              .replace(/'/g, "\\%27");
         }
 
 

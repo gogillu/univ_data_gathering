@@ -565,7 +565,25 @@
                   alert('Please provide link of the relevant document');
                 }else
         				{
+
         				var idd = $(rows[i]).attr('id');
+
+
+
+        			        var idd = $(rows[i]).attr('id');
+
+
+                                        YearOfEnroll=escapeHtml(YearOfEnroll);
+                                        pc=escapeHtml(pc);
+                                        pn=escapeHtml(pn);
+                                        TotalStudents=escapeHtml(TotalStudents);
+                                        OtherStateStudents=escapeHtml(OtherStateStudents);
+                                        OtherCountryStudents=escapeHtml(OtherCountryStudents);
+                                        link=escapeHtml(link);
+                                        idd=escapeHtml(link);
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ pc+ "','"+ pn + "','"+ TotalStudents + "','" + OtherStateStudents + "','" + OtherCountryStudents + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -764,6 +782,17 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+                                                Year=escapeHtml(Year);
+                                                PC=escapeHtml(PC);
+                                                PN=escapeHtml(PN);
+                                                ASN=escapeHtml(ASN);
+                                                EARN=escapeHtml(EARN);
+                                                idd=escapeHtml(idd);
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ Year + "','"+ PC + "','" + PN + "','" + ASN + "','" + EARN + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -967,6 +996,23 @@
         				}else
 
                         var idd = $(rows[i]).attr('id');
+
+
+                                               Year=escapeHtml(Year);
+                                               pc=escapeHtml(pc);
+                                               pn=escapeHtml(pn);
+                                               SC_R=escapeHtml(SC_R);
+                                               SC_R=escapeHtml(SC_R);
+                                               OBC_R =escapeHtml(OBC_R);
+                                               GEN_R=escapeHtml(GEN_R);
+                                               OTH_R=escapeHtml(OTH_R);
+                                               SC_A =escapeHtml( SC_A );
+                                               OBC_A =escapeHtml(OBC_A );
+                                               OTH_A=escapeHtml(OTH_A);
+                                               idd = escapeHtml(idd);
+                                               GEN_A=escapeHtml(GEN_A);
+                                               ST_A=escapeHtml(ST_A);
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ Year+"','"+ pc+"','"+ pn + "','"+ SC_R + "','" + ST_R + "','" + OBC_R + "','" + GEN_R + "','"+ OTH_R + "','" + SC_A + "','" + ST_A + "','" + OBC_A + "','" +GEN_A + "','" +OTH_A + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -1157,6 +1203,9 @@
                   alert("Please provide link of the relevant document");
                   return false;
                 }
+
+                vu = escapeHtml(vu);
+                link = escapeHtml(link);
 
 
                 var xhttp,res;
@@ -1512,6 +1561,25 @@
         					return false;
                         }else{
 
+
+
+
+
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                                v5=escapeHtml(v5);
+                                                v6=escapeHtml(v6);
+                                                v0=escapeHtml(v0)
+                                                v7=escapeHtml(v7);
+                                                v1=escapeHtml(v1);
+                                                v8=escapeHtml(v8);
+                                                idd=escapeHtml(idd);
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v2 + "','"+ v3 + "','" +  v4 + "','" + v5 + "','" + v6 + "','" +  v0 + "','"  +  v7 + "','"  +  v1 + "','" +  v8 + "','"  + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -1732,7 +1800,8 @@
                  return false;
                }
 
-
+               vu = escapeHtml(vu);
+               link = escapeHtml(link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2049,7 +2118,20 @@
                         }
         				else
         				{
-        				var idd = $(rows[i]).attr('id');
+
+
+
+        				                               var idd = $(rows[i]).attr('id');
+                                               YearOfEnroll=escapeHtml(YearOfEnroll);
+                                               TotalStudents=escapeHtml(TotalStudents);
+                                               OtherStateStudents=escapeHtml(OtherStateStudents);
+                                               OtherCountryStudents=escapeHtml(OtherCountryStudents);
+                                               idd=escapeHtml(idd);
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ TotalStudents + "','" + OtherStateStudents + "','" + OtherCountryStudents + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2249,6 +2331,20 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                nospug0=escapeHtml(nospug0);
+                                                v5=escapeHtml(v5);
+                                                idd=escapeHtml(idd);
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + nospug0 + "','" + nosppg0 + "','" + v5 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2425,7 +2521,26 @@
                         }
         				else
         				{
-        				var idd = $(rows[i]).attr('id');
+                                               var idd = $(rows[i]).attr('id');
+
+
+
+
+                                        YearOfEnroll=escapeHtml(YearOfEnroll);
+                                        TotalStudents=escapeHtml(TotalStudents);
+                                        OtherStateStudents=escapeHtml(OtherStateStudents);
+                                        idd=escapeHtml(idd);
+
+
+
+
+
+
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ TotalStudents + "','" + OtherStateStudents + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2602,6 +2717,22 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                                v5=escapeHtml(v5);
+                                                idd=escapeHtml(idd);
+
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -2746,6 +2877,11 @@
 
 
 
+
+
+
+
+
 <!--
     2.4.4
 -->
@@ -2776,7 +2912,17 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + link + "','" + idd +"')";
+
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                                v5=escapeHtml(v5);
+                                                idd=escapeHtml(idd);
+                                                link=escapeHtml(link);
+
+                  rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + link + "','" + idd +"')";
+
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -2954,6 +3100,14 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+                                                v0=escapeHtml(v0);
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                nospug=escapeHtml(nospug);
+                                                nosppg=escapeHtml(nosppg);
+                                                idd=escapeHtml(idd);
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v0 + "','"+ v1 + "','" + v2 + "','" + nospug + "','"+ nosppg + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -3145,6 +3299,27 @@
         					alert('Please fill al inputs to save');
         					return false;
                         }else{
+
+
+
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                                v5=escapeHtml(v5);
+                                                idd=escapeHtml(idd);
+
+
+
+
+
+
+
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -3311,6 +3486,22 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+                                               YearOfEnroll=escapeHtml(YearOfEnroll);
+                                               TotalStudents=escapeHtml(TotalStudents);
+                                               OtherStateStudents=escapeHtml(OtherStateStudents);
+                                               idd=escapeHtml(idd);
+
+
+
+
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ TotalStudents + "','" + OtherStateStudents + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -3496,6 +3687,24 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+                                               YearOfEnroll=escapeHtml(YearOfEnroll);
+                                               TotalStudents=escapeHtml(TotalStudents);
+                                               OtherCountryStudents=escapeHtml(OtherCountryStudents);
+                                               OtherStateStudents=escapeHtml(OtherStateStudents);
+                                               idd=escapeHtml(idd);
+
+
+
+
+
+
+
+
+
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ TotalStudents + "','" + OtherStateStudents + "','" + OtherCountryStudents + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -3667,6 +3876,9 @@
                   return false;
                 }
 
+                vu = escapeHtml(vu);
+                link = escapeHtml(link);
+
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3788,7 +4000,21 @@
 
                         document.getElementById("ch255").innerHTML = '<img src="../images/filled.png" width="52" height="52"><a style="font-size:15px; color:#000;"> Filled</a>';
 
+
     					var rowss = "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','"+ v5  + "','"+ v0  +"')";
+
+
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                                v5=escapeHtml(v5);
+                                                v0=escapeHtml(v0);
+
+
+
+                                     var rowss = "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','"+ v5  + "','"+ v0  +"')";
+
 
                         var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3926,6 +4152,8 @@
                   return false;
                 }
 
+                vu = escapeHtml(vu);
+                link = escapeHtml(link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -4048,6 +4276,21 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
+
+
+
+
+
+                                                programmecode=escapeHtml(programmecode);
+                                                v1=escapeHtml(v1);
+                                                v2=escapeHtml(v2);
+                                                v3=escapeHtml(v3);
+                                                idd=escapeHtml(idd);
+
+
+
+
+
 
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ v1 + "','" + v2 + "','" + v3 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -4236,6 +4479,8 @@
                  return false;
                }
 
+               vu = escapeHtml(vu);
+               link = escapeHtml(link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -4246,7 +4491,7 @@
                                $("#d262").slideToggle("slow");
                                rotate("tg262");
 
-                               if(document.getElementById("TA2_6_2").value==""){
+                               if(document.getElementById("TA2_6_2").value=="" || link==""){
                                     document.getElementById("ch262").innerHTML = '<img src="../images/unfilled.png" width="58" height="58"> Not Filled';
                                 }else{
                                     document.getElementById("ch262").innerHTML = '<img src="../images/filled.png" width="58" height="58"> Filled';
@@ -4558,7 +4803,23 @@
         				{
         				var idd = $(rows[i]).attr('id');
 
-        					rowss += "('"+"<?php echo $_SESSION['username']; ?>"+"','"+ v1 + "','" + v2 +  "','"+ v3 + "','" + v4  + "','"+ v5 + "','" + v6 + "','"  + programmeCode + "','"+ v7 + "','" + v8 + "','" + v9 + "','" + academicYear + "','" + idd +"')";
+                                              programmeCode=escapeHtml(programmeCode);
+                                            v1=escapeHtml(v1);
+                                            v2=escapeHtml(v2);
+                                            v3=escapeHtml(v3);
+                                                v4=escapeHtml(v4);
+                                            v5=escapeHtml(v5);
+                                              v6=escapeHtml(v6);
+                                              v7=escapeHtml(v7);
+                                              v8=escapeHtml(v8);
+                                            v9=escapeHtml(v9);
+                                                academicYear=escapeHtml(academicYear);
+                                                idd=escapeHtml(idd);
+
+
+
+                                                rowss += "('"+"<?php echo $_SESSION['username']; ?>"+"','"+ v1 + "','" + v2 +  "','"+ v3 + "','" + v4  + "','"+ v5 + "','" + v6 + "','"  + programmeCode + "','"+ v7 + "','" + v8 + "','" + v9 + "','" + academicYear + "','" + idd +"')";
+
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -4570,7 +4831,7 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText+'Changes Saved Successfully');
                                $("#d271").slideToggle("slow");
                                rotate("tg271");
                                num_rows("tab271","ch271");
@@ -4746,8 +5007,8 @@
 ?>
 
         // 2.2.1
-            document.getElementById("TA2_2_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
-            document.getElementById("link2_2_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA2_2_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link2_2_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_2_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA2_2_1").value==""){
@@ -4770,8 +5031,8 @@
 ?>
 
         // 2.3.1
-            document.getElementById("TA2_3_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
-            document.getElementById("link2_3_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA2_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link2_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA2_3_1").value==""){
@@ -4814,8 +5075,8 @@
 ?>
 
         // 2.5.4
-            document.getElementById("TA2_5_4").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
-            document.getElementById("link2_5_4").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA2_5_4").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link2_5_4").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_5_4").placeholder = "Describe the examination reforms with reference to the following within a minimum of 500 words and maximum 1000 words \n * Examination procedures \n * Processes integrating IT \n * Continuous internal assessment system ";
 
             if(document.getElementById("TA2_5_4").value==""){
@@ -4877,8 +5138,8 @@
 ?>
 
         // 2.6.1
-            document.getElementById("TA2_6_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
-            document.getElementById("link2_6_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA2_6_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link2_6_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_6_1").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
             if(document.getElementById("TA2_6_1").value==""){
@@ -4900,8 +5161,8 @@
 ?>
 
         // 2.6.2
-            document.getElementById("TA2_6_2").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
-            document.getElementById("link2_6_2").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA2_6_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link2_6_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_6_2").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
             if(document.getElementById("TA2_6_2").value==""){
@@ -4935,7 +5196,25 @@
     fetch_rows_263();
 
     fetch_rows_271();
+
+
+
+
+
 }
+
+
+
+    function escapeHtml(text) {
+      return text
+          .replace(/&/g, "%26")
+          .replace(/</g, "%3C")
+          .replace(/>/g, "%3E")
+          .replace(/"/g, "\\%22")
+          .replace(/'/g, "\\%27")
+          .replace(/#/g, "%23");
+    }
+
 
 </script>
 

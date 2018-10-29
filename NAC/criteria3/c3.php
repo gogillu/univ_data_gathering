@@ -401,12 +401,20 @@
         <script>
 
             function save311(ta)
-        	{
-                link =  document.getElementById("link1_1_1").value;
+        	   {
+                link =  document.getElementById("link3_1_1").value;
                 var ata = ta.value;
 
+                link = escapeHtml(link);
+                ata = escapeHtml(ata);
+
+                if(link==""){
+                  alert("Please provide link of the relevant document");
+                  return false;
+                }
+
                 console.log(ta+"\n"+link);
-               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
+               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -416,7 +424,7 @@
                                $("#d311").slideToggle("slow");
                                rotate("tg311");
 
-                               if(document.getElementById("TA1_1_1").value==""){
+                               if(document.getElementById("TA3_1_1").value==""){
                                     document.getElementById("ch311").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/> <br>Not Filled';
                                 }else{
                                     document.getElementById("ch311").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
@@ -435,9 +443,9 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-         			       		document.getElementById("TA1_1_1").value = this.responseText;
+         			       		document.getElementById("TA3_1_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
-         			       		 if(document.getElementById("TA1_1_1").value==""){
+         			       		 if(document.getElementById("TA3_1_1").value==""){
                                     document.getElementById("ch311").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
                                 }else{
                                     document.getElementById("ch311").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
@@ -448,6 +456,28 @@
           			   			 xhttp.open("GET", "fetch311.php?table=t3_1_1", true);
          			   			 xhttp.send();
         		}
+
+            function fetch_rows_311_link()
+        		{
+        			var xhttp,res;
+        				    xhttp = new XMLHttpRequest();
+         				    xhttp.onreadystatechange = function(){
+
+         			       if (this.readyState == 4 && this.status == 200) {
+         			       		document.getElementById("link3_1_1").value = this.responseText;
+//         			       		//alert(this.responsetext);
+         			       		 if(document.getElementById("TA3_1_1").value==""){
+                                    document.getElementById("ch311").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
+                                }else{
+                                    document.getElementById("ch311").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
+                                }
+         			       }
+         			       };
+
+          			   			 xhttp.open("GET", "fetch311_link.php?table=t3_1_1", true);
+         			   			 xhttp.send();
+        		}
+
 
         </script>
 
@@ -490,11 +520,15 @@ related to research promotion policy adoption
 
     <form>
 
-        <textarea id="TA1_1_1" placeholder="URL of Policy Document on Promotion of Research" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
+        <textarea id="TA3_1_1" placeholder="URL of Policy Document on Promotion of Research" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link3_1_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1752,7 +1786,7 @@ non-government
                                $("#d331").slideToggle("slow");
                                rotate("tg331");
 
-                               if(document.getElementById("TAa1_1_1").value==""){
+                               if(document.getElementById("TA3_3_1").value==""){
                                     document.getElementById("ch331").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/><br> Not Filled';
                                 }else{
                                     document.getElementById("ch331").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
@@ -1771,9 +1805,9 @@ non-government
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-         			       		document.getElementById("TAa1_1_1").value = this.responseText;
+         			       		document.getElementById("TA3_3_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
-         			       		 if(document.getElementById("TAa1_1_1").value==""){
+         			       		 if(document.getElementById("TA3_3_1").value==""){
                                     document.getElementById("ch331").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
                                 }else{
                                     document.getElementById("ch331").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
@@ -1825,7 +1859,7 @@ knowledge
 
     <form>
 
-        <textarea id="TAa1_1_1" placeholder="Describe available incubation centre and evidence of its usage (activity) within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
+        <textarea id="TA3_3_1" placeholder="Describe available incubation centre and evidence of its usage (activity) within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
 
         </textarea>
 
@@ -5404,9 +5438,34 @@ importance, other universities etc. during the last five years
     }
         function load_time_func(){
 
+
+          <?php
+/*
+              $connection = mysqli_connect($servername, $username, $password, $dbname);
+          	$query = "Select * from t3_1_1 where Username like '".$_SESSION['username']."';";
+          	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
+              $row  = $res ->fetch_assoc();
+                      //echo $row['Description'];
+*/          ?>
+/*
+                  // 3.1.1
+                      document.getElementById("TA3_1_1").value = '<?php// echo $row["descr"]; ?>';
+                      document.getElementById("link3_1_1").value = '<?php// echo urldecode($row["Link"]); ?>';
+                      document.getElementById("TA3_1_1").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
+
+                      if(document.getElementById("TA3_1_1").value==""){
+                         document.getElementById("ch311").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Filled</a>';
+                      }else{
+                         document.getElementById("ch311").innerHTML = '<img src="../images/filled.png" width="52" height="52"><a style="font-size:15px; color:#000;"> Filled</a>';
+                      }
+*/
+<?php  ?>
+
+
         //1.1.3 Loading all rows that are already saved
 
         fetch_rows_311();
+        fetch_rows_311_link();
         fetch_rows_331();
         fetch_rows_361();
         fetch_rows_312();
@@ -5438,6 +5497,18 @@ importance, other universities etc. during the last five years
         fetch_rows_372();
         fetch_rows_373();
         }
+
+        function escapeHtml(text) {
+          return text
+              .replace(/&/g, "%26")
+              .replace(/</g, "%3C")
+              .replace(/>/g, "%3E")
+              .replace(/"/g, "\\%22")
+              .replace(/'/g, "\\%27")
+              .replace(/#/g, "%23");
+        }
+
+
     </script>
 
 </body>

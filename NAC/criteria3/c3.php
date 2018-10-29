@@ -492,7 +492,7 @@
         </div>
 
         <div id="h311" class="col-sm-10">
-            <div class="col-sm-1"  style="font-size:18px;">3.1.1<br><br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;">3.1.1<br><br>Q<sub>L</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
             The institution has a well defined policy for promotion of research and the same is uploaded on the institutional website
  <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
@@ -4263,11 +4263,19 @@ training
 
             function save361(ta)
         	{
-             //   link =  document.getElementById("linka1_1_1").value;
+                link =  document.getElementById("link3_6_1").value;
                 var ata = ta.value;
 
+                if(link==""){
+                  alert("Please provide link of the relevant document");
+                  return false;
+                }
+
+                ata = escapeHtml(ata);
+                link = escapeHtml(link);
+
                 //console.log(ta+"\n"+link);
-               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
+               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -4277,7 +4285,7 @@ training
                                $("#d361").slideToggle("slow");
                                rotate("tg361");
 
-                               if(document.getElementById("TAaa1_1_1").value==""){
+                               if(document.getElementById("TA3_6_1").value==""){
                                     document.getElementById("ch361").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"/><br> Not Filled';
                                 }else{
                                     document.getElementById("ch361").innerHTML = '<img src="../images/filled.png" width="52" height="52"><br> Filled';
@@ -4296,9 +4304,9 @@ training
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-         			       		document.getElementById("TAaa1_1_1").value = this.responseText;
+         			       		document.getElementById("TA3_6_1").value = this.responseText;
 //         			       		//alert(this.responsetext);
-         			       		 if(document.getElementById("TAaa1_1_1").value==""){
+         			       		 if(document.getElementById("TA3_6_1").value==""){
                                     document.getElementById("ch361").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
                                 }else{
                                     document.getElementById("ch361").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
@@ -4307,6 +4315,27 @@ training
          			       };
 
           			   			 xhttp.open("GET", "fetch311.php?table=t3_6_1", true);
+         			   			 xhttp.send();
+        		}
+
+            function fetch_rows_361_link()
+        		{
+        			var xhttp,res;
+        				    xhttp = new XMLHttpRequest();
+         				    xhttp.onreadystatechange = function(){
+
+         			       if (this.readyState == 4 && this.status == 200) {
+         			       		document.getElementById("link3_6_1").value = this.responseText;
+//         			       		//alert(this.responsetext);
+         			       		 if(document.getElementById("TA3_6_1").value==""){
+                                    document.getElementById("ch361").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
+                                }else{
+                                    document.getElementById("ch361").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
+                                }
+         			       }
+         			       };
+
+          			   			 xhttp.open("GET", "fetch311_link.php?table=t3_6_1", true);
          			   			 xhttp.send();
         		}
 
@@ -4349,11 +4378,15 @@ last five years
 
     <form>
 
-        <textarea id="TAaa1_1_1" placeholder="Describe the impact of extension activities in sensitising students to social issues and holistic development within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
+        <textarea id="TA3_6_1" placeholder="Describe the impact of extension activities in sensitising students to social issues and holistic development within a minimum of 500 characters and maximum of 500 words" style="margin-left:80px; width:930px;height:200px;  opacity:.82;">
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link3_6_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -5502,6 +5535,7 @@ importance, other universities etc. during the last five years
         fetch_rows_331();
         fetch_rows_331_link();
         fetch_rows_361();
+        fetch_rows_361_link();
         fetch_rows_312();
         fetch_rows_313();
         fetch_rows_314();

@@ -1100,6 +1100,8 @@ indicating seed money provided and utilized
         				else
         				{
 
+                  link = escapeHtml(link);
+
         				var idd = $(rows[i]).attr('id');
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+choice+"','"+ name + "','"+ Year + "','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
@@ -2509,7 +2511,7 @@ commencement etc
         </div>
 
         <div id="h341" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>3.4.1<br><br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>3.4.1<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">The institution has a stated Code of Ethics to check malpractices and plagiarism in Research (Yes/No)
             <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Institutional data in prescribed format
 <br>* Any additional information
@@ -3072,6 +3074,10 @@ thesis, year of award etc
                         var journal = $($(rows[i]).find('input')[3]).val();
                         var period = $($(rows[i]).find('input')[4]).val();
                         var isbn = $($(rows[i]).find('input')[5]).val();
+                        var link = $($(rows[i]).find('input')[6]).val();
+
+                        link = escapeHtml(link);
+
                         if(Year == "")
         				{
         					alert('Please select valid Academic Period to save');
@@ -3094,17 +3100,21 @@ thesis, year of award etc
                         }else if(period==""){
                             alert('Please enter a valid period');
         					return false;
-                        }
+                        }else if(link==""){
+                          alert('Please provide link of relavent document');
+                return false;
+                      }
         				else
         				{
 
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + name  + "','" + department +"','"+journal+"','"+period+"','"+Year+"','" + isbn + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + name  + "','" + department +"','"+journal+"','"+period+"','"+Year+"','" + isbn +"','" + link + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
         				}
         			}
+
         			var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -3186,6 +3196,7 @@ publication
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="text" placeholder="ISBN/ISSN" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Link of the relevant document" style="width:200px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
 
     		var x = $('#tab345').find('tr');
@@ -3202,9 +3213,10 @@ publication
                 <th style="width:200px; padding:20px;">Name of the author/s</th>
                 <th style="width:250px; padding:20px;">Department of the teacher</th>
                 <th style="width:80px; padding:20px;">Name of journal</th>
-		<th style="width:200px; padding:20px;">Academic Period </th>
+		            <th style="width:200px; padding:20px;">Academic Period </th>
                 <th style="width:200px; padding:20px;">Year of Publication</th>
                 <th style="width:250px; padding:20px;">ISBN/ISSN number</th>
+                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow345()" alt="Submit" width="48" height="48">

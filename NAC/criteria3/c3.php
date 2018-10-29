@@ -1771,12 +1771,20 @@ non-government
         <script>
 
             function save331(ta)
-        	{
-             //   link =  document.getElementById("linka1_1_1").value;
+        	  {
+                link =  document.getElementById("link3_3_1").value;
                 var ata = ta.value;
 
+                if(link==""){
+                  alert("Please provide link of the relevant document");
+                  return false;
+                }
+
+                ata = escapeHtml(ata);
+                link = escapeHtml(link);
+
                 //console.log(ta+"\n"+link);
-               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + ta.id + "');";
+                var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -1816,6 +1824,27 @@ non-government
          			       };
 
           			   			 xhttp.open("GET", "fetch311.php?table=t3_3_1", true);
+         			   			 xhttp.send();
+        		}
+
+            function fetch_rows_331_link()
+        		{
+        			var xhttp,res;
+        				    xhttp = new XMLHttpRequest();
+         				    xhttp.onreadystatechange = function(){
+
+         			       if (this.readyState == 4 && this.status == 200) {
+         			       		document.getElementById("link3_3_1").value = this.responseText;
+//         			       		//alert(this.responsetext);
+         			       		 if(document.getElementById("TA3_3_1").value==""){
+                                    document.getElementById("ch331").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> <br>Not Filled';
+                         }else{
+                                    document.getElementById("ch331").innerHTML = '<img src="../images/filled.png" width="52" height="52"> <br>Filled';
+                         }
+         			       }
+         			      };
+
+          			   			 xhttp.open("GET", "fetch311_link.php?table=t3_3_1", true);
          			   			 xhttp.send();
         		}
 
@@ -1863,7 +1892,11 @@ knowledge
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link3_3_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -5394,7 +5427,7 @@ importance, other universities etc. during the last five years
 
         <table border="0" id="tab373">
             <tr>
-                <th style="width:80px; padding:20px;">Organisation with which MoU is signed</th>
+                <th style="width:80px; padding:20px;">Orglinkanisation with which MoU is signed</th>
                 <th style="width:200px; padding:20px;">Name of the institution/ industry/ corporate house</th>
 		<th style="width:200px; padding:20px;">Academic Period </th>
                 <th style="width:80px; padding:20px;">Year of signing MoU</th>
@@ -5467,6 +5500,7 @@ importance, other universities etc. during the last five years
         fetch_rows_311();
         fetch_rows_311_link();
         fetch_rows_331();
+        fetch_rows_331_link();
         fetch_rows_361();
         fetch_rows_312();
         fetch_rows_313();

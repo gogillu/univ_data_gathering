@@ -4966,6 +4966,10 @@ Govt. or NGO etc
                         var duration = $($(rows[i]).find('input')[4]).val();
                         var nature = $($(rows[i]).find('input')[6]).val();
                         var period = $($(rows[i]).find('input')[5]).val();
+                        var link = $($(rows[i]).find('input')[7]).val();
+
+                        link = escapeHtml(link);
+
                         if(Year == "")
         				{
         					alert('Please select valid Academic Period to save');
@@ -4992,11 +4996,16 @@ Govt. or NGO etc
                             alert('Please enter valid Year');
         					return false;
                         }
+                        else if(link == ""){
+                            alert('Please provide link of the relevant document');
+        					return false;
+                        }
         				else
         				{
 
+
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + agency + "','" +name+"','" + source  +"','"+ period+"','"+Year + "','"+ duration + "','" + nature + "','" +  idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + agency + "','" +name+"','" + source  +"','"+ period+"','"+Year + "','"+ duration + "','" + nature + "','" + link + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -5085,6 +5094,7 @@ Govt. or NGO etc
               '<td><center><input type="text" placeholder="Year" style="width:200px;" required></center></td>'+
               '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Nature" style="width:160px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Link of the relavant document" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
 
     		var x = $('#tab371').find('tr');
@@ -5106,6 +5116,7 @@ Govt. or NGO etc
                 <th style="width:200px; padding:20px;">Year of collaboration</th>
                 <th style="width:200px; padding:20px;">Duration (in Months)</th>
                 <th style="width:200px; padding:20px;">Nature of the activity</th>
+                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow371()" alt="Submit" width="48" height="48">
@@ -5148,6 +5159,7 @@ Govt. or NGO etc
                         var durationt = $($(rows[i]).find('input')[3]).val();
                         var nature = $($(rows[i]).find('input')[4]).val();
                         var name = $($(rows[i]).find('input')[5]).val();
+                        var link = $($(rows[i]).find('input')[6]).val();
                         if(Year == "")
         				{
         					alert('Please select valid Academic Period to save');
@@ -5170,12 +5182,15 @@ Govt. or NGO etc
                         }else if(nature == ""){
                             alert('Please enter nature of activity');
         					return false;
-                        }
-        				else
-        				{
+                        }else if(link == ""){
+                            alert('Please provide link of relevant document');
+                  return false;
+                        }else{
+
+                          link = escapeHtml(link);
 
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + inst + "','" +Year+"','" + durationf + "','"+durationt +"','"+ nature + "','"+ name + "','" +  idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ title + "','" + inst + "','" +Year+"','" + durationf + "','"+durationt +"','"+ nature + "','"+ name + "','" + link + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -5263,6 +5278,7 @@ Govt. or NGO etc
               '<td><center><input type="date" placeholder="DD/MM/YY" style="width:180px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Nature" style="width:160px;" required></center></td>'+
               '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Link of the relavant document" style="width:160px;" required></center></td>'+
 			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
 
     		var x = $('#tab372').find('tr');
@@ -5282,6 +5298,7 @@ Govt. or NGO etc
                 <th style="width:80px; padding:20px;" colspan=2>Duration (From-To)</th>
                 <th style="width:200px; padding:20px;">Nature of linkage</th>
                 <th style="width:200px; padding:20px;">Name of the participant</th>
+                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow372()" alt="Submit" width="48" height="48">

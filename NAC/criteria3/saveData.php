@@ -9,4 +9,5 @@
 	$query = "Insert into ".$_GET["table"]." Values".$_GET['rows']."";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
+	echo $res;
 ?>

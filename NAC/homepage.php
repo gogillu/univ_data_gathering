@@ -116,7 +116,7 @@ if(!isset($_SESSION['username'])){
     <div>
         <a style="visibility:hidden;">d</a>
 				<center>
-					The system is developed for chrome web browser
+					DATA CAPTURING SYSTEM is best viewed through Google Chrome web browser.
 				</center>
     </div>
 

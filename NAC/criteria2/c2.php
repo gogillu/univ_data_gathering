@@ -580,7 +580,7 @@
                                         OtherStateStudents=escapeHtml(OtherStateStudents);
                                         OtherCountryStudents=escapeHtml(OtherCountryStudents);
                                         link=escapeHtml(link);
-                                        idd=escapeHtml(link);
+                                        idd=escapeHtml(idd);
 
 
 

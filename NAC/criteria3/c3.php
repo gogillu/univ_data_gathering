@@ -932,7 +932,7 @@ indicating seed money provided and utilized
         				{
 
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ Year + "','" + duration + "','" + type + "','" + agency + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','"+ Year + "','" + duration + "','" + type + "','" + agency + "','" + exam + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -944,7 +944,7 @@ indicating seed money provided and utilized
 
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
-                               alert('Changes Saved Successfully');
+                               alert('Changes Saved Successfully' + this.responseText);
                                $("#d314").slideToggle("slow");
                                rotate("tg314");
                                num_rows("tab314","ch314");

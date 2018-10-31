@@ -944,7 +944,7 @@ indicating seed money provided and utilized
 
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
-                               alert('Changes Saved Successfully' + this.responseText);
+                               alert('Changes Saved Successfully');
                                $("#d314").slideToggle("slow");
                                rotate("tg314");
                                num_rows("tab314","ch314");
@@ -2274,6 +2274,8 @@ knowledge
                         var nature = $($(rows[i]).find('input')[1]).val();
                         var period = $($(rows[i]).find('input')[2]).val();
                         var contact = $($(rows[i]).find('input')[3]).val();
+                        var Year = $($(rows[i]).find('select')[0]).val();
+
                         if(name==""){
                             alert('Please enter a Name');
         					return false;
@@ -2286,7 +2288,9 @@ knowledge
                         }else if(period==""){
                             alert('Please enter a valid period');
         					return false;
-                        }
+                }else if(Year==""){
+                  alert('Please enter Year of commencement');
+                }
         				else
         				{
 
@@ -3815,7 +3819,7 @@ Any additional information
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','" + url + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
-        					alert(rowss);
+        					//alert(rowss);
         				}
         			}
         			var xhttp,res;
@@ -3823,7 +3827,7 @@ Any additional information
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               console.log(this.responseText);
+                               //console.log(this.responseText);
                                alert('Changes Saved Successfully');
                                $("#d351").slideToggle("slow");
                                rotate("tg351");

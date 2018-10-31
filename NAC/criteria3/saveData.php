@@ -7,7 +7,7 @@
 	$query = "Delete from ".$_GET["table"]." where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 	$query = "Insert into ".$_GET["table"]." Values".$_GET['rows']."";
-  echo $query;
+  //echo $query;
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
-	echo $res;
+	//echo $res;
 ?>

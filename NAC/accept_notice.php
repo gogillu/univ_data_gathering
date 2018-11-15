@@ -111,10 +111,10 @@ if(!isset($_SESSION['username'])){
         <div class="col-sm-1"></div>
     </div>
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px; "><a href="./index.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px; "><a href="./logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; "><a href="./index.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="./logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
     <div>
@@ -153,7 +153,7 @@ if(!isset($_SESSION['username'])){
               <p><?php echo $NOTICE; ?></p>
             </div>
             <div class="modal-footer">
-              <button style="background-color: #424242; color:white;"  type="button" class="btn btn-primary " onclick="next_page();" data-dismiss="modal" data-backdrop="static">CLICK ANYWHERE TO CONTINUE</button>
+              <button style="background-color: #424242; color:white;"  type="button" class="btn btn-primary " onclick="next_page();" data-dismiss="modal" data-backdrop="static">OK, I UNDERSTAND</button>
             </div>
           </div>
 
@@ -187,7 +187,7 @@ if(!isset($_SESSION['username'])){
 		<hr style="background:black;">
 
     <center>
-      <input style="margin-right: 10px;" type="button" onclick="location.href='homepage.php';" value="COUNTINUE"/>
+      <input id="cont" style="margin-right: 10px;" type="button" onclick="notify()';" value="CONTINUE"/>
     </center>
 <!--
 		<center>
@@ -200,11 +200,15 @@ if(!isset($_SESSION['username'])){
 <script>
 
   $(document).ready(function(){
+		$("#cont").click(function(){
+			$("#myModal").modal({show:true});
+		});
   });
 
   function notify(){
     $("#myModal").modal({show:true});
   }
+
 
   function next_page(){
     window.location.href="homepage.php";

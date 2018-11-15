@@ -4,7 +4,7 @@
     include("../credential.php");
     
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t1_2_2 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t1_2_2 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 	$sel1 = '';
 	$sel2 = "";

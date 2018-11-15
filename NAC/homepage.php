@@ -107,10 +107,10 @@ if(!isset($_SESSION['username'])){
         <div class="col-sm-1"></div>
     </div>
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px; "><a href="./index.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px; "><a href="./logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; "><a href="./index.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="./logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
     <div>
@@ -125,8 +125,8 @@ if(!isset($_SESSION['username'])){
 
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria1/c1.php';" value="CRITERIA 1"/>
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria2/c2.php';" value="CRITERIA 2"/>
-        <input style="margin-right:10px;"  disabled  type="button" onclick="location.href='criteria3/c3.php';" value="CRITERIA 3"/>
-        <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria4/c4.php';" value="CRITERIA 4"/>
+        <input style="margin-right:10px;"  type="button" onclick="location.href='criteria3/c3.php';" value="CRITERIA 3"/>
+        <input style="margin-right:10px;"  type="button" onclick="location.href='criteria4/c4.php';" value="CRITERIA 4"/>
         <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria5/c5.php';" value="CRITERIA 5"/>
 
         <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria6/c6.php';" value="CRITERIA 6"/>

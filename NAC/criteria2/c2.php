@@ -9,6 +9,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    rowss="";
+  </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,7 +90,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_academic_year.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
 
@@ -104,7 +108,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_academic_year2.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_academic_year_dis_cont(x, val = "none"){
@@ -120,7 +125,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_academic_year_dis_cont.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
 
@@ -134,7 +140,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x, true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_programme_name(x,y){
@@ -150,7 +157,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_programme_name.php?Prog_code="+x, true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_programme_code(x, val = "none"){
@@ -170,7 +178,8 @@
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_programme_code.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_course_code(x,y, val = "none"){
@@ -188,7 +197,8 @@
                 }
             };
             xhttp.open("GET","../Dropdowns/fetch_course_code.php?Prog_code="+x, true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_course_code_only(x,val="none"){
@@ -208,7 +218,8 @@
                 }
             };
             xhttp.open("GET","../Dropdowns/fetch_course_code.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function get_time(){
@@ -446,13 +457,13 @@
     </div>
 
     <!--
-        TOP FIXED HEADER UNAME
+        TOP FIXED HEADER Username
     -->
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;">
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;">
 
 <style>
 
@@ -596,14 +607,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d211").slideToggle("slow");
                                rotate("tg211");
                                num_rows("tab211","ch211");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet211.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet211.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -644,7 +656,8 @@
                     num_rows("tab211","ch211");
         		};
           			   			 xhttp.open("GET", "fetch211.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -805,14 +818,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d212").slideToggle("slow");
                                rotate("tg212");
                                num_rows("tab212","ch212");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet212.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet212.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -854,7 +868,8 @@
                     num_rows("tab212","ch212");
         		};
           			   			 xhttp.open("GET", "fetch212.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1025,14 +1040,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d213").slideToggle("slow");
                                rotate("tg213");
                                num_rows("tab213","ch213");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet213.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet213.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
 
@@ -1073,7 +1089,8 @@
                     num_rows_2_headrows("tab213","ch213");
         		};
           			   			 xhttp.open("GET", "fetch213.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1213,7 +1230,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d221").slideToggle("slow");
                                rotate("tg221");
 
@@ -1224,8 +1241,9 @@
             }
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet221.php?desc="+vu+"&link="+link, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet221.php?desc="+vu+"&link="+link, true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -1376,14 +1394,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
           			         console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d222").slideToggle("slow");
                                rotate("tg222");
                                num_rows("tab222","ch222");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t2_2_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t2_2_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1428,7 +1447,8 @@
                     num_rows("tab222","ch222");
         		};
           			   			 xhttp.open("GET", "fetch222.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1592,14 +1612,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
           			         console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d223").slideToggle("slow");
                                rotate("tg223");
                                num_rows("tab223","ch223");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t2_2_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t2_2_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1632,7 +1653,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_2_3 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_2_3 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
@@ -1687,7 +1708,8 @@
                     num_rows("tab223","ch223");
         		};
           			   			 xhttp.open("GET", "fetch223.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1808,7 +1830,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d231").slideToggle("slow");
                                rotate("tg231");
 
@@ -1819,8 +1841,9 @@
             }
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet231.php?desc="+vu+"&link="+link, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet231.php?desc="+vu+"&link="+link, true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -1940,7 +1963,7 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
 
                                //alert("Please make sure to cross check with data in 2.2.2");
 
@@ -1949,8 +1972,9 @@
                                num_rows("tab232","ch232");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet232.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet232.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1977,7 +2001,8 @@
                     num_rows("tab232","ch232");
         		};
           			   			 xhttp.open("GET", "fetch232.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2144,7 +2169,7 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
 
                                //alert("Please make sure to cross check with data in 2.2.2");
 
@@ -2154,8 +2179,9 @@
                                num_rows("tab233","ch233");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet233.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet233.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2192,7 +2218,8 @@
                     num_rows("tab233","ch233");
         		};
           			   			 xhttp.open("GET", "fetch233.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2357,14 +2384,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d241").slideToggle("slow");
                                rotate("tg241");
                                num_rows("tab241","ch241");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet241.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet241.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2390,7 +2418,8 @@
                     num_rows("tab241","ch241");
         		};
           			   			 xhttp.open("GET", "fetch241.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2553,14 +2582,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d242").slideToggle("slow");
                                rotate("tg242");
                                num_rows("tab242","ch242");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet242.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet242.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2597,7 +2627,8 @@
                     num_rows("tab242","ch242");
         		};
           			   			 xhttp.open("GET", "fetch242.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2745,14 +2776,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d243").slideToggle("slow");
                                rotate("tg243");
                                num_rows("tab243","ch243");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet243.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet243.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2778,7 +2810,8 @@
                     num_rows("tab243","ch243");
         		};
           			   			 xhttp.open("GET", "fetch243.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2934,14 +2967,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d244").slideToggle("slow");
                                rotate("tg244");
                                num_rows("tab244","ch244");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet244.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet244.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2967,7 +3001,8 @@
                     num_rows("tab244","ch244");
         		};
           			   			 xhttp.open("GET", "fetch244.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3120,14 +3155,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d245").slideToggle("slow");
                                rotate("tg245");
                                num_rows("tab245","ch245");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet245.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet245.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3163,7 +3199,8 @@
                     num_rows("tab245","ch245");
         		};
           			   			 xhttp.open("GET", "fetch245.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3333,14 +3370,15 @@
          			       if (this.readyState == 4 && this.status == 200) {
 
                                //alert(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d251").slideToggle("slow");
                                rotate("tg251");
                                num_rows("tab251","ch251");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet251.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet251.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3372,7 +3410,8 @@
                     num_rows("tab251","ch251");
         		};
           			   			 xhttp.open("GET", "fetch251.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3514,14 +3553,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d252").slideToggle("slow");
                                rotate("tg252");
                                num_rows("tab252","ch252");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet252.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet252.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3558,7 +3598,8 @@
                     num_rows("tab252","ch252");
         		};
           			   			 xhttp.open("GET", "fetch252.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3717,14 +3758,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d253").slideToggle("slow");
                                rotate("tg253");
                                num_rows("tab253","ch253");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet253.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet253.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3761,7 +3803,8 @@
                     num_rows("tab253","ch253");
         		};
           			   			 xhttp.open("GET", "fetch253.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3885,7 +3928,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d254").slideToggle("slow");
                                rotate("tg254");
 
@@ -3897,8 +3940,9 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet254.php?desc="+vu+"&link="+link, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet254.php?desc="+vu+"&link="+link, true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -4024,15 +4068,16 @@
                               // alert(this.responseText);
 
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d255").slideToggle("slow");
                                rotate("tg255");
 
         		  			}
         		  		};
 
-          			   xhttp.open("GET", "savet255.php?rows="+rowss, true);
-         			   xhttp.send();
+          			   xhttp.open("POST", "savet255.php", true);
+         			   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 
 		</script>
@@ -4160,7 +4205,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d261").slideToggle("slow");
                                rotate("tg261");
 
@@ -4172,8 +4217,9 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet261.php?desc="+vu+"&link="+link, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet261.php?desc="+vu+"&link="+link, true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -4304,14 +4350,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d263").slideToggle("slow");
                                rotate("tg263");
                                num_rows("tab263","ch263");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet263.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet263.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4351,7 +4398,8 @@
                     num_rows("tab263","ch263");
         		};
           			   			 xhttp.open("GET", "fetch263.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4487,7 +4535,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d262").slideToggle("slow");
                                rotate("tg262");
 
@@ -4499,8 +4547,9 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet262.php?desc="+vu+"&link="+link, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet262.php?desc="+vu+"&link="+link, true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -4626,14 +4675,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d263").slideToggle("slow");
                                rotate("tg263");
                                num_rows("tab263","ch263");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet263.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet263.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4673,7 +4723,8 @@
                     num_rows("tab263","ch263");
         		};
           			   			 xhttp.open("GET", "fetch263.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4831,14 +4882,15 @@
 
          			       if (this.readyState == 4 && this.status == 200) {
 
-                               alert(this.responseText+'Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d271").slideToggle("slow");
                                rotate("tg271");
                                num_rows("tab271","ch271");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet271.php?rows="+rowss, true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "savet271.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4878,7 +4930,8 @@
                     num_rows("tab271","ch271");
         		};
           			   			 xhttp.open("GET", "fetch271.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -5000,7 +5053,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_2_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_2_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
@@ -5023,7 +5076,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_3_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_3_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
 
@@ -5044,7 +5097,7 @@
 
 <?php
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_4_5 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_4_5 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
 ?>
@@ -5055,7 +5108,7 @@
 
 <?php
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_4_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_4_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
 ?>
@@ -5068,7 +5121,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_5_4 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_5_4 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
@@ -5090,7 +5143,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_5_5 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_5_5 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row_num = mysqli_num_rows($res);
     $row  = $res ->fetch_assoc();
@@ -5131,7 +5184,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_6_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_6_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
@@ -5154,7 +5207,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_6_2 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_6_2 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];

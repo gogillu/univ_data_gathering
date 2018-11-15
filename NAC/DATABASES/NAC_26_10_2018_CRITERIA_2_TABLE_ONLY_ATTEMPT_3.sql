@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `t2_1_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE `t2_1_1` (
 --
 
 CREATE TABLE `t2_1_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `t2_1_2` (
 --
 
 CREATE TABLE `t2_1_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE `t2_1_3` (
 --
 
 CREATE TABLE `t2_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -100,7 +100,7 @@ CREATE TABLE `t2_2_1` (
 --
 
 CREATE TABLE `t2_2_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `t2_2_2` (
 --
 
 CREATE TABLE `t2_2_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Name_of_student` varchar(100) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `UDID_card_number` varchar(50) NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE `t2_2_3` (
 --
 
 CREATE TABLE `t2_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -152,7 +152,7 @@ CREATE TABLE `t2_3_1` (
 --
 
 CREATE TABLE `t2_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Number_of_teachers_using_ICT` int(11) NOT NULL,
   `Teacher_number` int(11) NOT NULL,
   `ICT_tools` varchar(100) NOT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE `t2_3_2` (
 --
 
 CREATE TABLE `t2_3_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Student_number` int(11) NOT NULL,
   `Full_time_teacher` int(11) NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE `t2_3_3` (
 --
 
 CREATE TABLE `t2_4_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
   `Designation` varchar(30) NOT NULL,
@@ -202,7 +202,7 @@ CREATE TABLE `t2_4_1` (
 --
 
 CREATE TABLE `t2_4_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `PHD_Teacher` int(11) NOT NULL,
   `Teacher` int(11) NOT NULL,
@@ -216,7 +216,7 @@ CREATE TABLE `t2_4_2` (
 --
 
 CREATE TABLE `t2_4_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
   `Designation` varchar(30) NOT NULL,
@@ -232,7 +232,7 @@ CREATE TABLE `t2_4_3` (
 --
 
 CREATE TABLE `t2_4_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
@@ -249,7 +249,7 @@ CREATE TABLE `t2_4_4` (
 --
 
 CREATE TABLE `t2_4_5` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `State` varchar(30) NOT NULL,
@@ -265,7 +265,7 @@ CREATE TABLE `t2_4_5` (
 --
 
 CREATE TABLE `t2_5_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(50) NOT NULL,
   `Sem` varchar(30) NOT NULL,
@@ -281,7 +281,7 @@ CREATE TABLE `t2_5_1` (
 --
 
 CREATE TABLE `t2_5_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Complaint_no` int(11) NOT NULL,
   `Total_students` int(11) NOT NULL,
@@ -295,7 +295,7 @@ CREATE TABLE `t2_5_2` (
 --
 
 CREATE TABLE `t2_5_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `No_of_application_recieved_for_reevaluation` int(11) NOT NULL,
   `Total_students` int(11) NOT NULL,
@@ -310,7 +310,7 @@ CREATE TABLE `t2_5_3` (
 --
 
 CREATE TABLE `t2_5_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -323,7 +323,7 @@ CREATE TABLE `t2_5_4` (
 --
 
 CREATE TABLE `t2_5_5` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `v1` varchar(20) NOT NULL,
   `v2` varchar(20) NOT NULL,
   `v3` varchar(20) NOT NULL,
@@ -339,7 +339,7 @@ CREATE TABLE `t2_5_5` (
 --
 
 CREATE TABLE `t2_6_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -352,7 +352,7 @@ CREATE TABLE `t2_6_1` (
 --
 
 CREATE TABLE `t2_6_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -365,7 +365,7 @@ CREATE TABLE `t2_6_2` (
 --
 
 CREATE TABLE `t2_6_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Total_Students` int(11) DEFAULT NULL,
@@ -380,7 +380,7 @@ CREATE TABLE `t2_6_3` (
 --
 
 CREATE TABLE `t2_7_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Student_Name` varchar(100) NOT NULL,
   `Gender` varchar(20) NOT NULL,
   `Category` varchar(20) NOT NULL,

@@ -135,7 +135,7 @@
 <?php            
             
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t7_2_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t7_2_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();        
             //echo $row['Description'];

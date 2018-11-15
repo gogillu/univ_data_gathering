@@ -22,3 +22,4 @@ if($res){
 }
 
 ?>
+<a href="progress.php"> continue </a>

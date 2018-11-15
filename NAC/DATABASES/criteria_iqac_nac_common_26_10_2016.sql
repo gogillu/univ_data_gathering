@@ -153,7 +153,7 @@ INSERT INTO `admins` (`username`, `password`, `name`, `sno`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `course` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
   `Course_name` varchar(100) DEFAULT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`Uname`, `Prog_code`, `Course_code`, `Course_name`) VALUES
+INSERT INTO `course` (`Username`, `Prog_code`, `Course_code`, `Course_name`) VALUES
 ('sopedu', 'PE4A', 'T-02', 'Principles of Physical Education'),
 ('admin1', 'AD1BSC', 'AD1RX2', 'APPLIED PHYSICS'),
 ('admin1', 'AD1MSC', 'AD1RY1', 'APPLIED MATHEMATICS'),
@@ -571,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `eval_report` (
 --
 
 CREATE TABLE IF NOT EXISTS `programme` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   UNIQUE KEY `Prog_code` (`Prog_code`)
@@ -581,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `programme` (
 -- Dumping data for table `programme`
 --
 
-INSERT INTO `programme` (`Uname`, `Prog_code`, `Prog_name`) VALUES
+INSERT INTO `programme` (`Username`, `Prog_code`, `Prog_name`) VALUES
 ('Socmrce', 'CM8X', 'M.Phil.'),
 ('Socmrce', 'CM5C', 'M.Com. (Bank Management)'),
 ('Socmrce', 'CM5B', 'M.Com (AFC)'),
@@ -834,7 +834,7 @@ INSERT INTO `superusers` (`username`, `password`, `name`, `sno`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `t1_1_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` text,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -844,7 +844,7 @@ CREATE TABLE IF NOT EXISTS `t1_1_1` (
 -- Dumping data for table `t1_1_1`
 --
 
-INSERT INTO `t1_1_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t1_1_1` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('sopedu', 'i.The+graduates+and+postgraduates+of+the+courses+have+a+wide+range+of+opportunity+in+different+fields.+Post+Graduate+and+Ph.Ds+are+qualified+to+be+appointed+as+Teachers+and+Sports+officer+in+Universities+Colleges+and+Physical+Education+teachers+in+Schools.ii.Other+than+these+academic+opportunities+they+will+also+be+qualified+for+appointment+as+District+Sports+Officer+%2F+Regional+sports+officer+and+other+administrative+post+in+sports+department+in+Central+and+State+undertakings.+iii.These+students+are+also+eligible+to+join+different+Forces%2C+for+examples%2C+Army%2C+Police%2C+B.S.F+etc.iv.They+are+also+eligible+to+undertake+the+higher+studies+i.e.+M.Phill%2C+Ph.D+and+D.Lit.+in+the+field+of+Physical+Education+and+Sports+Sciences.v.Pass+out+students+can+also+become+health+%2F+fitness+experts+in+health+clubs+and+habitability+industry+and+they+can+start+their+own+health+clubs.+', '', 'http://uid.dauniv.ac.in/NAC/profile/docs/20-10-2018_16-18-20M.P.Ed. College New Scheme wef 2016-17.pdf'),
 ('admin1', 'asddv++', '', 'http://uid.dauniv.ac.in/NAC/profile/docs/22-10-2018_14-34-21psi.docx'),
 ('sostat', '', '', 'http://uid.dauniv.ac.in/NAC/profile/docs/22-10-2018_15-20-59M.SC Syllabus stat. 2015-16 Choice Based Credit SystemCore Courses_2.pdf'),
@@ -857,7 +857,7 @@ INSERT INTO `t1_1_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `t1_1_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Year` varchar(50) DEFAULT NULL,
@@ -870,7 +870,7 @@ CREATE TABLE IF NOT EXISTS `t1_1_2` (
 -- Dumping data for table `t1_1_2`
 --
 
-INSERT INTO `t1_1_2` (`Uname`, `Prog_code`, `Prog_name`, `Year`, `Percent`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_1_2` (`Username`, `Prog_code`, `Prog_name`, `Year`, `Percent`, `Link`, `id_time`) VALUES
 ('imsdavv', 'MS5G', 'MBA(HA) 2YR', 'July 14 - June 15', 5, 'SCANNED COPY ', 'id1540140563928'),
 ('imsdavv', 'MS5B', 'MBA(DM)', 'July 14 - June 15', 5, 'SCANNED COPY ', 'id1540140543096'),
 ('imsdavv', 'MS5F', 'MBA(ECOMM)2YR', 'July 14 - June 15', 5, 'SCANNED COPY ', 'id1540140510657'),
@@ -915,7 +915,7 @@ INSERT INTO `t1_1_2` (`Uname`, `Prog_code`, `Prog_name`, `Year`, `Percent`, `Lin
 --
 
 CREATE TABLE IF NOT EXISTS `t1_1_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -930,7 +930,7 @@ CREATE TABLE IF NOT EXISTS `t1_1_3` (
 -- Dumping data for table `t1_1_3`
 --
 
-INSERT INTO `t1_1_3` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Description`, `Year`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_1_3` (`Username`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Description`, `Year`, `Link`, `id_time`) VALUES
 ('imsdavv', 'MS5A', 'MBA(FT)', 'FT 301 C', 'Entrepreneurship and New Ventures', 'Case Study, Projects, Internship', 'July 16 - June 17', 'SCANNED COPY', 'id1540141304436'),
 ('imsdavv', 'MS5A', 'MBA(FT)', 'FT 104 C', 'BUSINESS ETHICS AND MANAGEMENT BY INDIAN VALUES', 'Case Study, Projects, Internship', 'July 16 - June 17', 'SCANNED COPY', 'id1540141248292'),
 ('somath', 'MT5A', 'M.Sc.(Mathematics)', 'M302', 'Linear Programming I', 'Problem solving', 'Feb 14 - June 14', 'http://www.math.dauniv.ac.in/syllabus.php', 'id1540469497224'),
@@ -956,7 +956,7 @@ INSERT INTO `t1_1_3` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_
 --
 
 CREATE TABLE IF NOT EXISTS `t1_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -970,7 +970,7 @@ CREATE TABLE IF NOT EXISTS `t1_2_1` (
 -- Dumping data for table `t1_2_1`
 --
 
-INSERT INTO `t1_2_1` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Year`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_2_1` (`Username`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Year`, `Link`, `id_time`) VALUES
 ('imsdavv', 'MS5A', 'MBA(FT)', 'FT 104 C', 'BUSINESS ETHICS AND MANAGEMENT BY INDIAN VALUES', 'Feb 14 - June 14', 'SCANNED COPY', 'id1540226348100'),
 ('somath', 'MT5A', 'M.Sc.(Mathematics)', 'M305', 'Mathematical Modelling I', 'July 15 - June 16', 'http://www.math.dauniv.ac.in/MATHEMATICAL MODELING-CBCS-sem III.pdf', 'id1540469791285'),
 ('somath', 'MT5A', 'M.Sc.(Mathematics)', 'M405', 'Mathematical Modelling II', 'July 15 - June 16', 'http://www.math.dauniv.ac.in/M405MathematicalModelling.pdf', 'id1540469798365'),
@@ -1009,7 +1009,7 @@ INSERT INTO `t1_2_1` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_
 --
 
 CREATE TABLE IF NOT EXISTS `t1_2_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Type` varchar(20) DEFAULT NULL,
@@ -1022,7 +1022,7 @@ CREATE TABLE IF NOT EXISTS `t1_2_2` (
 -- Dumping data for table `t1_2_2`
 --
 
-INSERT INTO `t1_2_2` (`Uname`, `Prog_code`, `Prog_name`, `Type`, `Year`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_2_2` (`Username`, `Prog_code`, `Prog_name`, `Type`, `Year`, `Link`, `id_time`) VALUES
 ('sopedu', 'PE5A', 'M.P.Ed.', 'Elective', 'July 15 - June 16', 'http://www.sope.davv.ac.in/mpecourse.aspx', 'idid1539853860162'),
 ('sopedu', 'PE4A', 'B.P.E.S.', 'Elective', 'Feb 14 - June 14', 'http://www.sope.davv.ac.in/coursebpe.aspx', 'idid1539853358114'),
 ('sostat', 'ST5A', 'M.Sc. Statistics', 'CBCS', 'July 15 - June 16', 'http://uid.dauniv.ac.in/NAC/profile/docs/22-10-2018_16-24-55M.SC Syllabus stat. 2015-16 Choice Based Credit SystemCore Courses_2.pdf', 'id1540162660396'),
@@ -1044,7 +1044,7 @@ INSERT INTO `t1_2_2` (`Uname`, `Prog_code`, `Prog_name`, `Type`, `Year`, `Link`,
 --
 
 CREATE TABLE IF NOT EXISTS `t1_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` text,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1054,7 +1054,7 @@ CREATE TABLE IF NOT EXISTS `t1_3_1` (
 -- Dumping data for table `t1_3_1`
 --
 
-INSERT INTO `t1_3_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t1_3_1` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('imsdavv', 'PROCESS+OF+COLLECTION+OF+DATA+IS+GOING+ON+', '', 'SCANNED COPY');
 
 -- --------------------------------------------------------
@@ -1064,7 +1064,7 @@ INSERT INTO `t1_3_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `t1_3_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -1082,7 +1082,7 @@ CREATE TABLE IF NOT EXISTS `t1_3_2` (
 -- Dumping data for table `t1_3_2`
 --
 
-INSERT INTO `t1_3_2` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Year_offering`, `Frequency_in_year`, `Year_discontinuation`, `Number_of_students_offered`, `Number_of_students_completing`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_3_2` (`Username`, `Prog_code`, `Prog_name`, `Course_code`, `Course_name`, `Year_offering`, `Frequency_in_year`, `Year_discontinuation`, `Number_of_students_offered`, `Number_of_students_completing`, `Link`, `id_time`) VALUES
 ('imsdavv', 'MS5A', '', 'FT 104 C', 'BUSINESS ETHICS AND MANAGEMENT BY INDIAN VALUES', 'July 14 - June 15', 1, 'Still Continuing', 120, 118, 'SCANNED COPY', 'id1540226065791'),
 ('imsdavv', 'MS5B', '', 'DM 303 C', 'Healthcare Services in Disaster Management', 'July 16 - June 17', 1, 'Still Continuing', 14, 14, 'SCANNED COPY', 'id1540226133293');
 
@@ -1093,7 +1093,7 @@ INSERT INTO `t1_3_2` (`Uname`, `Prog_code`, `Prog_name`, `Course_code`, `Course_
 --
 
 CREATE TABLE IF NOT EXISTS `t1_3_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Year` varchar(30) DEFAULT NULL,
@@ -1107,7 +1107,7 @@ CREATE TABLE IF NOT EXISTS `t1_3_4` (
 -- Dumping data for table `t1_3_4`
 --
 
-INSERT INTO `t1_3_4` (`Uname`, `Prog_code`, `Prog_name`, `Year`, `Number_of_students_programme`, `Number_of_students_internship`, `Link`, `id_time`) VALUES
+INSERT INTO `t1_3_4` (`Username`, `Prog_code`, `Prog_name`, `Year`, `Number_of_students_programme`, `Number_of_students_internship`, `Link`, `id_time`) VALUES
 ('sopedu', 'PE5A', 'M.P.Ed.', 'July 18 - June 19', 23, 23, 'http://uid.dauniv.ac.in/NAC/profile/docs/26-10-2018_10-30-101.2.2 MPEd Scheme Syllabus UTD New 2016 17.pdf', 'idid1539853994867'),
 ('imsdavv', 'MS5A', 'MBA(FT)', 'July 17 - June 18', 120, 118, 'SCANNED COPY', 'id1540226207762');
 
@@ -1162,7 +1162,7 @@ INSERT INTO `t1_4_2` (`Username`, `opt`, `url`, `id_time`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `t2_1_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -1179,7 +1179,7 @@ CREATE TABLE IF NOT EXISTS `t2_1_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_1_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -1195,7 +1195,7 @@ CREATE TABLE IF NOT EXISTS `t2_1_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_1_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -1219,7 +1219,7 @@ CREATE TABLE IF NOT EXISTS `t2_1_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1232,7 +1232,7 @@ CREATE TABLE IF NOT EXISTS `t2_2_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_2_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -1251,7 +1251,7 @@ CREATE TABLE IF NOT EXISTS `t2_2_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_2_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Name_of_student` varchar(100) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `UDID_card_number` varchar(50) NOT NULL,
@@ -1272,7 +1272,7 @@ CREATE TABLE IF NOT EXISTS `t2_2_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1285,7 +1285,7 @@ CREATE TABLE IF NOT EXISTS `t2_3_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Number_of_teachers_using_ICT` int(11) NOT NULL,
   `Teacher_number` int(11) NOT NULL,
   `ICT_tools` varchar(100) NOT NULL,
@@ -1302,7 +1302,7 @@ CREATE TABLE IF NOT EXISTS `t2_3_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_3_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Student_number` int(11) NOT NULL,
   `Full_time_teacher` int(11) NOT NULL,
@@ -1317,7 +1317,7 @@ CREATE TABLE IF NOT EXISTS `t2_3_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_4_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
   `Designation` varchar(30) NOT NULL,
@@ -1334,7 +1334,7 @@ CREATE TABLE IF NOT EXISTS `t2_4_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_4_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `PHD_Teacher` int(11) NOT NULL,
   `Teacher` int(11) NOT NULL,
@@ -1348,7 +1348,7 @@ CREATE TABLE IF NOT EXISTS `t2_4_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_4_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
   `Designation` varchar(30) NOT NULL,
@@ -1364,7 +1364,7 @@ CREATE TABLE IF NOT EXISTS `t2_4_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_4_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
@@ -1380,7 +1380,7 @@ CREATE TABLE IF NOT EXISTS `t2_4_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_4_5` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(50) NOT NULL,
   `State` varchar(30) NOT NULL,
@@ -1396,7 +1396,7 @@ CREATE TABLE IF NOT EXISTS `t2_4_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_5_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(50) NOT NULL,
   `Sem` varchar(30) NOT NULL,
@@ -1412,7 +1412,7 @@ CREATE TABLE IF NOT EXISTS `t2_5_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_5_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Complaint_no` int(11) NOT NULL,
   `Total_students` int(11) NOT NULL,
@@ -1426,7 +1426,7 @@ CREATE TABLE IF NOT EXISTS `t2_5_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_5_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `No_of_application_recieved_for_reevaluation` int(11) NOT NULL,
   `Total_students` int(11) NOT NULL,
@@ -1441,7 +1441,7 @@ CREATE TABLE IF NOT EXISTS `t2_5_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_5_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1454,7 +1454,7 @@ CREATE TABLE IF NOT EXISTS `t2_5_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_5_5` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `v1` varchar(20) NOT NULL,
   `v2` varchar(20) NOT NULL,
   `v3` varchar(20) NOT NULL,
@@ -1470,7 +1470,7 @@ CREATE TABLE IF NOT EXISTS `t2_5_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_6_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1483,7 +1483,7 @@ CREATE TABLE IF NOT EXISTS `t2_6_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_6_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -1496,7 +1496,7 @@ CREATE TABLE IF NOT EXISTS `t2_6_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_6_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Total_Students` int(11) DEFAULT NULL,
@@ -1512,7 +1512,7 @@ CREATE TABLE IF NOT EXISTS `t2_6_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t2_7_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Student_Name` varchar(100) NOT NULL,
   `Gender` varchar(20) NOT NULL,
   `Category` varchar(20) NOT NULL,
@@ -2027,7 +2027,7 @@ CREATE TABLE IF NOT EXISTS `t3_7_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_1_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(500) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL
@@ -2040,7 +2040,7 @@ CREATE TABLE IF NOT EXISTS `t4_1_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_1_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(100) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2053,7 +2053,7 @@ CREATE TABLE IF NOT EXISTS `t4_1_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_1_3` (
-  `uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `totalc` int(11) NOT NULL,
   `totals` int(11) NOT NULL,
   `lcd` int(50) NOT NULL,
@@ -2068,7 +2068,7 @@ CREATE TABLE IF NOT EXISTS `t4_1_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_1_4` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `budgeta` int(100) NOT NULL,
   `budgetu` int(100) NOT NULL,
   `yeara` varchar(100) NOT NULL,
@@ -2082,7 +2082,7 @@ CREATE TABLE IF NOT EXISTS `t4_1_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `nameil` varchar(100) NOT NULL,
   `nature` varchar(100) NOT NULL,
   `version` varchar(100) NOT NULL,
@@ -2097,7 +2097,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `nameb` varchar(100) NOT NULL,
   `namep` varchar(100) NOT NULL,
   `nameau` varchar(100) NOT NULL,
@@ -2113,7 +2113,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `mem` varchar(100) NOT NULL,
   `sub` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -2133,7 +2133,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_4` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `books` varchar(100) NOT NULL,
   `journals` varchar(100) NOT NULL,
   `year` varchar(100) NOT NULL,
@@ -2149,7 +2149,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_5` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `ereso` varchar(100) NOT NULL,
   `det` varchar(100) NOT NULL,
   `raccess` varchar(100) NOT NULL,
@@ -2163,7 +2163,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_6` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `last` varchar(100) NOT NULL,
   `method` varchar(100) NOT NULL,
   `users` int(11) NOT NULL,
@@ -2178,7 +2178,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_6` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_2_7` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `teacher` varchar(100) NOT NULL,
   `module` varchar(100) NOT NULL,
   `platform` varchar(100) NOT NULL,
@@ -2194,7 +2194,7 @@ CREATE TABLE IF NOT EXISTS `t4_2_7` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_3_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(1000) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2207,7 +2207,7 @@ CREATE TABLE IF NOT EXISTS `t4_3_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_3_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `numbers` int(100) NOT NULL,
   `numberc` int(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -2219,7 +2219,7 @@ CREATE TABLE IF NOT EXISTS `t4_3_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_3_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `choice_433` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -2230,7 +2230,7 @@ CREATE TABLE IF NOT EXISTS `t4_3_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_3_4` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `namee` varchar(100) NOT NULL,
   `linkm` varchar(100) NOT NULL,
   `id_time` varchar(100) NOT NULL
@@ -2243,7 +2243,7 @@ CREATE TABLE IF NOT EXISTS `t4_3_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_4_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `ass_budget_academic` varchar(100) NOT NULL,
   `expenditure_academic` varchar(100) NOT NULL,
@@ -2259,7 +2259,7 @@ CREATE TABLE IF NOT EXISTS `t4_4_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t4_4_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2272,7 +2272,7 @@ CREATE TABLE IF NOT EXISTS `t4_4_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `name_of_scheme` varchar(200) NOT NULL,
   `number_of_students_benefited_govt_scheme` int(10) NOT NULL,
@@ -2286,7 +2286,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `name_of_scheme` varchar(1000) NOT NULL,
   `number_of_student_benefited` int(20) NOT NULL,
@@ -2300,7 +2300,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `name_of_capability_enhancement_scheme` varchar(100) NOT NULL,
   `year_of_implementation` varchar(30) NOT NULL,
   `number_of_students_enrolled` int(11) NOT NULL,
@@ -2316,7 +2316,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_4` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `name_of_scheme` varchar(100) NOT NULL,
   `number_of_benefited_students_by_guidance_for_competitive_exam` int(10) NOT NULL,
@@ -2333,7 +2333,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_5` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `FIle_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2346,7 +2346,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_1_6` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(50) NOT NULL,
   `number_of_grievances_appealed` int(30) NOT NULL,
   `number_of_grievances_redressed` int(30) NOT NULL,
@@ -2361,7 +2361,7 @@ CREATE TABLE IF NOT EXISTS `t5_1_6` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_2_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `program_graduated_from` varchar(100) NOT NULL,
   `prog_name` varchar(1000) NOT NULL,
@@ -2378,7 +2378,7 @@ CREATE TABLE IF NOT EXISTS `t5_2_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_2_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `number_students_enrolled_higher_education` int(10) NOT NULL,
   `program_graduated_from` varchar(100) NOT NULL,
@@ -2395,7 +2395,7 @@ CREATE TABLE IF NOT EXISTS `t5_2_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_2_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `rollnumber` varchar(10000) NOT NULL,
   `exam` varchar(100) NOT NULL,
@@ -2409,7 +2409,7 @@ CREATE TABLE IF NOT EXISTS `t5_2_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_3_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `award_medal` varchar(100) NOT NULL,
   `national_international` varchar(20) NOT NULL,
@@ -2426,7 +2426,7 @@ CREATE TABLE IF NOT EXISTS `t5_3_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_3_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(1000) NOT NULL
@@ -2439,7 +2439,7 @@ CREATE TABLE IF NOT EXISTS `t5_3_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_3_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `name_of_activity` varchar(1000) NOT NULL,
   `id_time` varchar(100) NOT NULL
@@ -2452,7 +2452,7 @@ CREATE TABLE IF NOT EXISTS `t5_3_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_4_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2465,7 +2465,7 @@ CREATE TABLE IF NOT EXISTS `t5_4_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_4_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `name_of_alums_alumni_association` varchar(1000) NOT NULL,
   `aadar_pan` varchar(1000) NOT NULL,
   `year_of_graduation` varchar(100) NOT NULL,
@@ -2482,7 +2482,7 @@ CREATE TABLE IF NOT EXISTS `t5_4_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t5_4_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `date_fo_meetings` varchar(1000) NOT NULL,
   `numbers_of_members_attended` int(30) NOT NULL,
@@ -2497,7 +2497,7 @@ CREATE TABLE IF NOT EXISTS `t5_4_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_1_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2510,7 +2510,7 @@ CREATE TABLE IF NOT EXISTS `t6_1_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_1_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2523,7 +2523,7 @@ CREATE TABLE IF NOT EXISTS `t6_1_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2536,7 +2536,7 @@ CREATE TABLE IF NOT EXISTS `t6_2_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_2_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2549,7 +2549,7 @@ CREATE TABLE IF NOT EXISTS `t6_2_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_2_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `PD_C` varchar(100) NOT NULL,
   `PD_Y` varchar(100) NOT NULL,
   `AD_C` varchar(100) NOT NULL,
@@ -2570,7 +2570,7 @@ CREATE TABLE IF NOT EXISTS `t6_2_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_2_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2583,7 +2583,7 @@ CREATE TABLE IF NOT EXISTS `t6_2_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2596,7 +2596,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(100) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
@@ -2613,7 +2613,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Sno` varchar(100) NOT NULL,
   `Title_teaching` varchar(100) NOT NULL,
@@ -2631,7 +2631,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_3_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Title_teaching` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -2647,7 +2647,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_3_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Title_non_teaching` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -2663,7 +2663,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_3_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_number` varchar(100) NOT NULL,
   `Title` varchar(100) NOT NULL,
@@ -2679,7 +2679,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_3_5` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2692,7 +2692,7 @@ CREATE TABLE IF NOT EXISTS `t6_3_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_4_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2705,7 +2705,7 @@ CREATE TABLE IF NOT EXISTS `t6_4_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_4_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Agency` varchar(100) NOT NULL,
   `Fund` varchar(100) NOT NULL,
@@ -2720,7 +2720,7 @@ CREATE TABLE IF NOT EXISTS `t6_4_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_4_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2733,7 +2733,7 @@ CREATE TABLE IF NOT EXISTS `t6_4_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_5_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2746,7 +2746,7 @@ CREATE TABLE IF NOT EXISTS `t6_5_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_5_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2759,7 +2759,7 @@ CREATE TABLE IF NOT EXISTS `t6_5_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_5_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Quality_name` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -2776,7 +2776,7 @@ CREATE TABLE IF NOT EXISTS `t6_5_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_5_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `t1` varchar(100) NOT NULL,
   `t2` varchar(30) NOT NULL,
@@ -2793,7 +2793,7 @@ CREATE TABLE IF NOT EXISTS `t6_5_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t6_5_5` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -2806,7 +2806,7 @@ CREATE TABLE IF NOT EXISTS `t6_5_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `year` varchar(100) NOT NULL,
   `titlep` varchar(100) NOT NULL,
   `datef` varchar(100) NOT NULL,
@@ -2823,7 +2823,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_2` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(100) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2836,7 +2836,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_2` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `powerreq` varchar(100) NOT NULL,
   `powert` varchar(100) NOT NULL,
   `ren` varchar(100) NOT NULL,
@@ -2851,7 +2851,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_3` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_4` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `tl` varchar(100) NOT NULL,
   `led` decimal(10,0) NOT NULL,
   `ls` decimal(10,0) NOT NULL
@@ -2864,7 +2864,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_4` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_5` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(500) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2877,7 +2877,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_5` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_6` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(500) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2890,7 +2890,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_6` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_7` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(500) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -2903,7 +2903,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_7` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_8` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `budget_green` varchar(100) NOT NULL,
   `expenditure_green` varchar(100) NOT NULL,
@@ -2918,7 +2918,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_8` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_9` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `pf` varchar(100) NOT NULL,
   `lift` varchar(100) NOT NULL,
   `ramp` varchar(100) NOT NULL,
@@ -2938,7 +2938,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_9` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_10` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `name` varchar(1000) NOT NULL,
   `date_from` varchar(1000) NOT NULL,
@@ -2955,7 +2955,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_10` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_11` (
-  `Uname` varchar(1000) NOT NULL,
+  `Username` varchar(1000) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `name` varchar(1000) NOT NULL,
   `date_from` varchar(30) NOT NULL,
@@ -2972,7 +2972,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_11` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_12` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `yes_no` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -2984,7 +2984,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_12` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_13` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `yes_no` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -2996,7 +2996,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_13` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_14` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `sno` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
@@ -3014,7 +3014,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_14` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_15` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `yes_no` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -3026,7 +3026,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_15` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_16` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `yes_no` varchar(10) NOT NULL,
   `link` varchar(500) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -3038,7 +3038,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_16` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_17` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Year` varchar(100) NOT NULL,
   `name_of_activity` varchar(500) NOT NULL,
   `date_from` varchar(30) NOT NULL,
@@ -3054,7 +3054,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_17` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_18` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -3067,7 +3067,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_18` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_1_19` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(100) NOT NULL,
   `Link` varchar(100) NOT NULL
@@ -3080,7 +3080,7 @@ CREATE TABLE IF NOT EXISTS `t7_1_19` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_2_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `title` varchar(5000) NOT NULL,
   `objective` varchar(5000) NOT NULL,
   `context` varchar(5000) NOT NULL,
@@ -3098,7 +3098,7 @@ CREATE TABLE IF NOT EXISTS `t7_2_1` (
 --
 
 CREATE TABLE IF NOT EXISTS `t7_3_1` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Description` varchar(1000) NOT NULL,
   `File_name` varchar(1000) NOT NULL,
   `Link` varchar(1000) NOT NULL

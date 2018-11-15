@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `t6_1_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -40,7 +40,7 @@ CREATE TABLE `t6_1_1` (
 --
 
 CREATE TABLE `t6_1_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -53,7 +53,7 @@ CREATE TABLE `t6_1_2` (
 --
 
 CREATE TABLE `t6_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -66,7 +66,7 @@ CREATE TABLE `t6_2_1` (
 --
 
 CREATE TABLE `t6_2_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -79,7 +79,7 @@ CREATE TABLE `t6_2_2` (
 --
 
 CREATE TABLE `t6_2_3` (
-  `Uname` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `PD_C` varchar(100) NOT NULL,
   `PD_Y` varchar(100) NOT NULL,
   `AD_C` varchar(100) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `t6_2_3` (
 --
 
 CREATE TABLE `t6_2_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -110,7 +110,7 @@ CREATE TABLE `t6_2_4` (
 -- Dumping data for table `t6_2_4`
 --
 
-INSERT INTO `t6_2_4` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_2_4` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', 'flds', '', '');
 
 -- --------------------------------------------------------
@@ -120,7 +120,7 @@ INSERT INTO `t6_2_4` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -130,7 +130,7 @@ CREATE TABLE `t6_3_1` (
 -- Dumping data for table `t6_3_1`
 --
 
-INSERT INTO `t6_3_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_3_1` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', '', '', '');
 
 -- --------------------------------------------------------
@@ -140,7 +140,7 @@ INSERT INTO `t6_3_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_name` varchar(100) NOT NULL,
   `Pan_no` varchar(30) NOT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE `t6_3_2` (
 -- Dumping data for table `t6_3_2`
 --
 
-INSERT INTO `t6_3_2` (`Uname`, `Year`, `Teacher_name`, `Pan_no`, `conference_name`, `proffessional_body_name`, `amount`, `id_time`) VALUES
+INSERT INTO `t6_3_2` (`Username`, `Year`, `Teacher_name`, `Pan_no`, `conference_name`, `proffessional_body_name`, `amount`, `id_time`) VALUES
 ('admin1', 'July 17 - June 18', 'Ram', 'QWSMA1324', 'dnlwkla', 'dlakdnadk', 1322, 'id1523157446608');
 
 -- --------------------------------------------------------
@@ -164,7 +164,7 @@ INSERT INTO `t6_3_2` (`Uname`, `Year`, `Teacher_name`, `Pan_no`, `conference_nam
 --
 
 CREATE TABLE `t6_3_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Sno` varchar(100) NOT NULL,
   `Title_teaching` varchar(100) NOT NULL,
@@ -179,7 +179,7 @@ CREATE TABLE `t6_3_3` (
 -- Dumping data for table `t6_3_3`
 --
 
-INSERT INTO `t6_3_3` (`Uname`, `Year`, `Sno`, `Title_teaching`, `Title_non_teaching`, `Dates_from_to`, `Participants_no_teach`, `Participants_no_non_teach`, `id_time`) VALUES
+INSERT INTO `t6_3_3` (`Username`, `Year`, `Sno`, `Title_teaching`, `Title_non_teaching`, `Dates_from_to`, `Participants_no_teach`, `Participants_no_non_teach`, `id_time`) VALUES
 ('admin1', 'July 18 - June 19', '1', 'saklLKSND', 'KDNL', 'KNCKL', 39, 9, 'idididid1523159485270'),
 ('admin1', 'July 14 - June 15', '2', 'DNSF', 'KFSK', 'KNDF', 32, 4, 'ididid1523159576580'),
 ('admin1', 'July 17 - June 18', '3', 'ASN', 'KDLKSN', 'KNDLSN', 34, 53, 'idid1523159609487'),
@@ -193,7 +193,7 @@ INSERT INTO `t6_3_3` (`Uname`, `Year`, `Sno`, `Title_teaching`, `Title_non_teach
 --
 
 CREATE TABLE `t6_3_3_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Title_teaching` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE `t6_3_3_1` (
 -- Dumping data for table `t6_3_3_1`
 --
 
-INSERT INTO `t6_3_3_1` (`Uname`, `Year`, `Title_teaching`, `Date_from`, `Date_to`, `Participants_no_teach`, `id_time`) VALUES
+INSERT INTO `t6_3_3_1` (`Username`, `Year`, `Title_teaching`, `Date_from`, `Date_to`, `Participants_no_teach`, `id_time`) VALUES
 ('admin1', 'Feb 14 - June 14', 'NSS1', '2018-04-09', '2018-04-15', 12, 'ididididididididididididididididid1523548278750'),
 ('admin1', 'July 16 - June 17', 'TEST2', '2018-04-02', '2018-04-03', 101, 'idididididididididididididididid1523548613326');
 
@@ -217,7 +217,7 @@ INSERT INTO `t6_3_3_1` (`Uname`, `Year`, `Title_teaching`, `Date_from`, `Date_to
 --
 
 CREATE TABLE `t6_3_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Title_non_teaching` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -230,7 +230,7 @@ CREATE TABLE `t6_3_3_2` (
 -- Dumping data for table `t6_3_3_2`
 --
 
-INSERT INTO `t6_3_3_2` (`Uname`, `Year`, `Title_non_teaching`, `Date_from`, `Date_to`, `Participants_no_non_teach`, `id_time`) VALUES
+INSERT INTO `t6_3_3_2` (`Username`, `Year`, `Title_non_teaching`, `Date_from`, `Date_to`, `Participants_no_non_teach`, `id_time`) VALUES
 ('admin1', 'July 14 - June 15', 'jhdj', '2018-04-19', '2018-04-19', 382, 'ididididid1523554429775');
 
 -- --------------------------------------------------------
@@ -240,7 +240,7 @@ INSERT INTO `t6_3_3_2` (`Uname`, `Year`, `Title_non_teaching`, `Date_from`, `Dat
 --
 
 CREATE TABLE `t6_3_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Teacher_number` varchar(100) NOT NULL,
   `Title` varchar(100) NOT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE `t6_3_4` (
 -- Dumping data for table `t6_3_4`
 --
 
-INSERT INTO `t6_3_4` (`Uname`, `Year`, `Teacher_number`, `Title`, `Dates_from`, `Date_to`, `id_time`) VALUES
+INSERT INTO `t6_3_4` (`Username`, `Year`, `Teacher_number`, `Title`, `Dates_from`, `Date_to`, `id_time`) VALUES
 ('admin1', 'July 14 - June 15', '12', 'GOOGLE', '2018-04-02', '2018-04-03', 'idididid1523550996678'),
 ('admin1', 'Feb 14 - June 14', '21', 'FB', '2018-04-11', '2018-04-24', 'ididid1523551202288');
 
@@ -264,7 +264,7 @@ INSERT INTO `t6_3_4` (`Uname`, `Year`, `Teacher_number`, `Title`, `Dates_from`, 
 --
 
 CREATE TABLE `t6_3_5` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -274,7 +274,7 @@ CREATE TABLE `t6_3_5` (
 -- Dumping data for table `t6_3_5`
 --
 
-INSERT INTO `t6_3_5` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_3_5` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', '', '', '');
 
 -- --------------------------------------------------------
@@ -284,7 +284,7 @@ INSERT INTO `t6_3_5` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_4_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -294,7 +294,7 @@ CREATE TABLE `t6_4_1` (
 -- Dumping data for table `t6_4_1`
 --
 
-INSERT INTO `t6_4_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_4_1` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', 'OFO CYCLE', '', '');
 
 -- --------------------------------------------------------
@@ -304,7 +304,7 @@ INSERT INTO `t6_4_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_4_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Agency` varchar(100) NOT NULL,
   `Fund` varchar(100) NOT NULL,
@@ -316,7 +316,7 @@ CREATE TABLE `t6_4_2` (
 -- Dumping data for table `t6_4_2`
 --
 
-INSERT INTO `t6_4_2` (`Uname`, `Year`, `Agency`, `Fund`, `Initiative`, `id_time`) VALUES
+INSERT INTO `t6_4_2` (`Username`, `Year`, `Agency`, `Fund`, `Initiative`, `id_time`) VALUES
 ('admin1', 'July 17 - June 18', 'OFO', '2.34', 'CYCLE', 'id1523162153624');
 
 -- --------------------------------------------------------
@@ -326,7 +326,7 @@ INSERT INTO `t6_4_2` (`Uname`, `Year`, `Agency`, `Fund`, `Initiative`, `id_time`
 --
 
 CREATE TABLE `t6_4_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -336,7 +336,7 @@ CREATE TABLE `t6_4_3` (
 -- Dumping data for table `t6_4_3`
 --
 
-INSERT INTO `t6_4_3` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_4_3` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', '', '', '');
 
 -- --------------------------------------------------------
@@ -346,7 +346,7 @@ INSERT INTO `t6_4_3` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_5_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -356,7 +356,7 @@ CREATE TABLE `t6_5_1` (
 -- Dumping data for table `t6_5_1`
 --
 
-INSERT INTO `t6_5_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_5_1` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', '', '', '');
 
 -- --------------------------------------------------------
@@ -366,7 +366,7 @@ INSERT INTO `t6_5_1` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_5_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -376,7 +376,7 @@ CREATE TABLE `t6_5_2` (
 -- Dumping data for table `t6_5_2`
 --
 
-INSERT INTO `t6_5_2` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_5_2` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', '', '', '');
 
 -- --------------------------------------------------------
@@ -386,7 +386,7 @@ INSERT INTO `t6_5_2` (`Uname`, `Description`, `File_name`, `Link`) VALUES
 --
 
 CREATE TABLE `t6_5_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Quality_name` varchar(100) NOT NULL,
   `Date_from` varchar(30) NOT NULL,
@@ -400,7 +400,7 @@ CREATE TABLE `t6_5_3` (
 -- Dumping data for table `t6_5_3`
 --
 
-INSERT INTO `t6_5_3` (`Uname`, `Year`, `Quality_name`, `Date_from`, `Date_to`, `Duration`, `participant_no`, `id_time`) VALUES
+INSERT INTO `t6_5_3` (`Username`, `Year`, `Quality_name`, `Date_from`, `Date_to`, `Duration`, `participant_no`, `id_time`) VALUES
 ('admin1', 'July 15 - June 16', 'djks', '2018-04-27', '2018-04-19', 389, 2, 'idid1523552892834'),
 ('admin1', 'July 15 - June 16', 'djsnkj', '2018-04-27', '2018-04-29', 3, 122, 'id1523552932875');
 
@@ -411,7 +411,7 @@ INSERT INTO `t6_5_3` (`Uname`, `Year`, `Quality_name`, `Date_from`, `Date_to`, `
 --
 
 CREATE TABLE `t6_5_4` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `t1` varchar(100) NOT NULL,
   `t2` varchar(30) NOT NULL,
@@ -425,7 +425,7 @@ CREATE TABLE `t6_5_4` (
 -- Dumping data for table `t6_5_4`
 --
 
-INSERT INTO `t6_5_4` (`Uname`, `Year`, `t1`, `t2`, `t3`, `t4`, `t5`, `id_time`) VALUES
+INSERT INTO `t6_5_4` (`Username`, `Year`, `t1`, `t2`, `t3`, `t4`, `t5`, `id_time`) VALUES
 ('admin1', 'July 15 - June 16', 'Yes', 'No', 'No', 'No', 'No', 'id1523166090035');
 
 -- --------------------------------------------------------
@@ -435,7 +435,7 @@ INSERT INTO `t6_5_4` (`Uname`, `Year`, `t1`, `t2`, `t3`, `t4`, `t5`, `id_time`) 
 --
 
 CREATE TABLE `t6_5_5` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -445,7 +445,7 @@ CREATE TABLE `t6_5_5` (
 -- Dumping data for table `t6_5_5`
 --
 
-INSERT INTO `t6_5_5` (`Uname`, `Description`, `File_name`, `Link`) VALUES
+INSERT INTO `t6_5_5` (`Username`, `Description`, `File_name`, `Link`) VALUES
 ('admin1', 'BALA GURU SWAMI C  ', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

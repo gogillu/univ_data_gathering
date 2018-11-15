@@ -9,6 +9,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    rowss="";
+  </script>
+
 <link rel="icon" href="logo.png">
 <title>Data Capturing System NAAC A & A 2019</title>
 
@@ -92,7 +96,8 @@
                 }
             };
             xhttp.open("GET", "fetch_academic_year.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function fetch_academic_year_dis_cont(x, val = "none"){
@@ -108,7 +113,8 @@
                 }
             };
             xhttp.open("GET", "fetch_academic_year_dis_cont.php", true);
-            xhttp.send();
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         }
 
         function get_time(){
@@ -321,10 +327,10 @@
         <div class="col-sm-1"></div>
     </div>
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"> <?php echo strtoupper($_SESSION['name']);?>   </h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;">
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"> <?php echo strtoupper($_SESSION['name']);?>   </h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;">
 
 <style>
 
@@ -414,13 +420,13 @@
                 }
 
                 console.log(ta+"\n"+link);
-               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
+               var rowss = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d311").slideToggle("slow");
                                rotate("tg311");
 
@@ -432,8 +438,9 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_1_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         		function fetch_rows_311()
@@ -454,7 +461,8 @@
          			       };
 
           			   			 xhttp.open("GET", "fetch311.php?table=t3_1_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
             function fetch_rows_311_link()
@@ -475,7 +483,8 @@
          			       };
 
           			   			 xhttp.open("GET", "fetch311_link.php?table=t3_1_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
 
@@ -604,14 +613,15 @@ related to research promotion policy adoption
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d312").slideToggle("slow");
                                rotate("tg312");
                                num_rows("tab312","ch312");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_1_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -639,7 +649,8 @@ related to research promotion policy adoption
                     num_rows("tab312","ch312");
         		};
           			   			 xhttp.open("GET", "fetch312.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -773,14 +784,15 @@ indicating seed money provided and utilized
 
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d313").slideToggle("slow");
                                rotate("tg313");
                                num_rows("tab313","ch313");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_1_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -809,7 +821,8 @@ indicating seed money provided and utilized
                     num_rows("tab313","ch313");
         		};
           			   			 xhttp.open("GET", "fetch313.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -944,14 +957,15 @@ indicating seed money provided and utilized
 
          			       if (this.readyState == 4 && this.status == 200) {
                                //alert(this.responsetext);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d314").slideToggle("slow");
                                rotate("tg314");
                                num_rows("tab314","ch314");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_1_4", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_4", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -979,7 +993,8 @@ indicating seed money provided and utilized
                     num_rows("tab314","ch314");
         		};
           			   			 xhttp.open("GET", "fetch314.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1115,14 +1130,15 @@ indicating seed money provided and utilized
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d315").slideToggle("slow");
                                rotate("tg315");
                                num_rows("tab315","ch315");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_1_5", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_5", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1151,7 +1167,8 @@ indicating seed money provided and utilized
                     num_rows("tab315","ch315");
         		};
           			   			 xhttp.open("GET", "fetch315.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1295,14 +1312,15 @@ establishment
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d316").slideToggle("slow");
                                rotate("tg316");
                                num_rows("tab316","ch316");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_1_6", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_1_6", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1330,7 +1348,8 @@ establishment
                     num_rows("tab316","ch316");
         		};
           			   			 xhttp.open("GET", "fetch316.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1468,14 +1487,15 @@ establishment
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d322").slideToggle("slow");
                                rotate("tg322");
                                num_rows("tab322","ch322");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_2_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_2_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1503,7 +1523,8 @@ establishment
                     num_rows("tab322","ch322");
         		};
           			   			 xhttp.open("GET", "fetch322.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1644,14 +1665,15 @@ non-government
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d323").slideToggle("slow");
                                rotate("tg323");
                                num_rows("tab323","ch323");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_2_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_2_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -1679,7 +1701,8 @@ non-government
                     num_rows("tab323","ch323");
         		};
           			   			 xhttp.open("GET", "fetch323.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -1786,13 +1809,13 @@ non-government
                 link = escapeHtml(link);
 
                 //console.log(ta+"\n"+link);
-                var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
+                var rowss = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d331").slideToggle("slow");
                                rotate("tg331");
 
@@ -1804,8 +1827,9 @@ non-government
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_3_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_3_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         		function fetch_rows_331()
@@ -1826,7 +1850,8 @@ non-government
          			       };
 
           			   			 xhttp.open("GET", "fetch311.php?table=t3_3_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
             function fetch_rows_331_link()
@@ -1847,7 +1872,8 @@ non-government
          			      };
 
           			   			 xhttp.open("GET", "fetch311_link.php?table=t3_3_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -1981,14 +2007,15 @@ knowledge
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d332").slideToggle("slow");
                                rotate("tg332");
                                num_rows("tab332","ch332");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_3_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_3_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2016,7 +2043,8 @@ knowledge
                     num_rows("tab332","ch332");
         		};
           			   			 xhttp.open("GET", "fetch332.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2147,14 +2175,15 @@ knowledge
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d333").slideToggle("slow");
                                rotate("tg333");
                                num_rows("tab333","ch333");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_3_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_3_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2182,7 +2211,8 @@ knowledge
                     num_rows("tab333","ch333");
         		};
           			   			 xhttp.open("GET", "fetch333.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2307,14 +2337,15 @@ knowledge
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d334").slideToggle("slow");
                                rotate("tg334");
                                num_rows("tab334","ch334");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_3_4", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_3_4", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2342,7 +2373,8 @@ knowledge
                     num_rows("tab334","ch334");
         		};
           			   			 xhttp.open("GET", "fetch334.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2469,14 +2501,15 @@ commencement etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d341").slideToggle("slow");
                                rotate("tg341");
                                num_rows("tab341","ch341");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2504,7 +2537,8 @@ commencement etc
                     num_rows("tab341","ch341");
         		};
           			   			 xhttp.open("GET", "fetch341.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2626,14 +2660,15 @@ commencement etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d342").slideToggle("slow");
                                rotate("tg342");
                                num_rows("tab342","ch342");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2661,7 +2696,8 @@ commencement etc
                     num_rows("tab342","ch342");
         		};
           			   			 xhttp.open("GET", "fetch342.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2778,14 +2814,15 @@ commencement etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d343").slideToggle("slow");
                                rotate("tg343");
                                num_rows("tab343","ch343");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2813,7 +2850,8 @@ commencement etc
                     num_rows("tab343","ch343");
         		};
           			   			 xhttp.open("GET", "fetch343.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -2940,14 +2978,15 @@ commencement etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d344").slideToggle("slow");
                                rotate("tg344");
                                num_rows("tab344","ch344");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_4", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_4", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -2975,7 +3014,8 @@ commencement etc
                     num_rows("tab344","ch344");
         		};
           			   			 xhttp.open("GET", "fetch344.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3125,14 +3165,15 @@ thesis, year of award etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d345").slideToggle("slow");
                                rotate("tg345");
                                num_rows("tab345","ch345");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_5", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_5", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3160,7 +3201,8 @@ thesis, year of award etc
                     num_rows("tab345","ch345");
         		};
           			   			 xhttp.open("GET", "fetch345.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3315,14 +3357,15 @@ publication
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d346").slideToggle("slow");
                                rotate("tg346");
                                num_rows("tab346","ch346");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_6", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_6", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3351,7 +3394,8 @@ publication
                     num_rows("tab346","ch346");
         		};
           			   			 xhttp.open("GET", "fetch346.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3496,14 +3540,15 @@ publication
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d347").slideToggle("slow");
                                rotate("tg347");
                                num_rows("tab347","ch347");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_7", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_7", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3532,7 +3577,8 @@ publication
                     num_rows("tab347","ch347");
         		};
           			   			 xhttp.open("GET", "fetch347.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3669,14 +3715,15 @@ publication
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d348").slideToggle("slow");
                                rotate("tg348");
                                num_rows("tab348","ch348");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_4_8", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_8", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3706,7 +3753,8 @@ publication
                     num_rows("tab348","ch348");
         		};
           			   			 xhttp.open("GET", "fetch348.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3816,6 +3864,9 @@ Any additional information
         				{
 
         				var idd = $(rows[i]).attr('id');
+
+                url = escapeHtml(url);
+
         					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','" + url + "','" +  idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
@@ -3828,14 +3879,15 @@ Any additional information
 
          			       if (this.readyState == 4 && this.status == 200) {
                                //console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d351").slideToggle("slow");
                                rotate("tg351");
                                num_rows("tab351","ch351");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_5_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_5_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -3864,7 +3916,8 @@ Any additional information
                     num_rows("tab351","ch351");
         		};
           			   			 xhttp.open("GET", "fetch351.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -3984,14 +4037,15 @@ Management related to consultancy policy
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d352").slideToggle("slow");
                                rotate("tg352");
                                num_rows("tab352","ch352");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_5_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_5_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4020,7 +4074,8 @@ Management related to consultancy policy
                     num_rows("tab352","ch352");
         		};
           			   			 xhttp.open("GET", "fetch352.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4151,14 +4206,15 @@ through consultancy
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d353").slideToggle("slow");
                                rotate("tg353");
                                num_rows("tab353","ch353");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_5_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_5_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4187,7 +4243,8 @@ through consultancy
                     num_rows("tab353","ch353");
         		};
           			   			 xhttp.open("GET", "fetch353.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4291,13 +4348,13 @@ training
                 link = escapeHtml(link);
 
                 //console.log(ta+"\n"+link);
-               var rows = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
+               var rowss = "('"+"<?php echo $_SESSION['username'];?>" + "','" + ata + "','" + link + "','" + ta.id + "');";
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d361").slideToggle("slow");
                                rotate("tg361");
 
@@ -4309,8 +4366,9 @@ training
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rows+"&table=t3_6_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_6_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         		function fetch_rows_361()
@@ -4331,7 +4389,8 @@ training
          			       };
 
           			   			 xhttp.open("GET", "fetch311.php?table=t3_6_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
             function fetch_rows_361_link()
@@ -4352,7 +4411,8 @@ training
          			       };
 
           			   			 xhttp.open("GET", "fetch311_link.php?table=t3_6_1", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
 
         </script>
@@ -4481,14 +4541,15 @@ last five years
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d362").slideToggle("slow");
                                rotate("tg362");
                                num_rows("tab362","ch362");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_6_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_6_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4517,7 +4578,8 @@ last five years
                     num_rows("tab362","ch362");
         		};
           			   			 xhttp.open("GET", "fetch362.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4650,14 +4712,15 @@ e-copy of the award letters
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d363").slideToggle("slow");
                                rotate("tg363");
                                num_rows("tab363","ch363");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_6_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_6_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4686,7 +4749,8 @@ e-copy of the award letters
                     num_rows("tab363","ch363");
         		};
           			   			 xhttp.open("GET", "fetch363.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -4823,14 +4887,15 @@ industry, community etc for the last five years
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d364").slideToggle("slow");
                                rotate("tg364");
                                num_rows("tab364","ch364");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_6_4", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_6_4", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -4859,7 +4924,8 @@ industry, community etc for the last five years
                     num_rows("tab364","ch364");
         		};
           			   			 xhttp.open("GET", "fetch364.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -5021,14 +5087,15 @@ Govt. or NGO etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d371").slideToggle("slow");
                                rotate("tg371");
                                num_rows("tab371","ch371");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_7_1", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_7_1", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -5057,7 +5124,8 @@ Govt. or NGO etc
                     num_rows("tab371","ch371");
         		};
           			   			 xhttp.open("GET", "fetch371.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -5206,14 +5274,15 @@ Govt. or NGO etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d372").slideToggle("slow");
                                rotate("tg372");
                                num_rows("tab372","ch372");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_7_2", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_7_2", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -5242,7 +5311,8 @@ Govt. or NGO etc
                     num_rows("tab372","ch372");
         		};
           			   			 xhttp.open("GET", "fetch372.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -5401,14 +5471,15 @@ Govt. or NGO etc
 
          			       if (this.readyState == 4 && this.status == 200) {
                                console.log(this.responseText);
-                               alert('Changes Saved Successfully');
+                               alert(this.responseText);
                                $("#d373").slideToggle("slow");
                                rotate("tg373");
                                num_rows("tab373","ch373");
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "saveData.php?rows="+rowss+"&table=t3_7_3", true);
-         			   			 xhttp.send();
+          			   			 xhttp.open("POST", "saveData.php?table=t3_7_3", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         		}
         	}
 
@@ -5439,7 +5510,8 @@ Govt. or NGO etc
                     num_rows("tab373","ch373");
         		};
           			   			 xhttp.open("GET", "fetch373.php", true);
-         			   			 xhttp.send();
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
         	}
 		</script>
 
@@ -5541,7 +5613,7 @@ importance, other universities etc. during the last five years
           <?php
 /*
               $connection = mysqli_connect($servername, $username, $password, $dbname);
-          	$query = "Select * from t3_1_1 where Username like '".$_SESSION['username']."';";
+          	$query = "select distinct * from t3_1_1 where Username like '".$_SESSION['username']."';";
           	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
               $row  = $res ->fetch_assoc();
                       //echo $row['Description'];

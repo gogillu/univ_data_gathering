@@ -108,7 +108,7 @@ INSERT INTO `admins` (`username`, `password`, `name`, `sno`) VALUES
 --
 
 CREATE TABLE `course` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
   `Course_name` varchar(100) DEFAULT NULL
@@ -118,7 +118,7 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`Uname`, `Prog_code`, `Course_code`, `Course_name`) VALUES
+INSERT INTO `course` (`Username`, `Prog_code`, `Course_code`, `Course_name`) VALUES
 ('ietdavv', 'BECS', 'CER4C1', 'Discrete Structure'),
 ('ietdavv', 'BECS', 'CER3C1', 'Applied Mathematics-III'),
 ('ietdavv', 'BECS', 'CER4C2', 'Operating System'),
@@ -134,7 +134,7 @@ INSERT INTO `course` (`Uname`, `Prog_code`, `Course_code`, `Course_name`) VALUES
 --
 
 CREATE TABLE `programme` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -143,7 +143,7 @@ CREATE TABLE `programme` (
 -- Dumping data for table `programme`
 --
 
-INSERT INTO `programme` (`Uname`, `Prog_code`, `Prog_name`) VALUES
+INSERT INTO `programme` (`Username`, `Prog_code`, `Prog_name`) VALUES
 ('ietdavv', 'BECS', 'Computer Engineering'),
 ('ietdavv', 'BEIT', 'Information Technology Engineering'),
 ('ietdavv', 'BETC', 'Electronics & Telecommunication Engineering'),
@@ -159,7 +159,7 @@ INSERT INTO `programme` (`Uname`, `Prog_code`, `Prog_name`) VALUES
 --
 
 CREATE TABLE `t1_1_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -172,7 +172,7 @@ CREATE TABLE `t1_1_1` (
 --
 
 CREATE TABLE `t1_1_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Year` varchar(50) DEFAULT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE `t1_1_2` (
 --
 
 CREATE TABLE `t1_1_3` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -202,7 +202,7 @@ CREATE TABLE `t1_1_3` (
 --
 
 CREATE TABLE `t1_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -217,7 +217,7 @@ CREATE TABLE `t1_2_1` (
 --
 
 CREATE TABLE `t1_2_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Type` varchar(20) DEFAULT NULL,
@@ -231,7 +231,7 @@ CREATE TABLE `t1_2_2` (
 --
 
 CREATE TABLE `t1_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -244,7 +244,7 @@ CREATE TABLE `t1_3_1` (
 --
 
 CREATE TABLE `t1_3_2` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Course_code` varchar(30) DEFAULT NULL,
@@ -263,7 +263,7 @@ CREATE TABLE `t1_3_2` (
 --
 
 CREATE TABLE `t1_3_4` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Prog_code` varchar(30) DEFAULT NULL,
   `Prog_name` varchar(100) DEFAULT NULL,
   `Year` varchar(30) DEFAULT NULL,
@@ -277,7 +277,7 @@ CREATE TABLE `t1_3_4` (
 --
 
 CREATE TABLE `t1_4_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -289,7 +289,7 @@ CREATE TABLE `t1_4_1` (
 --
 
 CREATE TABLE `t2_1_1` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Other_state_student_number` int(11) NOT NULL,
   `Other_country_student_number` int(11) NOT NULL
@@ -302,7 +302,7 @@ CREATE TABLE `t2_1_1` (
 --
 
 CREATE TABLE `t2_1_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Prog_code` varchar(30) NOT NULL,
   `Prog_name` varchar(100) NOT NULL,
@@ -317,7 +317,7 @@ CREATE TABLE `t2_1_2` (
 --
 
 CREATE TABLE `t2_1_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `SC_1` int(11) NOT NULL,
   `ST_1` int(11) NOT NULL,
@@ -338,7 +338,7 @@ CREATE TABLE `t2_1_3` (
 --
 
 CREATE TABLE `t2_2_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -351,7 +351,7 @@ CREATE TABLE `t2_2_1` (
 --
 
 CREATE TABLE `t2_2_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `UG_students` int(11) NOT NULL,
   `PG_students` int(11) NOT NULL,
@@ -367,7 +367,7 @@ CREATE TABLE `t2_2_2` (
 --
 
 CREATE TABLE `t2_2_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Name_of_student` varchar(100) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `UDID_card_number` varchar(50) NOT NULL,
@@ -386,7 +386,7 @@ CREATE TABLE `t2_2_3` (
 --
 
 CREATE TABLE `t2_3_1` (
-  `Uname` varchar(30) DEFAULT NULL,
+  `Username` varchar(30) DEFAULT NULL,
   `Description` varchar(3500) DEFAULT NULL,
   `File_name` varchar(50) DEFAULT NULL,
   `Link` varchar(200) DEFAULT NULL
@@ -399,7 +399,7 @@ CREATE TABLE `t2_3_1` (
 --
 
 CREATE TABLE `t2_3_2` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Teacher_number` int(11) NOT NULL,
   `ICT_tools` varchar(100) NOT NULL,
   `ICT_class_numbers` int(11) NOT NULL,
@@ -414,7 +414,7 @@ CREATE TABLE `t2_3_2` (
 --
 
 CREATE TABLE `t2_3_3` (
-  `Uname` varchar(30) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Year` varchar(30) NOT NULL,
   `Student_number` int(11) NOT NULL,
   `Full_time_teacher` int(11) NOT NULL,

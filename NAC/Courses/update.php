@@ -7,11 +7,11 @@
 		header("Location: ../index.php");
   }
 
-  
+
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-  $query = "Update course SET Course_code='".$_POST['Course_code']."' , Course_name='".$_POST['COurse_name']."' WHERE Uname LIKE '".$_SESSION['username']."' AND Prog_code LIKE '".$_POST['Prog_code']."' ";
+  $query = "Update course SET Course_code='".$_POST['Course_code']."' , Course_name='".$_POST['COurse_name']."' WHERE Username LIKE '".$_SESSION['username']."' AND Prog_code LIKE '".$_POST['Prog_code']."' ";
 
   //echo $query."<br>";
 

@@ -116,21 +116,33 @@ if(!isset($_SESSION['names'])){
 
         </div>
 
+
+
+
         <div class="col-sm-1"></div>
     </div>
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | PROGRESS";?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
     <div>
         <a style="visibility:hidden;">d</a>
     </div>
 
-                   <center><a style="color:black; ;;;; font-weight:normal; font-size:25px;">PROGRESS</a></center>
+		<?php
 
+		  include("links.php");
+
+		?>
+
+		<br><Br><Br>
+
+<!--
+                   <center><a style="color:black; ;;;; font-weight:normal; font-size:25px;">PROGRESS</a></center>
+-->
 
     <center>
 
@@ -151,7 +163,7 @@ if(!isset($_SESSION['names'])){
 
         <?php
 
-            $query = "SELECT * FROM admins";
+            $query = "SELECT * FROM admins ORDER BY sno";
             $connection = mysqli_connect($servername, $username, $password, $dbname);
             $res = mysqli_query($connection,$query);
 
@@ -161,21 +173,21 @@ if(!isset($_SESSION['names'])){
 
         <tr>
 
-							<th> <a target="_blank" href="switch.php?username=<?php echo $row['username']?>&name=<?php echo $row['name']?>"; ?> <?php echo $row['name']; ?> </a> </th>
+							<th><?php echo $row['sno']?> <a target="_blank" href="switch.php?username=<?php echo $row['username']?>&name=<?php echo $row['name']?>"; ?> <?php echo $row['name']; ?> </a> </th>
 
             <td
                 <?php
 
-                    $c1 = "SELECT * FROM t1_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t1_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t1_1_3 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t1_2_1 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t1_2_2 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t1_3_1 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t1_3_2 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t1_3_4 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t1_4_1 where Username LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t1_4_2 where Username LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t1_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t1_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t1_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t1_2_1 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t1_2_2 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t1_3_1 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t1_3_2 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t1_3_4 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t1_4_1 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t1_4_2 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -246,28 +258,28 @@ if(!isset($_SESSION['names'])){
             <td
                 <?php
 
-                    $c1 = "SELECT * FROM t2_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t2_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t2_1_3 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t2_2_1 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t2_2_2 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t2_2_3 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t2_3_1 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t2_3_2 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t2_2_3 where Uname LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t2_4_1 where Uname LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t2_4_2 where Uname LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t2_4_3 where Uname LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t2_4_4 where Uname LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t2_4_5 where Uname LIKE '".$row['username']."'";
-                    $c15= "SELECT * FROM t2_5_1 where Uname LIKE '".$row['username']."'";
-                    $c16= "SELECT * FROM t2_5_2 where Uname LIKE '".$row['username']."'";
-                    $c17= "SELECT * FROM t2_5_3 where Uname LIKE '".$row['username']."'";
-                    $c18= "SELECT * FROM t2_5_4 where Uname LIKE '".$row['username']."'";
-                    $c19= "SELECT * FROM t2_5_5 where Uname LIKE '".$row['username']."'";
-                    $c20= "SELECT * FROM t2_6_1 where Uname LIKE '".$row['username']."'";
-                    $c21= "SELECT * FROM t2_6_2 where Uname LIKE '".$row['username']."'";
-                    $c22= "SELECT * FROM t2_6_3 where Uname LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t2_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t2_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t2_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t2_2_1 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t2_2_2 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t2_2_3 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t2_3_1 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t2_3_2 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t2_2_3 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t2_4_1 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t2_4_2 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t2_4_3 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t2_4_4 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t2_4_5 where Username LIKE '".$row['username']."'";
+                    $c15= "select distinct * from t2_5_1 where Username LIKE '".$row['username']."'";
+                    $c16= "select distinct * from t2_5_2 where Username LIKE '".$row['username']."'";
+                    $c17= "select distinct * from t2_5_3 where Username LIKE '".$row['username']."'";
+                    $c18= "select distinct * from t2_5_4 where Username LIKE '".$row['username']."'";
+                    $c19= "select distinct * from t2_5_5 where Username LIKE '".$row['username']."'";
+                    $c20= "select distinct * from t2_6_1 where Username LIKE '".$row['username']."'";
+                    $c21= "select distinct * from t2_6_2 where Username LIKE '".$row['username']."'";
+                    $c22= "select distinct * from t2_6_3 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -402,36 +414,36 @@ if(!isset($_SESSION['names'])){
             <td
                 <?php
 
-                    $c1 = "SELECT * FROM t3_1_1 where Username LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t3_1_2 where Username LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t3_1_3 where Username LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t3_1_4 where Username LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t3_1_5 where Username LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t3_1_6 where Username LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t3_2_2 where Username LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t3_2_3 where Username LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t3_3_1 where Username LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t3_3_2 where Username LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t3_3_3 where Username LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t3_3_4 where Username LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t3_4_1 where Username LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t3_4_2 where Username LIKE '".$row['username']."'";
-                    $c15= "SELECT * FROM t3_4_3 where Username LIKE '".$row['username']."'";
-                    $c16= "SELECT * FROM t3_4_4 where Username LIKE '".$row['username']."'";
-                    $c17= "SELECT * FROM t3_4_5 where Username LIKE '".$row['username']."'";
-                    $c18= "SELECT * FROM t3_4_6 where Username LIKE '".$row['username']."'";
-                    $c19= "SELECT * FROM t3_4_7 where Username LIKE '".$row['username']."'";
-                    $c20= "SELECT * FROM t3_4_8 where Username LIKE '".$row['username']."'";
-                    $c21= "SELECT * FROM t3_5_1 where Username LIKE '".$row['username']."'";
-                    $c22= "SELECT * FROM t3_5_2 where Username LIKE '".$row['username']."'";
-                    $c23= "SELECT * FROM t3_5_3 where Username LIKE '".$row['username']."'";
-                    $c24= "SELECT * FROM t3_6_1 where Username LIKE '".$row['username']."'";
-                    $c25= "SELECT * FROM t3_6_2 where Username LIKE '".$row['username']."'";
-                    $c26= "SELECT * FROM t3_6_3 where Username LIKE '".$row['username']."'";
-                    $c27= "SELECT * FROM t3_6_4 where Username LIKE '".$row['username']."'";
-                    $c28= "SELECT * FROM t3_7_1 where Username LIKE '".$row['username']."'";
-                    $c29= "SELECT * FROM t3_7_2 where Username LIKE '".$row['username']."'";
-                    $c30= "SELECT * FROM t3_7_3 where Username LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t3_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t3_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t3_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t3_1_4 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t3_1_5 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t3_1_6 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t3_2_2 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t3_2_3 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t3_3_1 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t3_3_2 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t3_3_3 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t3_3_4 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t3_4_1 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t3_4_2 where Username LIKE '".$row['username']."'";
+                    $c15= "select distinct * from t3_4_3 where Username LIKE '".$row['username']."'";
+                    $c16= "select distinct * from t3_4_4 where Username LIKE '".$row['username']."'";
+                    $c17= "select distinct * from t3_4_5 where Username LIKE '".$row['username']."'";
+                    $c18= "select distinct * from t3_4_6 where Username LIKE '".$row['username']."'";
+                    $c19= "select distinct * from t3_4_7 where Username LIKE '".$row['username']."'";
+                    $c20= "select distinct * from t3_4_8 where Username LIKE '".$row['username']."'";
+                    $c21= "select distinct * from t3_5_1 where Username LIKE '".$row['username']."'";
+                    $c22= "select distinct * from t3_5_2 where Username LIKE '".$row['username']."'";
+                    $c23= "select distinct * from t3_5_3 where Username LIKE '".$row['username']."'";
+                    $c24= "select distinct * from t3_6_1 where Username LIKE '".$row['username']."'";
+                    $c25= "select distinct * from t3_6_2 where Username LIKE '".$row['username']."'";
+                    $c26= "select distinct * from t3_6_3 where Username LIKE '".$row['username']."'";
+                    $c27= "select distinct * from t3_6_4 where Username LIKE '".$row['username']."'";
+                    $c28= "select distinct * from t3_7_1 where Username LIKE '".$row['username']."'";
+                    $c29= "select distinct * from t3_7_2 where Username LIKE '".$row['username']."'";
+                    $c30= "select distinct * from t3_7_3 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -607,23 +619,23 @@ if(!isset($_SESSION['names'])){
             <td
                 <?php
 
-                    $c1 = "SELECT * FROM t4_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t4_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t4_1_3 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t4_2_4 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t4_2_1 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t4_2_2 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t4_2_3 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t4_2_4 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t4_2_5 where Uname LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t4_2_6 where Uname LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t4_2_7 where Uname LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t4_3_1 where Uname LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t4_3_2 where Uname LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t4_3_3 where Uname LIKE '".$row['username']."'";
-                    $c15= "SELECT * FROM t4_3_4 where Uname LIKE '".$row['username']."'";
-                    $c16= "SELECT * FROM t4_4_1 where Uname LIKE '".$row['username']."'";
-                    $c17= "SELECT * FROM t4_4_2 where Uname LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t4_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t4_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t4_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t4_2_4 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t4_2_1 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t4_2_2 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t4_2_3 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t4_2_4 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t4_2_5 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t4_2_6 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t4_2_7 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t4_3_1 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t4_3_2 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t4_3_3 where Username LIKE '".$row['username']."'";
+                    $c15= "select distinct * from t4_3_4 where Username LIKE '".$row['username']."'";
+                    $c16= "select distinct * from t4_4_1 where Username LIKE '".$row['username']."'";
+                    $c17= "select distinct * from t4_4_2 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -735,20 +747,20 @@ if(!isset($_SESSION['names'])){
                         <td
                 <?php
 
-                    $c1 = "SELECT * FROM t5_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t5_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t5_1_3 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t5_1_4 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t5_1_5 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t5_1_6 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t5_2_1 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t5_2_2 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t5_2_3 where Uname LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t5_3_1 where Uname LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t5_3_2 where Uname LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t5_4_1 where Uname LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t5_4_2 where Uname LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t5_4_3 where Uname LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t5_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t5_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t5_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t5_1_4 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t5_1_5 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t5_1_6 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t5_2_1 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t5_2_2 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t5_2_3 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t5_3_1 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t5_3_2 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t5_4_1 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t5_4_2 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t5_4_3 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -846,25 +858,25 @@ if(!isset($_SESSION['names'])){
                         <td
                 <?php
 
-                    $c1 = "SELECT * FROM t6_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t6_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t6_2_1 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t6_2_2 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t6_2_3 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t6_2_4 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t6_3_1 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t6_3_2 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t6_3_3 where Uname LIKE '".$row['username']."'";
-                    $c10= "SELECT * FROM t6_3_4 where Uname LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t6_3_5 where Uname LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t6_4_1 where Uname LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t6_4_2 where Uname LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t6_4_3 where Uname LIKE '".$row['username']."'";
-                    $c15= "SELECT * FROM t6_5_1 where Uname LIKE '".$row['username']."'";
-                    $c16= "SELECT * FROM t6_5_2 where Uname LIKE '".$row['username']."'";
-                    $c17= "SELECT * FROM t6_5_3 where Uname LIKE '".$row['username']."'";
-                    $c18= "SELECT * FROM t6_5_4 where Uname LIKE '".$row['username']."'";
-                    $c19= "SELECT * FROM t6_5_5 where Uname LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t6_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t6_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t6_2_1 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t6_2_2 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t6_2_3 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t6_2_4 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t6_3_1 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t6_3_2 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t6_3_3 where Username LIKE '".$row['username']."'";
+                    $c10= "select distinct * from t6_3_4 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t6_3_5 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t6_4_1 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t6_4_2 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t6_4_3 where Username LIKE '".$row['username']."'";
+                    $c15= "select distinct * from t6_5_1 where Username LIKE '".$row['username']."'";
+                    $c16= "select distinct * from t6_5_2 where Username LIKE '".$row['username']."'";
+                    $c17= "select distinct * from t6_5_3 where Username LIKE '".$row['username']."'";
+                    $c18= "select distinct * from t6_5_4 where Username LIKE '".$row['username']."'";
+                    $c19= "select distinct * from t6_5_5 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -987,27 +999,27 @@ if(!isset($_SESSION['names'])){
                         <td
                 <?php
 
-                    $c1 = "SELECT * FROM t7_1_1 where Uname LIKE '".$row['username']."'";
-                    $c2 = "SELECT * FROM t7_1_2 where Uname LIKE '".$row['username']."'";
-                    $c3 = "SELECT * FROM t7_1_3 where Uname LIKE '".$row['username']."'";
-                    $c4 = "SELECT * FROM t7_1_4 where Uname LIKE '".$row['username']."'";
-                    $c5 = "SELECT * FROM t7_1_5 where Uname LIKE '".$row['username']."'";
-                    $c6 = "SELECT * FROM t7_1_6 where Uname LIKE '".$row['username']."'";
-                    $c7 = "SELECT * FROM t7_1_7 where Uname LIKE '".$row['username']."'";
-                    $c8 = "SELECT * FROM t7_1_8 where Uname LIKE '".$row['username']."'";
-                    $c9 = "SELECT * FROM t7_1_9 where Uname LIKE '".$row['username']."'";
-                    //$c10= "SELECT * FROM t7_1_10 where Uname LIKE '".$row['username']."'";
-                    $c11= "SELECT * FROM t7_1_11 where Uname LIKE '".$row['username']."'";
-                    $c12= "SELECT * FROM t7_1_12 where Uname LIKE '".$row['username']."'";
-                    $c13= "SELECT * FROM t7_1_13 where Uname LIKE '".$row['username']."'";
-                    $c14= "SELECT * FROM t7_1_14 where Uname LIKE '".$row['username']."'";
-                    $c15= "SELECT * FROM t7_1_15 where Uname LIKE '".$row['username']."'";
-                    $c16= "SELECT * FROM t7_1_16 where Uname LIKE '".$row['username']."'";
-                    $c17= "SELECT * FROM t7_1_17 where Uname LIKE '".$row['username']."'";
-                    $c18= "SELECT * FROM t7_1_18 where Uname LIKE '".$row['username']."'";
-                    $c19= "SELECT * FROM t7_1_19 where Uname LIKE '".$row['username']."'";
-                    $c20= "SELECT * FROM t7_2_1 where Uname LIKE '".$row['username']."'";
-                    $c21= "SELECT * FROM t7_3_1 where Uname LIKE '".$row['username']."'";
+                    $c1 = "select distinct * from t7_1_1 where Username LIKE '".$row['username']."'";
+                    $c2 = "select distinct * from t7_1_2 where Username LIKE '".$row['username']."'";
+                    $c3 = "select distinct * from t7_1_3 where Username LIKE '".$row['username']."'";
+                    $c4 = "select distinct * from t7_1_4 where Username LIKE '".$row['username']."'";
+                    $c5 = "select distinct * from t7_1_5 where Username LIKE '".$row['username']."'";
+                    $c6 = "select distinct * from t7_1_6 where Username LIKE '".$row['username']."'";
+                    $c7 = "select distinct * from t7_1_7 where Username LIKE '".$row['username']."'";
+                    $c8 = "select distinct * from t7_1_8 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t7_1_9 where Username LIKE '".$row['username']."'";
+                    //$c10= "select distinct * from t7_1_10 where Username LIKE '".$row['username']."'";
+                    $c11= "select distinct * from t7_1_11 where Username LIKE '".$row['username']."'";
+                    $c12= "select distinct * from t7_1_12 where Username LIKE '".$row['username']."'";
+                    $c13= "select distinct * from t7_1_13 where Username LIKE '".$row['username']."'";
+                    $c14= "select distinct * from t7_1_14 where Username LIKE '".$row['username']."'";
+                    $c15= "select distinct * from t7_1_15 where Username LIKE '".$row['username']."'";
+                    $c16= "select distinct * from t7_1_16 where Username LIKE '".$row['username']."'";
+                    $c17= "select distinct * from t7_1_17 where Username LIKE '".$row['username']."'";
+                    $c18= "select distinct * from t7_1_18 where Username LIKE '".$row['username']."'";
+                    $c19= "select distinct * from t7_1_19 where Username LIKE '".$row['username']."'";
+                    $c20= "select distinct * from t7_2_1 where Username LIKE '".$row['username']."'";
+                    $c21= "select distinct * from t7_3_1 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);

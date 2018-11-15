@@ -9,7 +9,7 @@
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-  $query = "Insert INTO course VALUES('".$_SESSION['username']."','".$_POST['Prog_code']."','".urlencode($_POST['Course_code'])."','".urlencode($_POST['Course_name'])."')";
+  $query = "Insert INTO course VALUES('".$_SESSION['username']."','".$_POST['Prog_code']."','".str_replace("&","and",$_POST['Course_code'])."','".str_replace("&","and",$_POST['Course_name'])."')";
 
   //echo $query."<br>";
 
@@ -20,13 +20,13 @@
     ?>
 
     <script>
-      window.location.href = "view.php?cc=<?php echo $_POST['Course_code'] ?>#<?php echo $_POST['Course_code'] ?>";
+      window.location.href = "view.php?cc=<?php echo str_replace("&","and",$_POST['Course_code']) ?>";
     </script>
 
     <?php
 
   }else{
-    $r ="add.php?pc=".$_POST['Prog_code']."&cc=".$_POST['Course_code']."&cn=".$_POST['Course_name'];
+    $r ="add.php?pc=".$_POST['Prog_code']."&cc=".str_replace("&","and",$_POST['Course_code'])."&cn=".str_replace("&","and",$_POST['Course_name']);
 
     $r = str_replace(" ","+",$r);
 

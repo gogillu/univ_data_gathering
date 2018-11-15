@@ -101,15 +101,23 @@ include("../credential.php");
 
 
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | NOTICE";?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
     <div>
         <a style="visibility:hidden;">d</a>
     </div>
+
+    <?php
+
+      include("links.php");
+
+    ?>
+
+    <br><Br><Br>
 
 		<?php
 
@@ -122,14 +130,15 @@ include("../credential.php");
 				}
 		?>
 
-
+<center>
 		<form action="notice_handler.php" method="POST">
 
-	    <input type="text" id="notice" name="notice" value="<?php echo $NOTICE; ?>">
+	    <input style="width:1000px;" type="text" id="notice" name="notice" value="<?php echo $NOTICE; ?>">
+      <br>
 	    <input type="submit">
 
 	  </form>
-
+</center>
 
 
 

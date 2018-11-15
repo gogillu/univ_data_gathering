@@ -9,14 +9,14 @@
 
   $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-  $query = "Delete FROM course WHERE Uname LIKE '".$_SESSION['username']."' AND Course_code LIKE '".urlencode($_POST['cc'])."' ";
+  $query = "Delete FROM course WHERE Username LIKE '".$_SESSION['username']."' AND Course_code LIKE '".$_POST['cc']."' ";
 
   //echo $query."<br>";
 
   $res  = mysqli_query($connection,$query);// or die(mysqli_error($connection));
 
   if($res){
-    echo "<script>alert('Successfully Removed ".urlencode($_POST['cc'])."');</script>";
+    echo "<script>alert('Successfully Removed ".$_POST['cc']."');</script>";
     ?>
 
     <script>

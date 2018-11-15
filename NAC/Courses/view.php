@@ -168,10 +168,10 @@
         <div class="col-sm-1"></div>
     </div>
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
     <script>
@@ -232,7 +232,7 @@
             <?php
 
             $connection = mysqli_connect($servername, $username, $password, $dbname);
-            $query = "Select * FROM course WHERE Uname LIKE '".$_SESSION['username']."' ORDER BY Prog_code , Course_code";
+            $query = "Select * FROM course WHERE Username LIKE '".$_SESSION['username']."' ORDER BY Prog_code , Course_code";
             //echo $query."<br>";
             $res  = mysqli_query($connection,$query);// or die(mysqli_error($connection));
             $bc = mysqli_num_rows($res);
@@ -245,7 +245,7 @@
               <th style="width:150px;">Programme Code</th>
               <th style="width:250px;">Programme Name</th>
               <th style="width:150px;">Course Code</th>
-              <th style="width:250px;">Course Code</th>
+              <th style="width:250px;">Course Name</th>
               <th>Edit</th>
               <th>Remove</th>
             </tr>
@@ -264,7 +264,7 @@
               <td><?php echo $row['Prog_code']; ?></td>
 
               <?php
-              $query1 = "Select * FROM programme WHERE Uname LIKE '".$_SESSION['username']."' AND Prog_code LIKE '".$row['Prog_code']."'";
+              $query1 = "Select * FROM programme WHERE Username LIKE '".$_SESSION['username']."' AND Prog_code LIKE '".$row['Prog_code']."'";
               //echo $query1."<br>";
               $res1  = mysqli_query($connection,$query1);// or die(mysqli_error($connection));
               $pn = $res1->fetch_assoc();

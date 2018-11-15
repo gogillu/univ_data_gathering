@@ -14,8 +14,6 @@
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/w3_l.css">
-
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -283,21 +281,19 @@
             transform: rotate(180deg);
         }
 
-
     </style>
 
     <style>
-        #d211, #h211, #d212, #h212, #d213, #h213, #d223, #h223, #d231, #h231, #d221, #h221, #d232, #h232, #d222, #h222, #d233, #h233 ,#d241, #h241, #h242, #d242 , #h243, #d243 , #h244, #d244 , #h245, #d245, #h251, #d251, #h252, #d252, #h253, #d253, #h254, #d254, #h255, #d255, #h261, #d261, #h262, #d262, #h263, #d263, #h271, #d271  {
+        #d211, #h211, #d212, #h212, #d213, #h213, #d223, #h223, #d231, #h231, #d221, #h221, #d232, #h232, #d222, #h222, #d233, #h233 ,#d241, #h241, #h242, #d242, , #h243, #d243 , #h244, #d244 , #h245, #d245, #h251, #d251, #h252, #d252, #h253, #d253, #h254, #d254, #h255, #d255, #h261, #d261, #h262, #d262, #h263, #d263 {
             /*background-color: #CACACA;*/
             border: solid 0px #CACACA;
             color: black;
         }
 
-        #d211, #d212, #d213, #d223, #d231, #d221, #d232, #d222 , #d233, #d241, #d242, #d243, #d244, #d245, #d251, #d252, #d253, #d254, #d255, #d261 , #d262 , #d263, #d271{
+        #d211, #d212, #d213, #d223, #d231, #d221, #d232, #d222 , #d233, #d241, #d242, #d243, #d244, #d245, #d251, #d252, #d253, #d254, #d255, #d261 , #d262 , #d263{
             padding: 10px;
             display: none;
         }
-
     </style>
 
     <style>
@@ -436,7 +432,7 @@
 
                 <div class="col-sm-10" style="margin-left:-20px;">
                     <div style="font-size:30px; margin-top:20px; margin-left:30px; color:#FFF"><b>Devi Ahilya Vishwavidyalaya, Indore</b></div>
-                    <div style="font-size:20px; margin-top:10px; margin-left:30px; color:#FFF;"><b>Data Capturing System NAAC A & A 2019</b></div>
+                    <div style="font-size:20px; margin-top:10px; margin-left:30px; color:#FFF;"><b>Information Gathering System 2017 - 2018</b></div>
                 </div>
             </div>
 
@@ -446,33 +442,14 @@
     </div>
 
     <!--
-        TOP FIXED HEADER UNAME
+        TOP FIXED HEADER Username
     -->
 
-    <div id="myHeader" class="col-sm-12 UNAME" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 UNAME" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 UNAME" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 UNAME" style="padding:10px;">
-
-<style>
-
-  .nn:hover,.nnn,.nnn:hover{
-    color: white;
-  }
-
-</style>
-
-          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
-    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
-    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
-      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
-      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
-      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+    <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
-  </div>
-    </div>
-
-  </div>
 
     <script>
         // When the user scrolls the page, execute myFunction
@@ -539,13 +516,12 @@
         			{
         				var YearOfEnroll = $($(rows[i]).find('select')[0]).val();
         				var pc = $($(rows[i]).find('select')[1]).val();
-                link = $($(rows[i]).find('input')[4]).val();
                         var pn = $($(rows[i]).find('input')[0]).val();
                         var TotalStudents = $($(rows[i]).find('input')[1]).val();
                         var OtherStateStudents = $($(rows[i]).find('input')[2]).val();
                         var OtherCountryStudents = $($(rows[i]).find('input')[3]).val();
-
-                if(YearOfEnroll == ""){
+                        if(YearOfEnroll == "")
+        				{
         					alert('Please Select Year of Enrollment to save');
         					return false;
         				}else if(TotalStudents==""){
@@ -561,12 +537,10 @@
                             alert('Please select Programme code to save');
         					return false;
                         }
-        				else if(link==""){
-                  alert('Please provide link of the relevant document');
-                }else
+        				else
         				{
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ pc+ "','"+ pn + "','"+ TotalStudents + "','" + OtherStateStudents + "','" + OtherCountryStudents + "','" + link + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ YearOfEnroll + "','"+ pc+ "','"+ pn + "','"+ TotalStudents + "','" + OtherStateStudents + "','" + OtherCountryStudents + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -637,15 +611,10 @@
         </div>
 
         <div id="h211" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.1 <br> <br>Q<sub>N</sub>M </div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
-                Average percentage of students from other States and Countries during the last five years
-            <br><br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* List of students (other states and countries)
-                <br>* Institutional data in prescribed format
-            </div>
+                Average percentage of students from other States and Countries during the last five years            </div>
         </div>
 
         <div id="to211" class="col-sm-1">
@@ -669,7 +638,6 @@
             var icn= "n"+ic;
             var ay = "y"+i;
             var per= "per"+i;
-            var li = "l"+i;
 
             var C1 = '<td><center><select placeholder="Year" style="width:185px;" id="'+ay+'"></select></center></td>';
             var CM1= '<td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td>';
@@ -677,10 +645,9 @@
             var C2 = '<td><center><input type="number" placeholder="Number" style="width:100px;" required></center></td>';
             var C3 = '<td><center><input type="number" placeholder="Number" style="width:100px;" required></center></td>';
             var C4 = '<td><center><input type="number" placeholder="Number" style="width:100px;" required></center></td>';
-            var C5 = ' <td><center><input id="'+li+'" type="text" placeholder="Link of the relevant document" style="width:250px;"></center></td> ';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
-            var html = '<tr id="'+i+'">'+C1+CM1+CM2+C2+C3+C4+C5+CR+'</tr>';
+            var html = '<tr id="'+i+'">'+C1+CM1+CM2+C2+C3+C4+CR+'</tr>';
 
             var x = $('#tab211').find('tr');
    			$(x[x.length-1]).before(html);
@@ -699,7 +666,6 @@
                 <th style="width:150px; padding:20px;">Total Number of students enrolled</th>
                 <th style="width:150px; padding:20px;">Number of students enrolled from other States</th>
                 <th style="width:150px; padding:20px;">Number of students enrolled from other countries</th>
-                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow211()" alt="Submit" width="48" height="48">
@@ -836,14 +802,10 @@
         </div>
 
         <div id="h212" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.2 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Demand Ratio during the last five years.
-            <br><br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* Demand Ratio (Average of Last five years) based on Data Template upload the document
-
             </div>
         </div>
 
@@ -1038,15 +1000,10 @@
         </div>
 
         <div id="h213" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.3 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.1.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
-            Average percentage of seats filled against seats reserved for various categories as per applicable reservation policy during the last five years
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* Average percentage of seats filled against seats reserved
-            </div>
+            Average percentage of seats filled against seats reserved for various categories as per applicable reservation policy during the last five years             </div>
         </div>
 
         <div id="to213" class="col-sm-1">
@@ -1149,15 +1106,9 @@
             function save221(ta)
         	{
                 link =  document.getElementById("link2_2_1").value;
-                //ta = ta.value;
-                var vu= document.getElementById("TA2_2_1").value;
-                //console.log(ta+"\n"+link);
+                ta = ta.value;
 
-                if($("#link2_2_1").val()==""){
-                  alert("Please provide link of the relevant document");
-                  return false;
-                }
-
+                console.log(ta+"\n"+link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -1168,14 +1119,14 @@
                                $("#d221").slideToggle("slow");
                                rotate("tg221");
 
-                               if(document.getElementById("TA2_2_1").value=="" || link==""){
+                               if(document.getElementById("TA2_2_1").value==""){
                document.getElementById("ch221").innerHTML = '<img src="../images/unfilled.png" width="58" height="58"> Not Filled';
             }else{
                document.getElementById("ch221").innerHTML = '<img src="../images/filled.png" width="58" height="58"> Filled';
             }
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet221.php?desc="+vu+"&link="+link, true);
+          			   			 xhttp.open("GET", "savet221.php?desc="+ta+"&link="+link, true);
          			   			 xhttp.send();
         		}
 
@@ -1189,15 +1140,10 @@
         </div>
 
         <div id="h221" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.1 <br> <br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
-            The institution assesses the learning levels of the students, after admission and organises special Programmes for advanced learners and slow learners
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Paste link for additional information
-                <br>* Upload Any additional information
-            </div>
+            The institution assesses the learning levels of the students, after admission and organises special Programmes for advanced learners and slow learners            </div>
         </div>
 
         <div id="to221" class="col-sm-1">
@@ -1220,11 +1166,7 @@
 
         </textarea>
 
-        <br>
-
-        <input type="text" id="link2_2_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
-
-        <br>
+        <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1269,14 +1211,10 @@
         </div>
 
         <div id="h222" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.2 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Student - Full time teacher ratio
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Institutional data in prescribed format
-                <br>* Any additional information
             </div>
         </div>
 
@@ -1466,17 +1404,10 @@
         </div>
 
         <div id="h222" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.3 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.2.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Percentage of differently abled students (Divyangjan) on rolls(current year data)
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* List of students(differently abled)
-                <br>* Any other document submitted by the Institution to a Government agency giving this information
-                <br>* Any additional information
-                <br>* Institutional data in prescribed format
-
             </div>
         </div>
 
@@ -1497,15 +1428,15 @@
         			{
                         var idd = $(rows[i]).attr('id');
 
-        				var v0  = $($(rows[i]).find('select')[1]).val();
-        				var v1  = $($(rows[i]).find('select')[2]).val();
+        				var v0  = $($(rows[i]).find('select')[0]).val();
+        				var v1  = $($(rows[i]).find('select')[1]).val();
                         var v2  = $($(rows[i]).find('input')[0]).val();
-                        var v3  = $($(rows[i]).find('select')[0]).val();
-                        var v4  = $($(rows[i]).find('input')[1]).val();
-                        var v5  = $($(rows[i]).find('input')[2]).val();
-                        var v6  = $($(rows[i]).find('input')[3]).val();
-                        var v7  = $($(rows[i]).find('input')[4]).val();
-                        var v8  = $($(rows[i]).find('select')[3]).val();
+                        var v3  = $($(rows[i]).find('input')[1]).val();
+                        var v4  = $($(rows[i]).find('input')[2]).val();
+                        var v5  = $($(rows[i]).find('input')[3]).val();
+                        var v6  = $($(rows[i]).find('input')[4]).val();
+                        var v7  = $($(rows[i]).find('input')[5]).val();
+                        var v8  = $($(rows[i]).find('select')[2]).val();
 
         				if(v1 == "" || v2=="" || v3=="" || v4=="" || v5=="" || v6=="" || v7=="" || v8==""){
         					alert('Please input all fields to save');
@@ -1538,7 +1469,6 @@
 
         	function fetch_rows_223()
         	{
-
         		var xhttp,res;
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
@@ -1557,31 +1487,14 @@
           			           {
 	          			          x = $(responseRows[i]).find('select');
 
-                                   //alert($(x[0]).attr('value')+"RAMARAMARAMARAMARAMARAMA");
-
-
-
-<?php
-
-    $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_2_3 where Uname like '".$_SESSION['username']."';";
-	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
-    $row  = $res ->fetch_assoc();
-            //echo $row['Description'];
-?>
-
-
-
           			           console.log(x);
-	          			          var cc = x[1];
-	          			          var ay = x[2];
-                                    var yp = x[3];
+	          			          var cc = x[0];
+	          			          var ay = x[1];
+                                    var yp = x[2];
                                   var idd = $(ay).attr('id');
 	          			          idd = idd.substr(1);
 
-                                   document.getElementById("g"+idd).value = '<?php echo $row['Gender']; ?>';
-
-                                   console.log(x.length);
+	            					console.log(x.length);
 	            					//for deriving simple id for academic year
 		            				fetch_academic_year(idd, $(ay).attr('value'));
 
@@ -1593,7 +1506,6 @@
 	            					//    console.log(x.length);
 	            					//for deriving simple id for academic year
 		            				//fetch_course_code_only(idd,$(cc).attr('value'));
-
 
                                    document.getElementById(idd).value = $(cc).attr('value');
 
@@ -1641,10 +1553,10 @@
             var icn= "n"+ic;
             var ay = "y"+i;
             var ay2= "yy"+i;
-            var gi = "g"+i;
+
 
             var C1 = '<td><center><input type="text" placeholder="Student Name" style="width:200px;" required></center></td>';
-            var C2 = '<td><center><select id="'+gi+'" style="width:100px;" required><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Transgender">Transgender</option></select></center></td>';
+            var C2 = '<td><center><input type="text" placeholder="Gender" style="width:100px;" required></center></td>';
             var C3 = '<td><center><input type="text" placeholder="UDID Card Number" style="width:140px;" required></center></td>';
             var C4 = '<td><center><input type="text" placeholder="Type" style="width:150px;" required></center></td>';
             var C5 = '<td><center><input type="number" placeholder="%" style="width:80px;" required></center></td>';
@@ -1723,16 +1635,9 @@
             function save231(ta)
         	{
                 link =  document.getElementById("link2_3_1").value;
-                //ta = ta.value;
-                var vu= document.getElementById("TA2_3_1").value;
-               // console.log(ta+"\n"+link);
+                ta = ta.value;
 
-               if($("#link2_3_1").val()==""){
-                 alert("Please provide link of the relevant document");
-                 return false;
-               }
-
-
+                console.log(ta+"\n"+link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -1750,7 +1655,7 @@
             }
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet231.php?desc="+vu+"&link="+link, true);
+          			   			 xhttp.open("GET", "savet231.php?desc="+ta+"&link="+link, true);
          			   			 xhttp.send();
         		}
 
@@ -1764,14 +1669,10 @@
         </div>
 
         <div id="h231" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.1 <br> <br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
             Student centric methods, such as experiential learning, participative learning and problem solving methodologies are used for enhancing learning experiences.
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload any additional information
-                <br>* Link for Additional Information
             </div>
         </div>
 
@@ -1795,11 +1696,7 @@
 
         </textarea>
 
-        <br>
-
-        <input type="text" id="link2_3_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
-
-        <br>
+        <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1848,17 +1745,15 @@
                         var i4 = $($(rows[i]).find('input')[3]).val();
                         var i5 = $($(rows[i]).find('input')[4]).val();
                         var i6 = $($(rows[i]).find('input')[5]).val();
-                        link = $($(rows[i]).find('input')[6]).val();
 
                         if(i1 == "" || i2 == "" || i3 == "" || i4 == "" || i5 == "" || i6 == "")
         				{
         					alert('Please input fields to save');
         					return false;
-                }else if(link==""){
-                  alert('Please provide link of the relevant document');
-                }else{
+                        }else
+        				{
                             var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ i1 + "','"+ i2 + "','" + i3 + "','" + i4 + "','"+ i5 + "','"+ i6 + "','" + link + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ i1 + "','"+ i2 + "','" + i3 + "','" + i4 + "','"+ i5 + "','"+ i6 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -1872,9 +1767,6 @@
          			       if (this.readyState == 4 && this.status == 200) {
 
                                alert('Changes Saved Successfully');
-
-                               //alert("Please make sure to cross check with data in 2.2.2");
-
                                $("#d232").slideToggle("slow");
                                rotate("tg232");
                                num_rows("tab232","ch232");
@@ -1919,15 +1811,10 @@
         </div>
 
         <div id="h232" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.2 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Percentage of teachers using ICT for effective teaching with Learning Management Systems (LMS), E-learning resources etc.(current year data).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload any additional information
-                <br>* Provide link for webpage describing the " LMS/ Academic management system"
-                <br>* Upload List of teachers (using ICT for teaching) based on Data Template
             </div>
         </div>
 
@@ -1942,10 +1829,6 @@
             <br>
     <script>
 
-        function special_alert(){
-            alert("Please make sure to cross check with data in 2.2.2");
-        }
-
     	function addRow232()
     	{
             var i = get_time();
@@ -1956,20 +1839,18 @@
             var icn= "n"+ic;
             var ay = "y"+i;
             var per= "per"+i;
-            var li = "l"+i;
 
             /* onkeyup="percent_limit_input(this.value,this.id)"  onkeypress="return event.charCode >= 48"*/
 
             var C1 = '<td><center><input type="number" placeholder="Number" style="width:200px;" required></center></td>';
-            var C2 = '<td><center><input onfocusout="special_alert()" type="number" placeholder="Number" style="width:200px;" required></center></td>';
+            var C2 = '<td><center><input type="number" placeholder="Number" style="width:200px;" required></center></td>';
             var C3 = '<td><center><input type="text" placeholder="Resources" style="width:200px;" required></center></td>';
             var C4 = '<td><center><input type="number" placeholder="Number" style="width:200px;" required></center></td>';
             var C5 = '<td><center><input type="number" placeholder="Number" style="width:200px;" required></center></td>';
             var C6 = '<td><center><input type="text" placeholder="E-Resources" style="width:200px;" required></center></td>';
-            var C7 = ' <td><center><input id="'+li+'" type="text" placeholder="Link of the relevant document" style="width:250px;"></center></td> ';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
-            var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+C6+C7+CR+'</tr>';
+            var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+C6+CR+'</tr>';
 
     		var x = $('#tab232').find('tr');
             $(x[x.length-1]).before(html);
@@ -1986,7 +1867,6 @@
                 <th style="width:200px; padding:20px; padding-left:0px;">Number of ICT enabled classrooms</th>
                 <th style="width:200px; padding:20px;">Number of smart classrooms</th>
                 <th style="width:200px; padding:20px; padding-left:0px;">E-resources and techniques used</th>
-                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow232()" alt="Submit" width="48" height="48">
@@ -2022,7 +1902,6 @@
 <script>
         	function save233(table)
         	{
-
         		var rows = $(table).find('tr');
         		if(rows.length == 200000) console.log("empty");
         		else {
@@ -2063,10 +1942,6 @@
          			       if (this.readyState == 4 && this.status == 200) {
 
                                alert('Changes Saved Successfully');
-
-                               //alert("Please make sure to cross check with data in 2.2.2");
-
-
                                $("#d233").slideToggle("slow");
                                rotate("tg233");
                                num_rows("tab233","ch233");
@@ -2120,15 +1995,11 @@
             <img src="../images/filled.png" width="58" height="58"> Filled
         </div>
 
-
         <div id="h233" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.3<br><br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.3.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Ratio of students to mentor for academic and stress related issues(current year data)
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload year wise list of number of students, full time teachers and mentor/mentee ratio
             </div>
         </div>
 
@@ -2155,9 +2026,9 @@
             var per= "per"+i;
 
             var C1 = '<td><center><select placeholder="Year" style="width:175px;" id="'+ay+'"></select></center></td>';
-            var C2 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C4 = '<td><center><input type="text" placeholder="Ratio" style="width:250px;" required></center></td>';
+            var C2 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C4 = '<td><center><input type="text" placeholder="Ratio" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+C4+CR+'</tr>';
@@ -2166,9 +2037,6 @@
    			$(x[x.length-1]).before(html);
 
             fetch_academic_year(i);
-
-            special_alert();
-
     	}
     </script>
     <form>
@@ -2209,7 +2077,7 @@
 </div>
 
 
-                <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">2.4 Teacher Profile and Quality</a></center>
+                <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">2.1  Student Enrollment and Profile</a></center>
 
 <div class="col-sm-12">
     <hr/>
@@ -2229,27 +2097,20 @@
         			var rowss = "";
         			for(var i = 1; i < rows.length-1; i++)
         			{
-                        var nospug0 = document.getElementById("i245_nospug0").value;
-                        var nosppg0 = document.getElementById("i245_nosppg0").value;
-
-                        if(nospug0=="" || nosppg0==""){
-                           alert("Please fill number of sanctioned post");
-                           return false;
-                        }
-
                         var v1 = $($(rows[i]).find('input')[0]).val();
                         var v2 = $($(rows[i]).find('input')[1]).val();
                         var v3 = $($(rows[i]).find('input')[2]).val();
-                        var v5 = $($(rows[i]).find('input')[3]).val();
+                        var v4 = $($(rows[i]).find('input')[3]).val();
+                        var v5 = $($(rows[i]).find('input')[4]).val();
 
-                        if(v1=="" || v2=="" || v3=="" || v5==""){
+                        if(v1=="" || v2=="" || v3=="" || v4=="" || v5==""){
                         	alert('Please fill input feilds to save');
         					return false;
         				}
         				else
         				{
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + nospug0 + "','" + nosppg0 + "','" + v5 + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -2305,16 +2166,10 @@
         </div>
 
         <div id="h241" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.1 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
-                Average percentage of full time teachers against sanctioned posts during the last five years.
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Year wise full time teachers and sanctioned posts for 5 years
-                <br>* Any additional information
-                <br>* List of the faculty members authenticated by the Head of HEI
-            </div>
+                Average percentage of students from other States and Countries during the last five years            </div>
         </div>
 
         <div id="to241" class="col-sm-1">
@@ -2325,11 +2180,6 @@
 
 <center>
         <div class="col-sm-12" id="d241">
-
-            Number of sanctioned post (UG) <input id="i245_nospug0" required type="number" placeholder="Number (UG)" style="width:140px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            Number of sanctioned post (PG) <input id="i245_nosppg0" required type="number" placeholder="Number (PG)" style="width:140px;">
-
             <br>
     <script>
 
@@ -2344,18 +2194,19 @@
             var ay = "y"+i;
             var per= "per"+i;
 
-            var C1 = '<td><center><input type="text" placeholder="Name" style="width:250px;" required></center></td>';
-            var C2 = '<td><center><input type="text" placeholder="PAN NO." style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="text" placeholder="Designation" style="width:250px;" required></center></td>';
-            var C5 = '<td><center><input type="text" placeholder="Year" style="width:250px;" required></center></td>';
+            var C1 = '<td><center><input type="text" placeholder="Name" style="width:120px;" required></center></td>';
+            var C2 = '<td><center><input type="text" placeholder="PAN NO." style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="text" placeholder="Designation" style="width:120px;" required></center></td>';
+            var C4 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C5 = '<td><center><input type="text" placeholder="Year" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
-            var html = '<tr id="'+i+'">'+C1+C2+C3+C5+CR+'</tr>';
+            var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+CR+'</tr>';
 
             var x = $('#tab241').find('tr');
    			$(x[x.length-1]).before(html);
 
-            //fetch_academic_year(i);
+            fetch_academic_year(i);
     	}
     </script>
     <form>
@@ -2365,6 +2216,7 @@
                 <th style="width:250px; padding:20px;">Name of the teacher</th>
                 <th style="width:250px; padding:20px;">PAN No.</th>
                 <th style="width:250px; padding:20px;">Designation</th>
+                <th style="width:250px; padding:20px;">No. of sanctioned posts</th>
                 <th style="width:250px; padding:20px;">Year of appointment</th>
             </tr>
 			<tr>
@@ -2493,14 +2345,10 @@
         </div>
 
         <div id="h242" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.2 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                  Average percentage of full time teachers with Ph.D. during the last five years (10).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* List of number of full time teachers with PhD and number of full time teachers for 5 years
             </div>
         </div>
 
@@ -2527,8 +2375,8 @@
             var per= "per"+i;
 
             var C1 = '<td><center><select required placeholder="Year" style="width:175px;" id="'+ay+'"></select></center></td>';
-            var C2 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
+            var C2 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+CR+'</tr>';
@@ -2658,14 +2506,10 @@
         </div>
 
         <div id="h243" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.3 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Average teaching experience of full time teachers in number of years (10).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* List of Teachers including their PAN, designation, dept and experience details
             </div>
         </div>
 
@@ -2691,11 +2535,11 @@
             var ay = "y"+i;
             var per= "per"+i;
 
-            var C1 = '<td><center><input type="text" placeholder="Name" style="width:250px;" required></center></td>';
-            var C2 = '<td><center><input type="text" placeholder="PAN NO." style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="text" placeholder="Designation" style="width:250px;" required></center></td>';
-            var C4 = '<td><center><input type="text" placeholder="Name of Dept" style="width:250px;" required></center></td>';
-            var C5 = '<td><center><input type="number" placeholder="Total Months of experience" style="width:250px;" required></center></td>';
+            var C1 = '<td><center><input type="text" placeholder="Name" style="width:230px;" required></center></td>';
+            var C2 = '<td><center><input type="text" placeholder="PAN NO." style="width:230px;" required></center></td>';
+            var C3 = '<td><center><input type="text" placeholder="Designation" style="width:230px;" required></center></td>';
+            var C4 = '<td><center><input type="text" placeholder="Name of Dept" style="width:230px;" required></center></td>';
+            var C5 = '<td><center><input type="number" placeholder="Total Months of experience" style="width:230px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+CR+'</tr>';
@@ -2763,20 +2607,15 @@
                         var v3 = $($(rows[i]).find('input')[2]).val();
                         var v4 = $($(rows[i]).find('input')[3]).val();
                         var v5 = $($(rows[i]).find('input')[4]).val();
-                        link = $($(rows[i]).find('input')[5]).val();
 
                         if(v1=="" || v2=="" || v3=="" || v4=="" || v5==""){
                         	alert('Please fill input feilds to save');
         					return false;
         				}
-                else if(link==""){
-                  alert('Please provide link of the relevant document');
-                  return false;
-                }
         				else
         				{
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + link + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v1 + "','"+ v2 + "','" + v3 + "','" + v4 + "','" + v5 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -2832,15 +2671,10 @@
         </div>
 
         <div id="h244" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.4 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.4</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Average percentage of full time teachers who received awards, recognition, fellowships at State, National, International level from Government, recognised bodies during the last five years (10).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Institutional data in prescribed format
-                <br>* Any additional information
-                <br>* copies of award letters
             </div>
         </div>
 
@@ -2865,17 +2699,15 @@
             var icn= "n"+ic;
             var ay = "y"+i;
             var per= "per"+i;
-            var li = "l"+i;
 
-            var C1 = '<td><center><input type="text" placeholder="Year" style="width:250px;" required></center></td>';
-            var C2 = '<td><center><input type="text" placeholder="Name" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="text" placeholder="PAN NO" style="width:250px;" required></center></td>';
-            var C4 = '<td><center><input type="text" placeholder="Designation" style="width:250px;" required></center></td>';
-            var C5 = '<td><center><input type="text" placeholder="Name of award" style="width:250px;" required></center></td>';
-            var C6 = ' <td><center><input id="'+li+'" type="text" placeholder="Link of the relevant document" style="width:250px;"></center></td> ';
+            var C1 = '<td><center><input type="text" placeholder="Year" style="width:120px;" required></center></td>';
+            var C2 = '<td><center><input type="text" placeholder="Name" style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="text" placeholder="PAN NO" style="width:120px;" required></center></td>';
+            var C4 = '<td><center><input type="text" placeholder="Designation" style="width:120px;" required></center></td>';
+            var C5 = '<td><center><input type="text" placeholder="Name of award" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
-            var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+C6+CR+'</tr>';
+            var html = '<tr id="'+i+'">'+C1+C2+C3+C4+C5+CR+'</tr>';
 
             var x = $('#tab244').find('tr');
    			$(x[x.length-1]).before(html);
@@ -2891,7 +2723,6 @@
                 <th style="width:250px; padding:20px;">PAN NO.</th>
                 <th style="width:250px; padding:20px;">Designation</th>
                 <th style="width:250px; padding:20px;">Name of the award, fellowship, received from Government or recognised bodies</th>
-                <th style="width:200px; padding:20px; padding-left:0px;">Link of the relevant document</th>
             </tr>
 			<tr>
 				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow244()" alt="Submit" width="48" height="48">
@@ -2935,14 +2766,12 @@
         			var rowss = "";
         			for(var i = 1; i < rows.length-1; i++)
         			{
-                        var nospug = document.getElementById("i245_nospug").value;
-                        var nosppg = document.getElementById("i245_nosppg").value;
-
+                        var nosp = document.getElementById("i245_nosp").value;
                         var v0 = $($(rows[i]).find('select')[0]).val();
                         var v1 = $($(rows[i]).find('input')[0]).val();
                         var v2 = $($(rows[i]).find('input')[1]).val();
 
-                        if(nospug=="" || nosppg==""){
+                        if(nosp==""){
                         	alert('Please fill Number of sanctioned post to save');
         					return false;
                         }
@@ -2954,7 +2783,7 @@
         				else
         				{
         				var idd = $(rows[i]).attr('id');
-        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v0 + "','"+ v1 + "','" + v2 + "','" + nospug + "','"+ nosppg + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ v0 + "','"+ v1 + "','" + v2 + "','" + nosp + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -3020,14 +2849,10 @@
         </div>
 
         <div id="h245" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.5 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.4.5</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Average percentage of full time teachers from other States against sanctioned posts during the last five years (10).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* List of full time teachers from other state and state from which qualifying degree was obtained
-                <br>* Any additional information
             </div>
         </div>
 
@@ -3040,9 +2865,7 @@
 <center>
         <div class="col-sm-12" id="d245">
 
-            Number of sanctioned post (UG) <input id="i245_nospug" required type="number" placeholder="Number (UG)" style="width:140px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            Number of sanctioned post (PG) <input id="i245_nosppg" required type="number" placeholder="Number (PG)" style="width:140px;">
+            Number of sanctioned post <input id="i245_nosp" required type="number" placeholder="Number of sanctioned post" style="width:220px;">
 
             <br>
     <script>
@@ -3058,9 +2881,9 @@
             var ay = "y"+i;
             var per= "per"+i;
 
-            var C1 = '<td><center><select id="'+ay+'" placeholder="Year" style="width:175px;" required></select></center></td>';
-            var C2 = '<td><center><input type="text" placeholder="Name" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="text" placeholder="State" style="width:250px;" required></center></td>';
+            var C1 = '<td><center><select id="'+ay+'" placeholder="Year" style="width:165px;" required></select></center></td>';
+            var C2 = '<td><center><input type="text" placeholder="Name" style="width:230px;" required></center></td>';
+            var C3 = '<td><center><input type="text" placeholder="State" style="width:230px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+CR+'</tr>';
@@ -3107,7 +2930,7 @@
     <hr/>
 </div>
 
-    <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">2.5 Evaluation Process and Reforms</a></center>
+    <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">2.1  Evaluation Process and Reforms (40)</a></center>
 
 <div class="col-sm-12">
     <hr/>
@@ -3208,14 +3031,10 @@
         </div>
 
         <div id="h251" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.1 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Average number of days from the date of last semester-end/ year- end examination till the declaration of results during the last five years (15).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* List of Programmes and date of last semester and date of declaration of results
             </div>
         </div>
 
@@ -3243,7 +3062,7 @@
 
             /* onkeyup="percent_limit_input(this.value,this.id)"  onkeypress="return event.charCode >= 48"*/
 
-            var html = '<tr id="'+i+'"><td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td> <td><center><input  type="text" value="semester" disabled placeholder="Semester" style="width:250px;" ></center></td> <td><center><input  type="text" placeholder="Examination End date" style="width:250px;"></center></td> <td><center><input  type="text" placeholder="Result Declaration Date" style="width:250px;" ></center></td> <td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
+            var html = '<tr id="'+i+'"><td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td> <td><center><input  type="text" placeholder="Semester" style="width:250px;" ></center></td> <td><center><input  type="text" placeholder="Examination End date" style="width:250px;"></center></td> <td><center><input  type="text" placeholder="Result Declaration Date" style="width:250px;" ></center></td> <td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
     		var x = $('#tab251').find('tr');
    			$(x[x.length-1]).before(html);
 
@@ -3378,14 +3197,10 @@
         </div>
 
         <div id="h252" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.2 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                  Average percentage of student complaints/grievances about evaluation against total number appeared in the examinations during the last five years (5).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* Number of complaints and total number of students appeared year wise
             </div>
         </div>
 
@@ -3412,8 +3227,8 @@
             var per= "per"+i;
 
             var C1 = '<td><center><select required placeholder="Year" style="width:175px;" id="'+ay+'"></select></center></td>';
-            var C2 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
+            var C2 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+CR+'</tr>';
@@ -3563,14 +3378,10 @@
         </div>
 
         <div id="h253" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.3 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Average percentage of applications for revaluation leading to change in marks (5).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* Year wise number of applications, students and revaluation cases
             </div>
         </div>
 
@@ -3597,9 +3408,9 @@
             var per= "per"+i;
 
             var C1 = '<td><center><select placeholder="Year" style="width:175px;" id="'+ay+'"></select></center></td>';
-            var C2 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C3 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
-            var C4 = '<td><center><input type="number" placeholder="Number" style="width:250px;" required></center></td>';
+            var C2 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C3 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
+            var C4 = '<td><center><input type="number" placeholder="Number" style="width:120px;" required></center></td>';
             var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
             var html = '<tr id="'+i+'">'+C1+C2+C3+C4+CR+'</tr>';
@@ -3658,15 +3469,9 @@
             function save254(ta)
         	{
                 link =  document.getElementById("link2_5_4").value;
-                //ta = ta.value;
-                var vu= document.getElementById("TA2_5_4").value;
-                //console.log(ta+"\n"+link);
+                ta = ta.value;
 
-                if($("#link2_5_1").val()==""){
-                  alert("Please provide link of the relevant document");
-                  return false;
-                }
-
+                console.log(ta+"\n"+link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3677,7 +3482,7 @@
                                $("#d254").slideToggle("slow");
                                rotate("tg254");
 
-                               if(document.getElementById("TA2_5_4").value=="" || link==""){
+                               if(document.getElementById("TA2_5_4").value==""){
                                     document.getElementById("ch254").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"> Not Filled';
                                 }else{
                                     document.getElementById("ch254").innerHTML = '<img src="../images/filled.png" width="52" height="52"> Filled';
@@ -3685,7 +3490,7 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet254.php?desc="+vu+"&link="+link, true);
+          			   			 xhttp.open("GET", "savet254.php?desc="+ta+"&link="+link, true);
          			   			 xhttp.send();
         		}
 
@@ -3698,13 +3503,9 @@
         </div>
 
         <div id="h254" class="col-sm-10">
-            <div class="col-sm-1"  style="font-size:18px;">2.5.4 <br> <br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;">2.5.4</div>
             <div class="col-sm-11" style="font-size:18px;">
             Positive impact of reforms on the examination procedures and processes including IT integration and continuous internal assessment on the examination management system.
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Any additional information
-                <br>* Paste link for Additional Information
             </div>
         </div>
 
@@ -3728,11 +3529,7 @@
 
         </textarea>
 
-        <br>
-
-        <input type="text" id="link2_5_4" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
-
-        <br>
+        <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -3795,9 +3592,7 @@
          				    xhttp.onreadystatechange = function(){
 
          			       if (this.readyState == 4 && this.status == 200) {
-                              // alert(this.responseText);
-
-
+                               //alert(this.responseText);
                                alert('Changes Saved Successfully');
                                $("#d255").slideToggle("slow");
                                rotate("tg255");
@@ -3818,7 +3613,7 @@
         </div>
 
         <div id="h255" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.5 <br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.5.5</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>
                 Status of automation of Examination division along with approved Examination Manual.
@@ -3827,12 +3622,6 @@
                 <br>C Only student registration and result processing
                 <br>D Only result processing
                 <br>E Only manual methodology
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Current Manual of examination automation system
-                <br>* Annual reports of examination including the present status of automation
-                <br>* Current manual of examination automation system and Annual reports of examination including the present status of automation
-                <br>* Any additional information
             </div>
         </div>
 
@@ -3849,11 +3638,11 @@
             <div class="col-sm-8">
                 <select id="d2550" style="width:700px;">
                     <option value="">Select</option>
-                    <option value="A 100% automation of entire division & implementation of Examination Management System (EMS)">A 100% automation of entire division & implementation of Examination Management System (EMS)</option>
-                    <option value="B Only student registration, Hall ticket issue & Result Processing">B Only student registration, Hall ticket issue & Result Processing </option>
-                    <option value="C Only student registration and result processing">C Only student registration and result processing </option>
-                    <option value="D Only result processing">D Only result processing </option>
-                    <option value="E Only manual methodology">E Only manual methodology </option>
+                    <option value="A 100% automation of entire division & implementation of Examination Management System (EMS)">A. 100% automation of entire division & implementation of Examination Management System (EMS)</option>
+                    <option value="B Only student registration, Hall ticket issue & Result Processing">B. Only student registration, Hall ticket issue & Result Processing </option>
+                    <option value="C Only student registration and result processing">C. Only student registration and result processing </option>
+                    <option value="D Only result processing">D. Only result processing </option>
+                    <option value="E Only manual methodology">E. Only manual methodology </option>
                 </select>
             </div>
             <div class="col-sm-2"></div>
@@ -3917,15 +3706,9 @@
             function save261(ta)
         	{
                 link =  document.getElementById("link2_6_1").value;
-                //ta = ta.value;
-                var vu= document.getElementById("TA2_6_1").value;
-                //console.log(ta+"\n"+link);
+                ta = ta.value;
 
-                if($("#link2_6_1").val()==""){
-                  alert("Please provide link of the relevant document");
-                  return false;
-                }
-
+                console.log(ta+"\n"+link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3936,7 +3719,7 @@
                                $("#d261").slideToggle("slow");
                                rotate("tg261");
 
-                               if(document.getElementById("TA2_6_1").value=="" || link==""){
+                               if(document.getElementById("TA2_6_1").value==""){
                                     document.getElementById("ch261").innerHTML = '<img src="../images/unfilled.png" width="58" height="58"> Not Filled';
                                 }else{
                                     document.getElementById("ch261").innerHTML = '<img src="../images/filled.png" width="58" height="58"> Filled';
@@ -3944,7 +3727,7 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet261.php?desc="+vu+"&link="+link, true);
+          			   			 xhttp.open("GET", "savet261.php?desc="+ta+"&link="+link, true);
          			   			 xhttp.send();
         		}
 
@@ -3957,14 +3740,9 @@
         </div>
 
         <div id="h261" class="col-sm-10">
-            <div class="col-sm-1"  style="font-size:18px;">2.6.1 <br> <br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;">2.6.1</div>
             <div class="col-sm-11" style="font-size:18px;">
             Programme outcomes, Programme specific outcomes and course outcomes for all Programmes offered by the institution are stated and displayed on website and communicated to teachers and students
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload any additional information
-                <br>* Paste link for Additional Information
-                <br>* Upload COs for all courses (exemplars from Glossary)
             </div>
         </div>
 
@@ -3989,11 +3767,7 @@
 
         </textarea>
 
-        <br>
-
-        <input type="text" id="link2_6_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
-
-        <br>
+        <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -4021,9 +3795,6 @@
 <!--
     2.6.3
 -->
-
-    <!--
-
 <script>
         	function save263(table)
         	{
@@ -4181,9 +3952,6 @@
 
         <table border="0" id="tab263">
             <tr>
-
-
-
                 <th style="width:150px; padding:20px;">Name of the student</th>
                 <th style="width:250px; padding:20px;">Gender</th>
                 <th style="width:80px; padding:20px;">Category</th>
@@ -4215,11 +3983,11 @@
 </div>
 
 
-    -->
+
 
 
 <!--
-        2.6.2
+    2.6.2
 -->
 
         <script>
@@ -4227,15 +3995,9 @@
             function save262(ta)
         	{
                 link =  document.getElementById("link2_6_2").value;
-               // ta = ta.value;
-                var vu= document.getElementById("TA2_6_2").value;
-               // console.log(ta+"\n"+link);
+                ta = ta.value;
 
-               if($("#link2_6_2").val()==""){
-                 alert("Please provide link of the relevant document");
-                 return false;
-               }
-
+                console.log(ta+"\n"+link);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -4254,7 +4016,7 @@
 
         		  			}
         		  		};
-          			   			 xhttp.open("GET", "savet262.php?desc="+vu+"&link="+link, true);
+          			   			 xhttp.open("GET", "savet262.php?desc="+ta+"&link="+link, true);
          			   			 xhttp.send();
         		}
 
@@ -4271,13 +4033,9 @@
         </div>
 
         <div id="h262" class="col-sm-10">
-            <div class="col-sm-1"  style="font-size:18px;">2.6.2 <br> <br>Q<sub>L</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;">2.6.2</div>
             <div class="col-sm-11" style="font-size:18px;">
             Attainment of Programme outcomes, Programme specific outcomes and course outcomes are evaluated by the institution.
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload any additional information
-                <br>* Paste link for Additional Information
             </div>
         </div>
 
@@ -4302,11 +4060,7 @@
 
         </textarea>
 
-        <br>
-
-        <input type="text" id="link2_6_2" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
-
-        <br>
+        <br><br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -4339,11 +4093,10 @@
 
 
 
+
 <!--
     2.6.3
 -->
-
-
 <script>
         	function save263(table)
         	{
@@ -4369,7 +4122,7 @@
         				{
         				var idd = $(rows[i]).attr('id');
 
-        					rowss += "('"+"<?php echo $_SESSION['username']; ?>"+"','"+ programmeCode + "','"+ v1 + "','" + v2 + "','" + v3 + "','" + idd +"')";
+        					rowss += "('"+"<?php echo $_SESSION['username'];?>"+"','"+ programmeCode + "','"+ v1 + "','" + v2 + "','" + v3 + "','" + idd +"')";
         					if(i!=rows.length-2) rowss+= ",";
         					else rowss += ";";
         					//console.log(rowss);
@@ -4420,7 +4173,7 @@
 	            					idd = idd.substr(2);
 	            					console.log(x.length);
 	            					//for deriving simple id for academic year
-		            				//fetch_academic_year(idd, $(ay).attr('value'));
+		            				fetch_academic_year(idd, $(ay).attr('value'));
 
 
     							}
@@ -4439,14 +4192,9 @@
         </div>
 
         <div id="h263" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.6.3<br> <br>Q<sub>N</sub>M</div>
+            <div class="col-sm-1"  style="font-size:18px;"><br>2.6.3</div>
             <div class="col-sm-11" style="font-size:18px;">
             <br>Average pass percentage of students (Current year data).
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload list of Programmes and number of students passed and appeared in the final year examination
-                <br>* Upload any additional information
-                <br>* Paste link for Additional Information
             </div>
         </div>
 
@@ -4504,227 +4252,18 @@
     </center>
 
 
-<div class="col-sm-12" style="height:40px;">
+<div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
+        <!--
                 <center><a style="color:black; ;;;; font-weight:normal; font-size:20px;">2.7 Student Satisfaction Survey</a></center>
-
-
-<div class="col-sm-12" style="height:30px;">
+        -->
+<div class="col-sm-12">
     <hr/>
 </div>
 
 
-
-
-<!--
-    2.7.1
--->
-
-
-<script>
-        	function save271(table)
-        	{
-        		var rows = $(table).find('tr');
-        		if(rows.length == 200000) console.log("empty");
-        		else {
-        			var rowss = "";
-        			for(var i = 1; i < rows.length-1; i++)
-        			{
-
-        		var programmeCode = $($(rows[i]).find('select')[0]).val();
-        		var academicYear  = $($(rows[i]).find('select')[1]).val();
-                        var v1 = $($(rows[i]).find('input')[0]).val();
-                        var v2 = $($(rows[i]).find('input')[1]).val();
-                        var v3 = $($(rows[i]).find('input')[2]).val();
-                        var v4 = $($(rows[i]).find('input')[3]).val();
-                        var v5 = $($(rows[i]).find('input')[4]).val();
-                        var v6 = $($(rows[i]).find('input')[5]).val();
-                        var v7 = $($(rows[i]).find('input')[6]).val();
-                        var v8 = $($(rows[i]).find('input')[7]).val();
-                        var v9 = $($(rows[i]).find('input')[8]).val();
-
-
-                        if(programmeCode == "" || academicYear == "")
-        				{
-        					alert('Please select atleast one Programme Code and Year of Joining to save');
-        					return false;
-        				}else if(v1=="" || v2=="" || v3=="" || v4=="" || v5=="" || v6=="" || v7=="" || v8=="" || v9==""){
-                            alert('Please fill input fields to save');
-        					return false;
-                        }
-        				else
-        				{
-        				var idd = $(rows[i]).attr('id');
-
-        					rowss += "('"+"<?php echo $_SESSION['username']; ?>"+"','"+ v1 + "','" + v2 +  "','"+ v3 + "','" + v4  + "','"+ v5 + "','" + v6 + "','"  + programmeCode + "','"+ v7 + "','" + v8 + "','" + v9 + "','" + academicYear + "','" + idd +"')";
-        					if(i!=rows.length-2) rowss+= ",";
-        					else rowss += ";";
-        					//console.log(rowss);
-        				}
-        			}
-        			var xhttp,res;
-        				    xhttp = new XMLHttpRequest();
-         				    xhttp.onreadystatechange = function(){
-
-         			       if (this.readyState == 4 && this.status == 200) {
-
-                               alert('Changes Saved Successfully');
-                               $("#d271").slideToggle("slow");
-                               rotate("tg271");
-                               num_rows("tab271","ch271");
-        		  			}
-        		  		};
-          			   			 xhttp.open("GET", "savet271.php?rows="+rowss, true);
-         			   			 xhttp.send();
-        		}
-        	}
-
-
-        	function fetch_rows_271()
-        	{
-        		var xhttp,res;
-        	    xhttp = new XMLHttpRequest();
-         	    xhttp.onreadystatechange = function(){
-
-
-         		    if (this.readyState == 4 && this.status == 200) {
-          			   var x = $('#tab271').find('tr');
-   					   $(x[x.length-1]).before(this.responseText);
-   					   console.log('hi');
-          			           var y  = this.responseText;
-          			           var responseRows = $(y).siblings();
-          			           if(responseRows.length == 0){ responseRows = $(y); }
-          			           for(var i = 0; i < responseRows.length; i++)
-          			           {
-	          			          x = $(responseRows[i]).find('select');
-	          			          var pc = x[0];
-	          			          var ay = x[1];
-	          			          var idd = $(pc).attr('id');
-	          			          idd = idd.substr(1);
-	          			          //for deriving id#id
-	            					fetch_programme_code(idd, $(pc).attr('value'));
-
-	            					idd = idd.substr(2);
-	            					console.log(x.length);
-	            					//for deriving simple id for academic year
-		            				fetch_academic_year(idd, $(ay).attr('value'));
-
-
-    							}
-        			}
-                    num_rows("tab271","ch271");
-        		};
-          			   			 xhttp.open("GET", "fetch271.php", true);
-         			   			 xhttp.send();
-        	}
-		</script>
-
-    <div class="col-sm-12" onclick='rotate("tg271"); $("#d271").slideToggle("slow");'>
-
-        <div class="col-sm-1" id="ch271">
-            <img src="../images/filled.png" width="58" height="58"> Filled
-        </div>
-
-        <div id="h271" class="col-sm-10" >
-            <div class="col-sm-1"  style="font-size:18px;"><br>2.7.1<br> <br>Q<sub>N</sub>M</div>
-            <div class="col-sm-11" style="font-size:18px;">
-            <br>Online student satisfaction survey regarding teaching learning process.
-                <br>
-                <br>Please keep following and other relevant documents ready in hard copy:
-                <br>* Upload any additional information
-                <br>* Upload database of all currently enrolled students
-            </div>
-        </div>
-
-        <div id="to271" class="col-sm-1">
-            <br><img class="image flip"  id="tg271" src="../images/toggle2.png" width="28" height="28">
-        </div>
-
-    </div>
-
-<center>
-        <div class="col-sm-12" id="d271">
-            <br>
-    <script>
-
-    	function addRow271()
-    	{
-            var i = get_time();
-            var i = "id"+i;
-            var ip = "p"+i;
-            var ic = "c"+i;
-            var ipn= "n"+ip;
-            var icn= "n"+ic;
-            var ay = "y"+i;
-            var per= "per"+i;
-
-            /* onkeyup="percent_limit_input(this.value,this.id)"  onkeypress="return event.charCode >= 48"*/
-
-
-	    var f1 = '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>';
-	    var f2 = '<td><center><input type="text" placeholder="Gender" style="width:100px;" required></center></td>';
-	    var f3 = '<td><center><input type="text" placeholder="Category" style="width:80px;" required></center></td>';
-	    var f4 = '<td><center><input type="text" placeholder="State of Domicile" style="width:120px;" required></center></td>';
-	    var f5 = '<td><center><input type="text" placeholder="Nationality" style="width:120px;" required></center></td>';
-	    var f6 = '<td><center><input type="text" placeholder="Email ID" style="width:120px;" required></center></td>';
-
-	    var f7 = '<td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td>';
-	    var f8 = '<td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td>';
-
-	    var f9 = '<td><center><input type="text" placeholder="Enrollment ID" style="width:120px;" required></center></td>';
-	    var f10= '<td><center><input type="text" placeholder="Mobile Number" style="width:120px;" required></center></td>';
-	    var f11= '<td><center><select placeholder="Year" style="width:175px;" id="'+ay+'"></select></center></td>';
-
-
-	    var fR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
-
-
-            var html = '<tr id="'+i+'">'+f1+f2+f3+f4+f5+f6+f7+f8+f9+f10+f11+fR+'</tr>';
-
-    		var x = $('#tab271').find('tr');
-   			$(x[x.length-1]).before(html);
-
-            fetch_academic_year(i);
-            fetch_programme_code(i);
-    	}
-    </script>
-    <form>
-
-        <table border="0" id="tab271">
-            <tr>
-                <th style="width:150px; padding:20px;">Name of the student</th>
-                <th style="width:250px; padding:20px;">Gender</th>
-                <th style="width:80px;">Category <br>SC/ST/OBC<br>GEN/OTH</th>
-                <th style="width:150px; padding:20px;">State of Domicile</th>
-                <th style="width:250px; padding:20px;">Nationality if othern than Indian</th>
-                <th style="width:80px; padding:20px;">Email ID</th>
-                <th style="width:150px; padding:20px;">Programme Code</th>
-                <th style="width:250px; padding:20px;">Programme Name</th>
-                <th style="width:80px; padding:20px;">Student Unique Enrolment ID</th>
-                <th style="width:200px; padding:20px;">Mobile Number</th>
-                <th style="width:200px; padding:20px;">Year of Joining</th>
-            </tr>
-			<tr>
-				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow271()" alt="Submit" width="48" height="48">
-			</tr>
-        </table>
-
-
-        <input type="button" class="SAVE" onclick="save271($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
-
-    </form>
-
-        </div>
-    </center>
-
-
-
-
-<div class="col-sm-12" style="height:30px;">
-    <hr/>
-</div>
 
 
 
@@ -4739,14 +4278,14 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_2_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_2_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
 ?>
 
         // 2.2.1
-            document.getElementById("TA2_2_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("TA2_2_1").value = '<?php echo $row["Description"]; ?>';
             document.getElementById("link2_2_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA2_2_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -4762,7 +4301,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_3_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_3_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
 
@@ -4770,7 +4309,7 @@
 ?>
 
         // 2.3.1
-            document.getElementById("TA2_3_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("TA2_3_1").value = '<?php echo $row["Description"]; ?>';
             document.getElementById("link2_3_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA2_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -4783,40 +4322,27 @@
 
 <?php
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_4_5 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_4_5 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
 ?>
 
-        document.getElementById("i245_nospug").value="<?php echo $row['sanctioned_post_number_ug']; ?>";
-        document.getElementById("i245_nosppg").value="<?php echo $row['sanctioned_post_number_pg']; ?>";
-
-
-<?php
-    $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_4_1 where Uname like '".$_SESSION['username']."';";
-	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
-    $row  = $res ->fetch_assoc();
-?>
-
-        document.getElementById("i245_nospug0").value="<?php echo $row['Number_of_sanctioned_post_ug']; ?>";
-        document.getElementById("i245_nosppg0").value="<?php echo $row['Number_of_sanctioned_post_pg']; ?>";
-
+        document.getElementById("i245_nosp").value="<?php echo $row['sanctioned_post_number']; ?>";
 
 
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_5_4 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_5_4 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
 ?>
 
         // 2.5.4
-            document.getElementById("TA2_5_4").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("TA2_5_4").value = '<?php echo $row["Description"]; ?>';
             document.getElementById("link2_5_4").value = '<?php echo $row["Link"]; ?>';
-            document.getElementById("TA2_5_4").placeholder = "Describe the examination reforms with reference to the following within a minimum of 500 words and maximum 1000 words \n * Examination procedures \n * Processes integrating IT \n * Continuous internal assessment system ";
+            document.getElementById("TA2_5_4").placeholder = "Describe the examination reforms with reference to the following within a minimum of 500 words and maximum 1000 words \n • Examination procedures \n • Processes integrating IT \n • Continuous internal assessment system ";
 
             if(document.getElementById("TA2_5_4").value==""){
                document.getElementById("ch254").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Filled</a>';
@@ -4829,7 +4355,7 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_5_5 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_5_5 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row_num = mysqli_num_rows($res);
     $row  = $res ->fetch_assoc();
@@ -4837,7 +4363,7 @@
 ?>
 
         // 2.5.5
-            document.getElementById("d2550").innerHTML = '<option value="">Select</option><option value="A 100percent automation of entire division implementation of Examination Management System (EMS)">A 100% automation of entire division & implementation of Examination Management System (EMS)</option><option value="B Only student registration, Hall ticket issue and Result Processing">B Only student registration, Hall ticket issue & Result Processing </option><option value="C Only student registration and result processing">C Only student registration and result processing </option><option value="D Only result processing">D Only result processing </option><option value="E Only manual methodology">E Only manual methodology </option>';
+            document.getElementById("d2550").innerHTML = '<option value="">Select</option><option value="A. 100% automation of entire division & implementation of Examination Management System (EMS)">A 100% automation of entire division & implementation of Examination Management System (EMS)</option><option value="B Only student registration, Hall ticket issue & Result Processing">B. Only student registration, Hall ticket issue & Result Processing </option><option value="C Only student registration and result processing">C. Only student registration and result processing </option><option value="D Only result processing">D. Only result processing </option><option value="E. Only manual methodology">E Only manual methodology </option>';
 
             var q = '<option value="">Select</option><option value="yes">YES</option><option value="no">No</option>';
 
@@ -4870,14 +4396,14 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_6_1 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_6_1 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
 ?>
 
         // 2.6.1
-            document.getElementById("TA2_6_1").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("TA2_6_1").value = '<?php echo $row["Description"]; ?>';
             document.getElementById("link2_6_1").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA2_6_1").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
@@ -4893,14 +4419,14 @@
 <?php
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
-	$query = "Select * from t2_6_2 where Uname like '".$_SESSION['username']."';";
+	$query = "select distinct * from t2_6_2 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];
 ?>
 
         // 2.6.2
-            document.getElementById("TA2_6_2").value = '<?php echo str_replace("'","\'",urldecode($row["Description"])); ?>';
+            document.getElementById("TA2_6_2").value = '<?php echo $row["Description"]; ?>';
             document.getElementById("link2_6_2").value = '<?php echo $row["Link"]; ?>';
             document.getElementById("TA2_6_2").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
@@ -4933,21 +4459,6 @@
     fetch_rows_253();
 
     fetch_rows_263();
-
-    fetch_rows_271();
-
-
-
-    function escapeHtml(text) {
-      return text
-          .replace(/&/g, "%26")
-          .replace(/</g, "%3C")
-          .replace(/>/g, "%3E")
-          .replace(/"/g, "\\%22")
-          .replace(/'/g, "\\%27");
-    }
-
-
 }
 
 </script>

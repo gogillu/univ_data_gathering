@@ -20,6 +20,17 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+
+<style>
+  div{
+    font-family: ubuntu;
+  }
+</style>
+
+
+
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 

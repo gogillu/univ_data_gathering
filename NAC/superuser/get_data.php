@@ -18,6 +18,17 @@ if(!isset($_SESSION['names'])){
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+
+<style>
+  div{
+    font-family: ubuntu;
+  }
+</style>
+
+
+
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -142,6 +153,7 @@ if(!isset($_SESSION['names'])){
   <br><br><br>
         <select id="tbl_name" style="width:300px;" >
           <option value="">Select</option>
+					<option value="criteria_iqac_log.log">ACCESS LOG</option>
           <?php
           while($row = $res->fetch_assoc()){
             //echo "<br><br><br><br><br><br><br><br>";

@@ -3,6 +3,10 @@ $_SESSION['msg']='';
 
 include("credential.php");
 
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 if(!isset($_SESSION['username'])){
 		header("Location: index.php");   }
 ?>
@@ -12,6 +16,10 @@ if(!isset($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/theme.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="./css/w3_l.css">
+
+
   <script src="./js/jquery.min.js"></script>
   <script src="./js/bootstrap.min.js"></script>
 
@@ -113,7 +121,26 @@ if(!isset($_SESSION['username'])){
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; "><a href="./index.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="./logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; ">
+					<style>
+
+					  .nn:hover,.nnn,.nnn:hover{
+					    color: white;
+					  }
+
+					</style>
+
+					          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+					    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+					    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+					      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+					      <a href="#" onClick="window.open('./profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+					      <a href="#" onClick="window.open('./save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+					      <a href="./helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
+					      <a href="./logout.php" class="w3-bar-item w3-button">Logout</a>
+					    </div>
+					  </div>
+				</div></center>
     </div>
 
     <div>

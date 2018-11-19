@@ -18,6 +18,17 @@ if(!isset($_SESSION['names'])){
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+
+<style>
+  div{
+    font-family: ubuntu;
+  }
+</style>
+
+
+
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -147,6 +158,11 @@ if(!isset($_SESSION['names'])){
     padding: 5px;
   }
 
+	tr:hover{
+		background-color: #050505;
+		cursor:default;
+	}
+
 </style>
 
   <center style="font-size:20px; font-weight:bold;">
@@ -185,7 +201,30 @@ if(!isset($_SESSION['names'])){
           <td><?php echo $row['id']; ?></td>
           <td><?php echo $row['Username']; ?></td>
           <td><?php echo $row['ip']; ?></td>
-          <td><?php echo str_replace("&","<br>",str_replace("/","<br>",  str_replace("?","<br><br><b style='color:red;'>",urldecode($row['url']))) ); ?></td>
+					<td><?php
+										$URL_AR = explode("/",$row['url']);
+										//print_r($URL_AR);
+										//echo count($URL_AR);
+										for($uu = 2; $uu<count($URL_AR); $uu++){
+
+											if($uu == count($URL_AR)-1){
+												echo "<t style='color:orange; font-weight:bold;'>";
+											}
+
+											echo urldecode(str_replace("&","<br>",str_replace("?","<br><br><b style='color:red; font-weight:100; font-family:italic;'>",$URL_AR[$uu])));
+											echo "<br>";
+
+											if($uu == count($URL_AR)-1){
+												echo "</t>";
+											}
+										}
+
+//										echo [];
+						   ?>
+				  </td>
+<?php /*
+          <td><?php echo str_replace("&","<br>",str_replace("/","<br><t style='color:orange;'>",  str_replace("?","<br><br><b style='color:red;'>",urldecode($row['url']))) ); ?></td>
+*/ ?>
           <td title="<?php echo str_replace("&amp;","<br>",urldecode(urldecode($row['post_rows']))); ?>"><?php echo str_replace("&amp;","<br>",substr(urldecode(urldecode($row['post_rows'])),0,400));?>  </td>
           <td><?php echo $row['timestamp']; ?></td>
         </tr>

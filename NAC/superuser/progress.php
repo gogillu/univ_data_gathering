@@ -18,6 +18,17 @@ if(!isset($_SESSION['names'])){
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+
+<style>
+  div{
+    font-family: ubuntu;
+  }
+</style>
+
+
+
+
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -1313,7 +1324,7 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 20;
 
-										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't2%' ";
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't7%' ";
 										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
 
 										while ($row_na = $res_na->fetch_assoc()) {

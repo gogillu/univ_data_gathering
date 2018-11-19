@@ -1,6 +1,11 @@
 <?php session_start();
 $_SESSION['msg']='';
 include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 if(!isset($_SESSION['username'])){
 		header("Location: ../index.php");
 }
@@ -102,9 +107,9 @@ if(!isset($_SESSION['username'])){
 
 
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><!--<a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a>--></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name'])." | SAVE DATA => (EXCEL)";?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><!--<a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a> --></div></center>
     </div>
 
     <div>
@@ -134,7 +139,16 @@ if(!isset($_SESSION['username'])){
       </script>
 
 
-  <br><br><br>
+<br><br>
+<!--
+			<center style="font-size:20px;">
+
+				To download/save data that you have filled select appropriate option among following and export it.
+
+			</center>
+-->
+
+  <br>
         <select id="tbl_name" style="width:300px;" >
 <!--          <option value="">Select</option> -->
           <?php
@@ -154,6 +168,10 @@ if(!isset($_SESSION['username'])){
   					//$tbl = $row['Tables_in_NAC'];
             $tbl = $row['Tables_in_criteria_iqac_nac_common'];
 
+						if($tbl[0]!='t'){
+							continue;
+						}
+
           ?>
           <option value="<?php echo $tbl; ?>"><?php echo $tbl; ?></option>
           <?php
@@ -166,6 +184,9 @@ if(!isset($_SESSION['username'])){
         </script>
 
 <br><br>
+
+					<input id="" type="button" value="CLOSE WINDOW" onclick="window.close()">
+
           <input type="button" value="EXPORT" onclick="export_csv()">
 
 </center>

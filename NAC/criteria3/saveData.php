@@ -3,6 +3,10 @@
     session_start();
     include("../credential.php");
 
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 //print_r($_POST);
 
     $connection = mysqli_connect($servername, $username, $password, $dbname);
@@ -27,6 +31,11 @@ mysqli_begin_transaction($connection);
 }
 catch (Exception $e) {
 	mysqli_rollback($connection);
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],"SAVING DATA FAILED",date_format($date, 'Y-m-d H:i:s'));
+
+
 	echo "There was some problem with your data, Last changes were not saved, Try Again...!!!";
 }
 

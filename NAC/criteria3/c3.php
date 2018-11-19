@@ -1,6 +1,11 @@
 <?php
         session_start();
         include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		if(!isset($_SESSION['username'])){
 		  header("Location: ../login.php");
         }
@@ -345,6 +350,8 @@
     <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
   </div>
@@ -636,6 +643,9 @@ related to research promotion policy adoption
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab312').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+               select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -807,6 +817,9 @@ indicating seed money provided and utilized
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab313').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -835,7 +848,7 @@ indicating seed money provided and utilized
         <div id="h313" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>3.1.3<br><br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
-            <br>Number of teachers awarded international fellremove_owship for advanced studies/ research during the last five years
+            <br>Number of teachers awarded international fellowship for advanced studies/ research during the last five years
              <br><br>Please keep following and other relevant documents ready in hard copy:<br>* Any additional information
 <br>* e-copies of the award letters of the teachers
 <br>* List of teachers and their international fellowship details
@@ -980,6 +993,9 @@ indicating seed money provided and utilized
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab314').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -1153,6 +1169,9 @@ indicating seed money provided and utilized
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab315').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -1335,6 +1354,9 @@ establishment
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab316').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -1510,6 +1532,9 @@ establishment
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab322').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -1688,6 +1713,9 @@ non-government
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab323').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2030,6 +2058,9 @@ knowledge
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab332').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2198,6 +2229,9 @@ knowledge
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab333').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2360,6 +2394,9 @@ knowledge
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab334').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					   console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2524,6 +2561,9 @@ commencement etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab341').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  /* console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2683,6 +2723,8 @@ commencement etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab342').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+
    					  console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -2694,6 +2736,9 @@ commencement etc
     							}
         			}
                     num_rows("tab342","ch342");
+
+//                    select_NA();
+
         		};
           			   			 xhttp.open("GET", "fetch342.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2837,6 +2882,9 @@ commencement etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab343').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -3001,6 +3049,9 @@ commencement etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab344').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -3188,6 +3239,9 @@ thesis, year of award etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab345').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log('hi');
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -3380,6 +3434,9 @@ publication
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab346').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -3563,6 +3620,9 @@ publication
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab347').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -3738,6 +3798,9 @@ publication
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab348').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -3902,6 +3965,9 @@ Any additional information
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab351').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -4060,6 +4126,9 @@ Management related to consultancy policy
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab352').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -4229,6 +4298,9 @@ through consultancy
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab353').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -4564,6 +4636,9 @@ last five years
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab362').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -4735,6 +4810,9 @@ e-copy of the award letters
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab363').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -4910,6 +4988,9 @@ industry, community etc for the last five years
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab364').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -5110,6 +5191,9 @@ Govt. or NGO etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab371').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -5297,6 +5381,9 @@ Govt. or NGO etc
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab372').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
    					  console.log("Hello the world");
 
           			           var y  = this.responseText;
@@ -5492,9 +5579,16 @@ Govt. or NGO etc
 
 
          		    if (this.readyState == 4 && this.status == 200) {
+
+                  select_NA();
+
           			   var x = $('#tab373').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
-   					  console.log("Hello the world");
+
+select_NA();
+
+
+              console.log("Hello the world");
 
           			           var y  = this.responseText;
           			           var responseRows = $(y).siblings();
@@ -5512,6 +5606,8 @@ Govt. or NGO etc
           			   			 xhttp.open("GET", "fetch373.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
+
+
         	}
 		</script>
 
@@ -5669,6 +5765,9 @@ importance, other universities etc. during the last five years
         fetch_rows_371();
         fetch_rows_372();
         fetch_rows_373();
+
+        select_NA();
+
         }
 
         function escapeHtml(text) {
@@ -5679,6 +5778,28 @@ importance, other universities etc. during the last five years
               .replace(/"/g, "\\%22")
               .replace(/'/g, "\\%27")
               .replace(/#/g, "%23");
+        }
+
+        function select_NA(){
+
+        <?php
+
+        $connection = mysqli_connect($servername, $username, $password, $dbname);
+
+          $sql_na = "Select * from not_applicable WHERE Username LIKE '".$_SESSION['username']."'";
+          $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
+
+          while ($row = $res->fetch_assoc()){
+            ?>
+
+              $(document).ready(function(){
+                $("#<?php echo $row['img_div']; ?>").html('<img src="../images/na.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Applicable</a>');
+              });
+
+            <?php
+          }
+        ?>
+
         }
 
 

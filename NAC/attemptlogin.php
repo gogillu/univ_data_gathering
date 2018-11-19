@@ -4,6 +4,7 @@
 //error_reporting(E_ERROR | E_PARSE | E_NOTICE);
 if(isset($_POST["submit"])){
 	include("credential.php");
+
 	$connection = mysqli_connect($servername, $username, $password, $dbname);
 
 	if(mysqli_connect_errno()){
@@ -33,6 +34,12 @@ if(isset($_POST["submit"])){
 		$_SESSION['login']="YES";
 		$row = mysqli_fetch_assoc($result1);
 		$_SESSION['name']=$row['name'];
+
+
+			$date = date_create();
+			save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		header("Location: accept_notice.php");
 
 	}else if($number_of_rows2>0){
@@ -43,15 +50,33 @@ if(isset($_POST["submit"])){
 		$_SESSION['names']=$row['name'];
         //echo $_SESSION['name'];
 		echo"<script>alert('success');";
+
+
+			$date = date_create();
+			save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		header("Location: superuser\index.php");
 	}
 	else{ session_start();
 		$_SESSION['login']="NO";
+
+		$_POST['rows'] = "ATTEMPT WITH INCORRECT LOGIN CREDENTIAL";
+
+		$date = date_create();
+		save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
 		echo"<script>alert('Wrong username/password combination');
 					 window.location='login.php';</script>";
 	}
 
 }else{
+
+	$_POST['rows'] = "ERROR CONNECTING DATABASE";
+
+	$date = date_create();
+	save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
 
 	die('sorry, there was a problem connecting to database, Pleasse try again!');
 }

@@ -1,5 +1,8 @@
 <?php session_start();
 $_SESSION['msg']='';
+
+include("credential.php");
+
 if(!isset($_SESSION['username'])){
 		header("Location: index.php");   }
 ?>
@@ -120,8 +123,68 @@ if(!isset($_SESSION['username'])){
 				</center>
     </div>
 
+
+
+<?php
+
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+$prog_na = "select * FROM help_desk WHERE msg_to LIKE '".$_SESSION['username']."' AND msg_from LIKE 'iqac' ";
+$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+$unseen = 0;
+$seen = 0;
+$replied = 0;
+
+while ($row_na = $res_na->fetch_assoc()) {
+	$na = $row_na['seen'];
+	//$rep = $[];
+
+	if($na==1){
+		$seen++;
+	}else{
+		$unseen++;
+	}
+}
+
+
+
+$urg = "";
+//				echo $prog_na;
+
+//echo $prog_na;
+
+if($unseen>0){
+	$urg = "<d style='font-weight:bold; color:red;'>unseen*</d>";
+
+	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b style='color:red;'> unseen </b> message from Help-Desk.</a></center>";
+	$ppp = 1;
+}else if($seen>0){
+	$urg = "<d style='font-weight:bold; color:green;'>seen</d>";
+
+//	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
+}
+
+//echo "<a style='font-size:15px;' href='../helpdesk/chat_reply_to.php?to=".$row['username']."'> "." chat "."$urg"." </a>";
+
+if($ppp!=1){
+	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
     <center>
-        <br><br><br>
+
+        <br><br>
 
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria1/c1.php';" value="CRITERIA 1"/>
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria2/c2.php';" value="CRITERIA 2"/>

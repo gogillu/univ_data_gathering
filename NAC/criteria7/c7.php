@@ -1,6 +1,11 @@
 <?php
         session_start();
         include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		if(!isset($_SESSION['username'])){
 		  header("Location: ../login.php");
         }
@@ -161,7 +166,7 @@
                      xhttp.send("rows="+rowss);
         }
 
-
+/*
         function fetch_course_name(x,y){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -175,6 +180,24 @@
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
         }
+*/
+
+function fetch_course_name(x,y){
+    var xhttp,res;
+    var programmeCode = y.slice(1);
+    var pcode = $('#p'+programmeCode).val();
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("n"+y).value = this.responseText;
+        }
+    };
+    xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x+"&Prog_code="+pcode, true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+             xhttp.send("rows="+rowss);
+}
+
 
         function fetch_programme_name(x,y){
             var xhttp,res;
@@ -4644,12 +4667,35 @@ financial and non financial means during the last five years
 			fetch_rows_718();
 			fetch_rows_719();
 
+      select_NA();
 
 /*        	fetch_rows_122();
         	fetch_rows_132();
         	fetch_rows_134();
  */
 		}
+
+    function select_NA(){
+
+    <?php
+
+      $sql_na = "Select * from not_applicable WHERE Username LIKE '".$_SESSION['username']."'";
+      $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
+
+      while ($row = $res->fetch_assoc()){
+        ?>
+
+          $(document).ready(function(){
+            $("#<?php echo $row['img_div']; ?>").html('<img src="../images/na.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Applicable</a>');
+          });
+
+        <?php
+      }
+    ?>
+
+    }
+
+
     </script>
 
 </body>

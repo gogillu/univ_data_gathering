@@ -1,6 +1,12 @@
 <?php session_start();
 $_SESSION['msg']='';
 include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
+
 if(!isset($_SESSION['names'])){
 		header("Location: ../index.php");   }
 ?>
@@ -18,8 +24,39 @@ if(!isset($_SESSION['names'])){
     <style>
 
 		.complete{
-			background-color: green;
+			background-color: #009900;
 			color: white;
+		}
+
+		w{
+			color: red;
+		}
+
+		x{
+			color: green;
+		}
+
+		y{
+			color: orange;
+		}
+
+		z{
+			color: black;
+			font-size: 19px;
+		}
+
+		w,x,y{
+			font-weight: bold;
+			font-size: 25px;
+		}
+
+		c{
+			color: pink;
+			border-radius: 10%;
+		}
+
+		.shaped{
+			border-radius: 4px;
 		}
 
 		.partial{
@@ -138,7 +175,6 @@ if(!isset($_SESSION['names'])){
 
 		?>
 
-		<br><Br><Br>
 
 <!--
                    <center><a style="color:black; ;;;; font-weight:normal; font-size:25px;">PROGRESS</a></center>
@@ -244,13 +280,45 @@ if(!isset($_SESSION['names'])){
                         $q++;
                     }
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't1%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+										$tt = 10;
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+/*
+									if($q+$na==10){
+										echo ' class="complete"> '.$q."+".$na."/".$tt;
+									}else if($q+$na>0){
+										echo ' class="partial"> '.$q."+".$na."/".$tt;
+									}else{
+										echo ' class="blank"> '.$q."/".$tt;
+									}
+*/
+/*
 										if($q==10){
 											echo ' class="complete"> '.$q.'/10';
 										}else if($q>0){
-											echo ' class="partial"> '.$q.'/10';
+											echo ' class="partial"> '.$q."+".$na.'/10';
 										}else{
 											echo ' class="blank"> '.$q.'/10';
 										}
+*/
 //                    echo $q."/10";
 
                 ?>
@@ -280,6 +348,7 @@ if(!isset($_SESSION['names'])){
                     $c20= "select distinct * from t2_6_1 where Username LIKE '".$row['username']."'";
                     $c21= "select distinct * from t2_6_2 where Username LIKE '".$row['username']."'";
                     $c22= "select distinct * from t2_6_3 where Username LIKE '".$row['username']."'";
+										$c23= "select distinct * from t2_7_1 where Username LIKE '".$row['username']."'";
 
                     $r1 = mysqli_query($connection,$c1);
                     $r2 = mysqli_query($connection,$c2);
@@ -303,6 +372,7 @@ if(!isset($_SESSION['names'])){
                     $r20= mysqli_query($connection,$c20);
                     $r21 = mysqli_query($connection,$c21);
                     $r22= mysqli_query($connection,$c22);
+										$r23= mysqli_query($connection,$c23);
 
                     $a1 = mysqli_num_rows($r1);
                     $a2 = mysqli_num_rows($r2);
@@ -326,6 +396,7 @@ if(!isset($_SESSION['names'])){
                     $a20 = mysqli_num_rows($r20);
                     $a21 = mysqli_num_rows($r21);
                     $a22 = mysqli_num_rows($r22);
+										$a23 = mysqli_num_rows($r23);
 
                     $q=0;
 
@@ -395,10 +466,35 @@ if(!isset($_SESSION['names'])){
                     if($a22>=1){
                         $q++;
                     }
+										if($a23>=1){
+                        $q++;
+                    }
 
-										$tt = 22;
+										$tt = 23;
 
-										if($q==22){
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't2%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+
+/*
+										if($q==23){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
 											echo ' class="partial"> '.$q.'/';
@@ -407,6 +503,7 @@ if(!isset($_SESSION['names'])){
 										}
 
 										echo $tt;
+*/
 //                    echo $q."/22";
 
                 ?>
@@ -602,6 +699,28 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 30;
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't3%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+
+/*
 										if($q==$tt){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
@@ -611,7 +730,7 @@ if(!isset($_SESSION['names'])){
 										}
 
 										echo $tt;
-
+*/
               //      echo $q."/30";
 
                 ?>
@@ -729,6 +848,28 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 17;
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't4%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+
+/*
 										if($q==$tt){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
@@ -738,8 +879,7 @@ if(!isset($_SESSION['names'])){
 										}
 
 										echo $tt;
-
-
+*/
               //      echo $q."/17";
 
                 ?>
@@ -839,6 +979,28 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 14;
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't5%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+
+/*
 										if($q==$tt){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
@@ -848,7 +1010,7 @@ if(!isset($_SESSION['names'])){
 										}
 
 										echo $tt;
-
+*/
 
 
 //                    echo $q."/14";
@@ -980,6 +1142,27 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 19;
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't6%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+/*
 										if($q==$tt){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
@@ -990,7 +1173,7 @@ if(!isset($_SESSION['names'])){
 
 										echo $tt;
 
-
+*/
 
 //                    echo $q."/19";
 
@@ -1130,6 +1313,28 @@ if(!isset($_SESSION['names'])){
 
 										$tt = 20;
 
+										$prog_na = "select count(*) AS total_na FROM not_applicable WHERE Username LIKE '".$row['username']."' AND section LIKE 't2%' ";
+										$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+										while ($row_na = $res_na->fetch_assoc()) {
+											$na = $row_na['total_na'];
+										}
+
+							if($q+$na==$tt){
+								echo ' class="complete"> ';
+							}else if($q+$na>0){
+								echo ' class="partial"> ';
+							}else{
+								echo ' class="blank"> ';
+							}
+
+							if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+							if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+										echo "<z>/".$tt."</z>";
+
+
+
+/*
 										if($q==$tt){
 											echo ' class="complete"> '.$q.'/';
 										}else if($q>0){
@@ -1139,14 +1344,219 @@ if(!isset($_SESSION['names'])){
 										}
 
 										echo $tt;
-
+*/
 
 
 //                    echo $q."/20";
 
                 ?>
             </td>
+
+
+
+						<td
+		<?php
+
+				$c1 = "select distinct * from t6_1_1 where Username LIKE '".$row['username']."'";
+				$c2 = "select distinct * from t6_1_2 where Username LIKE '".$row['username']."'";
+				$c3 = "select distinct * from t6_2_1 where Username LIKE '".$row['username']."'";
+				$c4 = "select distinct * from t6_2_2 where Username LIKE '".$row['username']."'";
+				$c5 = "select distinct * from t6_2_3 where Username LIKE '".$row['username']."'";
+				$c6 = "select distinct * from t6_2_4 where Username LIKE '".$row['username']."'";
+				$c7 = "select distinct * from t6_3_1 where Username LIKE '".$row['username']."'";
+				$c8 = "select distinct * from t6_3_2 where Username LIKE '".$row['username']."'";
+				$c9 = "select distinct * from t6_3_3 where Username LIKE '".$row['username']."'";
+				$c10= "select distinct * from t6_3_4 where Username LIKE '".$row['username']."'";
+				$c11= "select distinct * from t6_3_5 where Username LIKE '".$row['username']."'";
+				$c12= "select distinct * from t6_4_1 where Username LIKE '".$row['username']."'";
+				$c13= "select distinct * from t6_4_2 where Username LIKE '".$row['username']."'";
+				$c14= "select distinct * from t6_4_3 where Username LIKE '".$row['username']."'";
+				$c15= "select distinct * from t6_5_1 where Username LIKE '".$row['username']."'";
+				$c16= "select distinct * from t6_5_2 where Username LIKE '".$row['username']."'";
+				$c17= "select distinct * from t6_5_3 where Username LIKE '".$row['username']."'";
+				$c18= "select distinct * from t6_5_4 where Username LIKE '".$row['username']."'";
+				$c19= "select distinct * from t6_5_5 where Username LIKE '".$row['username']."'";
+
+				$r1 = mysqli_query($connection,$c1);
+				$r2 = mysqli_query($connection,$c2);
+				$r3 = mysqli_query($connection,$c3);
+				$r4 = mysqli_query($connection,$c4);
+				$r5 = mysqli_query($connection,$c5);
+				$r6 = mysqli_query($connection,$c6);
+				$r7 = mysqli_query($connection,$c7);
+				$r8 = mysqli_query($connection,$c8);
+				$r9 = mysqli_query($connection,$c9);
+				$r10= mysqli_query($connection,$c10);
+				$r11 = mysqli_query($connection,$c11);
+				$r12 = mysqli_query($connection,$c12);
+				$r13 = mysqli_query($connection,$c13);
+				$r14 = mysqli_query($connection,$c14);
+				$r15= mysqli_query($connection,$c15);
+				$r16 = mysqli_query($connection,$c16);
+				$r17 = mysqli_query($connection,$c17);
+				$r18 = mysqli_query($connection,$c18);
+				$r19 = mysqli_query($connection,$c19);
+
+				$a1 = mysqli_num_rows($r1);
+				$a2 = mysqli_num_rows($r2);
+				$a3 = mysqli_num_rows($r3);
+				$a4 = mysqli_num_rows($r4);
+				$a5 = mysqli_num_rows($r5);
+				$a6 = mysqli_num_rows($r6);
+				$a7 = mysqli_num_rows($r7);
+				$a8 = mysqli_num_rows($r8);
+				$a9 = mysqli_num_rows($r9);
+				$a10= mysqli_num_rows($r10);
+				$a11 = mysqli_num_rows($r11);
+				$a12 = mysqli_num_rows($r12);
+				$a13 = mysqli_num_rows($r13);
+				$a14 = mysqli_num_rows($r14);
+				$a15 = mysqli_num_rows($r15);
+				$a16 = mysqli_num_rows($r16);
+				$a17 = mysqli_num_rows($r17);
+				$a18 = mysqli_num_rows($r18);
+				$a19 = mysqli_num_rows($r19);
+
+				$q=0;
+
+				if($a1>=1){
+						$q++;
+				}
+				if($a2>=1){
+						$q++;
+				}
+				if($a3>=1){
+						$q++;
+				}
+				if($a4>=1){
+						$q++;
+				}
+				if($a5>=1){
+						$q++;
+				}
+				if($a6>=1){
+						$q++;
+				}
+				if($a7>=1){
+						$q++;
+				}
+				if($a8>=1){
+						$q++;
+				}
+				if($a9>=1){
+						$q++;
+				}
+				if($a10>=1){
+						$q++;
+				}
+				if($a11>=1){
+						$q++;
+				}
+				if($a12>=1){
+						$q++;
+				}
+				if($a13>=1){
+						$q++;
+				}
+				if($a14>=1){
+						$q++;
+				}
+				if($a15>=1){
+						$q++;
+				}
+				if($a16>=1){
+						$q++;
+				}
+				if($a17>=1){
+						$q++;
+				}
+				if($a18>=1){
+						$q++;
+				}
+				if($a19>=1){
+						$q++;
+				}
+
+				$tt = 19;
+
+//				$prog_na = "select * FROM help_desk WHERE (msg_from LIKE '".$row['username']."' AND msg_to LIKE 'iqac') OR (msg_to LIKE '".$row['username']."' AND msg_from LIKE 'iqac') ";
+
+				$connection = mysqli_connect($servername, $username, $password, $dbname);
+				$prog_na = "select * FROM help_desk WHERE msg_from LIKE '".$row['username']."' AND msg_to LIKE 'iqac' ";
+				$res_na  = mysqli_query($connection,$prog_na) or die(mysqli_error($connection));
+
+				$unseen = 0;
+				$seen = 0;
+				$replied = 0;
+
+				while ($row_na = $res_na->fetch_assoc()) {
+					$na = $row_na['seen'];
+					//$rep = $[];
+
+					if($na==1){
+						$seen++;
+					}else{
+						$unseen++;
+					}
+				}
+
+
+
+
+				echo ' class="blank"> ';
+
+				$urg = "";
+//				echo $prog_na;
+
+				//echo $prog_na;
+
+				if($unseen>0){
+					$urg = "<d style='font-weight:bold; color:red;'>unseen*</d>";
+				}else if($seen>0){
+					$urg = "<d style='font-weight:bold; color:green;'>seen</d>";
+				}
+
+				echo "<a style='font-size:15px;' href='../helpdesk/chat_reply_to.php?to=".$row['username']."'> "." chat "."$urg"." </a>";
+
+/*
+	if($q+$na==$tt){
+		echo ' class="complete"> ';
+	}else if($q+$na>0){
+		echo ' class="partial"> ';
+		}else{
+		echo ' class="blank"> ';
+	}
+
+	if($q>0){ echo "<x>".$q."</x>"; }else{ echo "<w>".$q."</w>"; }
+	if($na>0){ echo "<z>+</z>"."<y>".$na."</y>"; }
+				echo "<z>/".$tt."</z>";
+
+*/
+/*
+				if($q==$tt){
+					echo ' class="complete"> '.$q.'/';
+				}else if($q>0){
+					echo ' class="partial"> '.$q.'/';
+				}else{
+					echo ' class="blank"> '.$q.'/';
+				}
+
+				echo $tt;
+
+*/
+
+//                    echo $q."/19";
+
+		?>
+</td>
+
+
+
+
+
+
         </tr>
+
 
 
         <?php

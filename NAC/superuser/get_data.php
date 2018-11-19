@@ -1,9 +1,14 @@
 <?php session_start();
 $_SESSION['msg']='';
 include("../credential.php");
-//if(!isset($_SESSION['names'])){
-//		header("Location: ../index.php");
-//}
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
+if(!isset($_SESSION['names'])){
+		header("Location: ../index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -141,8 +146,9 @@ include("../credential.php");
           while($row = $res->fetch_assoc()){
             //echo "<br><br><br><br><br><br><br><br>";
             //print_r($row);
-  					$tbl = $row['Tables_in_NAC'];
-            //$tbl = $row['Tables_in_criteria_iqac_nac_common'];
+  					//$tbl = $row['Tables_in_NAC'];
+            $tbl = $row['Tables_in_criteria_iqac_nac_common'];
+
             //$eng_query = "alter TABLE ".$tbl." ENGINE = InnoDB;";
             //$res_eng_query = mysqli_query($connection,$eng_query);
 

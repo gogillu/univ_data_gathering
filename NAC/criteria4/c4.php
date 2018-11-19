@@ -1,6 +1,11 @@
 <?php
         session_start();
         include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		if(!isset($_SESSION['username'])){
 		  header("Location: ../login.php");
         }
@@ -158,7 +163,7 @@
                      xhttp.send("rows="+rowss);
         }
 
-
+/*
         function fetch_course_name(x,y){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -172,6 +177,24 @@
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
         }
+*/
+
+function fetch_course_name(x,y){
+    var xhttp,res;
+    var programmeCode = y.slice(1);
+    var pcode = $('#p'+programmeCode).val();
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("n"+y).value = this.responseText;
+        }
+    };
+    xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x+"&Prog_code="+pcode, true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+             xhttp.send("rows="+rowss);
+}
+
 
         function fetch_programme_name(x,y){
             var xhttp,res;
@@ -455,7 +478,9 @@
               <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
                 <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
                 <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
-                <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+                <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+                <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
+                  <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
               </div>
             </div>
               </div>
@@ -1095,7 +1120,6 @@ five years
 
 <!-- 4.2.1 -->
 
--->
 <script>
 
     	function addRow421()
@@ -2729,11 +2753,12 @@ during the last five years
         <div id="h431" class="col-sm-10">
             <div class="col-sm-1"  style="font-size:18px;">4.3.1<br><br>Q<sub>L</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
-         There are established systems and procedures for
-maintaining and utilizing physical, academic and support facilities -
-laboratory, library,sports complex, computers, classrooms etc.
+              Institution frequently updates its IT facilities including Wi-Fi
+              <br><br>
+              Describe IT facilities including Wi-Fi with date and nature of updation
+within a minimum of 500 characters and maximum of 500 words
 
- <br><br>Please keep following and other relevant documents ready in hard copy:
+<br><br>Please keep following and other relevant documents ready in hard copy:
 <br>* Upload any additional information
 <br>* Paste link for additional information
             </div>
@@ -3072,13 +3097,12 @@ Institution
 	<div class="col-sm-4" style="margin-left:202px">
 	<select id="choice_433" class="form-control" >
 	<option value="">Select</option>
-	<option value="≥1 GBPS">≥1 GBPS</option>
+	<option value="greater than or equal to 1 GBPS">greater than or equal to 1 GBPS</option>
 	<option value="500 MBPS - 1 GBPS">500 MBPS - 1 GBPS</option>
 	<option value="250 MBPS - 500 MBPS">250 MBPS - 500 MBPS</option>
-	<option value="50 MBPS - 250 MBPS
-">50 MBPS - 250 MBPS
+	<option value="50 MBPS - 250 MBPS">50 MBPS - 250 MBPS
 </option>
-	<option value="<50 MBPS"><50 MBPS</option>
+	<option value="less than 50 MBPS">less than 50 MBPS</option>
         </select>
 
 	</div>
@@ -3474,6 +3498,7 @@ Recording facility, LCS
 
 
          		    if (this.readyState == 4 && this.status == 200) {
+                  select_NA();
           			   var x = $('#tab441').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
 
@@ -3885,7 +3910,7 @@ laboratory, library,sports complex, computers, classrooms etc.
 
 
 
-			document.getElementById('choice_433').innerHTML='<option value="">Select</option><option value="≥1 GBPS">≥1 GBPS</option><option value="500 MBPS - 1 GBPS">500 MBPS - 1 GBPS</option><option value="250 MBPS - 500 MBPS">250 MBPS - 500 MBPS</option><option value="50 MBPS - 250 MBPS">50 MBPS - 250 MBPS</option><option value="<50 MBPS"><50 MBPS</option>';
+			document.getElementById('choice_433').innerHTML='<option value="">Select</option><option value="greater than or equal to 1 GBPS">greater than or equal to 1 GBPS</option><option value="500 MBPS - 1 GBPS">500 MBPS - 1 GBPS</option><option value="250 MBPS - 500 MBPS">250 MBPS - 500 MBPS</option><option value="50 MBPS - 250 MBPS">50 MBPS - 250 MBPS</option><option value="less than 50 MBPS">less than 50 MBPS</option>';
 	document.getElementById("choice_433").value = '<?php echo $row["choice_433"]; ?>';
 
 		 if(document.getElementById("choice_433").value==""){
@@ -4024,6 +4049,8 @@ laboratory, library,sports complex, computers, classrooms etc.
 			//fetch_rows_433();
 			fetch_rows_441();
 
+      select_NA();
+
 /*        	fetch_rows_122();
         	fetch_rows_132();
         	fetch_rows_134();
@@ -4038,6 +4065,26 @@ laboratory, library,sports complex, computers, classrooms etc.
           .replace(/"/g, "\\%22")
           .replace(/'/g, "\\%27")
           .replace(/#/g, "%23");
+    }
+
+    function select_NA(){
+
+    <?php
+
+      $sql_na = "Select * from not_applicable WHERE Username LIKE '".$_SESSION['username']."'";
+      $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
+
+      while ($row = $res->fetch_assoc()){
+        ?>
+
+          $(document).ready(function(){
+            $("#<?php echo $row['img_div']; ?>").html('<img src="../images/na.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Applicable</a>');
+          });
+
+        <?php
+      }
+    ?>
+
     }
 
 

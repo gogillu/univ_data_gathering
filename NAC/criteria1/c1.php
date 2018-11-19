@@ -1,6 +1,11 @@
 <?php
         session_start();
         include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		if(!isset($_SESSION['username'])){
 		  header("Location: ../login.php");
         }
@@ -164,6 +169,8 @@
 
         function fetch_course_name(x,y){
             var xhttp,res;
+            var programmeCode = y.slice(1);
+            var pcode = $('#p'+programmeCode).val();
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
 
@@ -171,7 +178,7 @@
                     document.getElementById("n"+y).value = this.responseText;
                 }
             };
-            xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x, true);
+            xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x+"&Prog_code="+pcode, true);
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
         }
@@ -465,6 +472,8 @@
     <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
   </div>
@@ -724,6 +733,7 @@
 
 
          		    if (this.readyState == 4 && this.status == 200) {
+                  select_NA();
           			   var x = $('#tab112').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
@@ -748,6 +758,8 @@
     							}
         			}
                     num_rows("tab112","ch112");
+                    select_NA();
+
         		};
           			   			 xhttp.open("GET", "fetch112.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -1014,6 +1026,7 @@
           			   			 xhttp.open("GET", "fetch113.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
+                     select_NA();
         	}
 		</script>
     <form>
@@ -1182,6 +1195,7 @@
           			   			 xhttp.open("GET", "fetch121.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
+                     select_NA();
         	}
 		</script>
 
@@ -1407,6 +1421,7 @@
           			   			 xhttp.open("GET", "fetch122.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
+                     select_NA();
         	}
 		</script>
 
@@ -1820,6 +1835,7 @@
     							}
         			}
                     num_rows("tab132","ch132");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch132.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2019,6 +2035,7 @@
     							}
         			}
                     num_rows("tab134","ch134");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch134.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2089,6 +2106,14 @@
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
+
+
+<center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">1.4 Feedback System</a></center>
+
+<div class="col-sm-12" style="height:30px;">
+<hr/>
+</div>
+
 
 <!--1.4.1-->
 
@@ -2170,6 +2195,8 @@ for design and review of syllabus
                                $("#d141").slideToggle("slow");
                                rotate("tg141");
                                num_rows("tab141","ch141");
+                               select_NA();
+
         		  			}
         		  		};
           			   			 xhttp.open("POST", "saveData.php?table=t1_4_1", true);
@@ -2396,6 +2423,8 @@ E. Feedback not collected
     							}
         			}
                     num_rows("tab142","ch142");
+                    select_NA();
+
         		};
           			   			 xhttp.open("GET", "fetch142.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2513,6 +2542,9 @@ E. Feedback not collected
             fetch_rows_134();
             fetch_rows_141();
             fetch_rows_142();
+
+            select_NA();
+
         }
 
 
@@ -2542,9 +2574,27 @@ E. Feedback not collected
         }
 
 
-    </script>
+function select_NA(){
 
+<?php
 
+  $sql_na = "Select * from not_applicable WHERE Username LIKE '".$_SESSION['username']."'";
+  $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
+
+  while ($row = $res->fetch_assoc()){
+    ?>
+
+      $(document).ready(function(){
+        $("#<?php echo $row['img_div']; ?>").html('<img src="../images/na.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Applicable</a>');
+      });
+
+    <?php
+  }
+?>
+
+}
+
+</script>
 
 </body>
 </html>

@@ -1,6 +1,11 @@
 <?php
         session_start();
         include("../credential.php");
+
+$date = date_create();
+save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
+
+
 		if(!isset($_SESSION['username'])){
 		  header("Location: ../login.php");
         }
@@ -129,7 +134,7 @@
                      xhttp.send("rows="+rowss);
         }
 
-
+/*
         function fetch_course_name(x,y){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -143,6 +148,22 @@
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                      xhttp.send("rows="+rowss);
         }
+*/
+function fetch_course_name(x,y){
+    var xhttp,res;
+    var programmeCode = y.slice(1);
+    var pcode = $('#p'+programmeCode).val();
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("n"+y).value = this.responseText;
+        }
+    };
+    xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x+"&Prog_code="+pcode, true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+             xhttp.send("rows="+rowss);
+}
 
         function fetch_programme_name(x,y){
             var xhttp,res;
@@ -478,6 +499,8 @@
     <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
   </div>
@@ -4903,6 +4926,9 @@
 
 
          		    if (this.readyState == 4 && this.status == 200) {
+
+                  select_NA();
+
           			   var x = $('#tab271').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
    					   console.log('hi');
@@ -5250,9 +5276,7 @@
 
     fetch_rows_271();
 
-
-
-
+    select_NA();
 
 }
 
@@ -5266,6 +5290,26 @@
           .replace(/"/g, "\\%22")
           .replace(/'/g, "\\%27")
           .replace(/#/g, "%23");
+    }
+
+    function select_NA(){
+
+    <?php
+
+      $sql_na = "Select * from not_applicable WHERE Username LIKE '".$_SESSION['username']."'";
+      $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
+
+      while ($row = $res->fetch_assoc()){
+        ?>
+
+          $(document).ready(function(){
+            $("#<?php echo $row['img_div']; ?>").html('<img src="../images/na.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Applicable</a>');
+          });
+
+        <?php
+      }
+    ?>
+
     }
 
 

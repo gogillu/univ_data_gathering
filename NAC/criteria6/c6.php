@@ -23,16 +23,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-
-<style>
-  div{
-    font-family: ubuntu;
-  }
-</style>
-
-
-
+  <link rel="stylesheet" href="../css/w3_l.css">
 
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
@@ -492,7 +483,28 @@ function fetch_course_name(x,y){
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;">
+
+<style>
+
+  .nn:hover,.nnn,.nnn:hover{
+    color: white;
+  }
+
+</style>
+
+          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
+      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+
+</div></center>
     </div>
 
     <script>
@@ -555,6 +567,14 @@ function fetch_course_name(x,y){
               //  ta = ta.value;
                  var vu= document.getElementById("TA6_1_1").value;
                // console.log(ta+"\n"+link);
+
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -622,7 +642,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_1_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -665,6 +689,14 @@ function fetch_course_name(x,y){
               //  ta = ta.value;
                 var vu= document.getElementById("TA6_1_2").value;
               //  console.log(ta+"\n"+link);
+
+              link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+              vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -729,7 +761,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_1_2" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -777,6 +813,14 @@ function fetch_course_name(x,y){
               //  ta = ta.value;
                var vu= document.getElementById("TA6_2_1").value;
                 //console.log(ta+"\n"+link);
+
+                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -841,7 +885,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_2_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -882,6 +930,13 @@ function fetch_course_name(x,y){
                // ta = ta.value;
                  var vu= document.getElementById("TA6_2_2").value;
               //  console.log(ta+"\n"+link);
+              link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+              vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -947,7 +1002,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_2_2" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -986,14 +1045,21 @@ function fetch_course_name(x,y){
         	{
                         var i1 = document.getElementById("t62321").value;
                         var s1 = document.getElementById("yt62322").value;
+                        var l1 = document.getElementById("lt62323").value;
                         var i2 = document.getElementById("t62331").value;
                         var s2 = document.getElementById("yt62332").value;
+                        var l2 = document.getElementById("lt62333").value;
                         var i3 = document.getElementById("t62341").value;
                         var s3 = document.getElementById("yt62342").value;
+                        var l3 = document.getElementById("lt62343").value;
                         var i4 = document.getElementById("t62351").value;
                         var s4 = document.getElementById("yt62352").value;
+                        var l4 = document.getElementById("lt62353").value;
                         var i5 = document.getElementById("t62361").value;
                         var s5 = document.getElementById("yt62362").value;
+                        var l5 = document.getElementById("lt62363").value;
+
+                        //alert(l1 + l2 + l3 + l4 + l5);
 
                         var c = document.getElementById("t623m").value;
 
@@ -1010,7 +1076,11 @@ function fetch_course_name(x,y){
         					return false;
                         }else
         				{
-        					var rowss = "('"+"<?php echo $_SESSION['username'];?>"+"','"+ i1 + "','"+ s1 + "','" + i2 + "','" + s2 + "','"+ i3 + "','"+ s3 + "','"+ i4 + "','" + s4 + "','" + i5 + "','"+ s5 + "','" + c +"')";
+<?php /*
+//        					var rowss = "('"+"<?php// echo $_SESSION['username'];?>"+"','"+ i1 + "','"+ s1 + "','" + i2 + "','" + s2 + "','"+ i3 + "','"+ s3 + "','"+ i4 + "','" + s4 + "','" + i5 + "','"+ s5 + "','" + c +"')";
+*/
+?>
+                  var rowss = "('"+"<?php echo $_SESSION['username'];?>"+"','"+ i1 + "','"+ s1 + "','" + l1 + "','" + i2 + "','" + s2 + "','" + l2 + "','" + i3 + "','"+ s3 + "','" + l3 + "','" + i4 + "','" + s4 + "','" + l4 + "','" + i5 + "','"+ s5 + "','" + l5 + "','" + c +"')";
         				}
 
         			var xhttp,res;
@@ -1079,34 +1149,40 @@ function fetch_course_name(x,y){
 
         <table border="0" id="tab623">
             <tr>
-                <th style="width:200px; padding:20px;">Areas of e governance</th>
-                <th style="width:600px; padding:20px;">Name of the Vendor with contact details</th>
-                <th style="width:200px; padding:20px;">Year of implementation</th>
+                <th style="width:200px; padding:20px;"><b>Areas of e governance</b></th>
+                <th style="width:600px; padding:20px;"><b>Name of the Vendor with contact details</b></th>
+                <th style="width:200px; padding:20px;"><b>Year of implementation</b></th>
+                <th style="width:200px; padding:20px;"><b>Link of the Relavant Document</b></th>
             </tr>
             <tr>
                 <th style="width:200px; padding:20px;">Planning and Development</th>
                 <th style="width:600px; padding:20px;"><input id="t62321" type="text" placeholder="Name / Contact Details"></th>
                 <th style="width:200px; padding:20px;"><select style="width:200px; " id="yt62322"></select></th>
+                <td><center><input type="text" id="lt62323" placeholder="Link of the relevant document" style="width:250px;"></center></td>
             </tr>
             <tr>
                 <th style="width:200px; padding:20px;">Administration</th>
                 <th style="width:600px; padding:20px;"><input id="t62331" type="text" placeholder="Name / Contact Details"></th>
                 <th style="width:200px; padding:20px;"><select style="width:200px; " id="yt62332"></select></th>
+                <td><center><input type="text" id="lt62333" placeholder="Link of the relevant document" style="width:250px;"></center></td>
             </tr>
             <tr>
                 <th style="width:200px; padding:20px;">Finance and Accounts</th>
                 <th style="width:600px; padding:20px;"><input id="t62341" type="text" placeholder="Name / Contact Details"></th>
                 <th style="width:200px; padding:20px;"><select style="width:200px; " id="yt62342"></select></th>
+                <td><center><input type="text" id="lt62343" placeholder="Link of the relevant document" style="width:250px;"></center></td>
             </tr>
             <tr>
                 <th style="width:200px; padding:20px;">Student Admission and Support</th>
                 <th style="width:600px; padding:20px;"><input id="t62351" type="text" placeholder="Name / Contact Details"></th>
                 <th style="width:200px; padding:20px;"><select style="width:200px; " id="yt62352"></select></th>
+                <td><center><input type="text" id="lt62353" placeholder="Link of the relevant document" style="width:250px;"></center></td>
             </tr>
             <tr>
                 <th style="width:200px; padding:20px;">Examination</th>
                 <th style="width:600px; padding:20px;"><input id="t62361" type="text" placeholder="Name / Contact Details"></th>
                 <th style="width:200px; padding:20px;"><select style="width:200px; " id="yt62362"></select></th>
+                <td><center><input type="text" id="lt62363" placeholder="Link of the relevant document" style="width:250px;"></center></td>
             </tr>
           <!--  <tr>
                 <td><center><select text="Programme Code" style="width:150px;" required></select></center></td>
@@ -1157,6 +1233,13 @@ function fetch_course_name(x,y){
                // ta = ta.value;
                  var vu= document.getElementById("TA6_2_4").value;
               //  console.log(ta+"\n"+link);
+              link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+              vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -1221,7 +1304,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_2_4" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1271,6 +1358,13 @@ function fetch_course_name(x,y){
                // ta = ta.value;
                 var vu= document.getElementById("TA6_3_1").value;
                // console.log(ta+"\n"+link);
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -1335,7 +1429,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_3_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2146,6 +2244,13 @@ function fetch_course_name(x,y){
                 //ta = ta.value;
                  var vu= document.getElementById("TA6_3_5").value;
                 //console.log(ta+"\n"+link);
+                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2210,7 +2315,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_3_5" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2261,6 +2370,13 @@ function fetch_course_name(x,y){
                // ta = ta.value;
                var vu= document.getElementById("TA6_4_1").value;
                // console.log(ta+"\n"+link);
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2323,7 +2439,11 @@ function fetch_course_name(x,y){
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_4_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2557,6 +2677,13 @@ five years
                 //ta = ta.value;
                  var vu= document.getElementById("TA6_4_3").value;
               //  console.log(ta+"\n"+link);
+              link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+              vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2621,7 +2748,11 @@ five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_4_3" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2671,6 +2802,13 @@ five years
                // ta = ta.value;
                  var vu= document.getElementById("TA6_5_1").value;
                // console.log(ta+"\n"+link);
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2733,7 +2871,11 @@ five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_5_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2774,6 +2916,13 @@ five years
                 //ta = ta.value;
                  var vu= document.getElementById("TA6_5_2").value;
                 //console.log(ta+"\n"+link);
+                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -2837,7 +2986,11 @@ five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_5_2" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -3277,6 +3430,13 @@ five years
                // ta = ta.value;
                  var vu= document.getElementById("TA6_5_5").value;
                // console.log(ta+"\n"+link);
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3339,7 +3499,11 @@ five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link6_5_5" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -3388,8 +3552,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.1.1
-            document.getElementById("TA6_1_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_1_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_1_1").placeholder = "Describe the vision and mission statement of the institution on the nature of governance, perspective plans and participation of the teachers in the decision making bodies of the university within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_1_1").value==""){
@@ -3409,8 +3573,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.1.2
-            document.getElementById("TA6_1_2").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_1_2").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_1_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_1_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_1_2").placeholder = "Describe a case study showing decentralisation and participative management in the institution in practice within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_1_2").value==""){
@@ -3430,8 +3594,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.2.1
-            document.getElementById("TA6_2_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_2_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_2_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_2_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_1").placeholder = "Describe one activity successfully implemented based on the strategic plan within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_2_1").value==""){
@@ -3453,8 +3617,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.2.2
-            document.getElementById("TA6_2_2").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_2_2").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_2_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_2_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_2").placeholder = "Describe one activity successfully implemented based on the strategic plan within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_2_2").value==""){
@@ -3488,15 +3652,16 @@ five years
             document.getElementById("t623m").value = "<?php echo $row['CHOICE']; ?>";
 
             document.getElementById("t62321").value = '<?php echo $row["PD_C"]; ?>';
-            //document.getElementById("yt62322").value = '<?php echo $row["PD_Y"]; ?>';
             document.getElementById("t62331").value = '<?php echo $row["AD_C"]; ?>';
-            //document.getElementById("yt62332").value = '<?php echo $row["AD_Y"]; ?>';
             document.getElementById("t62341").value = '<?php echo $row["FA_C"]; ?>';
-            //document.getElementById("yt62342").value = '<?php echo $row["FA_Y"]; ?>';
             document.getElementById("t62351").value = '<?php echo $row["SA_C"]; ?>';
-            //document.getElementById("yt62352").value = '<?php echo $row["SA_Y"]; ?>';
             document.getElementById("t62361").value = '<?php echo $row["EX_C"]; ?>';
-            //document.getElementById("yt62362").value = '<?php echo $row["EX_Y"]; ?>';
+
+            document.getElementById("lt62323").value = '<?php echo $row["PD_L"]; ?>';
+            document.getElementById("lt62333").value = '<?php echo $row["AD_L"]; ?>';
+            document.getElementById("lt62343").value = '<?php echo $row["FA_L"]; ?>';
+            document.getElementById("lt62353").value = '<?php echo $row["SA_L"]; ?>';
+            document.getElementById("lt62363").value = '<?php echo $row["EX_L"]; ?>';
 
             //alert("++"+document.getElementById("yt62322")+"++");
 
@@ -3520,8 +3685,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.2.4
-            document.getElementById("TA6_2_4").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_2_4").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_2_4").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_2_4").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_4").placeholder = "Describe one activity successfully implemented based on the Minutes of the meetings of various Bodies/ Cells and Committees within a minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_2_4").value==""){
@@ -3540,8 +3705,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.3.1
-            document.getElementById("TA6_3_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_3_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_3_1").placeholder = "Provide the list of existing welfare measures for teaching and nonteaching staff minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_3_1").value==""){
@@ -3559,8 +3724,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.3.5
-            document.getElementById("TA6_3_5").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_3_5").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_3_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_3_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_3_5").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_3_5").value==""){
@@ -3580,8 +3745,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.4.1
-            document.getElementById("TA6_4_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_4_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_4_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_4_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_4_1").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_4_1").value==""){
@@ -3599,8 +3764,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.4.3
-            document.getElementById("TA6_4_3").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_4_3").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_4_3").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_4_3").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_4_3").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_4_3").value==""){
@@ -3619,8 +3784,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.5.1
-            document.getElementById("TA6_5_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_5_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_5_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_5_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_1").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_5_1").value==""){
@@ -3638,8 +3803,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.5.2
-            document.getElementById("TA6_5_2").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_5_2").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_5_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_5_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_2").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
             if(document.getElementById("TA6_5_2").value==""){
@@ -3657,8 +3822,8 @@ five years
             //echo $row['Description'];
 ?>
         // 6.5.5
-            document.getElementById("TA6_5_5").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link6_5_5").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA6_5_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link6_5_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_5").placeholder = "Describe quality enhancement initiatives in the academic and administrative domains successfully implemented during the last five years within a minimum of 500 characters and Maximum of 500 words each.";
 
             if(document.getElementById("TA6_5_5").value==""){
@@ -3701,6 +3866,15 @@ five years
 
         }
 
+        function escapeHtml(text) {
+          return text
+              .replace(/&/g, "%26")
+              .replace(/</g, "%3C")
+              .replace(/>/g, "%3E")
+              .replace(/"/g, "\\%22")
+              .replace(/'/g, "\\%27")
+              .replace(/#/g, "%23");
+        }
 
 
     </script>

@@ -1,11 +1,8 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    //    $password_log = "uniqueness";
-    $password = "#ldap@mil159#";
+    $password = "uniqueness";
     $dbname = "criteria_iqac_nac_common";
-
-    $connection = mysqli_connect($servername, $username, $password, $dbname);
 
 function getUserIP(){
   // Get real visitor IP behind CloudFlare network
@@ -37,8 +34,7 @@ function getUserIP(){
 
     $servername_log = "localhost";
     $username_log = "root";
-//    $password_log = "uniqueness";
-    $password = "#ldap@mil159#";
+    $password_log = "uniqueness";
     $dbname_log = "criteria_iqac_log";
 
     $connection_log = mysqli_connect($servername_log, $username_log, $password_log, $dbname_log) ;//or die("Connection error: " );

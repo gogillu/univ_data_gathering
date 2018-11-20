@@ -16,7 +16,7 @@ mysqli_begin_transaction($connection);
 
 	$query = "Delete from t7_1_12 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query);
-	$query = "Insert into t7_1_12 Values('".$_SESSION['username']."','".$_POST['lcd']."','".$_POST['lan']."')";
+	$query = "Insert into t7_1_12 Values('".$_SESSION['username']."','".$_GET['lcd']."','".$_GET['lan']."')";
 	$res  = mysqli_query($connection,$query) ; //or die(mysqli_error($connection));
 
 	if($res){
@@ -38,7 +38,5 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],"SAVING DATA 
 }
 
 mysqli_autocommit($connection,TRUE);
-
-	//echo "<script type='text/javascript'>alert(<?php //echo $query; ??>);</script>";
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-	
+
     session_start();
     include("../credential.php");
 
@@ -7,7 +7,7 @@ $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
 
-    
+
     $connection = mysqli_connect($servername, $username, $password, $dbname);
 
 mysqli_autocommit($connection,FALSE);
@@ -16,7 +16,7 @@ mysqli_begin_transaction($connection);
 
 	$query = "Delete from t7_1_2 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query);
-	$query = "Insert into t7_1_2 Values('".$_SESSION['username']."','".$_GET['desc']."','','')";   // ".$_POST['rows']."";
+	$query = "Insert into t7_1_2 Values('".$_SESSION['username']."','".urlencode($_GET['desc'])."','','".urlencode($_GET['link'])."')";   // ".$_POST['rows']."";
 	$res  = mysqli_query($connection,$query) ; //or die(mysqli_error($connection));
 
 	if($res){

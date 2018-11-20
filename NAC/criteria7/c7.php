@@ -25,16 +25,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
   <link rel="stylesheet" href="../css/theme.css">
 
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-
-<style>
-  div{
-    font-family: ubuntu;
-  }
-</style>
-
-
-
+  <link rel="stylesheet" href="../css/w3_l.css">
 
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
@@ -529,7 +520,27 @@ function fetch_course_name(x,y){
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;">
+
+<style>
+
+  .nn:hover,.nnn,.nnn:hover{
+    color: white;
+  }
+
+</style>
+
+          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
+      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div>
+</div></center>
     </div>
 
     <script>
@@ -817,11 +828,20 @@ during the last five years
 
             function save412()
         	{
-                link =  document.getElementById("link4_1_2").value;
+                link =  document.getElementById("link7_1_2").value;
                 //ta = ta.value;
 
                 //console.log(ta+"\n"+link);
                 var desc=document.getElementById('TA4_1_2').value;
+
+                link = escapeHtml(link);
+
+                if(link==""){
+                  alert('Please provide link of the relevant document');
+                  return false;
+                }
+                desc = escapeHtml(desc);
+
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -889,7 +909,11 @@ during the last five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_2" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1184,6 +1208,16 @@ energy sources
 
                 //console.log(ta+"\n"+link);
                 var desc=document.getElementById('TA7_1_5').value;
+
+                                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                                desc = escapeHtml(desc);
+
+
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -1253,7 +1287,11 @@ energy sources
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_5" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1295,6 +1333,17 @@ energy sources
 
                 //console.log(ta+"\n"+link);
                 var desc=document.getElementById('TA7_1_6').value;
+
+
+                                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                                desc = escapeHtml(desc);
+
+
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -1361,7 +1410,11 @@ energy sources
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_6" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -1403,6 +1456,17 @@ energy sources
 
                 //console.log(ta+"\n"+link);
                 var desc=document.getElementById('TA7_1_7').value;
+
+
+                                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                                desc = escapeHtml(desc);
+
+
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -1476,7 +1540,11 @@ energy sources
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_7" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -2486,7 +2554,7 @@ years
                                $("#d7112").slideToggle("slow");
                                rotate("tg7112");
                                console.log(this.responseText);
-
+                               alert(this.responseText);
 						   }
 							};
 
@@ -2605,6 +2673,7 @@ brochures on human values and professional ethics
 
          			       if (this.readyState == 4 && this.status == 200) {
 
+                               alert(this.responseText);
                                $("#d7113").slideToggle("slow");
                                rotate("tg7113");
                                console.log(this.responseText);
@@ -2939,6 +3008,7 @@ identities and symbols
 
          			       if (this.readyState == 4 && this.status == 200) {
 
+                              alert(this.responseText);
                                $("#d7115").slideToggle("slow");
                                rotate("tg7115");
                                console.log(this.responseText);
@@ -3056,6 +3126,7 @@ Institutional website
 
          			       if (this.readyState == 4 && this.status == 200) {
 
+                       alert(this.responseText);
                                $("#d7116").slideToggle("slow");
                                rotate("tg7116");
                                console.log(this.responseText);
@@ -3348,6 +3419,15 @@ last five years
                  var vu= document.getElementById("TA7_1_18").value;
                // console.log(ta+"\n"+link);
 
+                               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                               vu = escapeHtml(vu);
+
+
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
@@ -3419,7 +3499,11 @@ characters and maximum of 500 words
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_18" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -3467,6 +3551,15 @@ characters and maximum of 500 words
                // ta = ta.value;
                  var vu= document.getElementById("TA7_1_19").value;
                 //console.log(ta+"\n"+link);
+
+                                link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+                                vu = escapeHtml(vu);
+
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -3536,7 +3629,11 @@ within a minimum of 500 characters and maximum of 500 words
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_1_19" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -3641,9 +3738,9 @@ within a minimum of 500 characters and maximum of 500 words
                                num_tabs("Tabs721","ch721");
         		  			}
         		  		};
-          			   			 xhttp.open("POST", "savet721.php?rows="+Tabss, true);
+          			   			 xhttp.open("POST", "savet721.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                     xhttp.send("rows="+rowss);
+                     xhttp.send("rows="+Tabss);
         		}
         	}
 
@@ -4070,6 +4167,13 @@ Describe at least two institutional best practices
                // ta = ta.value;
                  var vu= document.getElementById("TA7_3_1").value;
                // console.log(ta+"\n"+link);
+               link = escapeHtml(link);
+if(link==""){
+  alert('Please provide link of the relevant document');
+  return false;
+}
+
+               vu = escapeHtml(vu);
 
                 var xhttp,res;
         				    xhttp = new XMLHttpRequest();
@@ -4140,7 +4244,11 @@ financial and non financial means during the last five years
 
         </textarea>
 
-        <br><br>
+        <br>
+
+        <input type="text" id="link7_3_1" placeholder="Link of the relevant document" style="margin-left:80px; width:930px;" required>
+
+        <br>
 
         <div style="height:10px; visibility:hidden; height:0px;">
 
@@ -4198,8 +4306,8 @@ financial and non financial means during the last five years
 ?>
 
         // 1.3.1
-         /*   document.getElementById("TA4_1_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link4_1_1").value = '<?php echo $row["link"]; ?>';
+         /*   document.getElementById("TA4_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link4_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_1_1").placeholder = "Describe the adequacy of facilities for teaching –learning as per theminimum specified requirement by statutory bodies within minimum500 characters and maximum 500 words";
 
             if(document.getElementById("TA4_1_1").value==""){
@@ -4220,8 +4328,8 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA4_1_2").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link4_1_2").value = '<?php echo $row["Link"]; ?>';
+		document.getElementById("TA4_1_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_1_2").placeholder = "Describe gender equity initiatives undertaken by the Institution on the specified areas within a minimum of 500 characters and maximum of 500 words each";
 
             if(document.getElementById("TA4_1_2").value==""){
@@ -4246,8 +4354,8 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA7_1_5").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_1_5").value = '<?php echo $row["Link"]; ?>';
+		document.getElementById("TA7_1_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_5").placeholder = "Describe efforts towards waste management on campus within a minimum of 500 characters and maximum of 500 words each";
 
             if(document.getElementById("TA7_1_5").value==""){
@@ -4269,8 +4377,8 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA7_1_7").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_1_7").value = '<?php echo $row["Link"]; ?>';
+		document.getElementById("TA7_1_7").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_7").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_7").placeholder = "Describe efforts towards green practices on the campus within a minimum of 500 characters and maximum of 500 words ";
 
             if(document.getElementById("TA7_1_7").value==""){
@@ -4295,8 +4403,8 @@ financial and non financial means during the last five years
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];?>
 
-		document.getElementById("TA7_1_6").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_1_6").value = '<?php echo $row["Link"]; ?>';
+		document.getElementById("TA7_1_6").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_6").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_6").placeholder = "Describe efforts towards rain water harvesting on the campus within aminimum 500 characters and Maximum 500 words ";
 
             if(document.getElementById("TA7_1_6").value==""){
@@ -4455,7 +4563,7 @@ financial and non financial means during the last five years
 
 
 			document.getElementById("i7_1_12_lcd").value = '<?php echo $row["yes_no"]; ?>';
-			document.getElementById("i7_1_12_lan").value= '<?php echo $row["link"]; ?>';
+			document.getElementById("i7_1_12_lan").value= '<?php echo urldecode($row["link"]); ?>';
 
 
 				lcd =  document.getElementById("i7_1_12_lcd").value;
@@ -4500,7 +4608,7 @@ financial and non financial means during the last five years
 
 
 			document.getElementById("i7_1_13_lcd").value = '<?php echo $row["yes_no"]; ?>';
-			document.getElementById("i7_1_13_lan").value= '<?php echo $row["link"]; ?>';
+			document.getElementById("i7_1_13_lan").value= '<?php echo urldecode($row["link"]); ?>';
 
 
 				lcd =  document.getElementById("i7_1_13_lcd").value;
@@ -4526,8 +4634,8 @@ financial and non financial means during the last five years
 ?>
 
         // 7.3.1
-            document.getElementById("TA7_3_1").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_3_1").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA7_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_3_1").placeholder = "Describe the institutional performance in one area distinctive to its vision,priority and thrust within a minimum of 500 characters and maximum of 1000 words ";
             if(document.getElementById("TA7_3_1").value==""){
                document.getElementById("ch731").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Filled</a>';
@@ -4552,8 +4660,8 @@ financial and non financial means during the last five years
 ?>
 
         // 7.3.1
-            document.getElementById("TA7_1_19").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_1_19").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA7_1_19").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_19").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_19").placeholder = "Describe efforts of the Institution towards maintenance of complete transparency in its financial, academic, administrative and auxiliary functions within a minimum of 500 characters and maximum of 500 words";
             if(document.getElementById("TA7_1_19").value==""){
                document.getElementById("ch7119").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Filled</a>';
@@ -4576,8 +4684,8 @@ financial and non financial means during the last five years
 ?>
 
         // 7.1.18
-            document.getElementById("TA7_1_18").value = '<?php echo $row["Description"]; ?>';
-            document.getElementById("link7_1_18").value = '<?php echo $row["Link"]; ?>';
+            document.getElementById("TA7_1_18").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("link7_1_18").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_18").placeholder = "Describe efforts of the Institution in organizing national festivals and birth /death anniversaries of the great Indian personalities within a minimum of 500 characters and maximum of 500 words ";
             if(document.getElementById("TA7_1_18").value==""){
                document.getElementById("ch7118").innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"> Not Filled</a>';
@@ -4615,7 +4723,7 @@ financial and non financial means during the last five years
 
         // 7.1.16
 			document.getElementById("i7_1_16_lcd").value = '<?php echo $row["yes_no"]; ?>';
-			document.getElementById("i7_1_16_lan").value= '<?php echo $row["link"]; ?>';
+			document.getElementById("i7_1_16_lan").value= '<?php echo urldecode($row["link"]); ?>';
 
 
 				lcd =  document.getElementById("i7_1_16_lcd").value;
@@ -4647,7 +4755,7 @@ financial and non financial means during the last five years
 
         // 7.1.16
 			document.getElementById("i7_1_15_lcd").value = '<?php echo $row["yes_no"]; ?>';
-			document.getElementById("i7_1_15_lan").value= '<?php echo $row["link"]; ?>';
+			document.getElementById("i7_1_15_lan").value= '<?php echo urldecode($row["link"]); ?>';
 
 
 				lcd =  document.getElementById("i7_1_15_lcd").value;
@@ -4687,6 +4795,17 @@ financial and non financial means during the last five years
         	fetch_rows_134();
  */
 		}
+
+    function escapeHtml(text) {
+      return text
+          .replace(/&/g, "%26")
+          .replace(/</g, "%3C")
+          .replace(/>/g, "%3E")
+          .replace(/"/g, "\\%22")
+          .replace(/'/g, "\\%27")
+          .replace(/#/g, "%23");
+    }
+
 
     function select_NA(){
 

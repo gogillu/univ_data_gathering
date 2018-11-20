@@ -16,7 +16,7 @@ mysqli_begin_transaction($connection);
 
 	$query = "Delete from t7_1_5 where Username like '".$_SESSION['username']."';";
 	$res  = mysqli_query($connection,$query);
-	$query = "Insert into t7_1_5 Values('".$_SESSION['username']."','".$_GET['desc']."','','')";   // ".$_POST['rows']."";
+	$query = "Insert into t7_1_5 Values('".$_SESSION['username']."','".urlencode($_GET['desc'])."','','".urlencode($_GET['link'])."')";   // ".$_POST['rows']."";
 	$res  = mysqli_query($connection,$query) ; //or die(mysqli_error($connection));
 
 	if($res){

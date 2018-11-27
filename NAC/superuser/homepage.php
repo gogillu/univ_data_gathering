@@ -16,6 +16,19 @@ if(!isset($_SESSION['username'])){
   <script src="./js/bootstrap.min.js"></script>
 
     <style>
+
+		.blink{
+				color: rgb (0, 137, 226);
+				animation: blink 1s infinite;
+			 }
+
+			 @keyframes blink{
+				0%{opacity: 1;}
+				75%{opacity: 1;}
+				76%{ opacity: 0;}
+				100%{opacity: 0;}
+			 }
+
     input[type=text],input[type=password], select,textarea {
             background-color:#ffffff;
             opacity:.92;
@@ -119,7 +132,7 @@ if(!isset($_SESSION['username'])){
     <div>
         <a style="visibility:hidden;">d</a>
 				<center>
-					DATA CAPTURING SYSTEM is best viewed through Google Chrome web browser.
+					<b>DATA CAPTURING SYSTEM is best viewed through Google Chrome web browser.</b>
 				</center>
     </div>
 
@@ -166,15 +179,6 @@ if($unseen>0){
 
 
 ?>
-
-
-
-
-
-
-
-
-
 
 
     <center>

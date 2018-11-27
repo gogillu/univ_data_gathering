@@ -19,7 +19,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
   </script>
 
 <link rel="icon" href="logo.png">
-<title>Data Capturing System NAAC A & A 2019</title>
+<title>Criteria-3 Data Capturing System NAAC A & A 2019</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -3734,8 +3734,8 @@ select_NA();
                         var name = $($(rows[i]).find('input')[1]).val();
                         var jtitle = $($(rows[i]).find('input')[2]).val();
                         var indx = $($(rows[i]).find('input')[3]).val();
-                        var mention = $($(rows[i]).find('input')[4]).val();
-                        var citations = $($(rows[i]).find('input')[5]).val();
+                        var mention = $($(rows[i]).find('input')[5]).val();
+                        var citations = $($(rows[i]).find('input')[4]).val();
                         if(Year == "")
         				{
         					alert('Please select valid Academic Period to save');
@@ -5801,6 +5801,23 @@ importance, other universities etc. during the last five years
         ?>
 
         }
+
+        function maintain_session(){
+          var xhttp,res;
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+
+                 if (this.readyState == 4 && this.status == 200) {
+                     console.log(this.responseText);
+                          // alert(this.responseText);
+                }
+              };
+                     xhttp.open("GET", "../profile/maintain_session.php?page=c3.php", true);
+                   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                 xhttp.send("rows="+rowss);
+        }
+
+        setInterval(function() { maintain_session(); }, 800000);
 
 
     </script>

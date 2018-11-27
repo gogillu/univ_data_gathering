@@ -1,4 +1,4 @@
-<?php 	
+<?php
         session_start();
         include("../credential.php");
 
@@ -6,30 +6,30 @@ $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
 
-		if(!isset($_SESSION['username'])){                             
-		  header("Location: ../login.php");   
+		if(!isset($_SESSION['username'])){
+		  header("Location: ../login.php");
         }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
-    
-    
+
+
     <script>
-        
+
         function rotate(tg) {
                 console.log(tg);
                 $("#"+tg).toggleClass('flip');
         }
-/*        
+/*
         $(document).ready(function(){
             $("#h111").click(function(){
                 $("#d111").slideToggle("slow");
@@ -42,13 +42,13 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             });
         });
 
-        
+
         $(document).ready(function(){
             $("#h113").click(function(){
                 $("#d113").slideToggle("slow");
             });
         });
-        
+
         $(document).ready(function(){
             $("#h121").click(function(){
                 $("#d121").slideToggle("slow");
@@ -83,10 +83,10 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         function percent_limit_input(x,y,event){
             console.log(x.toString());
             console.log(event.which);
-            
+
             var c=0;
             var t;
-            
+
             for(var i=0; i<x.length; i+=1){
                 t = x.toString().charAt(i);
                 console.log(" . count = "+t);
@@ -94,22 +94,22 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
                    c+=1;
                 }
             }
-            
+
             if(c>=2){
                 alert('Please Enter a valid Percentage ');
-               document.getElementById(y).value = "";                           
+               document.getElementById(y).value = "";
             }
-            
+
             if(event.which==69 || event.which==189){
                 alert('Please Enter a valid Percentage ');
-               document.getElementById(y).value = "";            
+               document.getElementById(y).value = "";
             }else if(parseFloat(x)<=10000 || parseFloat(x)>=0){
-                
+
             }else{
                 alert('Please Enter a valid Percentage ');
                document.getElementById(y).value = "";
             }
-            
+
             /*
             if(x.indexOf("-")!=-1){
                    document.getElementById(y).value = x.toString().slice(0,-1);
@@ -121,7 +121,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
                document.getElementById(y).value = "";
             }
         }
-        
+
         function fetch_academic_year(x, val = "none"){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -137,7 +137,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             xhttp.open("GET", "../Dropdowns/fetch_academic_year.php", true);
             xhttp.send();
         }
-        
+
         function fetch_academic_year_dis_cont(x, val = "none"){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
@@ -154,38 +154,38 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             xhttp.send();
         }
 
-        
+
         function fetch_course_name(x,y){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
-            
+
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("n"+y).value = this.responseText;   
+                    document.getElementById("n"+y).value = this.responseText;
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_course_name.php?Course_code="+x, true);
             xhttp.send();
         }
-        
+
         function fetch_programme_name(x,y){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
-            
+
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("n"+y).value = this.responseText;   
+                    document.getElementById("n"+y).value = this.responseText;
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_programme_name.php?Prog_code="+x, true);
             xhttp.send();
         }
-        
+
         function fetch_programme_code(x, val = "none"){
             var xhttp,res;
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
-            
+
                 if (this.readyState == 4 && this.status == 200) {
                     //console.log(this.responseText);
                     var elem = document.getElementById("p"+x);
@@ -193,22 +193,22 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
                     var a = this.responseText;
                     a = $(a).next("option[value='"+val+"']");
                     $(a).attr('selected','selected');
-                    
+
                     if(val!="none") elem.value = val;
                 }
             };
             xhttp.open("GET", "../Dropdowns/fetch_programme_code.php", true);
             xhttp.send();
         }
-        
+
         function fetch_course_code(x,y, val = "none"){
-            
+
             fetch_programme_name(x,y);
-            
+
             var xhttp,res;
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
-            
+
                 if (this.readyState == 4 && this.status == 200) {
                     u = "c"+y.slice(1,y.length);
                     document.getElementById(u).innerHTML = this.responseText;
@@ -218,19 +218,19 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             xhttp.open("GET","../Dropdowns/fetch_course_code.php?Prog_code="+x, true);
             xhttp.send();
         }
-        
+
         function get_time(){
             var d = new Date();
             var n = d.getTime();
             return n.toString();
             //return new Date(ms).toISOString.slice(11.-1);
         }
-        
-        
+
+
         function num_rows(tid,fid){
             l = $('#'+tid).find('tr').length;
             console.log("Number of rows : "+l+"----"+tid);
-            
+
             if(l>2){
                 document.getElementById(fid).innerHTML = '<img src="../images/filled.png" width="52" height="52"><br><a style="font-size:15px; color:#000;">Filled ('+(l-2)+')</a>';
             }else{
@@ -238,42 +238,42 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
                 document.getElementById(fid).innerHTML = '<img src="../images/unfilled.png" width="48" height="48"><br><a style="font-size:15px; color:#000;"">Not Filled</a>';
             }
         }
-        
+
     </script>
-    
+
 <link rel="icon" href="../logo.png">
 <title>Information Gathering System</title>
-    
-        
-    <style> 
-        
+
+
+    <style>
+
         th{
             text-align: center;
             font-weight: 500;
             font-size: 15px;
         }
-        
+
         .sticky {
             position: fixed;
             top: 0;
             width: 100%;
         }
-        
-        .image {            
+
+        .image {
             -moz-transition: transform 1s;
             -webkit-transition: transform 1s;
             transition: transform 1s;
-            
+
             -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);            
+            transform: scaleX(-1);
 
         }
 
         .flip {
             transform: rotate(180deg);
         }
-        
-        
+
+
         #d111, #h111, #d112, #h112, #d113, #h113, #d121, #h121, #d122, #h122, #d131, #h131, #d132, #h132, #d134, #h134, #d141, #h141, #d142, #h142{
             /*background-color: #CACACA;*/
             border: solid 0px #CACACA;
@@ -287,12 +287,12 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
     </style>
 
     <style>
-            
-        
+
+
         textarea{
             resize:none;
         }
-        
+
         select{
             width:10%;
             background-color:#ffffff;
@@ -303,7 +303,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             border: 1px solid #ccc;
             border-radius: 4px;box-sizing: border-box;
         }
-        
+
         input[type=text],input[type=number],textarea {
             background-color:#ffffff;
             opacity:.92;
@@ -314,10 +314,10 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             border: 1px solid #ccc;
             border-radius: 4px;box-sizing: border-box;
         }
-        
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none; 
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
             margin: 0;
         }
 
@@ -333,7 +333,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
          button {
             width: 90px;
             background-color: #ffffff;
@@ -344,38 +344,38 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
         input[type=submit]:hover {
             background-color: #333333;
         }
 
-        
+
         button:hover {
             background-color: #cd2026;
         }
-    
+
         .add,.remove{
             border: 0px;
         }
-    
+
         .body{
-/*				
+/*
             background-color:#CACACA;
             */
             /*background-color:#CACACA;
             */
         }
-        
+
         *{
             margin: 0;
             padding: 0;
         }
-        
+
         .container{
             height: 100%;
             width: 100%;
         }
-        
+
         #left, #middle, #right, .x {
             display: inline-block;
             *display: inline; zoom: 1;
@@ -383,15 +383,15 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             font-size: 12px;
             padding: 0px;
         }
-        
+
         #left{
             width: 20%;
         }
-        
+
         #middle{
             width: 50%;
         }
-        
+
         #right{
             width: 10%;
         }
@@ -404,38 +404,38 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         }
 
     </style>
-    
+
 </head>
 <body class="BACK" onload="load_time_func();">
-    
+
     <div class="container col-sm-12 DAVV" style="width:100%; padding-bottom:20px; padding-top:20px;">
-        <div class="col-sm-3"></div>   
-        
+        <div class="col-sm-3"></div>
+
         <div class="col-sm-8" style="margin-left:-50px;">
             <div class="container" style="width:100%;">
                 <div class="col-sm-2" style="margin-left:5px;">
                     <img src="logo.png" alt="logo" style="width:120px; height:120px;">
                 </div>
-            
+
                 <div class="col-sm-10" style="margin-left:-20px;">
                     <div style="font-size:30px; margin-top:20px; margin-left:30px; color:#FFF"><b>Devi Ahilya Vishwavidyalaya, Indore</b></div>
                     <div style="font-size:20px; margin-top:10px; margin-left:30px; color:#FFF;"><b>Information Gathering System 2017 - 2018</b></div>
                 </div>
             </div>
-                        
+
         </div>
-        
+
         <div class="col-sm-1"></div>
     </div>
-    
+
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
-        
+
     <script>
-        // When the user scrolls the page, execute myFunction 
+        // When the user scrolls the page, execute myFunction
         window.onscroll = function() {myFunction()};
 
         // Get the header
@@ -466,20 +466,20 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 <div class="col-sm-12" style="height:40px;">
     <hr/>
 </div>
-    
+
     <div class="col-sm-12">
-        
-         <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">EVALUATIVE REPORT OF THE DEPARTMENT</a></center>    
-    
+
+         <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">EVALUATIVE REPORT OF THE DEPARTMENT</a></center>
+
     </div>
 
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
-    
-    
+
+
     <div class="col-sm-12">
-    
+
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Year of Establishment</b></div>
@@ -526,7 +526,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of teaching posts Filled (PG)</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f44" type="number" placeholder="Number" style="width:240px;"></div>
         </div>
-        
+
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Research Projects received</b></div>
@@ -541,7 +541,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         <div class="col-sm-12">
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;"><b>Inter -institutional collaborative projects and Associated grants received:</b></div>
             <div class="col-sm-6" style="text-align:right; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
-            
+
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>National collaboration</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f61" type="text" placeholder="Description" style="width:540px;"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>International collaboration</b></div>
@@ -559,7 +559,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f7" type="number" placeholder="Number" style="width:240px;"></div>
         </div>
 
-        
+
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Special research laboratories sponsored by / created by industry or corporate bodies</b>
@@ -570,7 +570,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         <div class="col-sm-12">
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;"><b>Publications:</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
-            
+
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Papers Published</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f91" type="number" placeholder="Papers" style="width:240px;"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of books with ISBN</b></div>
@@ -583,13 +583,13 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f941" type="number" placeholder="Impact factor" style="width:240px;"></div>
         <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Impact factor (Average)</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f942" type="number" placeholder="Impact factor" style="width:240px;"></div>
-        
+
           <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of h-index</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f95" type="number" placeholder="h-index" style="width:240px;"></div>
 
 		</div>
-		
-    
+
+
 
       <div class="col-sm-12">
             <br>
@@ -597,9 +597,9 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px;" >
                 <textarea id="f10" style="height:100px;" cols="80" placeholder="Details of patents and income generated"></textarea>
             </div>
-        </div>   
+        </div>
 <div class="col-sm-12">
-          
+
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Areas of consultancy and income generated</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f11" type="text" placeholder="Description" style="width:540px;"></div>
         </div>
@@ -607,7 +607,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;"><b>Awards/Recognitions received at the National
 and International level by :</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
-            
+
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Faculty</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f121" type="number" placeholder="Number" style="width:240px;"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Doctoral/ Post Doctoral fellows</b></div>
@@ -615,7 +615,7 @@ and International level by :</b></div>
   <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Students</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f123" type="number" placeholder="Number" style="width:240px;"></div>
 
-    </div>    
+    </div>
  <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>How many students have cleared Civil
@@ -634,7 +634,7 @@ and research associates:</b></div> <div class="col-sm-6" style="text-align:right
    <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>From other institutions/universities</b></div> <div class="col-sm-6" style="text-align:left; padding:10px;" >
                 <textarea id="f142" cols="80"  style="height:100px;" placeholder="List items separated by comma"></textarea>
             </div>
-        </div>   
+        </div>
  <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Research Scholars/ Post Graduate
@@ -658,17 +658,17 @@ function save()
 	var i = 1;
 	for(var x = 0; x < a.length; x++)
 	{
-		if(x!=a.length-1) rows += ""+$(a[x]).val()+"','";
+		if(x!=a.length-1) rows += " "+$(a[x]).val()+"','";
 		else rows +=""+$(a[x]).val()+"');";
 	}
 	var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
          			       	alert(this.responseText);
-							alert("Changes Saved Succesfully");
-							
+							//alert(this.responseText);
+
          			       }
          			       };
           			   			 xhttp.open("POST", "saveData.php", true);
@@ -681,7 +681,7 @@ function fetch()
 	var xhttp,res;
         				    xhttp = new XMLHttpRequest();
          				    xhttp.onreadystatechange = function(){
-         		   
+
          			       if (this.readyState == 4 && this.status == 200) {
          			       		var b = this.responseText;
          			       		var res = b.split(",");
@@ -694,19 +694,18 @@ function fetch()
 								}
          			       	}
          			       };
-         			       		 
+
           			   			 xhttp.open("GET", "fetch.php?table=eval_report", true);
          			   			 xhttp.send();
 }
 
 
 function load_time_func(){
-        
-fetch();   
 
-  
+fetch();
+
+
         }
     </script>
 </body>
 </html>
-

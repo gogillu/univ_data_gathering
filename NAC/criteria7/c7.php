@@ -1,7 +1,7 @@
 <?php
         session_start();
         include("../credential.php");
-        if($_SESSION['username']!='iqac') header('Location:../login.php');
+//        if(!isset($_SESSION['names'])) header('Location:../login.php');
 
 
 $date = date_create();
@@ -292,7 +292,7 @@ function fetch_course_name(x,y){
     </script>
 
 <link rel="icon" href="../logo.png">
-<title>Information Gathering System</title>
+<title>Criteria-7 Information Gathering System</title>
 
 
     <style>
@@ -578,7 +578,7 @@ function fetch_course_name(x,y){
 
         <div class="col-sm-12"  style="margin-top:0px;">
             <br><br>
-    <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">Criterion 7 – Institutional Values and Best Practices </a></center>
+    <center><a style="color:black; ;;;; font-weight:normal; font-size:22px;">Criterion 7 - Institutional Values and Best Practices </a></center>
         </div>
 <div class="col-sm-12">
     <hr/>
@@ -1036,7 +1036,7 @@ during the last five years
             <div class="col-sm-11" style="font-size:18px;">
             Alternate Energy initiatives such as:
 Percentage of annual power requirement of the Institution met by the renewable energy sources
-(current year Data)
+(current year Data in <b>kWh</b>)
 
 <br><br>Please keep following and other relevant documents ready in hard copy:
 <br>* Upload any additional information
@@ -1061,8 +1061,15 @@ energy sources
         </div>
 
     <form>
-        <table>
-		<th><b>Power requirement met by renewable energy sources</b></th><th><b>Total power requirement</b></th><th><b>Renewable energy source</b><th><b>Renewable energy generated and used</b><th><b>Energy supplied to the grid</b></th>
+
+<style>
+  #tt713 th{
+    padding: 5px;
+  }
+</style>
+
+        <table id="tt713">
+		<th><b>Power requirement met by renewable energy sources </b></th><th><b>Total power requirement</b></th><th><b>Renewable energy source</b><th><b>Renewable energy generated and used</b><th><b>Energy supplied to the grid</b></th>
 		<tr><td><input type="text" min="0" id="i7_1_3_powerreq"> </td><td><input type="text" min="0" id="i7_1_3_powert"> </td>
 		<td><input type="text" min="0" id="i7_1_3_ren"></td><td><input type="text" min="0" id="i7_1_3_reng"></td><td><input type="text" min="0" id="i7_1_3_es"></td>
 
@@ -4826,6 +4833,23 @@ financial and non financial means during the last five years
     ?>
 
     }
+
+    function maintain_session(){
+      var xhttp,res;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+
+             if (this.readyState == 4 && this.status == 200) {
+                 console.log(this.responseText);
+                      // alert(this.responseText);
+            }
+          };
+                 xhttp.open("GET", "../profile/maintain_session.php?page=c7.php", true);
+               xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+             xhttp.send("rows="+rowss);
+    }
+
+    setInterval(function() { maintain_session(); }, 800000);
 
 
     </script>

@@ -24,6 +24,20 @@ if(!isset($_SESSION['username'])){
   <script src="./js/bootstrap.min.js"></script>
 
     <style>
+
+		.blink{
+				color: rgb (0, 137, 226);
+				animation: blink 1s infinite;
+			 }
+
+			 @keyframes blink{
+				0%{opacity: 1;}
+				75%{opacity: 0.75;}
+				76%{ opacity: 0.5;}
+				100%{opacity: 0;}
+			 }
+
+
     input[type=text],input[type=password], select,textarea {
             background-color:#ffffff;
             opacity:.92;
@@ -94,9 +108,9 @@ if(!isset($_SESSION['username'])){
 
         </style>
 <link rel="icon" href="logo.png">
-<title>Information Gathering System</title>
+<title>Homepage - Information Gathering System</title>
 </head>
-<body style="font-family:ubuntu;" class="BACK">
+<body style="" class="BACK">
 
     <div class="container DAVV" style="width:100%; padding-bottom:20px; padding-top:20px;">
         <div class="col-sm-3"></div>
@@ -133,7 +147,7 @@ if(!isset($_SESSION['username'])){
 					          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
 					    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
 					    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
-					      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+					      <a href="./Courses/view.php" class="w3-bar-item w3-button">Courses</a>
 					      <a href="#" onClick="window.open('./profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
 					      <a href="#" onClick="window.open('./save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
 					      <a href="./helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
@@ -183,7 +197,8 @@ $urg = "";
 if($unseen>0){
 	$urg = "<d style='font-weight:bold; color:red;'>unseen*</d>";
 
-	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b style='color:red;'> unseen </b> message from Help-Desk.</a></center>";
+//	echo "<script> alert('You have new unseen message from Help-Desk check them out. Visit => [ Profile --> Help-Desk ]'); </script>";
+	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b class='blink' style='color:red;'> unseen </b> message from Help-Desk. <b style='color:brown;'> click here </b> </a></center>";
 	$ppp = 1;
 }else if($seen>0){
 	$urg = "<d style='font-weight:bold; color:green;'>seen</d>";
@@ -199,16 +214,6 @@ if($ppp!=1){
 
 ?>
 
-
-
-
-
-
-
-
-
-
-
     <center>
 
         <br><br>
@@ -217,11 +222,12 @@ if($ppp!=1){
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria2/c2.php';" value="CRITERIA 2"/>
         <input style="margin-right:10px;"  type="button" onclick="location.href='criteria3/c3.php';" value="CRITERIA 3"/>
         <input style="margin-right:10px;"  type="button" onclick="location.href='criteria4/c4.php';" value="CRITERIA 4"/>
-        <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria5/c5.php';" value="CRITERIA 5"/>
+        <input style="margin-right:10px;"  type="button" onclick="location.href='criteria5/c5.php';" value="CRITERIA 5"/>
 
-        <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria6/c6.php';" value="CRITERIA 6"/>
-        <input style="margin-right:10px;" disabled  type="button" onclick="location.href='criteria7/c7.php';" value="CRITERIA 7"/>
-		<input style="margin-right:10px;" disabled  type="button" onclick="location.href='Evaluation_report/evaluation_report.php';" value="EVALUATIVE REPORT"/>
+        <input style="margin-right:10px;" type="button" onclick="location.href='criteria6/c6.php';" value="CRITERIA 6"/>
+        <input style="margin-right:10px;" type="button" onclick="location.href='criteria7/c7.php';" value="CRITERIA 7"/>
+		<input style="margin-right:10px; cursor:not-allowed;" disabled  type="button" onclick="location.href='Evaluation_report/evaluation_report.php';" value="EVALUATIVE REPORT"/>
+		<input style="margin-right:10px; cursor:not-allowed;" disabled  type="button" onclick="location.href='Evaluation_report/evaluation_report.php';" value="EXTENDED PROFILE"/>
 
         <!--
 

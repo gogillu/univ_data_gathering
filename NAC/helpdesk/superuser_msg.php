@@ -208,7 +208,7 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
 <br><br><br>
 
-    <div style="width:600px; border:solid 2px black; background-color:white; height:550px; margin-left:390px; border-radius:20px; position:relative;">
+  <div id="msg_div"  style="width:600px; border:solid 2px black; background-color:white; height:550px; border-radius:20px; position:absolute; margin-bottom:50px;">
 
       <div id="show" style=" padding-left:14px; padding-right:14px; padding-top:10px; margin-top:8px; border:solid 0px gray; overflow-y:scroll; height:414px; width:594px; border-radius:20px 20px 0px 0px;">
 
@@ -273,6 +273,17 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
 
 <script>
+
+$(document).ready(function() {
+  $.fn.center = function () {
+     this.css("position","absolute");
+     //this.css("top", ( $(window).height() - this.height() ) / 2  + "px");
+     this.css("left", ( $(window).width() - this.width() ) / 2 + "px");
+     return this;
+  }
+  $('#msg_div').center();
+});
+
 
   function export_csv(){
     alert("exporting");

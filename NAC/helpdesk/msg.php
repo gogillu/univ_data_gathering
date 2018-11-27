@@ -108,7 +108,7 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>Information Gathering System</title>
+<title>Help-Desk Information Gathering System</title>
 </head>
 <body class="BACK" onload="main_func()">
 
@@ -208,7 +208,7 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
 <br><br><br>
 
-    <div  style="width:600px; border:solid 2px black; background-color:white; height:550px; margin-left:390px; border-radius:20px; position:relative;">
+    <div id="msg_div"  style="width:600px; border:solid 2px black; background-color:white; height:550px; border-radius:20px; position:absolute; margin-bottom:50px;">
 
       <div id="show" style=" padding-left:14px; padding-right:14px; padding-top:10px; margin-top:8px; border:solid 0px gray; overflow-y:scroll; height:414px; width:594px; border-radius:20px 20px 0px 0px;">
 
@@ -273,8 +273,6 @@ if(strtolower($_SESSION['username'])=="iqac"){
       </div>
 
     </div>
-<br><Br>
-
 
 
 <script>
@@ -295,6 +293,16 @@ if(strtolower($_SESSION['username'])=="iqac"){
     $('#show').scrollTop($('#show')[0].scrollHeight);
   });
   }
+
+  $(document).ready(function() {
+    $.fn.center = function () {
+       this.css("position","absolute");
+       //this.css("top", ( $(window).height() - this.height() ) / 2  + "px");
+       this.css("left", ( $(window).width() - this.width() ) / 2 + "px");
+       return this;
+    }
+    $('#msg_div').center();
+  });
 
   function send_msg(){
     var msg = $("#msg").val();
@@ -317,6 +325,24 @@ if(strtolower($_SESSION['username'])=="iqac"){
              xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
            xhttp.send("msg="+msg+"&to="+"iqac");
   }
+
+  function maintain_session(){
+  	var xhttp,res;
+  				xhttp = new XMLHttpRequest();
+  				xhttp.onreadystatechange = function(){
+
+  				 if (this.readyState == 4 && this.status == 200) {
+  						 console.log(this.responseText);
+  									// alert(this.responseText);
+  				}
+  			};
+  						 xhttp.open("GET", "../profile/maintain_session.php?page=msg.php", true);
+  					 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  				 xhttp.send();
+  }
+
+  setInterval(function() { maintain_session(); }, 800000);
+
 
 </script>
 

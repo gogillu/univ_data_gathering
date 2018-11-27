@@ -260,7 +260,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
     </script>
 
 <link rel="icon" href="../logo.png">
-<title>Information Gathering System</title>
+<title>Criteria-1 Information Gathering System</title>
 
 
     <style>
@@ -2544,6 +2544,7 @@ E. Feedback not collected
             fetch_rows_142();
 
             select_NA();
+  //          maintain_session_trigger();
 
         }
 
@@ -2593,6 +2594,28 @@ function select_NA(){
 ?>
 
 }
+/*
+function maintain_session_trigger(){
+    setTimeout(maintain_session(), 10000);
+}
+*/
+
+function maintain_session(){
+  var xhttp,res;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+
+         if (this.readyState == 4 && this.status == 200) {
+             console.log(this.responseText);
+                  // alert(this.responseText);
+        }
+      };
+             xhttp.open("GET", "../profile/maintain_session.php?page=c1.php", true);
+           xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+         xhttp.send("rows="+rowss);
+}
+
+setInterval(function() { maintain_session(); }, 800000);
 
 </script>
 

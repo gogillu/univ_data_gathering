@@ -1,14 +1,14 @@
 <?php session_start();
 $_SESSION['msg']='';
+
 include("../credential.php");
 
 $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
-
 if(!isset($_SESSION['names'])){
-		header("Location: ../index.php");
-}
+		header("Location: ../index.php");   }
+
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +79,7 @@ if(!isset($_SESSION['names'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>Access Log - Information Gathering System</title>
+<title>Import | Information Gathering System</title>
 </head>
 <body class="BACK">
 
@@ -103,12 +103,9 @@ if(!isset($_SESSION['names'])){
         <div class="col-sm-1"></div>
     </div>
 
-
-
-
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="progress.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | ACCESS LOG";?></h4></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | IMPORT ";?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
@@ -116,139 +113,93 @@ if(!isset($_SESSION['names'])){
         <a style="visibility:hidden;">d</a>
     </div>
 
-    <?php
-
-      include("links.php");
-
-    ?>
-
-    <br><Br><Br>
-
-<style>
-
-  table{
-    background-color: black;
-    color: white;
-    border-radius: 20px;
-  }
-
-  .heads_t{
-    text-align: center;
-  }
-
-  th{
-    border: 1px solid white;
-    padding: 5px;
-    width: 200px;
-  }
-
-  td{
-    border: 1px solid white;
-    padding: 5px;
-  }
-
-	tr:hover{
-		background-color: #050505;
-		cursor:default;
-	}
-
-</style>
-
-  <center style="font-size:20px; font-weight:bold;">
-    ACCESS LOG
-  </center>
-
-
-
-      <table style="margin:20px;">
-
-<center>
-        <tr class="heads_t">
-          <th style="width:40px;">id</th>
-          <th style="width:100px;">Username</th>
-          <th style="width:100px;">IP Address</th>
-          <th style="width:400px;">URL</th>
-          <th style="width:400px;">POST DATA</th>
-          <th>Timestamp</th>
-        </tr>
-        </center>
-
-		<?php
-
-				$query = "SELECT * FROM criteria_iqac_log.log order by id desc";
-				$connection = mysqli_connect($servername, $username, $password, $dbname);
-				$res = mysqli_query($connection,$query);
-
-//        print_r($res);
-
-
-				while($row = $res->fetch_assoc()){
-
-          ?>
-
-        <tr>
-          <td><?php echo $row['id']; ?></td>
-          <td><?php echo $row['Username']; ?></td>
-          <td><?php echo str_replace(":",": ",$row['ip']); ?></td>
-					<td><?php
-										$URL_AR = explode("/",$row['url']);
-										//print_r($URL_AR);
-										//echo count($URL_AR);
-										for($uu = 2; $uu<count($URL_AR); $uu++){
-
-											if($uu == count($URL_AR)-1){
-												echo "<t style='color:orange; font-weight:bold;'>";
-											}
-
-											echo urldecode(str_replace("&","<br>",str_replace("?","<br><br><b style='color:red; font-weight:100; font-family:italic;'>",$URL_AR[$uu])));
-											echo "<br>";
-
-											if($uu == count($URL_AR)-1){
-												echo "</t>";
-											}
-										}
-
-//										echo [];
-						   ?>
-				  </td>
-<?php /*
-          <td><?php echo str_replace("&","<br>",str_replace("/","<br><t style='color:orange;'>",  str_replace("?","<br><br><b style='color:red;'>",urldecode($row['url']))) ); ?></td>
-*/ ?>
-          <td title="<?php echo str_replace("&amp;","<br>",urldecode(urldecode($row['post_rows']))); ?>"><?php echo str_replace("&amp;","<br>",substr(urldecode(urldecode($row['post_rows'])),0,400));?>  </td>
-          <td><?php echo $row['timestamp']; ?></td>
-        </tr>
-
-
-          <?php
-				}
-		?>
-
-      </table>
-
-
-        <?php //header("Location: progress.php"); ?>
-
         <div id="right"></div>
 
+    <center>
+
+<?php
+
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+$query = "select * FROM admins WHERE 1 ORDER BY sno ASC";
+$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
+
+?>
+
+   <div style="margin-top:0px;" >
+
+     <form method="POST" action="import_handler.php" enctype="multipart/form-data" style="width:400px;" onsubmit="return check_before_submit();">
+
+       <select id="dept" name="dept" required>
+         <option value="">Select Department</option>
+
+         <?php
+          while ($row = $res->fetch_assoc()) {
+            ?>
+
+          <option value="<?php echo $row['username']; ?>" ><?php echo $row['sno'].") ".$row['name']; ?></option>
+
+            <?php
+          }
+         ?>
+       </select>
+
+			 <br>
+
+       <select id="section" name="section" required>
+         <option value="">Select Table</option>
+
+         <?php
+
+				 $query = "select * FROM `na_table_div_id` WHERE 1 ORDER BY `table` ASC";
+				 $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
+          while ($row = $res->fetch_assoc()) {
+            ?>
+
+          <option value="<?php echo $row['table']; ?>" ><?php echo $row['table']; ?></option>
+
+            <?php
+          }
+         ?>
+       </select>
+
+			 <br>
+
+			 <div id="btn_div">
+
+			 </div>
+
+			 <br>
+
+			 <input type="file" id="csv_file" name="csv_file" style="width:600px;" required>
+
+			 <br>
+
+			 <input type="submit" value="SUBMIT">
+
+     </form>
+
 <script>
-function maintain_session(){
-	var xhttp,res;
-				xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function(){
 
-				 if (this.readyState == 4 && this.status == 200) {
-						 console.log(this.responseText);
-									// alert(this.responseText);
-				}
-			};
-						 xhttp.open("GET", "../profile/maintain_session.php?page=log.php", true);
-					 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-				 xhttp.send();
-}
+//	$(document).ready({
+		$("#section").change(function(){
+			//alert("google");
+			$("#btn_div").toggle("fast");
+			var oo = '<a href="../save_my_data/export_template.php?table='+$("#section").val()+'&username=none" target="_blank">Download Template ( '+$("#section").val()+' )</a>';
+			$("#btn_div").html(oo);
+			$("#btn_div").toggle("fast");
+		});
+//	});
 
-setInterval(function() { maintain_session(); }, 800000);
+	function check_before_submit(){
+		s = $("#section").val();
+		d = $("#dept").val();
+		return confirm('Are you sure about Deleting complete present data then adding complete data of your file in '+s+' for Department '+d);
+	}
 
 </script>
+
+   </div>
+    </center>
 
 </body>
 </html>

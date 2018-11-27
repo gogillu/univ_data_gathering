@@ -118,8 +118,6 @@ if(!isset($_SESSION['username'])){
 
 <?php
 
-  include("links.php");
-
 ?>
 
 
@@ -150,7 +148,8 @@ if(!isset($_SESSION['username'])){
 
   <br>
         <select id="tbl_name" style="width:300px;" >
-<!--          <option value="">Select</option> -->
+          <option value="programme">Programmes</option>
+					<option value="course">Courses</option>
           <?php
 
           $h = 0;

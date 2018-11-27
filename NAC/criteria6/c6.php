@@ -2,7 +2,9 @@
         session_start();
         include("../credential.php");
 
-        if($_SESSION['username']!='iqac') header('Location:../login.php');
+//        if(!isset($_SESSION['names'])) header('Location:../login.php');
+
+
 $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
@@ -296,7 +298,7 @@ function fetch_course_name(x,y){
     </script>
 
 <link rel="icon" href="../logo.png">
-<title>Information Gathering System</title>
+<title>Criteria-6 Information Gathering System</title>
 
 
     <style>
@@ -3876,6 +3878,22 @@ if(link==""){
               .replace(/#/g, "%23");
         }
 
+        function maintain_session(){
+          var xhttp,res;
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+
+                 if (this.readyState == 4 && this.status == 200) {
+                     console.log(this.responseText);
+                          // alert(this.responseText);
+                }
+              };
+                     xhttp.open("GET", "../profile/maintain_session.php?page=c6.php", true);
+                   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                 xhttp.send("rows="+rowss);
+        }
+
+        setInterval(function() { maintain_session(); }, 800000);
 
     </script>
 

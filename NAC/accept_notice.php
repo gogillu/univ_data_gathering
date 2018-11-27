@@ -20,6 +20,32 @@ if(!isset($_SESSION['username'])){
   <script src="./js/bootstrap.min.js"></script>
 
     <style>
+
+		.blink{
+				color: rgb (0, 137, 226);
+				animation: blink 1s infinite;
+			 }
+
+			 @keyframes blink{
+				0%{opacity: 1;}
+				75%{opacity: 0.75;}
+				76%{ opacity: 0.5;}
+				100%{opacity: 0;}
+			 }
+
+			 bl{
+				 color: rgb (0, 137, 226);
+ 				animation: blink 1s infinite;
+			 }
+
+			 @keyframes bl{
+				0%{opacity: 1;}
+				75%{opacity: 0.75;}
+				76%{ opacity: 0.5;}
+				100%{opacity: 0;}
+			 }
+
+
     input[type=text],input[type=password], select,textarea {
             background-color:#ffffff;
             opacity:.92;
@@ -153,7 +179,7 @@ if(!isset($_SESSION['username'])){
           <div class="modal-content">
             <div class="modal-header">
               <button id="notice" type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 style="text-align:center;" class="modal-title">NOTICE</h4>
+              <h4 style="text-align:center;" class="modal-title">NOTICE	</h4>
             </div>
             <div class="modal-body" style="font-size:16px;">
               <p><?php echo $NOTICE; ?></p>

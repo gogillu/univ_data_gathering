@@ -47,6 +47,7 @@ if(isset($_POST["submit"])){
 		$_SESSION['login']="YES";
 		$_SESSION['username']=strtolower($username);
 		$row = mysqli_fetch_assoc($result2);
+		$_SESSION['name']=$row['name'];
 		$_SESSION['names']=$row['name'];
         //echo $_SESSION['name'];
 		echo"<script>alert('success');";

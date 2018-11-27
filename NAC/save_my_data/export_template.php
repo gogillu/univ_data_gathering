@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 include("../credential.php");
 
 $date = date_create();
@@ -19,7 +17,10 @@ if($connection === false){
 
 $tt = date('d-m-Y_H-i-s');
 
-$query = "SELECT DISTINCT * FROM ".$_GET['table'];
+$query = "SELECT DISTINCT * FROM ".$_GET['table']." WHERE Username LIKE '".$_GET['username']."'";
+//print_r($_SESSION);
+//echo $query;
+
 $result = mysqli_query($connection, $query);
 
 $number_of_fields = mysqli_num_fields($result);
@@ -30,13 +31,13 @@ for ($i = 0; $i < $number_of_fields; $i++) {
 $fp = fopen('php://output', 'w');
 if ($fp && $result) {
     header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="NAC_'.$_GET['table']."(".$tt.")".'.csv"');
+    header('Content-Disposition: attachment; filename="NAAC_TEMPLATE'."_".$_GET['table']."(".$tt.")".'.csv"');
     header('Pragma: no-cache');
     header('Expires: 0');
     fputcsv($fp, $headers);
     while ($row = $result->fetch_array(MYSQLI_NUM)) {
         for($cx=0; $cx<count($row); $cx++){
-          $row[$cx] = urldecode(urldecode($row[$cx]));
+          $row[$cx] = urldecode($row[$cx]);
           $row[$cx] = str_replace("\\","",$row[$cx]);
         }
         fputcsv($fp, array_values($row));

@@ -132,7 +132,7 @@ if(!isset($_SESSION['names'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>Information Gathering System</title>
+<title>Progress - Information Gathering System</title>
 </head>
 <body class="BACK">
 
@@ -160,7 +160,7 @@ if(!isset($_SESSION['names'])){
     </div>
 
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="progress.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | PROGRESS";?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
@@ -1566,6 +1566,28 @@ if(!isset($_SESSION['names'])){
     </table>
 
     </center>
+
+<script>
+function maintain_session(){
+	var xhttp,res;
+				xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+
+				 if (this.readyState == 4 && this.status == 200) {
+						 console.log(this.responseText);
+									// alert(this.responseText);
+				}
+			};
+						 xhttp.open("GET", "../profile/maintain_session.php?page=progress.php", true);
+					 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				 xhttp.send();
+}
+
+setInterval(function() { maintain_session(); }, 800000);
+
+</script>
+
+	<center><a href="import.php" target="_blank">+</a></center>
 
 </body>
 </html>

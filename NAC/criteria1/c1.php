@@ -473,6 +473,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
       <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
       <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
@@ -502,6 +503,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
                 document.getElementById("myHeader1").style.backgroundColor = "#424242";
                 document.getElementById("myHeader2").style.backgroundColor = "#424242";
                 document.getElementById("myHeader3").style.backgroundColor = "#424242";
+                $("#header2.h4").html('google');
             } else {
                 header.classList.remove("sticky");
                 document.getElementById("myHeader").style.backgroundColor = "#616161";
@@ -1186,11 +1188,11 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 	            					fetch_course_code($(pc).attr('value'), "pid"+idd, $(cc).attr('value'));
 	            					//for deriving simple id for academic year
 		            				fetch_academic_year(idd, $(ay).attr('value'));
-
-
+                        select_NA();
     							}
         			}
                     num_rows("tab121","ch121");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch121.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -2466,7 +2468,7 @@ E. Feedback not collected
             </tr>
           <!--  <tr>
 
-          		  	<td><center><select text="Programme Code" style="width:150px;" required></select></center></td>
+      		  	<td><center><select text="Programme Code" style="width:150px;" required></select></center></td>
          			<td><center><input type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td>
          	 		<td><center><select placeholder="Year" style="width:80px;" disabled></select></center></td>
          	 		<td><center><input type="text" placeholder="Students doing Internships" style="width:250px;" disabled></center></td>
@@ -2492,7 +2494,8 @@ E. Feedback not collected
 </div>
 
     <script>
-        function load_time_func(){
+
+      function load_time_func(){
 
 <?php
 
@@ -2503,7 +2506,7 @@ E. Feedback not collected
             //echo $row['Description'];
 ?>
         // 1.1.1
-            document.getElementById("TA1_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA1_1_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link1_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA1_1_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -2523,7 +2526,7 @@ E. Feedback not collected
 ?>
 
         // 1.3.1
-            document.getElementById("TA1_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA1_3_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link1_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA1_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -2600,6 +2603,13 @@ function maintain_session_trigger(){
 }
 */
 
+secs = 0;
+
+function count_secs(){
+  secs = secs + 400000;
+  console.log(secs);
+}
+
 function maintain_session(){
   var xhttp,res;
         xhttp = new XMLHttpRequest();
@@ -2610,12 +2620,13 @@ function maintain_session(){
                   // alert(this.responseText);
         }
       };
-             xhttp.open("GET", "../profile/maintain_session.php?page=c1.php", true);
+             xhttp.open("GET", "../profile/maintain_session.php?page=c1.php&page_loaded_since="+(secs/60000), true);
            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
          xhttp.send("rows="+rowss);
 }
 
 setInterval(function() { maintain_session(); }, 800000);
+setInterval(count_secs, 400000);
 
 </script>
 

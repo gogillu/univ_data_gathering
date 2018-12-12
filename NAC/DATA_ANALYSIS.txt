@@ -1,0 +1,5 @@
+SELECT SUBSTR(`timestamp`,1,10) AS `DATE` , count(*) AS `VISITS` FROM `log` GROUP BY `DATE`;
+
+SELECT `Username`,count(*) FROM `log` WHERE 1 GROUP BY `Username`;
+
+SELECT substr(`url`,5,15) AS `PAGE`, count(*) FROM `log` WHERE 1 GROUP BY `PAGE`

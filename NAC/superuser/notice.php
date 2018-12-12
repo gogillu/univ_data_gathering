@@ -78,7 +78,7 @@ if(!isset($_SESSION['names'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>Information Gathering System</title>
+<title>Notice | Information Gathering System</title>
 </head>
 <body class="BACK">
 
@@ -116,9 +116,7 @@ if(!isset($_SESSION['names'])){
     </div>
 
     <?php
-
       include("links.php");
-
     ?>
 
     <br><Br><Br>

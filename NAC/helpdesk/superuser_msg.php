@@ -109,7 +109,7 @@ if(strtolower($_SESSION['username'])=="iqac"){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>Information Gathering System</title>
+<title>Msg Superuser | Information Gathering System</title>
 </head>
 <body class="BACK" onload="main_func()">
 

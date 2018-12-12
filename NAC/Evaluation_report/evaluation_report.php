@@ -19,6 +19,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 
   <link rel="stylesheet" href="../css/theme.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/w3_l.css">
   <script src="../js/jquery.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
@@ -429,9 +430,29 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
     </div>
 
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
-        <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="../homepage.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
+      <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px;"><a href="sub_department.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
         <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name']);?></h4></div></center>
-        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;"><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
+        <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px;">
+
+<style>
+
+  .nn:hover,.nnn,.nnn:hover{
+    color: white;
+  }
+
+</style>
+
+          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
+    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
+    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
+      <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
+      <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
+      <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
+      <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
+    </div>
+  </div></div></center>
     </div>
 
     <script>
@@ -462,6 +483,38 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         }
 
     </script>
+
+<?php
+
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT * FROM eval_report WHERE Username LIKE '".$_SESSION['username']."' AND sid = ".$_GET['sid']." ";
+$res  = mysqli_query($connection,$query);// or die(mysqli_error($connection));
+
+while ($rowh = $res->fetch_assoc()) {
+  $rowo = $rowh;
+}
+
+//echo print_r($rowo);
+//echo $rowo[1];
+
+$row = [];
+
+$var = 0;
+foreach ($rowo as $mm) {
+  $row[$var] = urldecode($mm);
+  $var++;
+}
+
+/*
+$row = array();
+for($c=0; $c<count($rowA); $c++){
+  array_push($row,$rowA[$c]);
+  $row[$c];
+}
+*/
+
+?>
+
 <div id="as">
 <div class="col-sm-12" style="height:40px;">
     <hr/>
@@ -477,23 +530,55 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
     <hr/>
 </div>
 
+  <form method="POST" action="add_report_handler.php" id="form_eval">
 
     <div class="col-sm-12">
+
+      <div class="col-sm-12">
+          <br>
+          <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Name of University</b></div>
+          <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="univ_name" type="text" value="Devi Ahilya Vishwavidyalaya, Indore" placeholder="NAME" style="width:340px;" readonly></div>
+      </div>
+ ``
+      <div class="col-sm-12">
+          <br>
+          <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Name of Department</b></div>
+          <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="univ_name" type="text" value="<?php echo $_SESSION['name']; ?>" placeholder="NAME" style="width:550px;" readonly></div>
+      </div>
+
+      <input name="sid" type="hidden" value="<?php echo $_GET['sid']; ?>" placeholder="NAME" style="width:340px;" readonly>
+      <div class="col-sm-12">
+          <br>
+          <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Name of Sub-Department</b></div>
+          <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="sub_dept" type="text" value="<?php echo $_GET['sd']; ?>" placeholder="NAME" style="width:550px;" readonly></div>
+      </div>
+
+      <div class="col-sm-12">
+          <br>
+          <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>District</b></div>
+          <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="univ_name" type="text" value="Indore" placeholder="NAME" style="width:340px;" readonly></div>
+      </div>
+
+      <div class="col-sm-12">
+          <br>
+          <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>State</b></div>
+          <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="univ_name" type="text" value="MADHYA PRADESH" placeholder="NAME" style="width:340px;" readonly></div>
+      </div>
 
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Year of Establishment</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f1" type="number" placeholder="Year" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f1" type="number" placeholder="Year" value="<?php echo $row[3]; ?>" style="width:240px;"></div>
         </div>
 
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Is the Department part of a School/Faculty of the University</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" >
-                <select id="f2" style=" width:240px;">
+                <select name="f2" style=" width:240px;">
                     <option value="">Select</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option <?php if($row[4]=="Yes") echo "selected"; ?> value="Yes">Yes</option>
+                    <option <?php if($row[4]=="No") echo "selected"; ?> value="No">No</option>
                 </select>
             </div>
         </div>
@@ -502,40 +587,40 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Names of programmes offered</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" >
-                <textarea id="f3" cols="80" style="height:100px;" placeholder="Write the names of all programmes separated by comma"></textarea>
+                <input type="text" name="f3" style="" value="<?php echo $row[5]; ?>" placeholder="Provide link of document containing Programme Details">
             </div>
         </div>
 
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of teaching posts Sanctioned (UG)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f41" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f41" value="<?php echo $row[6]; ?>" type="number" placeholder="Number" style="width:240px;"></div>
         </div>
 		  <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of teaching posts Filled (UG)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f42" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f42" type="number" value="<?php echo $row[7]; ?>" placeholder="Number" style="width:240px;"></div>
         </div>
 		  <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of teaching posts Sanctioned (PG)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f43" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f43" type="number" placeholder="Number" value="<?php echo $row[8]; ?>" style="width:240px;"></div>
         </div>
 		 <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of teaching posts Filled (PG)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f44" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f44" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[9]; ?>"></div>
         </div>
 
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Research Projects received</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f51" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f51" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[10]; ?>"></div>
         </div>
 		<div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Research Projects: Total grants received</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f52" type="number" placeholder="Number" style="width:140px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f52" type="number" placeholder="Number" style="width:140px;" value="<?php echo $row[11]; ?>"></div>
         </div>
 
         <div class="col-sm-12">
@@ -543,20 +628,20 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:right; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
 
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>National collaboration</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f61" type="text" placeholder="Description" style="width:540px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f61" type="text" placeholder="Description" style="width:540px;" value="<?php echo $row[12]; ?>"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>International collaboration</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f62" type="text" placeholder="Description" style="width:540px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f62" type="text" placeholder="Description" style="width:540px;" value="<?php echo $row[13]; ?>"></div>
         </div>
 
         <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Departmental projects funded by DST-FIST,UGC-SAP/CAS,DPE, DBT, ICSSR, AICTE etc.</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f7" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f71" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[14]; ?>"></div>
         </div>
 		 <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Departmental projects funded by DST-FIST,UGC-SAP/CAS,DPE, DBT, ICSSR, AICTE etc. : Total grants received</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f7" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f72" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[15]; ?>"></div>
         </div>
 
 
@@ -564,7 +649,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Special research laboratories sponsored by / created by industry or corporate bodies</b>
             </div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f8" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f8" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[16]; ?>"></div>
         </div>
 
         <div class="col-sm-12">
@@ -572,20 +657,20 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
 
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Papers Published</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f91" type="number" placeholder="Papers" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f91" type="number" placeholder="Papers" style="width:240px;" value="<?php echo $row[17]; ?>"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of books with ISBN</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f92" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f92" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[18]; ?>"></div>
 			<div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Citation Index (Range)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f931" type="number" placeholder="Citation Index" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f931" type="text" placeholder="Citation Index" style="width:240px;" value="<?php echo $row[19]; ?>"></div>
 			<div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Citation Index (Average)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f932" type="number" placeholder="Citation Index" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f932" type="number" placeholder="Citation Index" style="width:240px;" value="<?php echo $row[20]; ?>"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Impact factor (Range)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f941" type="number" placeholder="Impact factor" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f941" type="text" placeholder="Impact factor" style="width:240px;" value="<?php echo $row[21]; ?>"></div>
         <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Impact factor (Average)</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f942" type="number" placeholder="Impact factor" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f942" type="number" placeholder="Impact factor" style="width:240px;" value="<?php echo $row[22]; ?>"></div>
 
           <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of h-index</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f95" type="number" placeholder="h-index" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f95" type="number" placeholder="h-index" style="width:240px;" value="<?php echo $row[23]; ?>"></div>
 
 		</div>
 
@@ -595,13 +680,13 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Details of patents and income generated</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px;" >
-                <textarea id="f10" style="height:100px;" cols="80" placeholder="Details of patents and income generated"></textarea>
+                <input name="f10" style="width:600px;" type="text" value="<?php echo $row[24]; ?>" placeholder="Details of patents and income generated">
             </div>
         </div>
 <div class="col-sm-12">
 
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Areas of consultancy and income generated</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f11" type="text" placeholder="Description" style="width:540px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f11" type="text" placeholder="Description" style="width:540px;" value="<?php echo $row[25]; ?>"></div>
         </div>
    <div class="col-sm-12">
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;"><b>Awards/Recognitions received at the National
@@ -609,11 +694,11 @@ and International level by :</b></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
 
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Faculty</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f121" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f121" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[26]; ?>"></div>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Doctoral/ Post Doctoral fellows</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f122" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f122" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[27]; ?>"></div>
   <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Students</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f123" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f123" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[28]; ?>"></div>
 
     </div>
  <div class="col-sm-12">
@@ -622,17 +707,17 @@ and International level by :</b></div>
 Services and Defense Services examinations,
 NET, SET (SLET), GATE and other
 competitive examinations</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f13" type="number" placeholder="Number" style="width:240px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f13" type="number" placeholder="Number" style="width:240px;" value="<?php echo $row[29]; ?>"></div>
         </div>
  <div class="col-sm-12">
             <br>
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>List of doctoral, post-doctoral students
 and research associates:</b></div> <div class="col-sm-6" style="text-align:right; padding:10px; font-size:16px; margin-top:20px; visibility:hidden;">l</div>
            <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>From the host institution/university</b></div> <div class="col-sm-6" style="text-align:left; padding:10px;" >
-                <textarea id="f141" cols="80"  style="height:100px;" placeholder="List items separated by comma"></textarea>
+                <input name="f141" cols="80" type="text"  style="width:500px;" placeholder="Provide link of the relavant document" value="<?php echo $row[30]; ?>">
             </div>
    <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>From other institutions/universities</b></div> <div class="col-sm-6" style="text-align:left; padding:10px;" >
-                <textarea id="f142" cols="80"  style="height:100px;" placeholder="List items separated by comma"></textarea>
+                <input type="text" name="f142" style="width:500px;" placeholder="Provide link of the relavant document" value="<?php echo $row[31]; ?>">
             </div>
         </div>
  <div class="col-sm-12">
@@ -640,23 +725,51 @@ and research associates:</b></div> <div class="col-sm-6" style="text-align:right
             <div class="col-sm-6" style="text-align:left; padding:10px; font-size:16px; margin-top:20px;" ><b>Number of Research Scholars/ Post Graduate
 students getting financial assistance from the
 University/State/ Central</b></div>
-            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input id="f15" type="number" placeholder="Number" style="width:140px;"></div>
+            <div class="col-sm-6" style="text-align:left; padding:10px;" ><input name="f15" type="number" placeholder="Number" style="width:140px;" value="<?php echo $row[32]; ?>"></div>
         </div>
 <div class="col-sm-12" style="height:30px;">
     <hr/>
 </div>
 
 </div>
-    <div class="col-sm-12"> <div class="col-sm-3" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" ></div>  <div class="col-sm-6" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" > <input type="button" onclick="save()" value="Save"> </div><div class="col-sm-3" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" ></div></div>
+    <div class="col-sm-12"> <div class="col-sm-3" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" ></div>
+     <div class="col-sm-6" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" >
+        <input id="smt" type="button" name="save" value="Save Changes" class="SAVE">
+      </div>
+      <div class="col-sm-3" style="text-align:right; padding:10px; font-size:16px; margin-top:20px;" ></div>
+      </div>
 </div>
+
+
+</form>
+
     <script>
 
-function save()
+      $(document).ready(function(){
+        $("#smt").click(function(){
+    var form=$("#form_eval");
+    $.ajax({
+            type:"POST",
+            url:form.attr("action"),
+            data:form.serialize(),//only input
+            success: function(response){
+                console.log(response);
+                alert(response);
+                if(response=="Changes Saved Successfully"){
+                  window.location.href = "sub_department.php";
+                }
+            }
+        });
+      });
+    });
+
+
+function save_old()
 {
 	var a = $('#as').find('input, select, textarea');
 	var rows = "('<?php echo $_SESSION['username'];?>','";
 	var i = 1;
-	for(var x = 0; x < a.length; x++)
+	for(var x = 5; x < a.length; x++)
 	{
 		if(x!=a.length-1) rows += " "+$(a[x]).val()+"','";
 		else rows +=""+$(a[x]).val()+"');";
@@ -686,7 +799,7 @@ function fetch()
          			       		var b = this.responseText;
          			       		var res = b.split(",");
          			       		var a = $('#as').find('input, select, textarea');
-         			       		for(var x = 0; x < a.length-1; x++)
+         			       		for(var x = 5; x < a.length-1; x++)
 								{	if(res[x+1]==null){
 									res[x+1]="";
 								}
@@ -702,7 +815,7 @@ function fetch()
 
 function load_time_func(){
 
-fetch();
+//fetch();
 
 
         }

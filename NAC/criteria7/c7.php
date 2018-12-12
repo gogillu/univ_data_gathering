@@ -536,6 +536,7 @@ function fetch_course_name(x,y){
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
       <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
       <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
@@ -4220,9 +4221,8 @@ if(link==""){
             <div class="col-sm-1"  style="font-size:18px;">7.3.1<br><br>Q<sub>L</sub>M
 </div>
             <div class="col-sm-11" style="font-size:18px;">
-          The Alumni Association/Chapters (registered and functional)
-contributes significantly to the development of the institution through
-financial and non financial means during the last five years
+              Describe/Explain the performance of the institution in one area distinctive to
+    its vision, priority and thrust
 <br><br>Please keep following and other relevant documents ready in hard copy:
 <br>* Upload any additional information
 <br>* Link for additional information
@@ -4313,8 +4313,9 @@ financial and non financial means during the last five years
 ?>
 
         // 1.3.1
-         /*   document.getElementById("TA4_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
-            document.getElementById("link4_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
+         /*
+            document.getElementById("TA4_1_1").value = '<?php //echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
+            document.getElementById("link4_1_1").value = '<?php //echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_1_1").placeholder = "Describe the adequacy of facilities for teaching –learning as per theminimum specified requirement by statutory bodies within minimum500 characters and maximum 500 words";
 
             if(document.getElementById("TA4_1_1").value==""){
@@ -4322,8 +4323,7 @@ financial and non financial means during the last five years
             }else{
                document.getElementById("ch411").innerHTML = '<img src="../images/filled.png" width="52" height="52"><a style="font-size:15px; color:#000;"> Filled</a>';
             }
-
-		*/
+		     */
 
 		//4.1.2
 			<?php
@@ -4335,7 +4335,7 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA4_1_2").value = '<?php echo urldecode($row["Description"]); ?>';
+		document.getElementById("TA4_1_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_1_2").placeholder = "Describe gender equity initiatives undertaken by the Institution on the specified areas within a minimum of 500 characters and maximum of 500 words each";
 
@@ -4361,7 +4361,7 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA7_1_5").value = '<?php echo urldecode($row["Description"]); ?>';
+		document.getElementById("TA7_1_5").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_5").placeholder = "Describe efforts towards waste management on campus within a minimum of 500 characters and maximum of 500 words each";
 
@@ -4384,7 +4384,7 @@ financial and non financial means during the last five years
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA7_1_7").value = '<?php echo urldecode($row["Description"]); ?>';
+		document.getElementById("TA7_1_7").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_7").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_7").placeholder = "Describe efforts towards green practices on the campus within a minimum of 500 characters and maximum of 500 words ";
 
@@ -4410,7 +4410,7 @@ financial and non financial means during the last five years
     $row  = $res ->fetch_assoc();
             //echo $row['Description'];?>
 
-		document.getElementById("TA7_1_6").value = '<?php echo urldecode($row["Description"]); ?>';
+		document.getElementById("TA7_1_6").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_6").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_6").placeholder = "Describe efforts towards rain water harvesting on the campus within aminimum 500 characters and Maximum 500 words ";
 
@@ -4641,7 +4641,7 @@ financial and non financial means during the last five years
 ?>
 
         // 7.3.1
-            document.getElementById("TA7_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA7_3_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_3_1").placeholder = "Describe the institutional performance in one area distinctive to its vision,priority and thrust within a minimum of 500 characters and maximum of 1000 words ";
             if(document.getElementById("TA7_3_1").value==""){
@@ -4667,7 +4667,7 @@ financial and non financial means during the last five years
 ?>
 
         // 7.3.1
-            document.getElementById("TA7_1_19").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA7_1_19").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_19").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_19").placeholder = "Describe efforts of the Institution towards maintenance of complete transparency in its financial, academic, administrative and auxiliary functions within a minimum of 500 characters and maximum of 500 words";
             if(document.getElementById("TA7_1_19").value==""){
@@ -4691,7 +4691,7 @@ financial and non financial means during the last five years
 ?>
 
         // 7.1.18
-            document.getElementById("TA7_1_18").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA7_1_18").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link7_1_18").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA7_1_18").placeholder = "Describe efforts of the Institution in organizing national festivals and birth /death anniversaries of the great Indian personalities within a minimum of 500 characters and maximum of 500 words ";
             if(document.getElementById("TA7_1_18").value==""){

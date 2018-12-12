@@ -19,4 +19,8 @@
   <input type="button" value="SET NOT APPLICABLE">
 </a>
 
+<a href="add_view.php">
+  <input type="button" value="ADDITIONAL DATA">
+</a>
+
 </center>

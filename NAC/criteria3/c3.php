@@ -174,13 +174,13 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
         }
 
 
-        #d311, #h311, #d331, #h331, #d361, #h361, #d372, #h372, #d371, #h371, #d364, #h364, #d363, #h363, #d362, #h362, #d353, #h353, #d352, #h352, #d348. #h348, #d373, #h373, #d347, #h347, #d346, #h346, #d345, #h345, #d344, #h344, #d343, #h343, #d342, #h342, #d341,#h341, #d334, #h334, #d333, #h333, #d332, #h332, #d312, #h312,#d316, #h316, #d351, #d323, #h323, #h351, #d313, #h313, #d315, #h315, #d314, #h314, #h322, #d322, {
+        #d311, #h311, #d331, #h331, #d361, #h361, #d372, #h372, #d371, #h371, #d364, #h364, #d363, #h363, #d362, #h362, #d353, #h353, #d352, #h352, #d348. #h348, #d373, #h373, #d347, #h347, #d346, #h346, #d346b, #h346b,  #d346c, #h346c,  #d345, #h345, #d344, #h344, #d343, #h343, #d342, #h342, #d341,#h341, #d334, #h334, #d333, #h333, #d332, #h332, #d312, #h312,#d316, #h316, #d351, #d323, #h323, #h351, #d313, #h313, #d315, #h315, #d314, #h314, #h322, #d322, {
             /*background-color: #CACACA;*/
             border: solid 0px #CACACA;
             color: black;
         }
 
-        #d331, #d311, #d361, #d372, #d371, #d364, #d363, #d362, #d353, #d352, #d348, #d373, #d347, #d346, #d345, #d344, #d343,#d342, #d341, #d334, #d333, #d312,#d313,#d332, #d351,#d322, #d323 ,#d113, #d121, #d122, #d316, #d315, #d314{
+        #d331, #d311, #d361, #d372, #d371, #d364, #d363, #d362, #d353, #d352, #d348, #d373, #d347, #d346, #d346b, #d346c,  #d345, #d344, #d343,#d342, #d341, #d334, #d333, #d312,#d313,#d332, #d351,#d322, #d323 ,#d113, #d121, #d122, #d316, #d315, #d314{
             padding: 10px;
             display: none;
         }
@@ -351,6 +351,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
       <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
       <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
@@ -3540,6 +3541,345 @@ select_NA();
 
 
 <!--
+    3.4.6 (b)
+-->
+<script>
+        	function save346b(table)
+        	{
+        		var rows = $(table).find('tr');
+        		if(rows.length == 200000) console.log("empty");
+        		else {
+        			var rowss = "";
+        			for(var i = 1; i < rows.length-1; i++)
+        			{
+                        var name = $($(rows[i]).find('input')[0]).val();
+                        var authors = $($(rows[i]).find('input')[1]).val();
+                        var ptitle = $($(rows[i]).find('input')[2]).val();
+                        var protitle = $($(rows[i]).find('input')[3]).val();
+                        var cname = $($(rows[i]).find('input')[4]).val();
+                        var inst = $($(rows[i]).find('input')[5]).val();
+                        var nori = $($(rows[i]).find('input')[6]).val();
+                        var stdate = $($(rows[i]).find('input')[7]).val();
+                        var enddate = $($(rows[i]).find('input')[8]).val();
+                        var duration = $($(rows[i]).find('input')[9]).val();
+                        var Year  = $($(rows[i]).find('input')[10]).val();
+                        var affinst  = $($(rows[i]).find('input')[11]).val();
+                        var finance  = $($(rows[i]).find('input')[12]).val();
+                        var remarks  = $($(rows[i]).find('input')[13]).val();
+                        if($(rows[i]).find('input:text').filter(function() { return $(this).val() == ""; }).length > 0 ) alert("Please fill all the fields!");
+        				else
+        				{
+
+        				var idd = $(rows[i]).attr('id');
+        					rowss += "('0','"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + authors
+        					  + "','" + ptitle  +"','"+ protitle +"','"+	cname +"','" + inst + "','"+ nori + "','"+stdate+
+        					  "','" + enddate + "','" + duration + "','" + Year + "','" + affinst + "','" + finance +"','" + remarks +"')";
+        					if(i!=rows.length-2) rowss+= ",";
+        					else rowss += ";";
+        					//console.log(rowss);
+        				}
+        			}
+        			var xhttp,res;
+        				    xhttp = new XMLHttpRequest();
+         				    xhttp.onreadystatechange = function(){
+
+         			       if (this.readyState == 4 && this.status == 200) {
+                               console.log(this.responseText);
+                               alert(this.responseText);
+                               $("#d346b").slideToggle("slow");
+                               rotate("tg346b");
+                               num_rows("tab346b","ch346b");
+        		  			}
+        		  		};
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_6b", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
+        		}
+        	}
+
+
+        	function fetch_rows_346b()
+        	{
+        		var xhttp,res;
+        	    xhttp = new XMLHttpRequest();
+         	    xhttp.onreadystatechange = function(){
+
+
+         		    if (this.readyState == 4 && this.status == 200) {
+          			   var x = $('#tab346b').find('tr');
+   					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
+   					  console.log("Hello the world");
+
+          			           var y  = this.responseText;
+          			           var responseRows = $(y).siblings();
+          			           if(responseRows.length == 0){ responseRows = $(y); }
+
+        			}
+                    num_rows("tab346b","ch346b");
+        		};
+          			   			 xhttp.open("GET", "fetch346b.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
+        	}
+		</script>
+
+    <div class="col-sm-12" onclick='rotate("tg346b"); $("#d346b").slideToggle("slow");'>
+
+        <div class="col-sm-1" id="ch346b">
+            <img src="../images/filled.png" width="52" height="52"> Filled
+        </div>
+
+        <div id="h346b" class="col-sm-10" >
+            <div class="col-sm-1"  style="font-size:18px;"><br>3.4.6(b)<br><br>Q<sub>N</sub>M</div>
+            <div class="col-sm-11" style="font-size:18px;">Number of papers in national/international conferences per teacher during the last five years
+
+            </div>
+        </div>
+
+        <div id="to346b" class="col-sm-1">
+            <br><img class="image flip"  id="tg346b" src="../images/toggle2.png" width="28" height="28">
+        </div>
+
+    </div>
+
+<center>
+        <div class="col-sm-12" id="d346b">
+            <br>
+    <script>
+    	function addRow346b()
+    	{
+
+var i = get_time();
+			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Name of Authors" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Paper Title" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Type of Presentation" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Conference Name" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Name of Institute" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="National/International" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Start Date" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="End Date" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Duration" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Academic year" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Institute" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Financial Assistance" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Remarks" style="width:200px;" required></center></td>'+
+			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
+
+    		var x = $('#tab346b').find('tr');
+   			$(x[x.length-1]).before(t);
+
+    	}
+    </script>
+    <form>
+
+        <table border="0" id="tab346b">
+            <tr>
+                <th style="width:80px; padding:20px;">Name of the teacher</th>
+                <th style="width:200px; padding:20px;">Name(s) of other associated Authors(s)</th>
+                <th style="width:250px; padding:20px;">Title of the paper</th>
+                <th style="width:80px; padding:20px;">Type of presentation (Oral/ Poster)</th>
+                <th style="width:200px; padding:20px;">Name of the conference</th>
+                <th style="width:200px; padding:20px;">Host Organization/ Institute</th>
+                <th style="width:80px; padding:20px;">National / International</th>
+		<th style="width:200px; padding:20px;">Conference Start Date<br>(DD-MM-YYYY)</th>
+		<th style="width:200px; padding:20px;">Conference End Date<br>(DD-MM-YYYY)</th>
+                <th style="width:200px; padding:20px;">Duration of conference <br>(In Days)</th>
+                <th style="width:200px; padding:20px;">Academic Year</th>
+                <th style="width:200px; padding:20px;">Affiliating Institute of Teacher</th>
+                <th style="width:200px; padding:20px;">Financial Assistance Provided by the University in Rs. (if any)</th>
+                <th style="width:200px; padding:20px;">Remarks (if any)</th>
+
+            </tr>
+			<tr>
+				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow346b()" alt="Submit" width="48" height="48">
+<!--				<td  colspan="4"><button value="" onclick="addRow346b()">Add a new Row</button></td> -->
+			</tr>
+        </table>
+
+
+        <input type="button" class="SAVE" onclick="save346b($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
+
+    </form>
+
+        </div>
+    </center>
+
+
+<div class="col-sm-12" style="height:30px;">
+    <hr/>
+</div>
+
+
+
+<!--
+    3.4.6 (c)
+-->
+<script>
+        	function save346c(table)
+        	{
+        		var rows = $(table).find('tr');
+        		if(rows.length == 200000) console.log("empty");
+        		else {
+        			var rowss = "";
+        			for(var i = 1; i < rows.length-1; i++)
+        			{
+                        var name = $($(rows[i]).find('input')[0]).val();
+                        var wname = $($(rows[i]).find('input')[1]).val();
+                        var inst = $($(rows[i]).find('input')[2]).val();
+                        var nori = $($(rows[i]).find('input')[3]).val();
+                        var stdate = $($(rows[i]).find('input')[4]).val();
+                        var enddate = $($(rows[i]).find('input')[5]).val();
+                        var duration = $($(rows[i]).find('input')[6]).val();
+                        var Year  = $($(rows[i]).find('input')[7]).val();
+                        var affinst  = $($(rows[i]).find('input')[8]).val();
+                        var finance  = $($(rows[i]).find('input')[9]).val();
+                        var remarks  = $($(rows[i]).find('input')[10]).val();
+                        if($(rows[i]).find('input:text').filter(function() { return $(this).val() == ""; }).length > 0 ) alert("Please fill all the fields!");
+        				else
+        				{
+
+        				var idd = $(rows[i]).attr('id');
+        					rowss += "('0','"+"<?php echo $_SESSION['username'];?>"+"','"+ name + "','" + wname
+        					  + "','" + inst + "','"+ nori + "','"+stdate+
+        					  "','" + enddate + "','" + duration + "','" + Year + "','" + affinst + "','" + finance +"','" + remarks +"')";
+        					if(i!=rows.length-2) rowss+= ",";
+        					else rowss += ";";
+        					//console.log(rowss);
+        				}
+        			}
+        			var xhttp,res;
+        				    xhttp = new XMLHttpRequest();
+         				    xhttp.onreadystatechange = function(){
+
+         			       if (this.readyState == 4 && this.status == 200) {
+                               console.log(this.responseText);
+                               alert(this.responseText);
+                               $("#d346c").slideToggle("slow");
+                               rotate("tg346c");
+                               num_rows("tab346c","ch346c");
+        		  			}
+        		  		};
+          			   			 xhttp.open("POST", "saveData.php?table=t3_4_6c", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
+        		}
+        	}
+
+
+        	function fetch_rows_346c()
+        	{
+        		var xhttp,res;
+        	    xhttp = new XMLHttpRequest();
+         	    xhttp.onreadystatechange = function(){
+
+
+         		    if (this.readyState == 4 && this.status == 200) {
+          			   var x = $('#tab346c').find('tr');
+   					   $(x[x.length-1]).before(this.responseText);
+
+select_NA();
+
+   					  console.log("Hello the world");
+
+          			           var y  = this.responseText;
+          			           var responseRows = $(y).siblings();
+          			           if(responseRows.length == 0){ responseRows = $(y); }
+
+        			}
+                    num_rows("tab346c","ch346c");
+        		};
+          			   			 xhttp.open("GET", "fetch346c.php", true);
+         			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                     xhttp.send("rows="+rowss);
+        	}
+		</script>
+
+    <div class="col-sm-12" onclick='rotate("tg346c"); $("#d346c").slideToggle("slow");'>
+
+        <div class="col-sm-1" id="ch346c">
+            <img src="../images/filled.png" width="52" height="52"> Filled
+        </div>
+
+        <div id="h346c" class="col-sm-10" >
+            <div class="col-sm-1"  style="font-size:18px;"><br>3.4.6(c)<br><br>Q<sub>N</sub>M</div>
+            <div class="col-sm-11" style="font-size:18px;"> Details of workshop attended during the last five years.
+            </div>
+        </div>
+
+        <div id="to346c" class="col-sm-1">
+            <br><img class="image flip"  id="tg346c" src="../images/toggle2.png" width="28" height="28">
+        </div>
+
+    </div>
+
+<center>
+        <div class="col-sm-12" id="d346c">
+            <br>
+    <script>
+    	function addRow346c()
+    	{
+
+var i = get_time();
+			   var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Name of Workshop" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Name of Institute" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="National/International" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Start Date" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="End Date" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Duration" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Academic year" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Institute" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Financial Assistance" style="width:200px;" required></center></td>'+
+              '<td><center><input type="text" placeholder="Remarks" style="width:200px;" required></center></td>'+
+			  '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
+
+    		var x = $('#tab346c').find('tr');
+   			$(x[x.length-1]).before(t);
+
+    	}
+    </script>
+    <form>
+
+        <table border="0" id="tab346c">
+            <tr>
+                <th style="width:80px; padding:20px;">Name of the teacher</th>
+                <th style="width:200px; padding:20px;">Name of Workshop </th>
+                <th style="width:200px; padding:20px;">Host Organization/ Institute</th>
+                <th style="width:80px; padding:20px;">National / International</th>
+		<th style="width:200px; padding:20px;">Conference Start Date<br>(DD-MM-YYYY)</th>
+		<th style="width:200px; padding:20px;">Conference End Date<br>(DD-MM-YYYY)</th>
+                <th style="width:200px; padding:20px;">Duration of conference <br>(In Days)</th>
+                <th style="width:200px; padding:20px;">Academic Year</th>
+                <th style="width:200px; padding:20px;">Affiliating Institute of Teacher</th>
+                <th style="width:200px; padding:20px;">Financial Assistance Provided by the University in Rs. (if any)</th>
+                <th style="width:200px; padding:20px;">Remarks (if any)</th>
+
+            </tr>
+			<tr>
+				<td class="add"  colspan="4"><input class="add" type="image" src="../images/add2.png" onclick="addRow346c()" alt="Submit" width="48" height="48">
+<!--				<td  colspan="4"><button value="" onclick="addRow346c()">Add a new Row</button></td> -->
+			</tr>
+        </table>
+
+
+        <input type="button" class="SAVE" onclick="save346c($(this).parent().children()[0])" value="SAVE CHANGES" style="margin-left:-80px;">
+
+    </form>
+
+        </div>
+    </center>
+
+
+<div class="col-sm-12" style="height:30px;">
+    <hr/>
+</div>
+
+
+<!--
     3.4.7
 -->
 <script>
@@ -5754,6 +6094,8 @@ importance, other universities etc. during the last five years
         fetch_rows_344();
         fetch_rows_345();
         fetch_rows_346();
+        fetch_rows_346b();
+        fetch_rows_346c();
         fetch_rows_347();
         fetch_rows_348();
         fetch_rows_351();

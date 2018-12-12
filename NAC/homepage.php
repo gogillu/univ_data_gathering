@@ -16,7 +16,6 @@ if(!isset($_SESSION['username'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/theme.css">
   <link rel="stylesheet" href="./css/bootstrap.min.css">
-
 	<link rel="stylesheet" href="./css/w3_l.css">
 
 
@@ -29,6 +28,13 @@ if(!isset($_SESSION['username'])){
 				color: rgb (0, 137, 226);
 				animation: blink 1s infinite;
 			 }
+
+			 .sticky {
+					 position: fixed;
+					 top: 0;
+					 width: 100%;
+			 }
+
 
 			 @keyframes blink{
 				0%{opacity: 1;}
@@ -150,6 +156,7 @@ if(!isset($_SESSION['username'])){
 					      <a href="./Courses/view.php" class="w3-bar-item w3-button">Courses</a>
 					      <a href="#" onClick="window.open('./profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
 					      <a href="#" onClick="window.open('./save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+								<a href="./additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
 					      <a href="./helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
 					      <a href="./logout.php" class="w3-bar-item w3-button">Logout</a>
 					    </div>
@@ -159,6 +166,39 @@ if(!isset($_SESSION['username'])){
 
     <div>
         <a style="visibility:hidden;">d</a>
+
+				<script>
+		        // When the user scrolls the page, execute myFunction
+		        window.onscroll = function() {myFunction()};
+
+		        // Get the header
+		        var header = document.getElementById("myHeader");
+
+		        // Get the offset position of the navbar
+		        var sticky = header.offsetTop;
+
+		        // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+		        function myFunction() {
+		            if (window.pageYOffset >= sticky) {
+		                header.classList.add("sticky");
+		                document.getElementById("myHeader").style.backgroundColor = "#424242";
+		                document.getElementById("myHeader1").style.backgroundColor = "#424242";
+		                document.getElementById("myHeader2").style.backgroundColor = "#424242";
+		                document.getElementById("myHeader3").style.backgroundColor = "#424242";
+		                $("#header2.h4").html('google');
+		            } else {
+		                header.classList.remove("sticky");
+		                document.getElementById("myHeader").style.backgroundColor = "#616161";
+		                document.getElementById("myHeader1").style.backgroundColor = "#616161";
+		                document.getElementById("myHeader2").style.backgroundColor = "#616161";
+		                document.getElementById("myHeader3").style.backgroundColor = "#616161";
+		            }
+		        }
+
+		    </script>
+
+
+
 				<center>
 					DATA CAPTURING SYSTEM is best viewed through Google Chrome web browser.
 				</center>
@@ -198,7 +238,7 @@ if($unseen>0){
 	$urg = "<d style='font-weight:bold; color:red;'>unseen*</d>";
 
 //	echo "<script> alert('You have new unseen message from Help-Desk check them out. Visit => [ Profile --> Help-Desk ]'); </script>";
-	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b class='blink' style='color:red;'> unseen </b> message from Help-Desk. <b style='color:brown;'> click here </b> </a></center>";
+	echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b class='blink' style='color:red;'> unseen </b> message from Help-Desk. <b style='color:brown;'> click here </b> </a></center>";
 	$ppp = 1;
 }else if($seen>0){
 	$urg = "<d style='font-weight:bold; color:green;'>seen</d>";
@@ -209,14 +249,43 @@ if($unseen>0){
 //echo "<a style='font-size:15px;' href='../helpdesk/chat_reply_to.php?to=".$row['username']."'> "." chat "."$urg"." </a>";
 
 if($ppp!=1){
-	echo "<br><br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
+	echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
 }
 
 ?>
 
     <center>
 
-        <br><br>
+	<div>
+
+		<Br>
+
+			<hr style="border-color:black; border:2px solid #474747;" size="100">
+
+		<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">My Progress</b>
+
+			<div id="my_progress">
+
+<!--
+				<br><br><br>
+
+				<center style="font-weight:bold; font-size:20px;">
+					MY PROGRESS
+				</center>
+
+				<br>
+-->
+			</div>
+
+		</div>
+
+		<br><br><Br>
+
+			<hr style="border-color:black; border:2px solid #474747;" size="100">
+
+			<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">Criteria Section</b>
+
+		<br><BR>
 
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria1/c1.php';" value="CRITERIA 1"/>
         <input style="margin-right: 10px;" type="button" onclick="location.href='criteria2/c2.php';" value="CRITERIA 2"/>
@@ -226,8 +295,8 @@ if($ppp!=1){
 
         <input style="margin-right:10px;" type="button" onclick="location.href='criteria6/c6.php';" value="CRITERIA 6"/>
         <input style="margin-right:10px;" type="button" onclick="location.href='criteria7/c7.php';" value="CRITERIA 7"/>
-		<input style="margin-right:10px; cursor:not-allowed;" disabled  type="button" onclick="location.href='Evaluation_report/evaluation_report.php';" value="EVALUATIVE REPORT"/>
-		<input style="margin-right:10px; cursor:not-allowed;" disabled  type="button" onclick="location.href='Evaluation_report/evaluation_report.php';" value="EXTENDED PROFILE"/>
+				<input style="margin-right:10px;"  type="button" onclick="location.href='Evaluation_report/sub_department.php';" value="EVALUATIVE REPORT"/>
+				<input style="margin-right:10px;"  type="button" onclick="location.href='criteria9/c9.php';" value="EXTENDED PROFILE"/>
 
         <!--
 
@@ -237,13 +306,48 @@ if($ppp!=1){
 
     </center>
 
-		<hr style="background:black;">
+		<br><br><Br>
+
+			<hr style="border-color:black; border:2px solid #474747;" size="100">
+
+			<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">Profile Section</b>
+
+		<br><BR>
+
 
 		<center>
-			<input style="margin-right: 10px;" type="button" onclick="location.href='Courses/add.php';" value="ADD COURSES"/>
-
+			<input style="margin-right: 10px;" type="button" onclick="location.href='accept_notice.php';" value="NOTICE"/>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='Courses/view.php';" value="VIEW COURSES"/>
+			<input style="margin-right: 10px;" type="button" onclick="location.href='additional_data/add_view.php';" value="UPLOAD ADDITIONAL DATA"/>
+			<input style="margin-right: 10px;" type="button" onclick="location.href='helpdesk/msg.php';" value="HELP DESK"/>
+			<input style="margin-right: 10px;" type="button" onclick="location.href='save_my_data/get_data.php';" value="SAVE MY DATA"/>
+
 		</center>
 
+		<br><br>
+
 </body>
+
+	<script>
+
+	$(document).ready(function(){
+
+		var xhttp,res;
+					xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function(){
+
+					 if (this.readyState == 4 && this.status == 200) {
+
+						 $("#my_progress").append(this.responseText);
+
+					 }
+				};
+							 xhttp.open("GET", "superuser/progress_restricted.php?dept=<?php echo $_SESSION['username']; ?>", true);
+							 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+						   xhttp.send();
+
+	});
+
+	</script>
+
 </html>

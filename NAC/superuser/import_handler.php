@@ -217,8 +217,11 @@
 
           foreach ($id_times as $idx) {
             if($idx == $filesop[$i]){
-              echo "your data contains duplicate id_time at row no. ".$line." please rewrite it. the duplicate id_time is [ ".$filesop[$i]." ]<br>";
-              throw new Exception("Error Processing Request", 1);
+
+              if($_POST['section']!='course'){
+                echo "your data contains duplicate id_time at row no. ".$line." please rewrite it. the duplicate id_time is [ ".$filesop[$i]." ]<br>";
+                throw new Exception("Error Processing Request", 1);
+              }
             }
           }
 

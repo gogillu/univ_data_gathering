@@ -479,6 +479,7 @@ function fetch_course_name(x,y){
                 <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
                 <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
                 <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+                <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
                 <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
                   <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
               </div>
@@ -1267,7 +1268,6 @@ five years
         	    xhttp = new XMLHttpRequest();
          	    xhttp.onreadystatechange = function(){
 
-
          		    if (this.readyState == 4 && this.status == 200) {
           			   var x = $('#tab421').find('tr');
    					   $(x[x.length-1]).before(this.responseText);
@@ -1391,7 +1391,8 @@ knowledge resource for library enrichment
 			var nameau = '<td><center><input type="text" placeholder="Name of author" style="width:150px;"></center></td>';
 			var numc = '<td><center><input type="number" min="0" placeholder="Number of Copies" style="width:150px;"></center></td>';
 
-			var yearp = '<td><center><select id="'+ay+'" placeholder="Year of publishing" style="width:175px;" required></select></center></td>';
+//			var yearp = '<td><center><select id="'+ay+'" placeholder="Year of publishing" style="width:175px;" required></select></center></td>';
+      var yearp = '<td><center><input type="text" id="'+ay+'" placeholder="Year of publishing" style="width:175px;" required></center></td>';
 
 			var CR = '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td>';
 
@@ -1400,7 +1401,7 @@ knowledge resource for library enrichment
    			$(x[x.length-1]).before(html);
 
             //fetch_programme_code(i);
-            fetch_academic_year(i);
+            //fetch_academic_year(i);
     	}
 
     </script>
@@ -1425,7 +1426,7 @@ knowledge resource for library enrichment
 						var nameau = $($(rows[i]).find('input')[2]).val();
 						var numc = $($(rows[i]).find('input')[3]).val();
 
-						var yearp = $($(rows[i]).find('select')[0]).val();
+						var yearp = $($(rows[i]).find('input')[4]).val();
 
 
 						if(nameb == ""){
@@ -1497,19 +1498,19 @@ knowledge resource for library enrichment
           			           if(responseRows.length == 0){ responseRows = $(y); }
           			           for(var i = 0; i < responseRows.length; i++)
           			           {
-	          			          x = $(responseRows[i]).find('select');
+	          			        //  x = $(responseRows[i]).find('select');
 	          			          var bool_yesno = x[0];
 	          			         //var cc = x[1];
-	          			          var ay = x[0];
-	          			          var idd = $(ay).attr('id');
+	          			          //var ay = x[0];
+	          			          //var idd = $(ay).attr('id');
 	          			          //idd = idd.substr(1);
 	          			          //for deriving id#id
 	            					//fetch_programme_code(idd, $(pc).attr('value'));
-	            					idd = idd.substr(1);
+	            					//idd = idd.substr(1);
 	            					//console.log(x.length);
 	            					//fetch_course_code($(pc).attr('value'), "pid"+idd, $(cc).attr('value'));
 	            					//for deriving simple id for academic year
-		            				fetch_academic_year(idd, $(ay).attr('value'));
+		            				//fetch_academic_year(idd, $(ay).attr('value'));
 
 
 
@@ -3789,7 +3790,7 @@ laboratory, library,sports complex, computers, classrooms etc.
 ?>
 
         // 1.3.1
-            document.getElementById("TA4_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA4_1_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link4_1_1").value = '<?php echo urldecode($row["link"]); ?>';
             document.getElementById("TA4_1_1").placeholder = "Describe the adequacy of facilities for teaching –learning as per theminimum specified requirement by statutory bodies within minimum500 characters and maximum 500 words";
 
@@ -3811,7 +3812,7 @@ laboratory, library,sports complex, computers, classrooms etc.
             //echo $row['Description'];
 ?>
 
-		document.getElementById("TA4_1_2").value = '<?php echo urldecode($row["Description"]); ?>';
+		document.getElementById("TA4_1_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link4_1_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_1_2").placeholder = "Describe the of adequacy facilities for sports, games and cultural activities which include specification about area/size, year of establishment and user rate within minimum of 500 characters and maximum of 500 words";
 
@@ -3984,7 +3985,7 @@ laboratory, library,sports complex, computers, classrooms etc.
 ?>
 
         // 5.4.1
-            document.getElementById("TA4_4_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA4_4_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link4_4_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_4_2").placeholder = "Describe policy details of systems and procedures for maintaining and utilizing physical, academic and support facilities on the website within a minimum of 500 word and maximum of 1000 words";
 
@@ -4016,7 +4017,7 @@ laboratory, library,sports complex, computers, classrooms etc.
 ?>
 
         // 4.3.1
-            document.getElementById("TA4_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA4_3_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link4_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA4_3_1").placeholder = "Describe policy details of systems and procedures for maintaining and utilizing physical, academic and support facilities on the website within a minimum of 500 word and maximum of 1000 words";
 

@@ -14,6 +14,13 @@ $_SESSION['username']=$_GET['username'];
 $_SESSION['login']="YES";
 $_SESSION['name']=$_GET['name'];
 
-  header("Location: ../homepage.php");
+$section = $_GET['sec'];
+$redirect = $_GET['red']."#".$section;
+
+if($redirect=="#"){
+	header("Location: ../homepage.php");
+}else{
+	header("Location: ../".$redirect);
+}
 
 ?>

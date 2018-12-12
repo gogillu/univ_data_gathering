@@ -19,7 +19,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 	$res  = mysqli_query($connection,$query);
 	$query = "Insert into ".$_POST["table"]." Values".$_POST['rows']."";
 	//echo ("alert('{$query}')");
-	$res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
+	$res  = mysqli_query($connection,$query);// or die(mysqli_error($connection));
 	//echo $_POST["table"];
 
 	if($res){

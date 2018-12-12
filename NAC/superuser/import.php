@@ -147,6 +147,7 @@ $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
        <select id="section" name="section" required>
          <option value="">Select Table</option>
+				 <option value="course">Course</option>
 
          <?php
 

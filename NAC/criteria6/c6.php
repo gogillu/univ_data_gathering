@@ -501,6 +501,7 @@ function fetch_course_name(x,y){
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
       <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
       <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
@@ -3554,7 +3555,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.1.1
-            document.getElementById("TA6_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_1_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_1_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_1_1").placeholder = "Describe the vision and mission statement of the institution on the nature of governance, perspective plans and participation of the teachers in the decision making bodies of the university within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3575,7 +3576,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.1.2
-            document.getElementById("TA6_1_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_1_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_1_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_1_2").placeholder = "Describe a case study showing decentralisation and participative management in the institution in practice within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3596,7 +3597,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.2.1
-            document.getElementById("TA6_2_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_2_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_2_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_1").placeholder = "Describe one activity successfully implemented based on the strategic plan within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3619,7 +3620,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.2.2
-            document.getElementById("TA6_2_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_2_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_2_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_2").placeholder = "Describe one activity successfully implemented based on the strategic plan within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3687,7 +3688,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.2.4
-            document.getElementById("TA6_2_4").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_2_4").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_2_4").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_2_4").placeholder = "Describe one activity successfully implemented based on the Minutes of the meetings of various Bodies/ Cells and Committees within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3707,7 +3708,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.3.1
-            document.getElementById("TA6_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_3_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_3_1").placeholder = "Provide the list of existing welfare measures for teaching and nonteaching staff minimum of 500 characters and maximum of 500 words.";
 
@@ -3726,7 +3727,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.3.5
-            document.getElementById("TA6_3_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_3_5").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_3_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_3_5").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
@@ -3747,7 +3748,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.4.1
-            document.getElementById("TA6_4_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_4_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_4_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_4_1").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
@@ -3766,7 +3767,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.4.3
-            document.getElementById("TA6_4_3").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_4_3").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_4_3").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_4_3").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
@@ -3786,7 +3787,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.5.1
-            document.getElementById("TA6_5_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_5_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_5_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_1").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
@@ -3805,7 +3806,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.5.2
-            document.getElementById("TA6_5_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_5_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_5_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_2").placeholder = "Describe the functioning status of the Performance Appraisal System for teaching and non-teaching staff within minimum of 500 characters and maximum of 500 words.";
 
@@ -3824,7 +3825,7 @@ if(link==""){
             //echo $row['Description'];
 ?>
         // 6.5.5
-            document.getElementById("TA6_5_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA6_5_5").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link6_5_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA6_5_5").placeholder = "Describe quality enhancement initiatives in the academic and administrative domains successfully implemented during the last five years within a minimum of 500 characters and Maximum of 500 words each.";
 

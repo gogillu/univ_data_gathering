@@ -459,6 +459,7 @@ function fetch_course_name(x,y){
                 <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
                 <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
                 <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+                <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
                 <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
                 <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
               </div>
@@ -992,8 +993,10 @@ government schemes in last 5 years
 		            				fetch_academic_year(idd, $(ay).attr('value'));
 
     							}
+                  select_NA();
         			}
                     num_rows("tab513","ch513");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch513.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -1214,8 +1217,10 @@ government schemes in last 5 years
 		            				fetch_academic_year(idd, $(ay).attr('value'));
 
     							}
+                  select_NA();
         			}
                     num_rows("tab514","ch514");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch514.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -1808,7 +1813,7 @@ ragging cases
 
             var C2 = '<td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td>';
 
-			var C3 = '<td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td>';
+			      var C3 = '<td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td>';
 
             var C4 = '<td><center><input type="text" placeholder="" style="width:120px;" required></center></td>';
 
@@ -2023,9 +2028,9 @@ Percentage of student progression to higher education (previous graduating batch
 
             var C2 = '<td><center><input type="number" placeholder="" style="width:120px;" required></center></td>';
 
-			var C3 = '<td><center><select placeholder="select" style="width:175px;" id="'+ip+'"></select></center></td>';
+			var C3 = '<td><center><select placeholder="select" onchange="fetch_course_code(this.value,this.id)" style="width:175px;" id="'+ip+'"></select></center></td>';
 
-            var C4 = '<td><center><input type="text" placeholder="" style="width:120px;" value="<?php echo $_SESSION['username'];?>" required></center></td>';
+            var C4 = '<td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" readonly style="width:100%;" value="" required></center></td>';
 
             var C5 = '<td><center><input type="text" placeholder="" style="width:120px;" required></center></td>';
 
@@ -2050,7 +2055,7 @@ Percentage of student progression to higher education (previous graduating batch
                 <th style="width:250px; padding:20px;">Year</th>
                 <th style="width:250px; padding:20px;">Number of students enrolling into higher education</th>
                 <th style="width:250px; padding:20px;">Program graduated from  </th>
-                <th style="width:250px; padding:20px;">Department graduated from</th>
+                <th style="width:250px; padding:20px;">Programme Name </th>
                 <th style="width:250px; padding:20px;">Name of institution joined</th>
                 <th style="width:250px; padding:20px;">Name of programme admitted to</th>
             </tr>
@@ -3409,7 +3414,7 @@ last five years
 ?>
 
         // 1.3.1
-            document.getElementById("TA1_1_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA1_1_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link5_3_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA1_1_1").placeholder = "Describe the Student Council activity and students role in academic & administrative bodies within a minimum of 500 characters and maximum of 500 words .";
 
@@ -3437,7 +3442,7 @@ last five years
 ?>
 
         // 1.3.1
-            document.getElementById("TA5_1_5").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA5_1_5").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link5_1_5").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA5_1_5").placeholder = "Describe the international students cell activities within a minimum of 500 characters and maximum of 500 words.";
 
@@ -3463,7 +3468,7 @@ last five years
 ?>
 
         // 5.4.1
-            document.getElementById("TA5_4_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA5_4_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link5_4_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA5_4_1").placeholder = "Describe contribution of alumni association to the institution within a minimum of 500 characters and maximum of 500 words";
 

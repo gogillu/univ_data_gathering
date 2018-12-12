@@ -500,6 +500,7 @@ function fetch_course_name(x,y){
       <a href="../Courses/view.php" class="w3-bar-item w3-button">Courses</a>
       <a href="#" onClick="window.open('../profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
       <a href="#" onClick="window.open('../save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
+      <a href="../additional_data/add_view.php" class="w3-bar-item w3-button">Upload Additional Data</a>
       <a href="../helpdesk/msg.php" class="w3-bar-item w3-button">Help-Desk</a>
       <a href="../logout.php" class="w3-bar-item w3-button">Logout</a>
     </div>
@@ -3480,7 +3481,7 @@ function fetch_course_name(x,y){
 
             /* onkeyup="percent_limit_input(this.value,this.id)"  onkeypress="return event.charCode >= 48"*/
 
-            var html = '<tr id="'+i+'"><td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td> <td><center><input  type="text" value="semester" disabled placeholder="Semester" style="width:250px;" ></center></td> <td><center><input  type="text" placeholder="Examination End date" style="width:250px;"></center></td> <td><center><input  type="text" placeholder="Result Declaration Date" style="width:250px;" ></center></td> <td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
+            var html = '<tr id="'+i+'"><td><center><select id="'+ip+'" onchange="fetch_course_code(this.value,this.id)" text="Programme Code" style="width:150px;" required></select></center></td><td><center><input id="'+ipn+'" type="text" placeholder="Programme Name" style="width:250px;" disabled></center></td> <td><center><input  type="text" value="" placeholder="" style="width:250px;" ></center></td> <td><center><input  type="text" placeholder="Examination End date" style="width:250px;"></center></td> <td><center><input  type="text" placeholder="Result Declaration Date" style="width:250px;" ></center></td> <td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';
     		var x = $('#tab251').find('tr');
    			$(x[x.length-1]).before(html);
 
@@ -4937,6 +4938,7 @@ function fetch_course_name(x,y){
           			           if(responseRows.length == 0){ responseRows = $(y); }
           			           for(var i = 0; i < responseRows.length; i++)
           			           {
+
 	          			          x = $(responseRows[i]).find('select');
 	          			          var pc = x[0];
 	          			          var ay = x[1];
@@ -4963,10 +4965,31 @@ function fetch_course_name(x,y){
 
     <div class="col-sm-12" onclick='rotate("tg271"); $("#d271").slideToggle("slow");'>
 
-        <div class="col-sm-1" id="ch271">
-            <img src="../images/filled.png" width="58" height="58"> Filled
-        </div>
+<?php
+  $r271 = "SELECT DISTINCT count(*) FROM `t2_7_1` WHERE `Username` LIKE '".$_SESSION['username']."'";
+  $res271 = mysqli_query($connection,$r271);
+  $rc271 = 0;
+  while ($x = $res271->fetch_assoc()) {
+    $rc271 = $x['count(*)'];
+  }
 
+$allow271 = 1;
+
+if($rc271>500){
+  $allow271 = 0;
+?>
+        <div class="col-sm-1" id="ch271">
+            <img src="../images/filled.png" width="58" height="58"> Filled <?php echo "(".$rc271.")"; ?>
+        </div>
+<?php
+}else{
+  ?>
+  <div class="col-sm-1" id="ch271">
+      <img src="../images/unfilled.png" width="58" height="58"> Not Filled
+  </div>
+<?php
+}
+?>
         <div id="h271" class="col-sm-10" >
             <div class="col-sm-1"  style="font-size:18px;"><br>2.7.1<br> <br>Q<sub>N</sub>M</div>
             <div class="col-sm-11" style="font-size:18px;">
@@ -4986,6 +5009,21 @@ function fetch_course_name(x,y){
 
 <center>
         <div class="col-sm-12" id="d271">
+
+          <?php
+
+            if($allow271==0){
+              ?>
+
+              <br>
+              <b>
+              Since your data is very large (<?php echo $rc271; ?> Entries), <a href="../save_my_data/export.php?table=t2_7_1" target="_blank"> You can view it Here (Click Here)</a>
+            </b>
+              <br>
+              <?php
+            }else{
+          ?>
+
             <br>
     <script>
 
@@ -5001,7 +5039,6 @@ function fetch_course_name(x,y){
             var per= "per"+i;
 
             /* onkeyup="percent_limit_input(this.value,this.id)"  onkeypress="return event.charCode >= 48"*/
-
 
 	    var f1 = '<td><center><input type="text" placeholder="Name" style="width:200px;" required></center></td>';
 	    var f2 = '<td><center><input type="text" placeholder="Gender" style="width:100px;" required></center></td>';
@@ -5056,6 +5093,8 @@ function fetch_course_name(x,y){
 
     </form>
 
+  <?php } ?>
+
         </div>
     </center>
 
@@ -5086,7 +5125,7 @@ function fetch_course_name(x,y){
 ?>
 
         // 2.2.1
-            document.getElementById("TA2_2_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA2_2_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link2_2_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_2_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -5110,7 +5149,7 @@ function fetch_course_name(x,y){
 ?>
 
         // 2.3.1
-            document.getElementById("TA2_3_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA2_3_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link2_3_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_3_1").placeholder = "Write description within a minimum of 500 characters and maximum of 500 words.";
 
@@ -5154,7 +5193,7 @@ function fetch_course_name(x,y){
 ?>
 
         // 2.5.4
-            document.getElementById("TA2_5_4").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA2_5_4").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link2_5_4").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_5_4").placeholder = "Describe the examination reforms with reference to the following within a minimum of 500 words and maximum 1000 words \n * Examination procedures \n * Processes integrating IT \n * Continuous internal assessment system ";
 
@@ -5217,7 +5256,7 @@ function fetch_course_name(x,y){
 ?>
 
         // 2.6.1
-            document.getElementById("TA2_6_1").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA2_6_1").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link2_6_1").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_6_1").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
@@ -5240,7 +5279,7 @@ function fetch_course_name(x,y){
 ?>
 
         // 2.6.2
-            document.getElementById("TA2_6_2").value = '<?php echo urldecode($row["Description"]); ?>';
+            document.getElementById("TA2_6_2").value = '<?php echo urldecode(str_replace("%0A","\\n",$row["Description"])); ?>';
             document.getElementById("link2_6_2").value = '<?php echo urldecode($row["Link"]); ?>';
             document.getElementById("TA2_6_2").placeholder = "Describe Course Outcomes (COs) for all courses and mechanism of communication within a minimum of 500 characters and maximum of 500 words ";
 
@@ -5274,8 +5313,9 @@ function fetch_course_name(x,y){
 
     fetch_rows_263();
 
+<?php if($allow271==1){ ?>
     fetch_rows_271();
-
+<?php } ?>
     select_NA();
 
 }
@@ -5330,9 +5370,6 @@ setInterval(function() { maintain_session(); }, 800000);
 
 
 </script>
-
-
-
 
 </body>
 

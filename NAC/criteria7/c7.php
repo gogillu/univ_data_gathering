@@ -729,10 +729,11 @@ function fetch_course_name(x,y){
 	            					//for deriving simple id for academic year
 		            				fetch_academic_year(idd, $(ay).attr('value'));
 
-
+                        select_NA();
     							}
         			}
                     num_rows("tab711","ch711");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch711.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -1668,10 +1669,11 @@ if(link==""){
 	            					//console.log(x.length);
 	            					//for deriving simple id for academic year
 		            				fetch_academic_year(idd, $(ay).attr('value'));
-
+                        select_NA();
     							}
         			}
                     num_rows("tab718","ch718");
+                    select_NA();
         		};
           			   			 xhttp.open("GET", "fetch718.php", true);
          			   			 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

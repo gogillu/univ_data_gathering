@@ -1210,7 +1210,8 @@ if(!isset($_SESSION['username'])){
                     $c6 = "select distinct * from t6_2_4 where Username LIKE '".$row['username']."'";
                     $c7 = "select distinct * from t6_3_1 where Username LIKE '".$row['username']."'";
                     $c8 = "select distinct * from t6_3_2 where Username LIKE '".$row['username']."'";
-                    $c9 = "select distinct * from t6_3_3 where Username LIKE '".$row['username']."'";
+                    $c9 = "select distinct * from t6_3_3_1 where Username LIKE '".$row['username']."'";
+										$c9b = "select distinct * from t6_3_3_2 where Username LIKE '".$row['username']."'";
                     $c10= "select distinct * from t6_3_4 where Username LIKE '".$row['username']."'";
                     $c11= "select distinct * from t6_3_5 where Username LIKE '".$row['username']."'";
                     $c12= "select distinct * from t6_4_1 where Username LIKE '".$row['username']."'";
@@ -1231,6 +1232,7 @@ if(!isset($_SESSION['username'])){
                     $r7 = mysqli_query($connection,$c7);
                     $r8 = mysqli_query($connection,$c8);
                     $r9 = mysqli_query($connection,$c9);
+										$r9b = mysqli_query($connection,$c9b);
                     $r10= mysqli_query($connection,$c10);
                     $r11 = mysqli_query($connection,$c11);
                     $r12 = mysqli_query($connection,$c12);
@@ -1251,6 +1253,7 @@ if(!isset($_SESSION['username'])){
                     $a7 = mysqli_num_rows($r7);
                     $a8 = mysqli_num_rows($r8);
                     $a9 = mysqli_num_rows($r9);
+										$a9b = mysqli_num_rows($r9b);
                     $a10= mysqli_num_rows($r10);
                     $a11 = mysqli_num_rows($r11);
                     $a12 = mysqli_num_rows($r12);
@@ -1288,7 +1291,7 @@ if(!isset($_SESSION['username'])){
                     if($a8>=1){
                         $q++;
                     }
-                    if($a9>=1){
+                    if($a9>=1 || $a9b>=1){
                         $q++;
                     }
                     if($a10>=1){
@@ -1363,7 +1366,7 @@ if(!isset($_SESSION['username'])){
 											<a href="criteria6/c6.php#ch623" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.2.4 => <?php $temp = $a6; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
 											<a href="criteria6/c6.php#ch624" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.1 => <?php $temp = $a7; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
 											<a href="criteria6/c6.php#ch631" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.2 => <?php $temp = $a8; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
-											<a href="criteria6/c6.php#ch632" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.3 => <?php $temp = $a9; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
+											<a href="criteria6/c6.php#ch632" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.3 => <?php $temp = $a9+$a9b; if($temp>0) echo "<x>".$a9."+".$a9b."</x>"; else echo "<w>".$a9."+".$a9b."</w>"; ?></a>
 											<a href="criteria6/c6.php#ch633" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.4 => <?php $temp = $a10; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
 											<a href="criteria6/c6.php#ch633" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.3.5 => <?php $temp = $a11; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>
 											<a href="criteria6/c6.php#ch634" target="_blank" style="text-decoration:none; color:black;" class="w3-bar-item w3-button">6.4.1 => <?php $temp = $a12; if($temp>0) echo "<x>".$temp."</x>"; else echo "<w>".$temp."</w>"; ?></a>

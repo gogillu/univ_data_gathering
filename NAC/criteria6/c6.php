@@ -285,7 +285,7 @@ function fetch_course_name(x,y){
 
             console.log("Number of rows : "+l1+"+"+l2+"----");
 
-            if(l1>2 && l2>2){
+            if(l1>2 || l2>2){
                 document.getElementById(fid).innerHTML = '<img src="../images/filled.png" width="52" height="52"><br><a style="font-size:15px; color:#000;">Filled ('+(l1-2)+"+"+(l2-2)+')</a>';
             }else{
                 console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");

@@ -2240,7 +2240,7 @@ examinations during the last five years
 
             var C2 = '<td><center><input type="text" placeholder="" style="width:150px;" required></center></td>';
 
-			var C3 = '<td><center><select placeholder="Exam" style="width:150px;" id="'+per+'"><option value="NET">NET</option><option value="SLET">SLET</option><option value="GATE">GATE</option><optionvalue="GMAT">GMAT</option><option value="CAT">CAT</option><option value="GRE">GRE</option><option value="TOEFL">TOEFL</option>3<option value="CIVIL SERVICES">CIVIL SERVICES</option><option value="OTHER STATE EXAMS">OTHER STATE EXAMS</option></select></center></td>';
+			var C3 = '<td><center><select placeholder="Exam" style="width:150px;" id="'+per+'"><option value="NET">NET</option><option value="SLET">SLET</option><option value="GATE">GATE</option><optionvalue="GMAT">GMAT</option><option value="CAT">CAT</option><option value="GRE">GRE</option><option value="GPAT">GPAT</option><option value="NIPER JEE">NIPER JEE</option><option value="TOEFL">TOEFL</option>3<option value="CIVIL SERVICES">CIVIL SERVICES</option><option value="OTHER STATE EXAMS">OTHER STATE EXAMS</option></select></center></td>';
 
 
 

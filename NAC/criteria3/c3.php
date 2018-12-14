@@ -696,7 +696,7 @@ indicating seed money provided and utilized
     	{
             var i = get_time();
              var t = '<tr id = "'+i+'"><td><center><input type="text" placeholder="Name of the teacher" style="width:250px;" required></center></td>'+
-			  '<td><center><input type="number" placeholder="Amount" style="width:160px;" required></center></td>'+
+			  '<td><center><input type="text" placeholder="Amount" style="width:160px;" required></center></td>'+
               '<td><center><select placeholder="Year" class="year" style="width:165px;" required></select></center></td>'+
               '<td><center><input type="number" placeholder="Duration" style="width:160px;" required></center></td>'+
               '<td class="remove"><center><button onclick="remove_row(this);" type="button" >Remove</button></center></td></tr>';

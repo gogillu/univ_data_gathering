@@ -24,7 +24,12 @@ if(!isset($_SESSION['names'])){
     <style>
 
 		td{
-			padding:3px;
+			padding:4px;
+			border-radius: 5px;
+		}
+		th{
+			padding:6px;
+			border-radius: 5px;
 		}
 
     input[type=text],input[type=password], select,textarea {
@@ -84,10 +89,11 @@ if(!isset($_SESSION['names'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>VALIDATOR | Information Gathering System</title>
+<title>CRITERIA-<?php echo $_GET['criteria'] ?> | <?php echo $_SESSION['name'] ?> | Information Gathering System</title>
 </head>
-<body class="BACK">
+<body class="BACK" style="padding:10px;">
 
+<!--
     <div class="container DAVV" style="width:100%; padding-bottom:20px; padding-top:20px;">
         <div class="col-sm-3"></div>
 
@@ -104,16 +110,17 @@ if(!isset($_SESSION['names'])){
             </div>
 
         </div>
-
         <div class="col-sm-1"></div>
     </div>
+	-->
 
+<!--
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="progress.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | VALIDATE ";?></h4></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name'])." | PRINTING ALL MY DATA ";?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
-
+-->
     <div>
         <a style="visibility:hidden;">d</a>
     </div>
@@ -124,7 +131,13 @@ if(!isset($_SESSION['names'])){
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
 
-echo "<center><b style='font-size:24px;'>INVALID LINKS</b></center>";
+echo "<center><b style='font-size:24px;'> ".$_SESSION['name']." | CRITERIA - ".$_GET['criteria']."</b></center>";
+
+?>
+
+	<button class="btn-primary" style="padding:7px; border-radius:6px; margin-right:100px;" onclick="printed(); window.print();">PRINT THIS PAGE</button>
+
+<?php
 
 $dir = "../profile/docs";
 $files = scandir($dir);
@@ -144,64 +157,77 @@ $connection = mysqli_connect($servername, $username, $password, $dbname);
 $query = "show tables";
 $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
+
+
 foreach ($res as $tabs) {
 	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
 
-	$i_query = "select * FROM ".$t." WHERE 1";
-	echo "<br><Br><b style=''>".$t."</b>";
+	if($t[0]!='t' || $t[1]!=$_GET['criteria']){
+		continue;
+	}
+
+	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
+
+	$heads = [];
+
+	$turn = 1;
+
+	echo "<table border='2' style=''>";
+	echo "<th>S. NO.</th>";
+
+		foreach ($i_res as $ds) {
+			foreach ($ds as $key => $dds) {
+				if($key=='Username' || $key=='id_time' || strtolower($key)=='file_name'){
+					$col++;
+					continue;
+				}
+				echo "<th>".strtoupper($key)."</th>";
+			}
+			if($turn==1) break;
+		}
+
+
+	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	echo "<br><Br><b style='font-size:22px;'>SECTION : ".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
 	//echo "<br><Br><b>".$t."</b><br><BR>";
 
-	echo "<table border='2' style=''>";
-
-	if($t == "t_additional_data"){
-
-		//echo "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
-
-
-		foreach ($i_res as $ds) {
-			//echo "<br>";
-			//print_r($ds);
-			foreach ($ds as $dds) {
-				//echo $dds."  "
-
-				if(strpos($dds,"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
-					$xxx = substr($dds,53);
-					//echo $xxx."<br>";
-					if(!in_array($xxx,$t_add_files)){
-						//echo "<br>";
-						//print_r($xxx);
-						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
-					}
-				}
-			}
-		}
-
-
-		continue;
-	}
-
+	$line = 1;
 	foreach ($i_res as $ds) {
 		//echo "<br>";
-		foreach ($ds as $dds) {
-			//echo $dds."  "
-			if(strpos($dds,"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
-				$xxx = substr($dds,41);
-				if(!in_array($xxx,$files)){
-					//echo "<br>";
-					//print_r($xxx);
-					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
-				}
+		echo "<tr>";
+		echo "<td>".$line."</td>";
+
+		$line++;
+		$col = 1;
+
+		foreach ($ds as $key => $dds) {
+
+			if($key=='Username' || $key=='id_time' || strtolower($key)=='file_name'){
+				$col++;
+				continue;
 			}
+
+			echo "<td>".urldecode($dds)."</td>";
 		}
+		echo "</tr>";
 	}
 
 	echo "</table>";
 
 }
 
+echo "<br><br><br><br>";
 
+?>
+
+<button class="btn-primary" style="padding:7px; border-radius:6px; margin-right:100px;" onclick="printed(); window.print();">PRINT THIS PAGE</button>
+
+<?php
+
+echo "<br><br><br><br>";
 
 
 /*
@@ -231,6 +257,22 @@ foreach ($tabs as $t) {
            xhttp.send();
 
       }
+
+		function printed(){
+
+			var xhttp,res;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+					if (this.readyState == 4 && this.status == 200) {
+						console.log("success");
+					}
+			};
+			xhttp.open("GET", "save_log.php?criteria=<?php echo $_GET['criteria']; ?>", true);
+			xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xhttp.send();
+
+		}
+
 </script>
 
 </body>

@@ -120,6 +120,12 @@ if(!isset($_SESSION['names'])){
 
         <div id="right"></div>
 
+
+				<?php
+		      include("links.php");
+		    ?>
+
+
 <?php
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
@@ -144,57 +150,30 @@ $connection = mysqli_connect($servername, $username, $password, $dbname);
 $query = "show tables";
 $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
+
+
 foreach ($res as $tabs) {
 	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
 
-	$i_query = "select * FROM ".$t." WHERE 1";
-	echo "<br><Br><b style=''>".$t."</b>";
+	if($t[0]!='t'){
+		continue;
+	}
+
+	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE 'ietdavv'";
+	echo "<br><Br><b style=''>SECTION : ".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
 	//echo "<br><Br><b>".$t."</b><br><BR>";
 
 	echo "<table border='2' style=''>";
 
-	if($t == "t_additional_data"){
-
-		//echo "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
-
-
-		foreach ($i_res as $ds) {
-			//echo "<br>";
-			//print_r($ds);
-			foreach ($ds as $dds) {
-				//echo $dds."  "
-
-				if(strpos($dds,"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
-					$xxx = substr($dds,53);
-					//echo $xxx."<br>";
-					if(!in_array($xxx,$t_add_files)){
-						//echo "<br>";
-						//print_r($xxx);
-						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
-					}
-				}
-			}
-		}
-
-
-		continue;
-	}
-
 	foreach ($i_res as $ds) {
 		//echo "<br>";
+		echo "<tr>";
 		foreach ($ds as $dds) {
-			//echo $dds."  "
-			if(strpos($dds,"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
-				$xxx = substr($dds,41);
-				if(!in_array($xxx,$files)){
-					//echo "<br>";
-					//print_r($xxx);
-					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
-				}
-			}
+			echo "<td>".urldecode($dds)."</td>";
 		}
+		echo "</tr>";
 	}
 
 	echo "</table>";

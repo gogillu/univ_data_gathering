@@ -215,8 +215,15 @@
           $d = $d.",";
         }else{
 
+          if($_POST['section']=='t3_4_6b' || $_POST['section']=='t3_4_6c'){
+            //echo "skipping";
+            continue;
+          }
+
+
           foreach ($id_times as $idx) {
             if($idx == $filesop[$i]){
+
 
               if($_POST['section']!='course'){
                 echo "your data contains duplicate id_time at row no. ".$line." please rewrite it. the duplicate id_time is [ ".$filesop[$i]." ]<br>";

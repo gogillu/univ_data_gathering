@@ -28,6 +28,7 @@ save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(htt
 
 
   <style>
+
     textarea{
       white-space: pre-wrap;
     }

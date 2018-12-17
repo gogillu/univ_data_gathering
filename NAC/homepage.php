@@ -153,6 +153,7 @@ if(!isset($_SESSION['username'])){
 					          <div  style="margin-top:10px; color:black; margin-left:-60px; background-color:transparent; text-decoration:none; color:white;" class="w3-dropdown-hover nnn">
 					    <a style="text-decoration:none; color:white; cursor:pointer;"  class="nn">PROFILE</a>
 					    <div style="text-decoration:none; color:white;" class="w3-dropdown-content w3-bar-block w3-border">
+								<a href="./validator/validate_links.php" class="w3-bar-item w3-button">Link Validator</a>
 					      <a href="./Courses/view.php" class="w3-bar-item w3-button">Courses</a>
 					      <a href="#" onClick="window.open('./profile/link_generator/generate.php','Link Generator','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">URL Generator</a>
 					      <a href="#" onClick="window.open('./save_my_data/get_data.php','Save My Data','resizable,height=600,width=1100'); return false;" class="w3-bar-item w3-button">Save My Data</a>
@@ -238,6 +239,7 @@ if($unseen>0){
 	$urg = "<d style='font-weight:bold; color:red;'>unseen*</d>";
 
 //	echo "<script> alert('You have new unseen message from Help-Desk check them out. Visit => [ Profile --> Help-Desk ]'); </script>";
+	//echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b class='blink' style='color:red;'> unseen </b> message from Help-Desk. <b style='color:brown;'> click here </b> </a></center>";
 	echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You have new <b class='blink' style='color:red;'> unseen </b> message from Help-Desk. <b style='color:brown;'> click here </b> </a></center>";
 	$ppp = 1;
 }else if($seen>0){
@@ -249,7 +251,8 @@ if($unseen>0){
 //echo "<a style='font-size:15px;' href='../helpdesk/chat_reply_to.php?to=".$row['username']."'> "." chat "."$urg"." </a>";
 
 if($ppp!=1){
-	echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
+	//echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>You always have support of Help-Desk. You can ask your queries here.</a></center>";
+	echo "<br><center><a href='helpdesk/msg.php' style='color:green; font-size:18px; font-weight:bold;'>HELP-DESK</a></center>";
 }
 
 ?>
@@ -278,6 +281,30 @@ if($ppp!=1){
 			</div>
 
 		</div>
+
+<?php if($_SESSION['names']!=""){ ?>
+
+		<br><br><Br>
+
+			<hr style="border-color:black; border:2px solid #474747;" size="100">
+
+			<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">GENERATE REPORT</b>
+
+		<br><BR>
+<centre>
+			<?php
+				for($c=1; $c<=9; $c++){
+
+					if($c==8) continue;
+?>
+					<input style="margin-right: 10px;" type="button" onclick="location.href='PRINT/criteria.php?criteria=<?php echo $c; ?>';" value="CRITERIA - <?php echo $c; ?>"/>
+<?php
+				}
+			?>
+</centre>
+		<br><br>
+
+<?php } ?>
 
 		<br><br><Br>
 
@@ -316,8 +343,11 @@ if($ppp!=1){
 
 
 		<center>
+			<input style="margin-right: 10px;" type="button" onclick="location.href='validator/validate_links.php';" value="LINK VALIDATOR"/>
+<br>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='accept_notice.php';" value="NOTICE"/>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='Courses/view.php';" value="VIEW COURSES"/>
+<br>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='additional_data/add_view.php';" value="UPLOAD ADDITIONAL DATA"/>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='helpdesk/msg.php';" value="HELP DESK"/>
 			<input style="margin-right: 10px;" type="button" onclick="location.href='save_my_data/get_data.php';" value="SAVE MY DATA"/>

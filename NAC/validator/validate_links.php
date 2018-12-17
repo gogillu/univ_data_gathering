@@ -6,7 +6,7 @@ include("../credential.php");
 $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
-if(!isset($_SESSION['names'])){
+if(!isset($_SESSION['name'])){
 		header("Location: ../index.php");   }
 
 ?>
@@ -24,6 +24,7 @@ if(!isset($_SESSION['names'])){
     <style>
 
 		td{
+			color: red;
 			padding:3px;
 		}
 
@@ -110,7 +111,7 @@ if(!isset($_SESSION['names'])){
 
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="progress.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | VALIDATE ";?></h4></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name'])." | VALIDATE ";?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
@@ -145,10 +146,19 @@ $query = "show tables";
 $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
 foreach ($res as $tabs) {
+
 	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
 
-	$i_query = "select * FROM ".$t." WHERE 1";
-	echo "<br><Br><b style=''>".$t."</b>";
+	$invalid = 0;
+
+	if($t[0]!='t'){
+		continue;
+	}
+
+	echo "<hr>";
+
+	$i_query = "select * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	echo "<br><Br><b style='font-size:22px;'>".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
 	//echo "<br><Br><b>".$t."</b><br><BR>";
@@ -172,12 +182,16 @@ foreach ($res as $tabs) {
 					if(!in_array($xxx,$t_add_files)){
 						//echo "<br>";
 						//print_r($xxx);
+						$invalid++;
 						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
 					}
 				}
 			}
 		}
 
+		if($invalid==0){
+			echo "<br>&nbsp;&nbsp;&nbsp; <b style='color:green;'>YOU HAVE NO INVALID LINKS IN THIS SECTION</b>";
+		}
 
 		continue;
 	}
@@ -191,6 +205,7 @@ foreach ($res as $tabs) {
 				if(!in_array($xxx,$files)){
 					//echo "<br>";
 					//print_r($xxx);
+					$invalid++;
 					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
 				}
 			}
@@ -198,6 +213,10 @@ foreach ($res as $tabs) {
 	}
 
 	echo "</table>";
+
+	if($invalid==0){
+		echo "&nbsp;&nbsp;&nbsp; <b style='color:green;'>YOU HAVE NO INVALID LINKS IN THIS SECTION</b>";
+	}
 
 }
 

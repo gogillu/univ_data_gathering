@@ -110,7 +110,7 @@ if(!isset($_SESSION['names'])){
 
     <div id="myHeader" class="col-sm-12 Username" style="z-index:10; width:100%;">
         <center><div id="myHeader1" class="col-sm-1 Username" style="padding:10px; style='visibility:hidden;'"><a href="progress.php"><h4 style=" color:#fff; font-size:15px;" ><?php echo "BACK";?></h4></a></div></center>
-        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['names'])." | VALIDATE ";?></h4></div></center>
+        <center><div id="myHeader2" class="col-sm-10 Username" style="padding:10px;"><h4 style=" color:#fff; font-size:18px;"><?php echo strtoupper($_SESSION['name'])." | PRINTING ALL MY DATA ";?></h4></div></center>
         <center><div id="myHeader3" class="col-sm-1 Username" style="padding:10px; "><a href="../logout.php"><h4 style=" color:#fff; font-size:15px; "><?php echo "LOGOUT";?></h4></a></div></center>
     </div>
 
@@ -124,7 +124,7 @@ if(!isset($_SESSION['names'])){
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
 
-echo "<center><b style='font-size:24px;'>INVALID LINKS</b></center>";
+echo "<center><b style='font-size:24px;'>PRINT ALL MY DATA</b></center>";
 
 $dir = "../profile/docs";
 $files = scandir($dir);
@@ -144,57 +144,30 @@ $connection = mysqli_connect($servername, $username, $password, $dbname);
 $query = "show tables";
 $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
+
+
 foreach ($res as $tabs) {
 	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
 
-	$i_query = "select * FROM ".$t." WHERE 1";
-	echo "<br><Br><b style=''>".$t."</b>";
+	if($t[0]!='t'){
+		continue;
+	}
+
+	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	echo "<br><Br><b style=''>SECTION : ".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
 	//echo "<br><Br><b>".$t."</b><br><BR>";
 
 	echo "<table border='2' style=''>";
 
-	if($t == "t_additional_data"){
-
-		//echo "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
-
-
-		foreach ($i_res as $ds) {
-			//echo "<br>";
-			//print_r($ds);
-			foreach ($ds as $dds) {
-				//echo $dds."  "
-
-				if(strpos($dds,"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
-					$xxx = substr($dds,53);
-					//echo $xxx."<br>";
-					if(!in_array($xxx,$t_add_files)){
-						//echo "<br>";
-						//print_r($xxx);
-						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
-					}
-				}
-			}
-		}
-
-
-		continue;
-	}
-
 	foreach ($i_res as $ds) {
 		//echo "<br>";
+		echo "<tr>";
 		foreach ($ds as $dds) {
-			//echo $dds."  "
-			if(strpos($dds,"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
-				$xxx = substr($dds,41);
-				if(!in_array($xxx,$files)){
-					//echo "<br>";
-					//print_r($xxx);
-					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
-				}
-			}
+			echo "<td>".urldecode($dds)."</td>";
 		}
+		echo "</tr>";
 	}
 
 	echo "</table>";

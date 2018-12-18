@@ -24,6 +24,7 @@ if(!isset($_SESSION['names'])){
     <style>
 
 		td{
+			color: red;
 			padding:3px;
 		}
 
@@ -120,6 +121,8 @@ if(!isset($_SESSION['names'])){
 
         <div id="right"></div>
 
+<div  style="padding:30px;">
+
 <?php
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
@@ -163,7 +166,7 @@ foreach ($res as $tabs) {
 		foreach ($i_res as $ds) {
 			//echo "<br>";
 			//print_r($ds);
-			foreach ($ds as $dds) {
+			foreach ($ds as $key=>$dds) {
 				//echo $dds."  "
 
 				if(strpos($dds,"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
@@ -172,33 +175,45 @@ foreach ($res as $tabs) {
 					if(!in_array($xxx,$t_add_files)){
 						//echo "<br>";
 						//print_r($xxx);
-						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
+						echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."'>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</a></td></tr>";
 					}
 				}
 			}
 		}
-
-
 		continue;
 	}
 
+
 	foreach ($i_res as $ds) {
 		//echo "<br>";
-		foreach ($ds as $dds) {
+
+		foreach ($ds as $key=>$dds) {
+			//echo urldecode($dds)."  ";
+
+			//echo $key."<br>";
+
+			$dds = urldecode($dds);
+
+			if(strtolower($key)=="link"){
+				//echo $ds[$key]."<br>";
+				if(strlen($dds)<40){
+					$invalid++;
+					echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='".urldecode($ds[$key])."'>".urldecode($ds[$key])."</a></td></tr>";
+					continue;
+				}
+			}
 			//echo $dds."  "
 			if(strpos($dds,"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
 				$xxx = substr($dds,41);
 				if(!in_array($xxx,$files)){
 					//echo "<br>";
 					//print_r($xxx);
-					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
+					echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."'>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</a></td></tr>";
 				}
 			}
 		}
 	}
-
 	echo "</table>";
-
 }
 
 
@@ -232,6 +247,6 @@ foreach ($tabs as $t) {
 
       }
 </script>
-
+</div>
 </body>
 </html>

@@ -6,7 +6,7 @@ include("../credential.php");
 $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
-if(!isset($_SESSION['names'])){
+if(!isset($_SESSION['name'])){
 		header("Location: ../index.php");   }
 
 ?>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['names'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>CRITERIA-<?php echo $_GET['criteria'] ?> | <?php echo $_SESSION['name'] ?> | Information Gathering System</title>
+<title>CRITERIA-<?php echo $_GET['criteria'] ?> | <?php echo $_SESSION['name'] ?> | Information Gathering System | <?php echo date_format($date, 'Y-m-d H:i:s');?></title>
 </head>
 <body class="BACK" style="padding:10px;">
 
@@ -134,6 +134,8 @@ if(!isset($_SESSION['names'])){
 echo "<center><b style='font-size:24px;'> ".$_SESSION['name']." | CRITERIA - ".$_GET['criteria']."</b></center>";
 
 ?>
+
+	<b style="float:right;"><?php echo date_format($date, 'Y-m-d H:i:s');?></b>
 
 	<button class="btn-primary" style="padding:7px; border-radius:6px; margin-right:100px;" onclick="printed(); window.print();">PRINT THIS PAGE</button>
 

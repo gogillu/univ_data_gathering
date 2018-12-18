@@ -120,7 +120,7 @@ if(!isset($_SESSION['name'])){
     </div>
 
         <div id="right"></div>
-
+<div  style="padding:30px;">
 <?php
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
@@ -170,20 +170,23 @@ foreach ($res as $tabs) {
 		//echo "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
 
 
-		foreach ($i_res as $ds) {
+		foreach ($i_res as $key => $ds) {
 			//echo "<br>";
 			//print_r($ds);
+
 			foreach ($ds as $dds) {
 				//echo $dds."  "
 
-				if(strpos($dds,"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
+			  $dds = urldecode($dds);
+
+				if(strpos(urldecode($dds),"http://uid.dauniv.ac.in/NAC/additional_data/docs_add/")!==false){
 					$xxx = substr($dds,53);
 					//echo $xxx."<br>";
 					if(!in_array($xxx,$t_add_files)){
 						//echo "<br>";
 						//print_r($xxx);
 						$invalid++;
-						echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</td></tr>";
+						echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."'>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</a></td></tr>";
 					}
 				}
 			}
@@ -198,15 +201,30 @@ foreach ($res as $tabs) {
 
 	foreach ($i_res as $ds) {
 		//echo "<br>";
-		foreach ($ds as $dds) {
-			//echo $dds."  "
-			if(strpos($dds,"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
+
+		foreach ($ds as $key=>$dds) {
+			//echo urldecode($dds)."  ";
+
+			//echo $key."<br>";
+
+			$dds = urldecode($dds);
+
+			if(strtolower($key)=="link"){
+				//echo $ds[$key]."<br>";
+				if(strlen($dds)<40){
+					$invalid++;
+					echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='".urldecode($ds[$key])."'>".urldecode($ds[$key])."</a></td></tr>";
+					continue;
+				}
+			}
+
+			if(strpos(urldecode($dds),"http://uid.dauniv.ac.in/NAC/profile/docs")!==false){
 				$xxx = substr($dds,41);
 				if(!in_array($xxx,$files)){
 					//echo "<br>";
 					//print_r($xxx);
 					$invalid++;
-					echo "<tr><td>".$ds['Username']."</td><td>"."http://uid.dauniv.ac.in/NAC/profile/docs/".$xxx."</td></tr>";
+					echo "<tr><td>".$ds['Username']."</td><td><a target='_blank' href='"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."'>"."http://uid.dauniv.ac.in/NAC/additional_data/docs_add/".$xxx."</a></td></tr>";
 				}
 			}
 		}
@@ -251,6 +269,6 @@ foreach ($tabs as $t) {
 
       }
 </script>
-
+</div>
 </body>
 </html>

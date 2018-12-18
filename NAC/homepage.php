@@ -288,7 +288,7 @@ if($ppp!=1){
 
 			<hr style="border-color:black; border:2px solid #474747;" size="100">
 
-			<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">GENERATE REPORT</b>
+			<b style="z-index:5; margin-top:-45px; padding:10px; padding-left:30px; padding-right:30px; border-radius:17px; FLOAT:LEFT; margin-left:80px; font-size:17px; border:0px solid gray; background-color:#424242;  color:#FFF;">Generate Report</b>
 
 		<br><BR>
 <centre>

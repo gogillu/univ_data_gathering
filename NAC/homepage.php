@@ -282,7 +282,7 @@ if($ppp!=1){
 
 		</div>
 
-<?php if($_SESSION['names']!=""){ ?>
+<?php if($_SESSION['name']!=""){ ?>
 
 		<br><br><Br>
 

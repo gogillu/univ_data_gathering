@@ -4826,6 +4826,9 @@ if(link==""){
       $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
 
       while ($row = $res->fetch_assoc()){
+        if($row['section'][1]!=7){
+          continue;
+        }
         ?>
 
           $(document).ready(function(){

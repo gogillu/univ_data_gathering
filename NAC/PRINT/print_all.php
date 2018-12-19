@@ -146,14 +146,16 @@ $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
 
 
-foreach ($res as $tabs) {
-	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
+//foreach ($res as $tabs) {
+//	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
+
+	$t = $_GET['tab_id'];
 
 	if($t[0]!='t'){
 		continue;
 	}
 
-	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	$i_query = "select DISTINCT * FROM ".$t." WHERE 1";
 	echo "<br><Br><b style=''>SECTION : ".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
@@ -172,7 +174,7 @@ foreach ($res as $tabs) {
 
 	echo "</table>";
 
-}
+//}
 
 
 

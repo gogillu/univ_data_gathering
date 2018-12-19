@@ -27,5 +27,14 @@
   <input type="button" value="INVALID LINKS">
 </a>
 
+<a href="../profile/link_generator/generate_alt_link.php">
+  <input type="button" value="LINK REDIRECTOR">
+</a>
+
+<a href="../PRINT/print.php?tab_id=t1_1_1">
+  <input type="button" value="SECTION PRINTER">
+</a>
+
+
 
 </center>

@@ -3,6 +3,7 @@
     $username = "root";
     $password = "uniqueness";
     $dbname = "criteria_iqac_nac_common";
+    $dbname_log = "criteria_iqac_log";
 
 function getUserIP(){
   // Get real visitor IP behind CloudFlare network

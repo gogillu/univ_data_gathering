@@ -5358,6 +5358,9 @@ setInterval(function() { maintain_session(); }, 800000);
       $res  = mysqli_query($connection,$sql_na) ; //or die(mysqli_error($connection));
 
       while ($row = $res->fetch_assoc()){
+        if($row['section'][1]!=2){
+          continue;
+        }
         ?>
 
           $(document).ready(function(){

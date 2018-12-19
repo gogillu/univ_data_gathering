@@ -6,7 +6,7 @@ include("../credential.php");
 $date = date_create();
 save_log($_SESSION['username'],getUserIP(),$_SERVER['REQUEST_URI'],urlencode(http_build_query($_POST, '', '&amp;')),date_format($date, 'Y-m-d H:i:s'));
 
-if(!isset($_SESSION['name'])){
+if(!isset($_SESSION['names'])){
 		header("Location: ../index.php");   }
 
 ?>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['name'])){
 
         </style>
 <link rel="icon" href="./logo.png">
-<title>CRITERIA-<?php echo $_GET['criteria'] ?> | <?php echo $_SESSION['name'] ?> | Information Gathering System | <?php echo date_format($date, 'Y-m-d H:i:s');?></title>
+<title>SECTION-<?php echo $_GET['tab_id'] ?> | <?php echo $_SESSION['name'] ?> | Information Gathering System | <?php echo date_format($date, 'Y-m-d H:i:s');?></title>
 </head>
 <body class="BACK" style="padding:10px;">
 
@@ -131,7 +131,7 @@ if(!isset($_SESSION['name'])){
 
 //$tabs = ['t1_1_2','t1_1_3','t1_2_1'];
 
-echo "<center><b style='font-size:24px;'> ".$_SESSION['name']." | CRITERIA - ".$_GET['criteria']."</b></center>";
+echo "<center><b style='font-size:24px;'> ".$_SESSION['names']." | SECTION - ".$_GET['tab_id']."</b></center>";
 
 ?>
 
@@ -161,15 +161,20 @@ $res  = mysqli_query($connection,$query) or die(mysqli_error($connection));
 
 
 
-foreach ($res as $tabs) {
-	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
-
+//foreach ($res as $tabs) {
+//	$t = $tabs['Tables_in_criteria_iqac_nac_common'];
+/*
 	if($t[0]!='t' || $t[1]!=$_GET['criteria']){
 		continue;
 	}
+*/
 
-	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+	$t = $_GET['tab_id'];
+
+	$i_query = "select DISTINCT * FROM admins , ".$t." AS X WHERE admins.username LIKE X.Username";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
+
+	//echo $i_query."<br>";
 
 	$heads = [];
 
@@ -181,7 +186,7 @@ foreach ($res as $tabs) {
 
 		foreach ($i_res as $ds) {
 			foreach ($ds as $key => $dds) {
-				if($key=='Username' || $key=='id_time' || strtolower($key)=='file_name'){
+				if( strtolower($key)=='username' || $key=='password' || $key=='sno' || $key=='id_time' || strtolower($key)=='file_name'){
 					$col++;
 					continue;
 				}
@@ -191,7 +196,7 @@ foreach ($res as $tabs) {
 		}
 
 
-	$i_query = "select DISTINCT * FROM ".$t." WHERE Username LIKE '".$_SESSION['username']."'";
+		$i_query = "select DISTINCT * FROM admins , ".$t." AS X WHERE admins.username LIKE X.Username";
 	echo "<br><Br><b style='font-size:22px;'>SECTION : ".str_replace("_",".",substr($t,1))."</b>";
 	$i_res  = mysqli_query($connection,$i_query) or die(mysqli_error($connection));
 
@@ -217,7 +222,7 @@ foreach ($res as $tabs) {
 
 		foreach ($ds as $key => $dds) {
 
-			if($key=='Username' || $key=='id_time' || strtolower($key)=='file_name'){
+			if(strtolower($key)=='username' || $key=='password' || $key=='sno' || $key=='id_time' || strtolower($key)=='file_name'){
 				$col++;
 				continue;
 			}
@@ -229,7 +234,7 @@ foreach ($res as $tabs) {
 
 	echo "</table>";
 
-}
+//}
 
 echo "<br><br><br><br>";
 
@@ -279,7 +284,7 @@ foreach ($tabs as $t) {
 						console.log("success");
 					}
 			};
-			xhttp.open("GET", "save_log.php?criteria=<?php echo $_GET['criteria']; ?>", true);
+			xhttp.open("GET", "save_log.php?criteria=<?php echo $_GET['tab_id']; ?>", true);
 			xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xhttp.send();
 

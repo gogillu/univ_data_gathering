@@ -1,3 +1,45 @@
+<style>
+
+input[type=submit],input[type=button],.Save{
+    width: 250px;
+
+    background-color: #424242;
+    color: #EEEEEE;
+
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+ button{
+    width: 200px;
+    color: white;
+    background-color: #424242;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #333333;
+}
+
+input[type=button]:hover {
+    background-color: #333333;
+}
+
+
+button:hover,a:hover{
+    background-color: #333333;
+}
+
+</style>
+
+
 <center>
 <a href="progress.php">
   <input type="button" value="PROGRESS">
@@ -35,6 +77,14 @@
   <input type="button" value="SECTION PRINTER">
 </a>
 
+<br>
 
+<a href="import.php">
+  <input type="button" value="IMPORT CSV">
+</a>
+
+<a href="../css/lock.php">
+  <input type="button" value="LOCK">
+</a>
 
 </center>

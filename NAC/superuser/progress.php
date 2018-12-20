@@ -2035,6 +2035,6 @@ setInterval(function() { maintain_session(); }, 800000);
 
 </script>
 
-	<center><a href="import.php" target="_blank">+</a></center>
+	<center><a href="links_hidden.php" target="_blank">+</a></center>
 </body>
 </html>
